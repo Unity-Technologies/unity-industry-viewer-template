@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Metadata Tool Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Metadata Tool
+  m_TableCollectionNameGuidString: 6efcd4a9cb0e446d2a317f1da935b0ba
+  m_Entries:
+  - m_Id: 632743256064
+    m_Key: Metadata Tool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5998956765184
+    m_Key: No metadata found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19319819894513664
+    m_Key: Search
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42351695571705856
+    m_Key: Offline Mode Message
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42379094405406720
+    m_Key: Offline Asset Message
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1314252993058308303
+  references:
+    version: 2
+    RefIds:
+    - rid: 1314252993058308303
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1733493241954

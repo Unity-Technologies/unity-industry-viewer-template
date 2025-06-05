@@ -1,0 +1,36 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement picking-mode="Ignore" name="LoginPanel" style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+        <engine:VisualElement style="flex-grow: 1; justify-content: center; width: 50%; max-width: 50%; min-width: 50%;">
+            <engine:VisualElement picking-mode="Ignore" name="Logo" style="flex-grow: 1; width: 200px; height: 68px; -unity-background-scale-mode: stretch-to-fill; background-image: url(&quot;project://database/Assets/UI/Textures/U_Logo_Small_White_RGB_1C%201.png?fileID=2800000&amp;guid=c5b4d9b1f451b43f7b2a86d083bc0ce3&amp;type=3#U_Logo_Small_White_RGB_1C 1&quot;); max-width: 200px; min-width: 200px; max-height: 68px; min-height: 68px; margin-left: 100px;" />
+            <Unity.AppUI.UI.Text picking-mode="Ignore" size="L" style="color: rgb(255, 255, 255); font-size: 58px; -unity-text-align: upper-left; -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(255, 255, 255); margin-left: 100px; min-height: 150px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:57a7ebbc038a2427a989d443ddacef3e" entry="Id(2213752594432)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <engine:VisualElement style="flex-grow: 1; height: 40px; max-height: 40px; min-height: 40px; margin-left: 100px; flex-direction: row; width: 700px; max-width: 700px; min-width: 700px; justify-content: space-between; margin-top: 40px;">
+                <Unity.AppUI.UI.ActionButton name="LoginButton" selected="true" accent="true" size="L" style="height: 40px; max-height: 40px; min-height: 40px; width: 300px; max-width: 300px; min-width: 300px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:57a7ebbc038a2427a989d443ddacef3e" entry="Id(33437661519872)" />
+                    </Bindings>
+                </Unity.AppUI.UI.ActionButton>
+                <engine:VisualElement name="GuestContainer" style="flex-grow: 0; flex-direction: row; width: 400px; max-width: 400px; min-width: 400px; display: none;">
+                    <Unity.AppUI.UI.Text text="or" picking-mode="Ignore" size="S" style="color: rgb(255, 255, 255); font-size: 16px; -unity-text-align: middle-center; -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(255, 255, 255); width: 100px; max-width: 100px; min-width: 100px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:57a7ebbc038a2427a989d443ddacef3e" entry="Id(9303762132992)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.ActionButton name="GuestButton" size="L" accent="true" selected="true" style="height: 40px; max-height: 40px; min-height: 40px; width: 300px; max-width: 300px; min-width: 300px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:57a7ebbc038a2427a989d443ddacef3e" entry="Id(9420774825984)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.ActionButton>
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <Unity.AppUI.UI.Text picking-mode="Ignore" size="XS" double-click-selects-word="false" triple-click-selects-line="false" style="color: rgb(255, 255, 255); -unity-text-align: middle-left; -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(255, 255, 255); margin-left: 100px; height: 40px; max-height: 40px; min-height: 40px; position: absolute; bottom: 50px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:57a7ebbc038a2427a989d443ddacef3e" entry="Id(29800713151307776)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

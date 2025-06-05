@@ -1,0 +1,22 @@
+{
+    "name": "Unity.Industry.Viewer.Assets",
+    "rootNamespace": "Unity.Industry.Viewer.Assets",
+    "references": [
+        "GUID:f2f9fbb8654eff343bf4a94f2a688687",
+        "GUID:3072efb1b5d06449eb35617ac762a62d",
+        "GUID:18a3ee135d24342f7ae628142b5114cb",
+        "GUID:72dbfbe357d5a40c69505e128456d3d1",
+        "GUID:2f101f87087d58f4ba92ca00188e763d",
+        "GUID:498d02e03062b2649b108f31a9668c56",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

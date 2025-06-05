@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Fly Camera
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 4ae8c4accfa144438a938b2e4b7e9449, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 9bf4b52aeee1f4240b0ccf9342a520ba, type: 2}
+  - {fileID: 11400000, guid: afc5fe4594b40410ea605a116772684e, type: 2}
+  - {fileID: 11400000, guid: 4819e5f8ec736492894940086d705892, type: 2}
+  - {fileID: 11400000, guid: bef172b047eea4b54a512e43be9a9ff0, type: 2}
+  - {fileID: 11400000, guid: 49b8a5aeaaf0240b083b1a5f63efcb0d, type: 2}
+  - {fileID: 11400000, guid: e4f30aa619cae4f2d8a14003b505cd5e, type: 2}
+  - {fileID: 11400000, guid: 295fb81b87b1a4342ae6fa10259b2a2a, type: 2}
+  - {fileID: 11400000, guid: a9950625104b0460d8f8143a1affd86c, type: 2}
+  - {fileID: 11400000, guid: 95e45dfb209214fffa02b25e871a0c18, type: 2}
+  - {fileID: 11400000, guid: 7ddf74824892448b68ebd1ed40598daf, type: 2}
+  - {fileID: 11400000, guid: 94c97dc9725a44e36993b424fa0af6e9, type: 2}
+  - {fileID: 11400000, guid: e6fa8a9f95388477eba2ae71f7748bb5, type: 2}
+  - {fileID: 11400000, guid: 127557e70692c4832bbb775fe239fec9, type: 2}
+  - {fileID: 11400000, guid: d4f2f892baa68497e88bf8e224c98a95, type: 2}
+  - {fileID: 11400000, guid: 4eed511ec608d4458aa5351eda2a1fc0, type: 2}
+  - {fileID: 11400000, guid: 7246026e6e86648f88ebc26015a88e9d, type: 2}
+  - {fileID: 11400000, guid: 74bce4fde1eea4cb08afa099dd1f85af, type: 2}
+  m_Group: String Table

@@ -1,0 +1,13 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/In%20App%20Settings/UI/SettingsStyle.uss?fileID=7433441132597879392&amp;guid=0ccd06581b22f4fe48c0ce2ac8dff7dd&amp;type=3#SettingsStyle" />
+    <engine:VisualElement style="flex-grow: 1;">
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; margin-bottom: 10px;">
+            <Unity.AppUI.UI.Text text="Wireframe" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 280px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(15579884532260864)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Toggle name="WireframeToggle" style="height: 40px; max-height: 40px; min-height: 40px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

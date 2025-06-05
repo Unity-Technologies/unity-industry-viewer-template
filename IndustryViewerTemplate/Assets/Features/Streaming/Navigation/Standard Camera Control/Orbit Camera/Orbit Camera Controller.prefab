@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4775935333654450239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 375473844681296496}
+  - component: {fileID: 1165060986843512537}
+  - component: {fileID: 6700702439240307448}
+  - component: {fileID: 1578332290802988872}
+  - component: {fileID: 2013636843561629022}
+  m_Layer: 0
+  m_Name: Orbit Camera Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &375473844681296496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775935333654450239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1165060986843512537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775935333654450239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea7e262be9ea4a1e937172cd78d0da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigationName:
+    m_TableReference:
+      m_TableCollectionName: GUID:2b1ee5ee94d4041f0bff4b3e7fe7a699
+    m_TableEntryReference:
+      m_KeyId: 12604054429696
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  navigationCamera: {fileID: 0}
+  navigationOptionUIComponent: {fileID: 6700702439240307448}
+  cameraController: {fileID: 2013636843561629022}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &6700702439240307448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775935333654450239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b452dd894f1e49b28404d91caaf6d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigationIcon: {fileID: 2800000, guid: f325a9ee2a3794931b2b0a8ce74cfa4a, type: 3}
+  navigationOptionUIAsset: {fileID: 9197481963319205126, guid: bf7bac151549a46638969f7ef37da07c,
+    type: 3}
+  m_OrbitCameraNavigationController: {fileID: 1165060986843512537}
+  m_CameraInputSystemController: {fileID: 2013636843561629022}
+--- !u!114 &1578332290802988872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775935333654450239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d2c841904ab49728f8e80c75e20cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 0}
+  m_Settings: {fileID: 11400000, guid: 66ffcc0064c34a499f0094bbab3b3131, type: 2}
+--- !u!114 &2013636843561629022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775935333654450239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f255e71d44029d547a1d698f74c8a799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanThreshold: 5
+  m_PinchThreshold: 12.5
+  m_OribitThreshold: 5
+  m_OrbitActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Orbit Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3be035a2-b460-4beb-a5e2-632bffc08492
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -659967207201646200, guid: 9c1067a814ed04bc2b0226f839d786dd,
+      type: 3}
+  m_PanActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Pan Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: ff5d3a5f-831f-4039-942e-5b04bfa90bf4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -3409173379806424757, guid: 9c1067a814ed04bc2b0226f839d786dd,
+      type: 3}
+  m_ZoomActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Zoom Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: efe70221-8f2f-4c67-8bfb-3f3620517034
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 4896683380817868333, guid: 9c1067a814ed04bc2b0226f839d786dd,
+      type: 3}
+  m_MultiTouchActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Multi Touch Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: de0706e6-2a97-4980-8b06-83867b4afda4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -2643556825505175602, guid: 9c1067a814ed04bc2b0226f839d786dd,
+      type: 3}
+  m_Camera: {fileID: 1578332290802988872}

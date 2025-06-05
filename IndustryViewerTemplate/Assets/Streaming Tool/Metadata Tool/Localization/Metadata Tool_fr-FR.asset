@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Metadata Tool_fr-FR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr-FR
+  m_SharedData: {fileID: 11400000, guid: 6efcd4a9cb0e446d2a317f1da935b0ba, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 632743256064
+    m_Localized: "M\xE9tadonn\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5998956765184
+    m_Localized: "Aucune m\xE9tadonn\xE9e trouv\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19319819894513664
+    m_Localized: Recherche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42351695571705856
+    m_Localized: Le mode hors ligne n'est pas pris en charge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42379094405406720
+    m_Localized: "Le mod\xE8le de diffusion locale n'est pas pris en charge"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

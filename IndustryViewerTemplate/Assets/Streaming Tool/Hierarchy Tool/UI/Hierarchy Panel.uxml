@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1;">
+        <ui:TreeView name="HierarchyTreeView" horizontal-scrolling="true" item-template="project://database/Assets/Streaming%20Tool/Hierarchy%20Tool/UI/Hierarchy%20Item%20Template.uxml?fileID=9197481963319205126&amp;guid=166ee20e97a27414c8f7930df0437a5c&amp;type=3#Hierarchy Item Template" fixed-item-height="40" focusable="false" class="HierarchyStyle" style="width: 100%; max-width: 100%; min-width: 100%; max-height: 4000px;" />
+        <ui:VisualElement name="Loading" style="flex-grow: 1; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; bottom: 0; right: 0; display: none; background-color: rgba(0, 0, 0, 0.12);">
+            <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: center; align-items: center;">
+                <Unity.AppUI.UI.CircularProgress size="S" style="width: 32px; height: 32px;" />
+                <Unity.AppUI.UI.Text name="Text" style="-unity-font-style: bold; font-size: 22px; margin-left: 4px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:48832e3252a4b48af8afab88b5bbc379" entry="Id(42677741605085184)" />
+                    </Bindings>
+                </Unity.AppUI.UI.Text>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

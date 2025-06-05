@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Identity_fr-FR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr-FR
+  m_SharedData: {fileID: 11400000, guid: 57a7ebbc038a2427a989d443ddacef3e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2213752594432
+    m_Localized: "Visionneuse d'industrie Unity \nProjet de mod\xE8le"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7997920108544
+    m_Localized: Se connecter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9303762132992
+    m_Localized: Ou
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9420774825984
+    m_Localized: "Continuer en tant qu'invit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15982369169408
+    m_Localized: "Se d\xE9connecter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32483335725056
+    m_Localized: Annuler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33199882231808
+    m_Localized: "D\xE9connexion..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33283562790912
+    m_Localized: "\xCAtes-vous s\xFBr de vous d\xE9connecter\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33349040070656
+    m_Localized: En attente de connexion...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33437661519872
+    m_Localized: Initialisation...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29800713151307776
+    m_Localized: "D\xE9velopp\xE9 et con\xE7u par Unity Industry"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58408840369004544
+    m_Localized: Mode hors ligne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58408840381587456
+    m_Localized: "Vous \xEAtes actuellement en mode hors ligne. Vous souhaitez revenir
+      en mode en ligne et vous connecter ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58409243970101248
+    m_Localized: D'ACCORD
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

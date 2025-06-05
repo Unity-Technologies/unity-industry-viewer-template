@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Orbit Camera
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 2b1ee5ee94d4041f0bff4b3e7fe7a699, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: bb5df540e1dea4f5ea915d067fadeef1, type: 2}
+  - {fileID: 11400000, guid: bdebcc69ce4794f5696af2d43e5bb494, type: 2}
+  - {fileID: 11400000, guid: 3f0477f52ee9f42cfa8644c632e449dc, type: 2}
+  - {fileID: 11400000, guid: c470e5bde64434093b105820527833e9, type: 2}
+  - {fileID: 11400000, guid: 2f28305e4f6e547d49441b430665403d, type: 2}
+  - {fileID: 11400000, guid: 949e756eed8d1473e8ffe4f7fabc9808, type: 2}
+  - {fileID: 11400000, guid: de69554f49a904cc2aa921440e6f10bf, type: 2}
+  - {fileID: 11400000, guid: 6760a6e5aec08427c8b1984a8a2e0578, type: 2}
+  - {fileID: 11400000, guid: cd18d298f08b0486784a4a5b333e8dc3, type: 2}
+  - {fileID: 11400000, guid: 39f6232382dd441ae898553203ee9e2e, type: 2}
+  - {fileID: 11400000, guid: 46ad31d540cc1425387805805bf2957b, type: 2}
+  - {fileID: 11400000, guid: 7b28ec6c7bda74402b2e2469f467427a, type: 2}
+  - {fileID: 11400000, guid: e9e5784bcccc241c296ed677f9d8d649, type: 2}
+  - {fileID: 11400000, guid: b873ff052f4c34ecdb99c6994e7c8151, type: 2}
+  - {fileID: 11400000, guid: 3c923589c82d34567966c26b4d727254, type: 2}
+  - {fileID: 11400000, guid: c8613bb221017409dac1bede75bcf655, type: 2}
+  - {fileID: 11400000, guid: 915cd7caa35234ba9bbff23d434f891f, type: 2}
+  m_Group: String Table

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Vivox_zh-TW
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: zh-TW
+  m_SharedData: {fileID: 11400000, guid: a49b4948ab7c940959051620265455bf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 482415206400
+    m_Localized: "\u8F38\u5165\u88DD\u7F6E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400704
+    m_Localized: "\u8F38\u5165\u97F3\u91CF"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400705
+    m_Localized: "\u8F38\u51FA\u88DD\u7F6E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400706
+    m_Localized: "\u8F38\u51FA\u97F3\u91CF"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400707
+    m_Localized: "\u975C\u97F3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400708
+    m_Localized: "\u53D6\u6D88\u975C\u97F3"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

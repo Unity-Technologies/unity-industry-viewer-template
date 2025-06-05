@@ -1,0 +1,66 @@
+.image__microphone-voice-level {
+    align-items: stretch;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    scale: 1 1;
+    transform-origin: center 67%;
+    background-image: url("./VoiceLevel.png");
+}
+
+.button__mute {
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.is-selected.button__mute,
+.is-selected.button__mute:hover,
+.button__mute:hover,
+.button__mute:active{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.appui-icon--microphone {
+    width: 100%;
+    height: 100%;
+    --unity-image: url("./Microphone.png");
+    --unity-image-tint-color: rgb(255, 255, 255);
+}
+
+.appui-icon--microphone-slash {
+    width: 100%;
+    height: 100%;
+    --unity-image: url("./MicrophoneSlash.png");
+    --unity-image-tint-color: rgb(255, 255, 255);
+}
+
+.button__collaborator-data-microphone{
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: center;
+    margin-left: 10px;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.container__microphone{
+    align-items: center;
+}
+
+.mic{
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.mic:active,
+.mic:hover{
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}

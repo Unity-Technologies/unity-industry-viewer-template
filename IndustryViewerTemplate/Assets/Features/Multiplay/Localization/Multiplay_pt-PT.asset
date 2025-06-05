@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Multiplay_pt-PT
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-PT
+  m_SharedData: {fileID: 11400000, guid: 7753eeaebef2041d49757e3425fd4c85, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826618794508412
+  m_TableData:
+  - m_Id: 5081708617728
+    m_Localized: "A sess\xE3o est\xE1 cheia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081977053184
+    m_Localized: "N\xE3o foi poss\xEDvel criar ou ingressar na sess\xE3o. Tente novamente"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247488
+    m_Localized: "Participar da apresenta\xE7\xE3o?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247489
+    m_Localized: "{name} est\xE1 apresentando. Quer participar da apresenta\xE7\xE3o?"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826618794508412
+  - m_Id: 5081985441792
+    m_Localized: Juntar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441793
+    m_Localized: Dispensar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441794
+    m_Localized: "Modo de apresenta\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441795
+    m_Localized: "Finalizar apresenta\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441796
+    m_Localized: "Quer encerrar a apresenta\xE7\xE3o?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441797
+    m_Localized: Fim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441798
+    m_Localized: "Sair da apresenta\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441799
+    m_Localized: "Deseja sair da apresenta\xE7\xE3o atual?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441800
+    m_Localized: Abandonar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441801
+    m_Localized: "Juntar-se a apresenta\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441802
+    m_Localized: "Queres participar da apresenta\xE7\xE3o atual?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441803
+    m_Localized: "Iniciar modo de apresenta\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441804
+    m_Localized: "Quer iniciar uma apresenta\xE7\xE3o?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441805
+    m_Localized: "Come\xE7ar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441806
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065896267776
+    m_Localized: Novo recurso de layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065904656384
+    m_Localized: "Sess\xE3o salva como novo layout. Deseja entrar?"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826618794508412
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 5081981247489

@@ -1,0 +1,157 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Features/Assets/UI/AssetInfoPanelStyle.uss?fileID=7433441132597879392&amp;guid=126bdc3edb96449bb8e4d2bd02c1c2fc&amp;type=3#AssetInfoPanelStyle" />
+    <ui:VisualElement name="AssetInfoPanelRoot" picking-mode="Ignore" style="align-items: stretch; justify-content: flex-start; width: 572px; height: 811px; flex-grow: 1;">
+        <ui:VisualElement name="AssetInfoPanelTop" style="flex-direction: row; margin-top: 8px; border-bottom-width: 1px; border-left-color: rgb(48, 48, 48); border-right-color: rgb(48, 48, 48); border-top-color: rgb(48, 48, 48); border-bottom-color: rgb(48, 48, 48); padding-right: 8px; padding-left: 8px; justify-content: space-between; height: 60px; min-height: 60px; max-height: 60px;">
+            <Unity.AppUI.UI.IconButton name="CloseButton" size="L" icon="x" style="width: 40px; height: 40px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;">
+                <Unity.AppUI.UI.Text name="AssetName" size="XL" style="-unity-text-align: middle-left; border-left-color: rgb(255, 255, 255); flex-shrink: 1; font-size: 18px; color: rgb(188, 188, 188); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; height: 24px; -unity-font-style: bold; flex-grow: 1;" />
+                <Unity.AppUI.UI.Text name="AssetType" size="M" text="3D Model" style="-unity-text-align: middle-center; flex-shrink: 1; font-size: 14px; color: rgb(255, 255, 255); width: 106px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; height: 24px; background-color: rgb(72, 72, 72); border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px;" />
+            </ui:VisualElement>
+            <Unity.AppUI.UI.Tabs name="Tabs" size="L" style="height: 48px; margin-bottom: 8px; justify-content: space-around;">
+                <Unity.AppUI.UI.TabItem name="InfoTab" style="flex-grow: 1; justify-content: center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(26945938399420416)" />
+                    </Bindings>
+                </Unity.AppUI.UI.TabItem>
+                <Unity.AppUI.UI.TabItem name="CommentsTab" style="flex-grow: 1; justify-content: center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(26945938407809024)" />
+                    </Bindings>
+                </Unity.AppUI.UI.TabItem>
+                <Unity.AppUI.UI.TabItem name="FilesTab" style="flex-grow: 1; justify-content: center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(26945938407809025)" />
+                    </Bindings>
+                </Unity.AppUI.UI.TabItem>
+            </Unity.AppUI.UI.Tabs>
+            <ui:ScrollView horizontal-scroller-visibility="Hidden" style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 1; height: 400px; align-items: center; justify-content: center; border-left-color: rgb(48, 48, 48); border-right-color: rgb(48, 48, 48); border-top-color: rgb(48, 48, 48); border-bottom-color: rgb(48, 48, 48); border-bottom-width: 1px; display: flex;">
+                    <ui:VisualElement name="Icon" style="width: 400px; height: 400px; -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:VisualElement name="UpdateVersionVE" style="flex-grow: 1; height: 36px; position: absolute; bottom: 8px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; flex-direction: row; align-items: center; padding-top: 9px; padding-right: 9px; padding-bottom: 9px; padding-left: 9px; justify-content: center; display: flex;">
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center;">
+                            <Unity.AppUI.UI.Icon style="margin-right: 9px;" />
+                            <Unity.AppUI.UI.Text style="color: rgb(255, 255, 255); overflow: hidden; white-space: nowrap; min-width: 180px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1; flex-direction: row-reverse; align-items: center; display: flex; margin-left: 8px;">
+                            <Unity.AppUI.UI.Button style="background-color: rgba(48, 48, 48, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; color: rgb(255, 255, 255); text-overflow: ellipsis; white-space: nowrap; -unity-text-align: middle-right; min-width: 85px;" />
+                            <Unity.AppUI.UI.Divider direction="Vertical" spacing="S" style="background-color: rgba(255, 66, 66, 0);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="InfoContainer" style="flex-grow: 1; justify-content: space-around; -unity-background-image-tint-color: rgb(255, 255, 255); margin-right: 1px; display: flex;">
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text text="Asset Version" size="XL" class="field" style="max-width: 50%; width: 106px; font-size: 14px;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(4496284442624)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Dropdown name="AssetVersionDropdown" style="height: 30px; width: 426px; justify-content: flex-start; padding-left: 9px; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text text="Asset Status" size="XL" class="field" style="width: 106px; font-size: 14px;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(5355433091072)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Dropdown name="AssetStatusDropdown" class="AssetStatusDropdownItem" style="height: 30px; justify-content: flex-start; padding-left: 9px; background-color: rgb(74, 74, 74); border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; margin-top: 16px; min-height: 30px; align-items: flex-start;">
+                        <Unity.AppUI.UI.Text size="XL" class="field" style="width: 106px; font-size: 14px;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(113829009678336)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <ui:VisualElement name="ProjectsContainer" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; margin-top: 16px; min-height: 30px; align-items: flex-start;">
+                        <Unity.AppUI.UI.Text size="XL" class="field" style="width: 106px; font-size: 14px;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(25801326007934976)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <ui:VisualElement name="TagsContainer" style="flex-grow: 1; flex-wrap: wrap; flex-direction: row;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text size="XL" class="field" style="width: 106px; font-size: 14px;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(25800459972239360)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Text name="AssetFilesSize" size="XL" style="-unity-text-align: middle-left; border-left-color: rgb(255, 255, 255); flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text size="XL" class="field" style="width: 106px; font-size: 14px;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(25800460005793792)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Text name="AssetFiles" size="XL" style="-unity-text-align: middle-left; border-left-color: rgb(255, 255, 255); flex-shrink: 1; width: 390px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text size="XL" class="field" style="width: 106px; font-size: 14px;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(25802025936609280)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Text name="AssetID" size="XL" style="-unity-text-align: middle-left; border-left-color: rgb(255, 255, 255); flex-shrink: 1; width: 390px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text size="XL" class="field" style="width: 106px;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(5697486970880)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Text name="AssetUpdate" size="XL" style="-unity-text-align: middle-left; border-left-color: rgb(255, 255, 255); flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text size="XL" class="field" style="width: 106px; white-space: nowrap;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(5951284305920)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Text name="AssetUpdateBy" size="XL" style="-unity-text-align: middle-left; border-left-color: rgb(255, 255, 255); flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text size="XL" class="field">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(6460099518464)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Text name="AssetCreate" size="XL" style="-unity-text-align: middle-left; border-left-color: rgb(255, 255, 255); flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row; justify-content: flex-start; height: 30px; margin-top: 16px;">
+                        <Unity.AppUI.UI.Text size="XL" class="field">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(6667159724032)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                        <Unity.AppUI.UI.Text name="AssetCreateBy" size="XL" style="-unity-text-align: middle-left; border-left-color: rgb(255, 255, 255); flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-grow: 1;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <Unity.AppUI.UI.Text size="XXXL" name="CommentsContainer" style="-unity-text-align: middle-center; margin-top: 10px; display: none;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(26945938407809026)" />
+                    </Bindings>
+                </Unity.AppUI.UI.Text>
+                <ui:VisualElement name="FilesContainer" picking-mode="Ignore" style="flex-grow: 1; align-items: stretch; justify-content: flex-start; display: none; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-between; border-left-color: rgb(48, 48, 48); border-right-color: rgb(48, 48, 48); border-top-color: rgb(48, 48, 48); border-bottom-color: rgb(48, 48, 48); border-bottom-width: 1px; padding-bottom: 12px;">
+                        <Unity.AppUI.UI.Checkbox name="SelectAllCheckBox" emphasized="true">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(26945938407809027)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Checkbox>
+                        <Unity.AppUI.UI.ActionButton name="DownloadAssetButton" icon="download">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="label" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(7216613548032)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.ActionButton>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="DatasetParent" style="flex-grow: 1; border-left-color: rgb(48, 48, 48); border-right-color: rgb(48, 48, 48); border-top-color: rgb(48, 48, 48); border-bottom-color: rgb(48, 48, 48); border-bottom-width: 1px; margin-top: 16px; padding-bottom: 3px;" />
+                    <Unity.AppUI.UI.LinearProgress name="DownloadProgress" variant="Determinate" style="width: 100%; display: none; margin-top: 16px;" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

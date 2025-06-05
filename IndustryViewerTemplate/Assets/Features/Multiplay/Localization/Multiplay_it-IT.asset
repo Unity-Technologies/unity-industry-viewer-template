@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Multiplay_it-IT
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: it-IT
+  m_SharedData: {fileID: 11400000, guid: 7753eeaebef2041d49757e3425fd4c85, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826618794508409
+  m_TableData:
+  - m_Id: 5081708617728
+    m_Localized: "La sessione \xE8 piena"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081977053184
+    m_Localized: Impossibile creare o partecipare alla sessione, riprova
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247488
+    m_Localized: Partecipa alla presentazione?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247489
+    m_Localized: '{name} sta presentando. Vuoi partecipare alla presentazione?'
+    m_Metadata:
+      m_Items:
+      - rid: 7555826618794508409
+  - m_Id: 5081985441792
+    m_Localized: Partecipa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441793
+    m_Localized: Ignora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441794
+    m_Localized: "Modalit\xE0 presentazione"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441795
+    m_Localized: Termina presentazione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441796
+    m_Localized: Vuoi terminare la presentazione?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441797
+    m_Localized: Termina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441798
+    m_Localized: Esci dalla presentazione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441799
+    m_Localized: Vuoi uscire dalla presentazione corrente?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441800
+    m_Localized: 'Esci   '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441801
+    m_Localized: Partecipa alla presentazione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441802
+    m_Localized: Vuoi partecipare alla presentazione corrente?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441803
+    m_Localized: "Avvia modalit\xE0 presentazione"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441804
+    m_Localized: Vuoi avviare una presentazione?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441805
+    m_Localized: 'Avvia  '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441806
+    m_Localized: Annulla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065896267776
+    m_Localized: Nuova risorsa di layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065904656384
+    m_Localized: Sessione salvata come nuovo layout. Vuoi unirti?
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826618794508409
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 5081981247489

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Multiplay_no
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: no
+  m_SharedData: {fileID: 11400000, guid: 7753eeaebef2041d49757e3425fd4c85, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1545659760810917922
+  m_TableData:
+  - m_Id: 5081708617728
+    m_Localized: "M\xF8tet er fullt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081977053184
+    m_Localized: "Kan ikke opprette eller bli med i \xF8kten, pr\xF8v igjen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247488
+    m_Localized: "Vil du bli med p\xE5 presentasjonen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247489
+    m_Localized: "{name} presenterer. Vil du bli med p\xE5 presentasjonen?"
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917922
+  - m_Id: 5081985441792
+    m_Localized: Bli med
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441793
+    m_Localized: Avvis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441794
+    m_Localized: Presentasjonsmodus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441795
+    m_Localized: Avslutt presentasjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441796
+    m_Localized: Vil du avslutte presentasjonen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441797
+    m_Localized: Avslutt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441798
+    m_Localized: Forlate presentasjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441799
+    m_Localized: "Vil du forlate den n\xE5v\xE6rende presentasjonen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441800
+    m_Localized: Forlat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441801
+    m_Localized: Bli med i presentasjonen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441802
+    m_Localized: "Vil du bli med p\xE5 gjeldende presentasjon?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441803
+    m_Localized: Start presentasjonsmodus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441804
+    m_Localized: Vil du starte en presentasjon?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441805
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441806
+    m_Localized: Avbryt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065896267776
+    m_Localized: Ny layout-innsats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065904656384
+    m_Localized: "\xD8kten er lagret som nytt oppsett. Bli med?"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 1545659760810917922
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 5081981247489

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Vivox_fi
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fi
+  m_SharedData: {fileID: 11400000, guid: a49b4948ab7c940959051620265455bf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 482415206400
+    m_Localized: "Sy\xF6tt\xF6laite"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400704
+    m_Localized: "Sy\xF6tt\xF6\xE4\xE4nenvoimakkuus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400705
+    m_Localized: "L\xE4ht\xF6laite"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400706
+    m_Localized: "L\xE4ht\xF6\xE4\xE4nenvoimakkuus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400707
+    m_Localized: "Mykist\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 482419400708
+    m_Localized: Poista mykistys
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

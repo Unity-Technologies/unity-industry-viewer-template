@@ -1,0 +1,69 @@
+#AssetContainer {
+    align-items: flex-end;
+}
+
+#AssetContainer > * > * {
+    width: 1690px;
+    max-width: 1690px;
+    margin-right: 20px;
+}
+
+#AssetContainer #AssetSearchBar {
+    width: 570px;
+    max-width: 570px;
+}
+
+.AddModelToSelectionButton {
+    height: 40px;
+    margin-left: 8px;
+    background-color: rgb(8, 146, 255);
+}
+
+.AddModelToSelectionButton > #appui-actionbutton__icon {
+    background-image: url("project://database/Assets/UI/Textures/PlusCircle.png?fileID=2800000&guid=9dd3f25552a1945efa310c3d53c12957&type=3#PlusCircle");
+}
+
+.AddModelToSelectionButton > #appui-actionbutton__label {
+    color: rgb(255, 255, 255);
+}
+
+.RemoveModelFromSelectionButton {
+    margin-left: 8px;
+    height: 40px;
+    background-color: rgb(17, 168, 95);
+}
+
+.RemoveModelFromSelectionButton > #appui-actionbutton__icon {
+    background-image: url("project://database/Assets/UI/Textures/CircleChecked.png?fileID=2800000&guid=543276166ad654aee887b8a152fe410a&type=3#CircleChecked");
+}
+
+.RemoveModelFromSelectionButton > #appui-actionbutton__label {
+    color: rgb(255, 255, 255);
+}
+
+#AddModelToSceneButton {
+    height: 40px;
+    width: 218px;
+    max-width: 218px;
+    margin-left: 16px;
+}
+
+.appui-checkbox__box {
+    width: 18px;
+    height: 18px;
+}
+
+#AssetLeftPanel #OrganizationButton {
+    width: auto;
+    margin-bottom: 8px;
+}
+
+#AddModelIconButton {
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+}
+
+#AssetRoot #AssetLeftPanel{
+    padding-top: 0;
+}

@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Assets_fr-FR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr-FR
+  m_SharedData: {fileID: 11400000, guid: e57257823a7964becb6eb06d6181f15a, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826606608744550
+  m_TableData:
+  - m_Id: 20735582208
+    m_Localized: Recherche...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3047743807488
+    m_Localized: Nouvelle version disponible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4032537026560
+    m_Localized: Nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4496284442624
+    m_Localized: Version
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4881900363776
+    m_Localized: Taper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5355433091072
+    m_Localized: Statut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697486970880
+    m_Localized: "Derni\xE8re modification"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5951284305920
+    m_Localized: "Derni\xE8re modification par"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6460099518464
+    m_Localized: "Date de t\xE9l\xE9chargement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6667159724032
+    m_Localized: "Cr\xE9\xE9 par"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7216613548032
+    m_Localized: "T\xE9l\xE9charger"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11727306481664
+    m_Localized: "Version\_{num}"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826606608744550
+  - m_Id: 35648491741184
+    m_Localized: "Une nouvelle version de l'actif est disponible. Voulez-vous passer
+      \xE0 la nouvelle version ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35994052059136
+    m_Localized: Changer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36144556269568
+    m_Localized: Rejeter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41819579604992
+    m_Localized: "S\xE9lectionnez une organisation"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41959505780736
+    m_Localized: "Aucun projet trouv\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42129496727552
+    m_Localized: "Aucune organisation trouv\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52814918180864
+    m_Localized: Nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52882140291072
+    m_Localized: "Date de t\xE9l\xE9chargement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53070703616000
+    m_Localized: "Derni\xE8re modification"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53211988746240
+    m_Localized: Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53544890654720
+    m_Localized: Statut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71435971190784
+    m_Localized: 'Trier par:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83968589291520
+    m_Localized: Actif 2D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84109517905920
+    m_Localized: "Mod\xE8le 3D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84218850828288
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84421402157056
+    m_Localized: "Mat\xE9riel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84497860124672
+    m_Localized: Autre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84533826281472
+    m_Localized: "Sc\xE9nario"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84673161060352
+    m_Localized: "Vid\xE9o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84751309332480
+    m_Localized: "\xC9diteur d'unit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113148827787264
+    m_Localized: "T\xE9l\xE9chargement d'\xE9l\xE9ments"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113743160664064
+    m_Localized: Organisation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113829009678336
+    m_Localized: Projet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114272427302912
+    m_Localized: Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114765505486848
+    m_Localized: Chemin du fichier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 115961192505344
+    m_Localized: "S\xE9lectionnez le fichier \xE0 t\xE9l\xE9charger"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116076095463424
+    m_Localized: "Supprimer la s\xE9lection"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116427913682944
+    m_Localized: "T\xE9l\xE9chargement d'\xE9l\xE9ments"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 117455979536384
+    m_Localized: "T\xE9l\xE9charger l'\xE9l\xE9ment"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 126885479571456
+    m_Localized: "Actif cr\xE9\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129700784496640
+    m_Localized: "S\xE9lectionner des fichiers"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25800459972239360
+    m_Localized: Taille du fichier(s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25800460005793792
+    m_Localized: Total fichier(s)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25801326007934976
+    m_Localized: Balises
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25802025936609280
+    m_Localized: ID d'actif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938399420416
+    m_Localized: Informations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809024
+    m_Localized: Commentaires
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809025
+    m_Localized: Fichiers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809026
+    m_Localized: "\xC0 venir..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809027
+    m_Localized: "S\xE9lectionner tout"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26946288296648704
+    m_Localized: Revoir
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826606608744550
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 11727306481664

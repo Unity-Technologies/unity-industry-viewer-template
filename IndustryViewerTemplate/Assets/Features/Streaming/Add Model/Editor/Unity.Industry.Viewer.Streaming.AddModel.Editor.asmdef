@@ -1,0 +1,16 @@
+{
+    "name": "Unity.Industry.Viewer.Streaming.AddModel.Editor",
+    "rootNamespace": "Unity.Industry.Viewer.Streaming.AddModel.Editor",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

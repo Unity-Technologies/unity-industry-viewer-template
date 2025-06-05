@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Mobile AR_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 8439f8a59aa98411c86af28e69b5af05, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 751689523200
+    m_Localized: "RA m\xF3vil"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454209
+    m_Localized: "Posici\xF3n de bloqueo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454210
+    m_Localized: "Oclusi\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648512
+    m_Localized: <u>Ancla espacial</u>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648513
+    m_Localized: Guardar ancla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648514
+    m_Localized: Ancla de carga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648515
+    m_Localized: Mover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648516
+    m_Localized: Girar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648517
+    m_Localized: Escala
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648518
+    m_Localized: Incremento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648519
+    m_Localized: Restablecer los valores predeterminados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648520
+    m_Localized: metro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506304
+    m_Localized: Ancla AR alineada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506305
+    m_Localized: Ancla AR guardada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506306
+    m_Localized: 'Error al guardar anclaje AR: desconocido'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506307
+    m_Localized: "Escanee y toque para inicializar la posici\xF3n del recurso"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506308
+    m_Localized: "Puede ajustar con precisi\xF3n su activo y presionar Bloquear posici\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627148898304
+    m_Localized: Eje X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286912
+    m_Localized: Eje Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286913
+    m_Localized: Eje Z
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44105927752671232
+    m_Localized: "Posici\xF3n de desbloqueo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947435593728
+    m_Localized: Error de carga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947439788032
+    m_Localized: No tienes permiso de escritura.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

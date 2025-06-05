@@ -1,0 +1,25 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Features/Streaming/UI/StreamingAssetStyle.uss?fileID=7433441132597879392&amp;guid=a83bdd0bb6bd24a3c9eff2a8fb35eb20&amp;type=3#StreamingAssetStyle" />
+    <engine:VisualElement style="flex-direction: row-reverse; height: 40px; width: 480px; overflow: hidden; max-width: 480px;">
+        <Unity.AppUI.UI.ActionButton size="L" selected="true" accent="true" name="StreamAssetButton" icon="broadcast" class="StreamAssetButton" style="height: 40px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; padding-right: 12px; padding-left: 12px; padding-top: 4px; padding-bottom: 4px; justify-content: space-between; margin-left: 8px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(5427377987584)" />
+            </Bindings>
+        </Unity.AppUI.UI.ActionButton>
+        <Unity.Industry.Viewer.Streaming.ProgressActionButton name="DownloadStreamingAssetButton" icon="download" style="height: 40px; justify-content: space-between; margin-left: 8px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(3862307004416)" />
+            </Bindings>
+        </Unity.Industry.Viewer.Streaming.ProgressActionButton>
+        <Unity.AppUI.UI.ActionButton name="OffloadAssetButton" icon="trash-simple" style="height: 40px; margin-left: 8px; display: none;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(40831164800294912)" />
+            </Bindings>
+        </Unity.AppUI.UI.ActionButton>
+        <Unity.AppUI.UI.ActionButton name="CopyLinkButton" icon="link-simple" style="height: 40px; margin-left: 8px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(40828184860549120)" />
+            </Bindings>
+        </Unity.AppUI.UI.ActionButton>
+    </engine:VisualElement>
+</engine:UXML>

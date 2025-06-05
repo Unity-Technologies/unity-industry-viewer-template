@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Assets_no
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: no
+  m_SharedData: {fileID: 11400000, guid: e57257823a7964becb6eb06d6181f15a, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1545659760810917898
+  m_TableData:
+  - m_Id: 20735582208
+    m_Localized: "S\xF8k..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3047743807488
+    m_Localized: Ny versjon tilgjengelig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4032537026560
+    m_Localized: Navn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4496284442624
+    m_Localized: Versjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4881900363776
+    m_Localized: Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5355433091072
+    m_Localized: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697486970880
+    m_Localized: Sist endret
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5951284305920
+    m_Localized: Sist redigert av
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6460099518464
+    m_Localized: Opplastingsdato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6667159724032
+    m_Localized: Opprettet av
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7216613548032
+    m_Localized: Last ned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11727306481664
+    m_Localized: Versjon {num}
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917898
+  - m_Id: 35648491741184
+    m_Localized: En ny versjon av ressursen er tilgjengelig. Vil du bytte til den
+      nye versjonen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35994052059136
+    m_Localized: Bytt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36144556269568
+    m_Localized: Avvis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41819579604992
+    m_Localized: Velg organisasjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41959505780736
+    m_Localized: Fant ingen prosjekter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42129496727552
+    m_Localized: Fant ingen organisasjoner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52814918180864
+    m_Localized: Navn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52882140291072
+    m_Localized: Opplastningsdato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53070703616000
+    m_Localized: Sist endret
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53211988746240
+    m_Localized: Beskrivelse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53544890654720
+    m_Localized: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71435971190784
+    m_Localized: 'Sorter etter:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83968589291520
+    m_Localized: 2D-ressurs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84109517905920
+    m_Localized: 3D-modell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84218850828288
+    m_Localized: Lyd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84421402157056
+    m_Localized: Materiale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84497860124672
+    m_Localized: Annet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84533826281472
+    m_Localized: Skript
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84673161060352
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84751309332480
+    m_Localized: Unity Editor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113148827787264
+    m_Localized: Ressursopplasting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113743160664064
+    m_Localized: Organisasjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113829009678336
+    m_Localized: Prosjekt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114272427302912
+    m_Localized: Samling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114765505486848
+    m_Localized: Filsti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 115961192505344
+    m_Localized: Velg filen for opplasting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116076095463424
+    m_Localized: Fjern valg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116427913682944
+    m_Localized: Laster opp ressurs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 117455979536384
+    m_Localized: Last opp ressurs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 126885479571456
+    m_Localized: Ressurs opprettet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129700784496640
+    m_Localized: Velg filer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25800459972239360
+    m_Localized: "Fil(er) st\xF8rrelse"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25800460005793792
+    m_Localized: Totalt fil(er)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25801326007934976
+    m_Localized: Tagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25802025936609280
+    m_Localized: Eiendels-ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938399420416
+    m_Localized: Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809024
+    m_Localized: Kommentarer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809025
+    m_Localized: Filer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809026
+    m_Localized: Kommer snart...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809027
+    m_Localized: Velg alle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26946288296648704
+    m_Localized: "Gjennomg\xE5"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 1545659760810917898
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 11727306481664

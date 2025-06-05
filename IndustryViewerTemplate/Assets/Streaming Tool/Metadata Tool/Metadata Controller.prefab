@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3083267361401931105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8248909714665179505}
+  - component: {fileID: -8635726429053265106}
+  - component: {fileID: 7263308548027652239}
+  m_Layer: 0
+  m_Name: Metadata Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8248909714665179505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083267361401931105}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8635726429053265106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083267361401931105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630768d5a5ca48c4da51e04e6f9ca967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!114 &7263308548027652239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083267361401931105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c65c6f0ff86c546946e5c0b576c6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_toolUIAsset: {fileID: 9197481963319205126, guid: 1f246b892ade4be408990d7f6b7102df,
+    type: 3}
+  m_NoMetadataFoundLocalizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:6efcd4a9cb0e446d2a317f1da935b0ba
+    m_TableEntryReference:
+      m_KeyId: 5998956765184
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_OfflineAssetNotSupportedLocalizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:6efcd4a9cb0e446d2a317f1da935b0ba
+    m_TableEntryReference:
+      m_KeyId: 42379094405406720
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_OfflineModeNotSupportedLocalizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:6efcd4a9cb0e446d2a317f1da935b0ba
+    m_TableEntryReference:
+      m_KeyId: 42351695571705856
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

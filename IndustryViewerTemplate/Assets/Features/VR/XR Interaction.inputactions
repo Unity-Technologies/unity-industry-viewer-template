@@ -1,0 +1,142 @@
+{
+    "name": "XR Interaction",
+    "maps": [
+        {
+            "name": "XRI Left Interaction",
+            "id": "7a5e7537-cc30-4eb1-a544-6946baa8f3eb",
+            "actions": [
+                {
+                    "name": "SingleActivate",
+                    "type": "Button",
+                    "id": "0c0991c5-d329-4afc-8892-1076b440477c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressActivate",
+                    "type": "Button",
+                    "id": "673b4631-fe1b-4cd8-8964-1b140606a79b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DoubleActivate",
+                    "type": "Button",
+                    "id": "6682bfa8-849e-48b6-bd87-b350cc6ad7a1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "MultiTap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "487f4f2e-9e9b-49aa-b0f2-4037a24624f5",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SingleActivate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc9ccbe4-23f5-4d72-af01-0fbae8235cc5",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressActivate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fd15ba5-7604-46c1-984f-da6216c97f14",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DoubleActivate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "XRI Right Interaction",
+            "id": "461bce25-7762-40c5-b639-f190649be6d6",
+            "actions": [
+                {
+                    "name": "SingleActivate",
+                    "type": "Button",
+                    "id": "41976d89-60de-4deb-bff9-16b4af96b290",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PressActivate",
+                    "type": "Button",
+                    "id": "c0cf00ff-d50b-4122-857c-586f8301502f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DoubleActivate",
+                    "type": "Button",
+                    "id": "bfe17900-12e0-42f7-8240-f18e5d97066f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "MultiTap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fa59aed1-ae0b-4074-a58c-294b85f46228",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SingleActivate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5fd2e497-3b97-4f41-9567-fb674920fb2b",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressActivate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a229bae6-c50f-4ac8-9e55-1b4e2696c93c",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DoubleActivate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

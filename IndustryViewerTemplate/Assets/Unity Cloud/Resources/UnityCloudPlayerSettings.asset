@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2722dfb18824c824aa0d916721873f75, type: 3}
+  m_Name: UnityCloudPlayerSettings
+  m_EditorClassIdentifier: 
+  AppId: 24f27ddc-38e7-4097-9fa5-87c1a092fecb
+  AppName: default
+  AppDisplayName: Default
+  AppOrganizationID: Default
+  AppNamespace: com.unity.industry-viewer
