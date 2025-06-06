@@ -1,0 +1,106 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Features/Assets/UI/AssetStyle.uss?fileID=7433441132597879392&amp;guid=898c98efd181aec40ae1f3c109f6c884&amp;type=3#AssetStyle" />
+    <engine:VisualElement name="NewAssetPanel" style="width: 940px; height: 805px; background-color: rgb(0, 0, 0); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; justify-content: space-around; flex-direction: column; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+        <Unity.AppUI.UI.Button name="CloseButton" size="L" accent="false" selected="false" quiet="false" icon="x" title="X" style="position: absolute; right: 20px; top: 20px; min-width: 40px; min-height: 40px; width: 40px; height: 40px;" />
+        <Unity.AppUI.UI.Text text="Asset Upload" size="XXXL" picking-mode="Ignore" style="-unity-text-align: middle-left; height: 40px; max-height: 40px; min-height: 40px; font-size: 24px; color: rgb(255, 255, 255); -unity-text-outline-color: rgb(255, 255, 255); -unity-text-outline-width: 1px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(113148827787264)" />
+            </Bindings>
+        </Unity.AppUI.UI.Text>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; max-height: 40px; min-height: 40px; align-items: stretch; height: 40px; width: 840px; max-width: 840px; margin-top: 20px;">
+            <Unity.AppUI.UI.Text text="Organization" size="XXXL" style="-unity-text-align: middle-left; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 100%; width: 180px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 20px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(113743160664064)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Dropdown name="OrgDropDown" size="L" default-message="Organization" class="AssetDropDownCreation AssetDropDownArrow" style="width: 660px; max-width: 660px; height: 100%; max-height: 100%;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="defaultMessage" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(113743160664064)" />
+                </Bindings>
+            </Unity.AppUI.UI.Dropdown>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; margin-top: 20px; height: 40px; max-height: 40px; min-height: 40px; min-width: 840px; width: 840px;">
+            <Unity.AppUI.UI.Text text="Project" size="XXXL" style="-unity-text-align: middle-left; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 100%; max-height: 100%; min-height: 100%; font-size: 20px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); width: 180px; max-width: 180px; min-width: 180px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(113829009678336)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Dropdown name="ProjectDropDown" size="L" default-message="Project" class="AssetDropDownCreation AssetDropDownArrow" style="width: 660px; max-width: 660px; height: 100%; max-height: 100%;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="defaultMessage" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(113829009678336)" />
+                </Bindings>
+            </Unity.AppUI.UI.Dropdown>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; margin-top: 20px; height: 40px; max-height: 40px; min-height: 40px; min-width: 840px; width: 840px;">
+            <Unity.AppUI.UI.Text text="Collection" size="XXXL" style="-unity-text-align: middle-left; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 100%; max-height: 100%; min-height: 100%; font-size: 20px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); width: 180px; max-width: 180px; min-width: 180px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(114272427302912)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Dropdown name="CollectionDropDown" size="L" default-message="Collection" class="AssetDropDownCreation AssetDropDownArrow" style="width: 660px; max-width: 660px; height: 100%; max-height: 100%;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="defaultMessage" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(114272427302912)" />
+                </Bindings>
+            </Unity.AppUI.UI.Dropdown>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; margin-top: 20px; min-height: 40px; height: 40px; max-height: 40px; max-width: 840px; min-width: 840px;">
+            <Unity.AppUI.UI.Text text="Asset Name" size="XXXL" style="-unity-text-align: middle-left; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 100%; max-height: 100%; font-size: 20px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); width: 180px; max-width: 180px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(4032537026560)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.TextField name="AssetNameField" size="L" placeholder="Asset Name" style="width: 660px; max-width: 660px; min-height: 100%; height: 100%;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="placeholder" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(4032537026560)" />
+                </Bindings>
+            </Unity.AppUI.UI.TextField>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; margin-top: 20px; height: 40px; max-height: 40px; min-height: 40px; min-width: 840px; width: 840px; max-width: 840px;">
+            <Unity.AppUI.UI.Text text="Asset Type" size="XXXL" style="-unity-text-align: middle-left; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; height: 100%; max-height: 100%; width: 180px; max-width: 180px; font-size: 20px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;);">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(4881900363776)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Dropdown name="AssetTypeDropDown" size="L" default-message="Asset Type" class="AssetDropDownCreation AssetDropDownArrow" style="width: 660px; max-width: 660px; min-height: 100%; max-height: 100%; height: 100%;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="defaultMessage" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(4881900363776)" />
+                </Bindings>
+            </Unity.AppUI.UI.Dropdown>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 1; width: 840px; justify-content: flex-start; display: flex; max-width: 840px; min-width: 840px; margin-top: 20px; flex-direction: row; height: 100px; max-height: 100px; min-height: 100px;">
+            <Unity.AppUI.UI.Text text="Description" size="XXXL" style="-unity-text-align: middle-left; width: 180px; max-width: 180px; min-width: 180px; height: 40px; max-height: 40px; min-height: 40px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 20px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(53211988746240)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.TextArea name="AssetDescriptionField" size="L" style="width: 680px; height: 100px; max-width: 680px; min-width: 680px; max-height: 100px; min-height: 100px; background-color: rgba(48, 48, 48, 0); border-left-color: rgba(77, 77, 77, 0); border-right-color: rgba(77, 77, 77, 0); border-top-color: rgba(77, 77, 77, 0); border-bottom-color: rgba(77, 77, 77, 0);" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 1; width: 840px; justify-content: flex-start; display: flex; max-width: 840px; min-width: 840px; margin-top: 20px; flex-direction: row; height: 285px; max-height: 285px; min-height: 285px;">
+            <Unity.AppUI.UI.Text text="File Path" size="XXXL" style="-unity-text-align: middle-left; width: 180px; max-width: 180px; min-width: 180px; height: 40px; max-height: 40px; min-height: 40px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 20px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(114765505486848)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <engine:VisualElement style="width: 660px; max-width: 660px; min-width: 660px; height: 285px; max-height: 285px; min-height: 285px; justify-content: space-around;">
+                <engine:ListView selection-type="Multiple" name="AssetCreationFileList" fixed-item-height="30" horizontal-scrolling="false" style="max-height: 180px; max-width: 680px; width: 680px; height: 180px; background-color: rgba(48, 48, 48, 0); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; border-left-color: rgba(77, 77, 77, 0); border-right-color: rgba(77, 77, 77, 0); border-top-color: rgba(77, 77, 77, 0); border-bottom-color: rgba(77, 77, 77, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; min-height: 180px; min-width: 680px;" />
+                <engine:VisualElement style="flex-grow: 0; height: 40px; flex-direction: row; align-items: center; justify-content: space-between; max-height: 40px; min-height: 40px; margin-top: 10px;">
+                    <Unity.AppUI.UI.ActionButton name="PickFileButton" size="L" label="Select the File for Uploading" style="width: 320px; max-width: 320px; min-width: 320px; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-color: rgb(217, 217, 217); height: 40px; max-height: 40px; min-height: 40px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(115961192505344)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.ActionButton>
+                    <Unity.AppUI.UI.ActionButton name="RemoveFileButton" size="L" selected="false" accent="false" label="Remove Selection" style="width: 320px; max-width: 320px; min-width: 320px; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-color: rgb(217, 217, 217); height: 40px; max-height: 40px; min-height: 40px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="label" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(116076095463424)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.ActionButton>
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-grow: 0; height: 40px; max-height: 40px; min-height: 40px; flex-direction: row; margin-top: 15px; align-items: center;">
+                    <Unity.AppUI.UI.ActionButton name="AddNewAssetButton" size="L" selected="true" accent="true" label="Asset Uploading" style="height: 40px; max-height: 40px; min-height: 40px; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px; min-width: 100%;" />
+                    <Unity.AppUI.UI.CircularProgress name="CreationProgress" variant="Determinate" size="S" color-override="#FFFFFFFF" style="position: absolute; right: 214px; width: 32px; height: 32px;" />
+                    <Unity.AppUI.UI.Text name="ProgressLabel" style="position: absolute; height: 40px; max-height: 40px; min-height: 40px; width: 50px; max-width: 50px; min-width: 50px; right: 160px; -unity-text-align: middle-center; font-size: 16px; color: rgb(255, 255, 255); -unity-text-outline-color: rgb(255, 255, 255); -unity-text-outline-width: 0.5px; -unity-font-definition: url(&quot;project://database/Packages/com.unity.dt.app-ui/PackageResources/Fonts/Inter-SemiBold.ttf?fileID=12800000&amp;guid=8c9d11570d1ef4f4cbeb28d1c7e6b763&amp;type=3#Inter-SemiBold&quot;);" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

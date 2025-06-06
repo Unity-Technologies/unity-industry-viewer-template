@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Mobile AR_fr-FR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr-FR
+  m_SharedData: {fileID: 11400000, guid: 8439f8a59aa98411c86af28e69b5af05, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 751689523200
+    m_Localized: AR mobile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454209
+    m_Localized: Position de verrouillage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454210
+    m_Localized: Occlusion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648512
+    m_Localized: <u>Ancre spatiale</u>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648513
+    m_Localized: Enregistrer l'ancre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648514
+    m_Localized: Ancre de charge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648515
+    m_Localized: "Se d\xE9placer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648516
+    m_Localized: Tourner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648517
+    m_Localized: "\xC9chelle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648518
+    m_Localized: "Incr\xE9ment"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648519
+    m_Localized: "R\xE9initialiser aux valeurs par d\xE9faut"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648520
+    m_Localized: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506304
+    m_Localized: "Ancrage AR align\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506305
+    m_Localized: "Ancre AR enregistr\xE9e"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506306
+    m_Localized: "\xC9chec de l'enregistrement de l'ancre AR - Inconnu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506307
+    m_Localized: Scannez et appuyez pour initialiser la position de l'actif
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506308
+    m_Localized: Vous pouvez ajuster finement votre actif et appuyer sur Verrouiller
+      la position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627148898304
+    m_Localized: Axe X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286912
+    m_Localized: Axe Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286913
+    m_Localized: Axe Z
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44105927752671232
+    m_Localized: "Position de d\xE9verrouillage"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947435593728
+    m_Localized: "\xC9chec du chargement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947439788032
+    m_Localized: "Vous n'avez pas l'autorisation d'\xE9criture."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

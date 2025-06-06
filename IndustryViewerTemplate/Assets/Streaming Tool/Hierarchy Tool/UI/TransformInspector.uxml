@@ -1,0 +1,25 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" appui="Unity.AppUI.UI" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="TransformInspector" style="flex-grow: 1; background-color: rgb(29, 29, 29); border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px; min-height: 184px; max-height: 184px; height: 184px; width: 548px; max-width: 548px; min-width: 548px; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px; justify-content: space-between;">
+        <engine:VisualElement picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; width: 516px; height: 40px; max-height: 40px; min-height: 40px; max-width: 516px; min-width: 516px;">
+            <Unity.AppUI.UI.IconButton name="PositionModeButton" icon="arrows-out-cardinal" style="height: 40px; width: 40px; margin-right: 16px;" />
+            <Unity.AppUI.UI.Vector3Field name="Position" label="X" size="L" tabindex="-1" style="width: 460px; height: 40px; justify-content: center;" />
+        </engine:VisualElement>
+        <engine:VisualElement picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; max-height: 40px; min-height: 40px; width: 516px; max-width: 516px; min-width: 516px; height: 40px;">
+            <Unity.AppUI.UI.IconButton name="RotationModeButton" icon="arrows-counter-clockwise" style="height: 40px; width: 40px; margin-right: 16px;" />
+            <Unity.AppUI.UI.Vector3Field name="Rotation" label="X" size="L" tabindex="-1" style="width: 460px;" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 1; flex-direction: row; max-height: 40px; min-height: 40px; width: 516px; max-width: 516px; min-width: 516px; height: 40px;">
+            <Unity.AppUI.UI.Icon icon-name="roofer" style="height: 40px; width: 40px; margin-right: 16px;" />
+            <Unity.AppUI.UI.TouchSliderFloat name="SnapValue" size="L" low-value="0.001" high-value="1000" format-string="F3" unit="m" value="1" increment-factor="0.001" tabindex="-1" style="width: 304px; height: 40px; margin-right: 8px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:48832e3252a4b48af8afab88b5bbc379" entry="Id(40541884567773184)" />
+                </Bindings>
+            </Unity.AppUI.UI.TouchSliderFloat>
+            <Unity.AppUI.UI.Button size="L" name="ResetPositionButton" style="height: 40px; width: 148px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="title" table="GUID:48832e3252a4b48af8afab88b5bbc379" entry="Id(1428906041346)" />
+                </Bindings>
+            </Unity.AppUI.UI.Button>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

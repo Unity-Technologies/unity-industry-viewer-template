@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Mobile AR_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 8439f8a59aa98411c86af28e69b5af05, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 751689523200
+    m_Localized: Mobile AR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454209
+    m_Localized: Lock Position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454210
+    m_Localized: Occlusion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648512
+    m_Localized: <u>Spatial Anchor</u>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648513
+    m_Localized: Save Anchor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648514
+    m_Localized: Load Anchor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648515
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648516
+    m_Localized: Rotate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648517
+    m_Localized: Scale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648518
+    m_Localized: Increment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648519
+    m_Localized: Reset to default
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648520
+    m_Localized: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506304
+    m_Localized: AR Anchor Aligned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506305
+    m_Localized: AR Anchor Saved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506306
+    m_Localized: Fail Save AR Anchor - Unknown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506307
+    m_Localized: Scan and tap to initialise asset position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506308
+    m_Localized: You can fine adjust your asset and hit Lock Position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627148898304
+    m_Localized: X Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286912
+    m_Localized: Y Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286913
+    m_Localized: Z Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44105927752671232
+    m_Localized: Unlock Position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947435593728
+    m_Localized: Load failed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947439788032
+    m_Localized: You don't have the write permission.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

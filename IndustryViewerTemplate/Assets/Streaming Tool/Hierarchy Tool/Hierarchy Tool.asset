@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4704d895b3cb8448fb27a262bdde1285, type: 3}
+  m_Name: Hierarchy Tool
+  m_EditorClassIdentifier: 
+  toolName:
+    m_TableReference:
+      m_TableCollectionName: GUID:48832e3252a4b48af8afab88b5bbc379
+    m_TableEntryReference:
+      m_KeyId: 2275631161344
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  toolIcon: {fileID: 2800000, guid: 0c692b7901cd12140bfdb4121de4e9ae, type: 3}
+  toolPrefab: {fileID: 7926565579244599466, guid: 63fbaa5601a18ab4094dda003c28af42,
+    type: 3}
+  onlineModeOnly: 1
+  sceneListener: {fileID: 2450891812187986, guid: 481638708189b4d6aa744a294649b29f,
+    type: 3}
+  references:
+    version: 2
+    RefIds: []

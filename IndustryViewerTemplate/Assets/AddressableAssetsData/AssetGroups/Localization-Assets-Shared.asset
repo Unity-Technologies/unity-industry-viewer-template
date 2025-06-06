@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_GUID: 7cf7ad7895c034972b2346d6ccf54444
+  m_SerializeEntries:
+  - m_GUID: 0f0e26e2fcb43452a837fa831753065b
+    m_Address: Assets/Features/Streaming/Localisation/Streaming Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b1ee5ee94d4041f0bff4b3e7fe7a699
+    m_Address: Assets/Features/Streaming/Navigation/Standard Camera Control/Orbit
+      Camera/Localisation/Obit Camera Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bf1a8307fe86b8418904feee1cddd02
+    m_Address: Assets/Features/Streaming/Navigation/Standard Camera Control/Walk
+      Mode Camera/Localisation/Walk Camera Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48832e3252a4b48af8afab88b5bbc379
+    m_Address: Assets/Streaming Tool/Hierarchy Tool/Localisation/Hierarchy Tool Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ae8c4accfa144438a938b2e4b7e9449
+    m_Address: Assets/Features/Streaming/Navigation/Standard Camera Control/Fly Camera/Fly
+      Camera Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57a7ebbc038a2427a989d443ddacef3e
+    m_Address: Assets/Features/Localisation/Identity/Identity Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6efcd4a9cb0e446d2a317f1da935b0ba
+    m_Address: Assets/Streaming Tool/Metadata Tool/Localisation/Metadata Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 753eb184db2564b0bacaa9891468f216
+    m_Address: Assets/Features/Localisation/In App Settings/InAppSettings Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75b7202b47b6842be8d6b5d609ec08e7
+    m_Address: Assets/Features/VR/Localisation/VR Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7753eeaebef2041d49757e3425fd4c85
+    m_Address: Assets/Features/Multiplay/Localisation/Multiplay Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82f30657e69ff493294e966d632ba729
+    m_Address: Assets/Streaming Tool/Add Model Tool/Localisation/Add Model Tool Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8439f8a59aa98411c86af28e69b5af05
+    m_Address: Assets/Features/Streaming/Navigation/Mobile AR/Localisation/Mobile
+      AR Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a49b4948ab7c940959051620265455bf
+    m_Address: Assets/Features/Vivox/Localisation/Vivox Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e57257823a7964becb6eb06d6181f15a
+    m_Address: Assets/Features/Assets/Localisation/Assets Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: bf5713deec68845209684f81a71bb85a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 62addcb023ac64827b92f807f37d4be9, type: 2}
+    - {fileID: 11400000, guid: ae0a088d739214068886c441a4320dc4, type: 2}

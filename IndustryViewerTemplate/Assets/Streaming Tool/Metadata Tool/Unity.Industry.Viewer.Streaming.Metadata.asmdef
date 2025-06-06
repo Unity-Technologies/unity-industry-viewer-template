@@ -1,0 +1,28 @@
+{
+    "name": "Unity.Industry.Viewer.Streaming.Metadata",
+    "rootNamespace": "Unity.Industry.Viewer.Streaming.Metadata",
+    "references": [
+        "GUID:7652355c4d73b47e78a66a1e0890152f",
+        "GUID:786a25291c56430c910c997c4a7e195b",
+        "GUID:1a0fdbb751e584dc8b7a979eb83ba5ce",
+        "GUID:498d02e03062b2649b108f31a9668c56",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:3072efb1b5d06449eb35617ac762a62d",
+        "GUID:18a3ee135d24342f7ae628142b5114cb",
+        "GUID:2f101f87087d58f4ba92ca00188e763d",
+        "GUID:c5a5b73654d2d422383b51fb8dfbb105",
+        "GUID:a8396985fd474279be116ec8af84afb9",
+        "GUID:72dbfbe357d5a40c69505e128456d3d1",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:ded3a1fd6dfcb488e8056389a56a3f4f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

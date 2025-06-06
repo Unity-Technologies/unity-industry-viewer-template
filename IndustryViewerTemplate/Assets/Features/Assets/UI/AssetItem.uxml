@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Features/Streaming/UI/StreamingAssetItemStyle.uss?fileID=7433441132597879392&amp;guid=2997fb9b33eb34c55b308631186cf64b&amp;type=3#StreamingAssetItemStyle" />
+    <ui:VisualElement picking-mode="Ignore" class="GridAssetNonSelected" style="width: 180px; height: 238px; min-width: 180px; min-height: 238px; max-width: 180px; max-height: 238px;">
+        <ui:VisualElement name="ItemUI" picking-mode="Ignore" style="flex-grow: 0; height: 180px; background-color: rgb(48, 48, 48); border-top-left-radius: 11px; border-top-right-radius: 11px; border-bottom-right-radius: 11px; border-bottom-left-radius: 11px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; align-items: center; justify-content: center; overflow: hidden; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+            <ui:VisualElement name="IconPlaceHolder" picking-mode="Ignore" style="flex-grow: 0; width: 70%; height: 70%; margin-top: 0; flex-direction: column; -unity-background-scale-mode: scale-to-fit;" />
+        </ui:VisualElement>
+        <Unity.AppUI.UI.Text name="AssetNameLabel" size="XS" picking-mode="Ignore" style="flex-grow: 1; -unity-text-align: middle-left; margin-right: 8px; margin-left: 8px; white-space: nowrap; text-overflow: ellipsis; font-size: 14px; overflow: hidden; margin-top: 8px; height: 20px; min-height: 20px; max-height: 20px; margin-bottom: 4px; color: rgb(233, 233, 233);" />
+        <ui:VisualElement style="flex-grow: 1; margin-bottom: 8px; flex-direction: row; justify-content: space-between; margin-right: 8px; margin-left: 8px;">
+            <Unity.AppUI.UI.Text name="AssetTypeLabel" text="3D Model" size="XXS" style="height: 18px; max-height: 18px; min-height: 18px; background-color: rgb(72, 72, 72); width: 56px; max-width: 56px; min-width: 56px; -unity-text-align: middle-center; border-top-left-radius: 9px; border-top-right-radius: 9px; border-bottom-right-radius: 9px; border-bottom-left-radius: 9px; text-overflow: ellipsis; white-space: normal; overflow: hidden; color: rgb(255, 255, 255);" />
+            <Unity.AppUI.UI.Text name="AssetLastUpdatedLabel" text="2mo ago" size="XS" style="flex-grow: 1; -unity-text-align: middle-right; color: rgb(99, 99, 99);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Streaming_de-DE
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de-DE
+  m_SharedData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826617756942439
+  m_TableData:
+  - m_Id: 2543798181888
+    m_Localized: Lokales Asset entfernen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2720789422080
+    m_Localized: Sicher? Beachten Sie, dass diese Aktion irreversibel ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2966592413696
+    m_Localized: Entfernen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3004496338944
+    m_Localized: Asset entfernt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3080430018560
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3629921591296
+    m_Localized: Asset auf das lokale Laufwerk herunterladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3705742024704
+    m_Localized: Sicher? Beachten Sie, dass der Download einige Zeit dauern kann.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862307004416
+    m_Localized: Herunterladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3894355681280
+    m_Localized: Asset wird heruntergeladen...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4142910136320
+    m_Localized: Der Download von {name} Asset ist abgeschlossen...
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942439
+  - m_Id: 4789797642240
+    m_Localized: Layout laden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5427377987584
+    m_Localized: Stream
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5709449125888
+    m_Localized: "W\xE4hlen Sie Ihre Daten aus"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795449135104
+    m_Localized: "Welche Datenquelle m\xF6chten Sie nutzen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858598576128
+    m_Localized: Cloud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5890873745408
+    m_Localized: Lokal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399107104768
+    m_Localized: '{name} - Version: {num}'
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942439
+  - m_Id: 268399140659200
+    m_Localized: "Neue Version verf\xFCgbar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659201
+    m_Localized: "Neue Version des Assets verf\xFCgbar. M\xF6chten Sie die neue Version
+      laden?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659202
+    m_Localized: Austauschen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659203
+    m_Localized: "Schlie\xDFen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659204
+    m_Localized: Streaming beenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659205
+    m_Localized: Streaming beenden?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659206
+    m_Localized: Beenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271402836942848
+    m_Localized: "Neue Version verf\xFCgbar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15579884532260864
+    m_Localized: Drahtmodell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036333887488
+    m_Localized: Bewahren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036354859008
+    m_Localized: "M\xF6chten Sie referenzierte Assets bewahren? Diese Aktion ist
+      irreversibel."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21710844147523584
+    m_Localized: Dies ist ein referenziertes Asset aus einem Layout. Bist du sicher?
+      Bitte beachten Sie, dass diese Aktion irreversibel ist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22092926879260672
+    m_Localized: "Referenziertes Asset \u2013 {name} hat eine lokale Version {localVersion},
+      die auf dem Ger\xE4t gespeichert ist. Das Layout erfordert jedoch die Version
+      {requiredVersion}. M\xF6chten Sie weiterhin die lokale Version verwenden?"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942439
+  - m_Id: 40828184860549120
+    m_Localized: Link
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40831164800294912
+    m_Localized: Ausladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994240
+    m_Localized: "Bereit f\xFCr lokales Streaming"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994241
+    m_Localized: "Update verf\xFCgbar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994242
+    m_Localized: Aktualisieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755776
+    m_Localized: Mit dem Streaming beginnen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755777
+    m_Localized: Klicken, um 3D-Streaming zu starten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652736
+    m_Localized: Organisation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652737
+    m_Localized: Projekt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652738
+    m_Localized: Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3471058132994
+    m_Localized: Speichern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862327975936
+    m_Localized: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644864
+    m_Localized: Aufgrund der Berechtigung kann ein Asset nicht geladen werden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644865
+    m_Localized: Layout speichern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644866
+    m_Localized: 3D-Layout in Asset Manager speichern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644867
+    m_Localized: "W\xE4hlen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40857613896769536
+    m_Localized: "{asset} wird hinzugef\xFCgt"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942439
+  - m_Id: 42308461222944768
+    m_Localized: Laden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44808540777340928
+    m_Localized: Sie haben keine Schreibberechtigung.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45884123531698176
+    m_Localized: Das Speichern ist fehlgeschlagen. Es ist ein unbekannter Fehler
+      aufgetreten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47728520850300928
+    m_Localized: Link in die Zwischenablage kopiert
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826617756942439
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4142910136320
+        - id: 268399107104768
+        - id: 22092926879260672
+        - id: 40857613896769536

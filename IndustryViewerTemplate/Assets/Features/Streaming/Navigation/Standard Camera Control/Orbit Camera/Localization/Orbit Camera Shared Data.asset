@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Orbit Camera Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Orbit Camera
+  m_TableCollectionNameGuidString: 2b1ee5ee94d4041f0bff4b3e7fe7a699
+  m_Entries:
+  - m_Id: 12604054429696
+    m_Key: Orbit Camera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12455156637696
+    m_Key: Orbit Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12455160832000
+    m_Key: Pan Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12455160832001
+    m_Key: Zoom Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24770781306626048
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1314252993058308158
+  references:
+    version: 2
+    RefIds:
+    - rid: 1314252993058308158
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1733489572281

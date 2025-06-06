@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Korean (South Korea) (ko-KR)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Korean (South Korea) (ko-KR)
+  m_GUID: a07f2bf820f8f40029ebb688400171ed
+  m_SerializeEntries:
+  - m_GUID: 33c77891442124be3a8a06d5577a0475
+    m_Address: Metadata Tool_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39f6232382dd441ae898553203ee9e2e
+    m_Address: Orbit Camera_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b154a826acc541e4a57e0528888cd1c
+    m_Address: VR_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63b5d1e1313b94655bc6b47af76ae751
+    m_Address: Vivox_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7648335ac56964f1e87c03930cc5fbed
+    m_Address: Add Model Tool_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ddf74824892448b68ebd1ed40598daf
+    m_Address: Fly Camera_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80753919c75514fd29ac9ede1ae88b08
+    m_Address: Streaming_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b74d1b760ec841a18ed3f8ce066325d
+    m_Address: Identity_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b06234d37ac1844d89a92dc3bac24445
+    m_Address: Assets_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf27b818290e44bce9ba6fc83f54e98a
+    m_Address: InAppSettings_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dbfe25022d0c746ba855df939d5f1432
+    m_Address: Mobile AR_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: deb8fc299cfce406bb5f4e587da10ae2
+    m_Address: Hierarchy Tool_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e57acbef1d81a0149919b51a03c7e208
+    m_Address: Walk Camera_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f94bc22c386cb4e92afe3ba25102971f
+    m_Address: Multiplay_ko-KR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko-KR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: bf5713deec68845209684f81a71bb85a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7fa9e55695c75449f844f8fb457ac31b, type: 2}
+    - {fileID: 11400000, guid: e395ba04afaa14df49ba38d75d9ce581, type: 2}

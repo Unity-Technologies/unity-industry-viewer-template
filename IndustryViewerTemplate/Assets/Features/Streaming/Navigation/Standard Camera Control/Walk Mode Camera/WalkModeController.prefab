@@ -1,0 +1,220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8430941810336932185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4685120953138919261}
+  - component: {fileID: 7900030625221012219}
+  - component: {fileID: 4451487896038914834}
+  - component: {fileID: 8384915486229122807}
+  - component: {fileID: 3455216703056824975}
+  - component: {fileID: 8238130249653941019}
+  - component: {fileID: 4352762533182393798}
+  m_Layer: 0
+  m_Name: WalkModeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4685120953138919261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430941810336932185}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &7900030625221012219
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430941810336932185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.7
+  m_Radius: 0.25
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4451487896038914834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430941810336932185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7134c17429f9c5b43842f380ce2d6908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: cbc3e3b7-c851-4502-b5c8-d1579263bf44
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 472054159864225842, guid: b5cf8afa008b5994c9706fff3a60ddb5,
+      type: 3}
+  m_RotateActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Rotate Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c353793d-97b4-4193-8b66-a743202e5fd7
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5413210744121400277, guid: b5cf8afa008b5994c9706fff3a60ddb5,
+      type: 3}
+  m_Camera: {fileID: 0}
+  m_RunActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Run Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 687a1940-14fc-4571-ac49-c57e29ebd3ac
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4073754014622459909, guid: b5cf8afa008b5994c9706fff3a60ddb5,
+      type: 3}
+  m_JumpActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Jump Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 850d5912-a5d8-48c8-86a8-c070743ff7ef
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4826431427621735641, guid: b5cf8afa008b5994c9706fff3a60ddb5,
+      type: 3}
+  m_MaxSpeedCeiling: 7
+  m_MaxSpeedFactor: 11
+--- !u!114 &8384915486229122807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430941810336932185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50d7878ee03267468904ac08a031b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WalkSpeed: 5
+  m_SprintSpeed: 3
+  m_JumpForce: 0.7
+  m_StepUpSpeed: 0.8
+  m_MaxFallSpeed: -30
+  m_GroundedRayLength: 1.5
+--- !u!114 &3455216703056824975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430941810336932185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f609e05ee7ab642a7f68828e56313a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  m_ClampVerticalRotation: 1
+  m_MinimumX: -90
+  m_MaximumX: 90
+  m_Smooth: 1
+  m_SmoothTime: 5
+  m_LockCursor: 1
+  isCameraInverted: 0
+--- !u!114 &8238130249653941019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430941810336932185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c18df4e013b1cc40b0a347314bc4430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigationName:
+    m_TableReference:
+      m_TableCollectionName: GUID:3bf1a8307fe86b8418904feee1cddd02
+    m_TableEntryReference:
+      m_KeyId: 1804204157
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  navigationCamera: {fileID: 0}
+  navigationOptionUIComponent: {fileID: 4352762533182393798}
+  cameraController: {fileID: 4451487896038914834}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &4352762533182393798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430941810336932185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be1e66e129b42941b9b7be98c2bf5c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigationIcon: {fileID: 2800000, guid: 5163dd911972c3043aa9a636425fd13a, type: 3}
+  navigationOptionUIAsset: {fileID: 9197481963319205126, guid: 14a981c3b7ee6444ca263f11cfbb7c45,
+    type: 3}
+  m_WalkCameraNavigationController: {fileID: 8238130249653941019}
+  m_CameraInputSystemController: {fileID: 4451487896038914834}
+  m_UIDocument: {fileID: 0}
+  initialLeftStickMultiplier: 1
+  invertLeftStickYAxis: 1
+  invertLeftStickXAxis: 0
+  initialRightStickMultiplier: 2
+  invertRightStickYAxis: 0
+  invertRightStickXAxis: 0

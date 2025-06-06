@@ -1,0 +1,19 @@
+{
+    "name": "Unity.Industry.Viewer.InAppSettings",
+    "rootNamespace": "Unity.Industry.Viewer.InAppSettings",
+    "references": [
+        "GUID:2f101f87087d58f4ba92ca00188e763d",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:3072efb1b5d06449eb35617ac762a62d",
+        "GUID:72dbfbe357d5a40c69505e128456d3d1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

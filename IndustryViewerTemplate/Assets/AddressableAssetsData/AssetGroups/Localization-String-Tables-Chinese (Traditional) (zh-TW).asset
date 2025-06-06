@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Chinese (Traditional) (zh-TW)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Chinese (Traditional) (zh-TW)
+  m_GUID: 13024693196574adaafce756b1e52d5f
+  m_SerializeEntries:
+  - m_GUID: 0ad144241abc54b6bb177d3eed16ee52
+    m_Address: Assets_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 198d77d76fcdb4e9a90866361f5da082
+    m_Address: Multiplay_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1df2fc4e99b164d06bd054a6983bb157
+    m_Address: Streaming_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d3eba27415454016908f75c06a4a9bb
+    m_Address: Mobile AR_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 390fd4ba1ac0c485f9122c46c998fc4e
+    m_Address: InAppSettings_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ad69c727f6bc4b549ae9ceb3944c1a7
+    m_Address: Hierarchy Tool_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f6682fff1dc44896bfceb03aee224a8
+    m_Address: Vivox_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6af31f3659eb92f4c97d0f1638091712
+    m_Address: Walk Camera_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9585c237deb0c4a87a216866e68d589a
+    m_Address: Metadata Tool_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: baa536c99fe2e439e807acb6b4b5ed92
+    m_Address: VR_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc4c9fc1aa54940908ffa8902e9504f6
+    m_Address: Add Model Tool_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bef172b047eea4b54a512e43be9a9ff0
+    m_Address: Fly Camera_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c470e5bde64434093b105820527833e9
+    m_Address: Orbit Camera_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dce1f083c2be04584bff1083d1096fd1
+    m_Address: Identity_zh-TW
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-TW
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: bf5713deec68845209684f81a71bb85a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 131ec1a3b68b14217b086b949f7a2797, type: 2}
+    - {fileID: 11400000, guid: 640686859e9cf48e4b43de9dabad7a05, type: 2}

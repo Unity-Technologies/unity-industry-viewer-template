@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Streaming_sv
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: sv
+  m_SharedData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1545659760810917933
+  m_TableData:
+  - m_Id: 2543798181888
+    m_Localized: "Ta bort tillg\xE5ng fr\xE5n lokal enhet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2720789422080
+    m_Localized: "\xC4r du s\xE4ker? Observera att den h\xE4r \xE5tg\xE4rden \xE4r
+      o\xE5terkallelig."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2966592413696
+    m_Localized: Ta bort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3004496338944
+    m_Localized: "Tillg\xE5ng borttagen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3080430018560
+    m_Localized: Avbryt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3629921591296
+    m_Localized: "Ladda ner tillg\xE5ng till lokal enhet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3705742024704
+    m_Localized: "\xC4r du s\xE4ker? Observera att nedladdningen kan ta lite tid
+      p\xE5 grund av filstorleken."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862307004416
+    m_Localized: Ladda ner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3894355681280
+    m_Localized: "Laddar ner tillg\xE5ng..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4142910136320
+    m_Localized: "Klar med att ladda ner {name} tillg\xE5ng..."
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917933
+  - m_Id: 4789797642240
+    m_Localized: "L\xE4s in layout"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5427377987584
+    m_Localized: "Str\xF6mma"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5709449125888
+    m_Localized: "V\xE4lj dina data"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795449135104
+    m_Localized: "Vilken datak\xE4lla vill du anv\xE4nda?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858598576128
+    m_Localized: Moln
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5890873745408
+    m_Localized: Lokal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399107104768
+    m_Localized: '{name} - Version: {num}'
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917933
+  - m_Id: 268399140659200
+    m_Localized: "Ny version tillg\xE4nglig"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659201
+    m_Localized: "En ny version av tillg\xE5ngen \xE4r tillg\xE4nglig. Vill du byta
+      till den nya versionen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659202
+    m_Localized: "V\xE4xla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659203
+    m_Localized: "Avf\xE4rda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659204
+    m_Localized: "Avsluta str\xF6mning"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659205
+    m_Localized: "\xC4r du s\xE4ker p\xE5 att du vill avsluta str\xF6mningsscenen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659206
+    m_Localized: Avsluta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271402836942848
+    m_Localized: "Ny version tillg\xE4nglig!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15579884532260864
+    m_Localized: "Tr\xE5dmodell"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036333887488
+    m_Localized: Bevara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036354859008
+    m_Localized: "Vill du bevara refererade tillg\xE5ngar? Denna \xE5tg\xE4rd \xE4r
+      o\xE5terkallelig."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21710844147523584
+    m_Localized: "Det h\xE4r \xE4r en tillg\xE5ng som refereras fr\xE5n en layout.
+      \xC4r du s\xE4ker? Observera att denna \xE5tg\xE4rd \xE4r o\xE5terkallelig."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22092926879260672
+    m_Localized: "Refererad tillg\xE5ng \u2013 {name} har en lokal version {localVersion}
+      lagrad p\xE5 enheten. Men layouten kr\xE4ver version {requiredVersion}. Vill
+      du forts\xE4tta anv\xE4nda den lokala versionen?"
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917933
+  - m_Id: 40828184860549120
+    m_Localized: "L\xE4nk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40831164800294912
+    m_Localized: Avlasta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994240
+    m_Localized: "Redo f\xF6r lokal streaming"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994241
+    m_Localized: "Uppdatering tillg\xE4nglig"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994242
+    m_Localized: Uppdatera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755776
+    m_Localized: "B\xF6rja streama?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755777
+    m_Localized: "Klicka f\xF6r att g\xE5 in i 3D-streaming med den valda tillg\xE5ngen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652736
+    m_Localized: Organisation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652737
+    m_Localized: Projekt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652738
+    m_Localized: Samling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3471058132994
+    m_Localized: Spara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862327975936
+    m_Localized: Namn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644864
+    m_Localized: "Det gick inte att ladda en tillg\xE5ng p\xE5 grund av beh\xF6righet"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644865
+    m_Localized: Spara layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644866
+    m_Localized: Spara din 3D-layout i Asset Manager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644867
+    m_Localized: "V\xE4lja"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40857613896769536
+    m_Localized: "L\xE4gger till {asset}"
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917933
+  - m_Id: 42308461222944768
+    m_Localized: Belastning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44808540777340928
+    m_Localized: "Du har inte skrivbeh\xF6righet."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45884123531698176
+    m_Localized: "Det gick inte att spara, ett ok\xE4nt fel uppstod"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47728520850300928
+    m_Localized: "Kopierade l\xE4nk till urklipp"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 1545659760810917933
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4142910136320
+        - id: 268399107104768
+        - id: 22092926879260672
+        - id: 40857613896769536

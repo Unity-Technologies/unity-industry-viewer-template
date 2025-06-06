@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Identity_fi
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fi
+  m_SharedData: {fileID: 11400000, guid: 57a7ebbc038a2427a989d443ddacef3e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2213752594432
+    m_Localized: "Unity Industry Viewer \nMalliprojekti"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7997920108544
+    m_Localized: "Kirjaudu sis\xE4\xE4n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9303762132992
+    m_Localized: Tai
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9420774825984
+    m_Localized: Jatka vieraana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15982369169408
+    m_Localized: Kirjaudu ulos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32483335725056
+    m_Localized: Peruuta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33199882231808
+    m_Localized: Vahvista uloskirjautuminen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33283562790912
+    m_Localized: Haluatko varmasti kirjautua ulos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33349040070656
+    m_Localized: Odottaa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33437661519872
+    m_Localized: Alustetaan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29800713151307776
+    m_Localized: "Unity Industryn kehitt\xE4m\xE4 ja suunnittelema"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58408840369004544
+    m_Localized: Offline-tila
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58408840381587456
+    m_Localized: "Olet t\xE4ll\xE4 hetkell\xE4 offline-tilassa. Haluatko vaihtaa
+      takaisin online-tilaan ja kirjautua sis\xE4\xE4n?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58409243970101248
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

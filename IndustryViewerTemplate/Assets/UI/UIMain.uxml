@@ -1,0 +1,34 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" appui="Unity.AppUI.UI" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Background" src="project://database/Assets/UI/Background.uxml?fileID=9197481963319205126&amp;guid=7aa3c24ddd6a24a0997d7c22fa832bd1&amp;type=3#Background" />
+    <ui:Template name="Identity" src="project://database/Assets/Features/Identity/UI/Identity.uxml?fileID=9197481963319205126&amp;guid=ed3df34d259794430a02390c40377586&amp;type=3#Identity" />
+    <ui:Template name="Asset" src="project://database/Assets/Features/Assets/UI/Asset.uxml?fileID=9197481963319205126&amp;guid=25baf61d98d134b76b3ad73c85725a93&amp;type=3#Asset" />
+    <ui:Template name="Streaming" src="project://database/Assets/Features/Streaming/UI/Streaming.uxml?fileID=9197481963319205126&amp;guid=aa0a5ed6dc07e46aaab69bddf1c409df&amp;type=3#Streaming" />
+    <Style src="project://database/Assets/UI/General.uss?fileID=7433441132597879392&amp;guid=52fab1d1133c64467848ce2df3e97940&amp;type=3#General" />
+    <Unity.AppUI.UI.Panel name="root-panel" picking-mode="Ignore" style="align-content: flex-start; flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="root-main" picking-mode="Ignore" style="flex-grow: 1; align-content: flex-start; visibility: visible; background-color: rgba(0, 0, 0, 0);">
+            <ui:Instance template="Background" name="BackgroundContainer" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex;" />
+            <ui:Instance template="Identity" name="IdentityContainer" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; flex-grow: 1;" />
+            <ui:VisualElement name="TopBar" tabindex="0" picking-mode="Ignore" style="flex-direction: row; justify-content: space-evenly; height: 70px; align-items: stretch; padding-right: 20px; background-color: rgba(48, 48, 48, 0); display: flex; align-content: stretch; color: rgba(188, 188, 188, 0.49); margin-top: 15px; padding-left: 20px;">
+                <ui:VisualElement name="TopLeftBar" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; align-items: center; max-width: 33.3%; overflow: hidden;" />
+                <ui:VisualElement name="TopCenterBar" picking-mode="Ignore" style="flex-grow: 1; align-items: center; justify-content: center; flex-direction: row; max-width: 33.3%;">
+                    <ui:VisualElement name="OfflineModeVE" style="flex-grow: 1; height: 40px; width: 324px; background-color: rgb(8, 146, 255); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; flex-direction: row; align-items: center; padding-top: 9px; padding-right: 9px; padding-bottom: 9px; padding-left: 9px; justify-content: center; display: none; max-width: 324px;">
+                        <Unity.AppUI.UI.Icon class="appui-icon-white" style="margin-right: 9px;" />
+                        <Unity.AppUI.UI.Text text="Offline Mode On" style="color: rgb(255, 255, 255); max-width: 180px; overflow: hidden; white-space: nowrap;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(45987493470789632)" />
+                            </Bindings>
+                        </Unity.AppUI.UI.Text>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="TopRightBar" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row-reverse; justify-content: flex-start; align-items: center; max-width: 33.3%;">
+                    <Unity.AppUI.UI.Avatar name="IdentityAvatar" size="L" background-color="RGBA(1.000, 0.000, 0.000, 1.000)" style="width: 40px; height: 40px; margin-left: 20px;">
+                        <Unity.AppUI.UI.Text size="L" name="IdentityAvatarInitialLabel" style="width: 40px; height: 40px; color: rgb(255, 255, 255);" />
+                    </Unity.AppUI.UI.Avatar>
+                    <Unity.AppUI.UI.IconButton name="SettingsButton" icon="settings" size="L" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 20px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 40px; height: 40px; background-color: rgb(48, 48, 48); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; align-items: center; justify-content: center; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(99, 99, 99); border-right-color: rgb(99, 99, 99); border-top-color: rgb(99, 99, 99); border-bottom-color: rgb(99, 99, 99);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Instance template="Asset" name="AssetContainer" picking-mode="Ignore" style="position: absolute; flex-grow: 1; top: 0; left: 0; right: 0; bottom: 0;" />
+            <ui:Instance template="Streaming" name="StreamingContainer" picking-mode="Ignore" style="flex-grow: 1; position: absolute; width: 100%; height: 100%; display: none;" />
+        </ui:VisualElement>
+    </Unity.AppUI.UI.Panel>
+</ui:UXML>

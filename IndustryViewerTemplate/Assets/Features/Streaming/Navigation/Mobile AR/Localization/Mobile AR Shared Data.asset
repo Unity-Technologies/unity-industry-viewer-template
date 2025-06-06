@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Mobile AR Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Mobile AR
+  m_TableCollectionNameGuidString: 8439f8a59aa98411c86af28e69b5af05
+  m_Entries:
+  - m_Id: 751689523200
+    m_Key: Mobile AR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454209
+    m_Key: Lock Position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454210
+    m_Key: Occlusion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648512
+    m_Key: Spatial Anchor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648513
+    m_Key: Save Spatial Anchor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648514
+    m_Key: Load Spatial Anchor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648515
+    m_Key: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648516
+    m_Key: Rotate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648517
+    m_Key: Scale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648518
+    m_Key: Increment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648519
+    m_Key: Reset to default position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648520
+    m_Key: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506304
+    m_Key: Toast AR Anchor Aligned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506305
+    m_Key: Toast AR Anchor Saved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506306
+    m_Key: Toast Fail Save Anchor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506307
+    m_Key: Toast Scan Tips
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506308
+    m_Key: Toast Confirm Tips
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627148898304
+    m_Key: X Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286912
+    m_Key: Y Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286913
+    m_Key: Z Axis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44105927752671232
+    m_Key: Unlock Position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947435593728
+    m_Key: Load fail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947439788032
+    m_Key: User has no write permission
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1314252993058308335
+  references:
+    version: 2
+    RefIds:
+    - rid: 1314252993058308335
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1733495698045

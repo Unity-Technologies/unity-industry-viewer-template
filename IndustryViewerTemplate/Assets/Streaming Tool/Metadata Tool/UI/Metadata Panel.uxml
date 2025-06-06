@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; padding-bottom: 5px;">
+        <Unity.AppUI.UI.TextField name="SearchField" style="height: 40px; max-height: 40px; min-height: 40px; margin-bottom: 10px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="placeholder" table="GUID:6efcd4a9cb0e446d2a317f1da935b0ba" entry="Id(19319819894513664)" />
+            </Bindings>
+        </Unity.AppUI.UI.TextField>
+        <ui:ScrollView name="MetadataScrollView" style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,38 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="NewAssetPanel" src="project://database/Assets/Features/Assets/UI/NewAssetPanel.uxml?fileID=9197481963319205126&amp;guid=e38ba48659c7a8c4684d2c54aff62ea1&amp;type=3#NewAssetPanel" />
+    <engine:Template name="AssetInformationPanel" src="project://database/Assets/Features/Assets/UI/AssetInformationPanel.uxml?fileID=9197481963319205126&amp;guid=b2c51fb3446dc4c588c8e04327ab450e&amp;type=3#AssetInformationPanel" />
+    <Style src="project://database/Assets/Features/Assets/UI/AssetStyle.uss?fileID=7433441132597879392&amp;guid=898c98efd181aec40ae1f3c109f6c884&amp;type=3#AssetStyle" />
+    <engine:VisualElement picking-mode="Ignore" name="AssetRoot" style="flex-grow: 1; align-items: center; justify-content: center;">
+        <engine:VisualElement name="AssetBackground" style="background-color: rgb(24, 25, 25); width: 1880px; height: 83.8%; border-top-left-radius: 13px; border-top-right-radius: 13px; border-bottom-right-radius: 13px; border-bottom-left-radius: 13px; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; flex-direction: row;">
+            <engine:VisualElement name="AssetLeftPanel" style="flex-grow: 1; width: 300px; margin-right: 21px; max-width: 300px;">
+                <engine:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto" name="AssetProjectScrollList" style="min-width: 300px; overflow: hidden; flex-grow: 1;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="AssetPanel" style="flex-grow: 1; flex-direction: column; justify-content: flex-start;">
+                <engine:VisualElement name="AssetTopBar" style="height: 40px; flex-direction: row; align-items: stretch; align-self: auto; justify-content: space-between; margin-bottom: 16px;">
+                    <Unity.AppUI.UI.SearchBar size="M" name="AssetSearchBar" style="flex-grow: 1; height: 100%; width: 940px; margin-right: 19px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="placeholder" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(20735582208)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.SearchBar>
+                    <engine:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center; align-self: auto; flex-shrink: 0; justify-content: flex-end; align-content: auto; width: 461px;">
+                        <engine:Label text="Sort by:" style="margin-top: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; color: rgb(255, 255, 255); width: 80px; font-size: 18px; overflow: hidden; text-overflow: ellipsis;">
+                            <Bindings>
+                                <UnityEngine.Localization.LocalizedString property="text" table="GUID:e57257823a7964becb6eb06d6181f15a" entry="Id(71435971190784)" />
+                            </Bindings>
+                        </engine:Label>
+                        <Unity.AppUI.UI.Dropdown name="AssetSearchSortDropdown" class="AssetDropdown AssetDropDownArrow" style="height: 100%; align-items: stretch; width: 281px; margin-left: 16px;" />
+                        <Unity.AppUI.UI.IconButton name="AMButton" icon="globe" size="L" style="height: 100%; width: 40px; max-width: 11%; margin-left: 16px;" />
+                        <Unity.AppUI.UI.IconButton name="RefreshAssetButton" icon="arrows-clockwise" size="L" style="height: 100%; width: 40px; max-width: 11%; margin-left: 16px;" />
+                        <Unity.AppUI.UI.IconButton name="NewAssetButton" icon="plus" size="L" style="height: 100%; width: 40px; max-width: 11%; display: none; margin-left: 16px;" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <Unity.AppUI.UI.Text name="PathText" style="height: 32px; max-height: 32px; min-height: 32px; text-overflow: ellipsis; margin-bottom: 16px;" />
+                <engine:VisualElement picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+                    <Unity.AppUI.UI.GridView name="AssetGridView" item-height="238" style="flex-grow: 1;" />
+                    <engine:Instance template="NewAssetPanel" name="NewAssetContainer" style="width: 940px; max-width: 940px; min-width: 940px; display: none; margin-right: 20px;" />
+                    <engine:Instance template="AssetInformationPanel" name="AssetInfoContainer" style="width: 572px; min-width: 572px; display: flex; margin-left: 16px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

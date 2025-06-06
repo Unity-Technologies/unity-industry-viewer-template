@@ -1,0 +1,39 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/In%20App%20Settings/UI/SettingsStyle.uss?fileID=7433441132597879392&amp;guid=0ccd06581b22f4fe48c0ce2ac8dff7dd&amp;type=3#SettingsStyle" />
+    <engine:VisualElement style="flex-grow: 1;">
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; margin-bottom: 10px;">
+            <Unity.AppUI.UI.Text text="Input Device" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:a49b4948ab7c940959051620265455bf" entry="Id(482415206400)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Dropdown size="L" name="InputDeviceDropdown" style="height: 40px; flex-grow: 1;" />
+        </engine:VisualElement>
+        <Unity.AppUI.UI.Text text="Input Device" name="InputEffectiveDeviceLabel" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 100%; margin-bottom: 10px; height: 40px;" />
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center; margin-bottom: 10px;">
+            <Unity.AppUI.UI.Text text="Input Volume" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px; height: 40px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:a49b4948ab7c940959051620265455bf" entry="Id(482419400704)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.TouchSliderFloat name="InputVolumeSlider" format-string="g1" style="flex-grow: 1; height: 40px;" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; margin-bottom: 10px;">
+            <Unity.AppUI.UI.Text text="Output Device" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:a49b4948ab7c940959051620265455bf" entry="Id(482419400705)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Dropdown size="L" name="OutputDeviceDropdown" style="height: 40px; flex-grow: 1;" />
+        </engine:VisualElement>
+        <Unity.AppUI.UI.Text text="Output Device" name="OutputEffectiveDeviceLabel" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 100%; margin-bottom: 10px; height: 40px;" />
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center;">
+            <Unity.AppUI.UI.Text text="Output Volume" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px; height: 40px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:a49b4948ab7c940959051620265455bf" entry="Id(482419400706)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.TouchSliderFloat name="OutputVolumeSlider" format-string="g1" style="flex-grow: 1; height: 40px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

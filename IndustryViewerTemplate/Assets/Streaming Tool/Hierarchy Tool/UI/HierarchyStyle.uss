@@ -1,0 +1,12 @@
+.HierarchyStyle .unity-toggle__checkmark {
+    -unity-background-image-tint-color: rgb(217, 217, 217);
+}
+
+#TransformInspector .appui-vector3field__y-field{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+#HierarchyTreeView .unity-collection-view__item--selected {
+    background-color: rgba(220, 220, 220, 0.25);
+}

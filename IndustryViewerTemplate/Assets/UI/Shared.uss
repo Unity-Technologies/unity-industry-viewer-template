@@ -1,0 +1,28 @@
+.appui-icon--trash-simple {
+    background-image: url("project://database/Assets/UI/Textures/TrashSimple.png");
+}
+
+.appui-icon--download {
+    background-image: url("project://database/Assets/UI/Textures/Download.png");
+}
+
+.appui-icon--broadcast {
+    background-image: url("project://database/Assets/UI/Textures/Broadcast.png");
+}
+
+.appui-button .appui-icon {
+    -unity-background-image-tint-color: rgba(187.935, 187.935, 187.935, 1);
+}
+
+.appui-button.unity-disabled{
+    background-color: rgba(39, 39, 39, 1);
+    border-color: rgba(58, 58, 58, 1);
+}
+
+.appui-button.unity-disabled .appui-icon {
+    -unity-background-image-tint-color: rgba(99, 99, 99, 1);
+}
+
+.appui-actionbutton.unity-disabled .appui-icon {
+    -unity-background-image-tint-color: rgba(99, 99, 99, 1);
+}

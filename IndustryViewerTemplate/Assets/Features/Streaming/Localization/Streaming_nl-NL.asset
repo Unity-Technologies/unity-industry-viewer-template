@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Streaming_nl-NL
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: nl-NL
+  m_SharedData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826617756942437
+  m_TableData:
+  - m_Id: 5709449125888
+    m_Localized: Kies uw gegevens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795449135104
+    m_Localized: Welke gegevensbron wilt u gebruiken?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858598576128
+    m_Localized: Wolk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5890873745408
+    m_Localized: Lokaal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399107104768
+    m_Localized: '{name} - Versie: {num}'
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942437
+  - m_Id: 268399140659200
+    m_Localized: Nieuwe versie beschikbaar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659201
+    m_Localized: Er is een nieuwe versie van het item beschikbaar. Wilt u overstappen
+      naar de nieuwe versie?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659202
+    m_Localized: Schakelaar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659203
+    m_Localized: Afwijzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659204
+    m_Localized: Sluit Streaming af
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659205
+    m_Localized: "Weet je zeker dat je de streamingsc\xE8ne afsluit?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659206
+    m_Localized: Uitgang
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271402836942848
+    m_Localized: Nieuwe ver. Beschikbaar!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2543798181888
+    m_Localized: Verwijder activa van het lokale station
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2720789422080
+    m_Localized: Weet je het zeker? Houd er rekening mee dat deze actie onomkeerbaar
+      is.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2966592413696
+    m_Localized: Verwijderen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3004496338944
+    m_Localized: Item verwijderd.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3080430018560
+    m_Localized: Annuleren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3629921591296
+    m_Localized: Download asset naar lokale schijf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3705742024704
+    m_Localized: Weet je het zeker? Houd er rekening mee dat het downloaden enige
+      tijd kan duren vanwege de bestandsgrootte.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862307004416
+    m_Localized: Downloaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3894355681280
+    m_Localized: Middel downloaden...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4142910136320
+    m_Localized: Downloaden van {name} item voltooid...
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942437
+  - m_Id: 4789797642240
+    m_Localized: Lay-out laden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5427377987584
+    m_Localized: Streamen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15579884532260864
+    m_Localized: Draadmodel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036333887488
+    m_Localized: Beschermen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036354859008
+    m_Localized: Wilt u de assets waarnaar wordt verwezen behouden? Deze actie is
+      onomkeerbaar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21710844147523584
+    m_Localized: Dit is een item waarnaar wordt verwezen vanuit een lay-out. Weet
+      je het zeker? Houd er rekening mee dat deze actie onomkeerbaar is.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22092926879260672
+    m_Localized: Asset waarnaar wordt verwezen - {name} heeft een lokale versie {localVersion}
+      opgeslagen op het apparaat. Maar de lay-out vereist versie {requiredVersion}.
+      Wilt u de lokale versie blijven gebruiken?
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942437
+  - m_Id: 40828184860549120
+    m_Localized: Link
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40831164800294912
+    m_Localized: Ontladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994240
+    m_Localized: Klaar voor lokale streaming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994241
+    m_Localized: Update beschikbaar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994242
+    m_Localized: Update
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755776
+    m_Localized: Beginnen met streamen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755777
+    m_Localized: Klik om 3D-streaming te starten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652736
+    m_Localized: Organisatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652737
+    m_Localized: Project
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652738
+    m_Localized: Verzameling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3471058132994
+    m_Localized: Redden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862327975936
+    m_Localized: Naam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644864
+    m_Localized: Kan een item niet laden vanwege toestemming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644865
+    m_Localized: Lay-out opslaan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644866
+    m_Localized: Sla je 3D-layout op in de Asset Manager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644867
+    m_Localized: Selecteer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40857613896769536
+    m_Localized: '{asset} toevoegen'
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942437
+  - m_Id: 42308461222944768
+    m_Localized: Laden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44808540777340928
+    m_Localized: U heeft geen schrijfrechten.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45884123531698176
+    m_Localized: Opslaan mislukt, er is een onbekende fout opgetreden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47728520850300928
+    m_Localized: Gekopieerde link naar klembord
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826617756942437
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4142910136320
+        - id: 268399107104768
+        - id: 22092926879260672
+        - id: 40857613896769536

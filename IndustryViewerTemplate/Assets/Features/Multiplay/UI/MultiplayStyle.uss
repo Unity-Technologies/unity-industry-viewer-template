@@ -1,0 +1,9 @@
+.MultiplayIcon{
+    margin-left: 16px;
+    width: 40px;
+    height: 40px;
+}
+
+.MultiplayIcon .appui-icon {
+    background-image: url("project://database/Assets/UI/Textures/Presentation.png");
+}

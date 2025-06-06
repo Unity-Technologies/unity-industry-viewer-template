@@ -1,0 +1,27 @@
+{
+    "name": "Unity.Industry.Viewer.Navigation.VR",
+    "rootNamespace": "Unity.Industry.Viewer.Navigation.VR",
+    "references": [
+        "GUID:fe685ec1767f73d42b749ea8045bfe43",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:2f101f87087d58f4ba92ca00188e763d",
+        "GUID:dc960734dc080426fa6612f1c5fe95f3",
+        "GUID:7652355c4d73b47e78a66a1e0890152f",
+        "GUID:1a0fdbb751e584dc8b7a979eb83ba5ce",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:786a25291c56430c910c997c4a7e195b",
+        "GUID:07dcb36ba59c7464cb52a2c6fc408b32",
+        "GUID:e40ba710768534012815d3193fa296cb",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:ded3a1fd6dfcb488e8056389a56a3f4f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

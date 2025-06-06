@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Multiplay_nl-NL
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: nl-NL
+  m_SharedData: {fileID: 11400000, guid: 7753eeaebef2041d49757e3425fd4c85, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826618794508406
+  m_TableData:
+  - m_Id: 5081708617728
+    m_Localized: Sessie is vol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081977053184
+    m_Localized: Kan geen sessie maken of eraan deelnemen. Probeer het opnieuw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247488
+    m_Localized: Deelnemen aan presentatie?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247489
+    m_Localized: '{name} presenteert. Wil je aanwezig zijn bij de presentatie?'
+    m_Metadata:
+      m_Items:
+      - rid: 7555826618794508406
+  - m_Id: 5081985441792
+    m_Localized: Meedoen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441793
+    m_Localized: Afwijzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441794
+    m_Localized: Presentatiemodus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441795
+    m_Localized: Einde presentatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441796
+    m_Localized: "Wilt u de presentatie be\xEBindigen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441797
+    m_Localized: Einde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441798
+    m_Localized: Verlaat de presentatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441799
+    m_Localized: Wilt u de huidige presentatie verlaten?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441800
+    m_Localized: Vertrekken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441801
+    m_Localized: Sluit je aan bij Presentatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441802
+    m_Localized: Wilt u deelnemen aan de huidige presentatie?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441803
+    m_Localized: Presentatiemodus starten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441804
+    m_Localized: Wilt u een presentatie starten?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441805
+    m_Localized: Begin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441806
+    m_Localized: Annuleren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065896267776
+    m_Localized: Nieuw lay-outmiddel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065904656384
+    m_Localized: Je sessie is opgeslagen als nieuw layout-item. Wil je deelnemen?
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826618794508406
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 5081981247489

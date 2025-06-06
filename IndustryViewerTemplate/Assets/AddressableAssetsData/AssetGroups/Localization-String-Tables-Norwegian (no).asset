@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-String-Tables-Norwegian (no)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-String-Tables-Norwegian (no)
+  m_GUID: dead072ebe4b24decaaf931cbddfc633
+  m_SerializeEntries:
+  - m_GUID: 20252e46f691b4276ad3fd6001fa6827
+    m_Address: InAppSettings_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 24d16a03cfdfa47bc85bad8f1867d61e
+    m_Address: Mobile AR_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36f2052ec3c8a467cbc3edf653a05a93
+    m_Address: Hierarchy Tool_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38e697c741e2a4fe4a5b5eb67490234d
+    m_Address: Metadata Tool_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41dfbec7ac73f49348fe395281d90f58
+    m_Address: Identity_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d534322ab9694baea7187af857e9cec
+    m_Address: Streaming_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f8c6803672ea4079aa1556ad24a5988
+    m_Address: Multiplay_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7246026e6e86648f88ebc26015a88e9d
+    m_Address: Fly Camera_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 870d1ee51ffaa4d549ec0bde84bbb2d4
+    m_Address: Add Model Tool_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aeda2a51a355b4f06b31f4aef33973f8
+    m_Address: Vivox_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8613bb221017409dac1bede75bcf655
+    m_Address: Orbit Camera_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec3132a52b73341bcba8a9f2994da969
+    m_Address: Assets_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eceaa924fa512ea45b63bc3ae6ebb1d7
+    m_Address: Walk Camera_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f80e1a9ad180e43d3a1e6af10772ebcd
+    m_Address: VR_no
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-no
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: bf5713deec68845209684f81a71bb85a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 00e1ed0887fa341b0a9844ceeb598d76, type: 2}
+    - {fileID: 11400000, guid: 7057a6c1014554e2095a7e4d3f2a649c, type: 2}

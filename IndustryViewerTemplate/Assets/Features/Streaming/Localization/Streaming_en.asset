@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Streaming_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826617756942434
+  m_TableData:
+  - m_Id: 2543798181888
+    m_Localized: Remove Asset from local drive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2720789422080
+    m_Localized: Are you sure? Please note that this action is irreversible.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2966592413696
+    m_Localized: Remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3004496338944
+    m_Localized: Asset removed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3080430018560
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3629921591296
+    m_Localized: Download Asset to local drive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3705742024704
+    m_Localized: Are you sure? Please note that the download may take some time due
+      to the file size.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862307004416
+    m_Localized: Download
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3894355681280
+    m_Localized: Downloading asset...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4142910136320
+    m_Localized: Finished downloading {name} asset...
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942434
+  - m_Id: 4789797642240
+    m_Localized: Load Layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5427377987584
+    m_Localized: Stream
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5709449125888
+    m_Localized: Pick your data
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795449135104
+    m_Localized: Which data source you would like to use?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858598576128
+    m_Localized: Cloud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5890873745408
+    m_Localized: Local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399107104768
+    m_Localized: '{name} - Version: {num}'
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942434
+  - m_Id: 268399140659200
+    m_Localized: New Version Available
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659201
+    m_Localized: A new version of the asset is available. Do you want to switch to
+      the new version?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659202
+    m_Localized: Switch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659203
+    m_Localized: Dismiss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659204
+    m_Localized: Exit Streaming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659205
+    m_Localized: Are you sure to exit streaming scene?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659206
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271402836942848
+    m_Localized: New Ver. Available!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15579884532260864
+    m_Localized: Wireframe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036333887488
+    m_Localized: Preserve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036354859008
+    m_Localized: Do you want to preserve referenced assets? This action is irreversible.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21710844147523584
+    m_Localized: This is a referenced asset from a layout. Are you sure? Please note
+      that this action is irreversible.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22092926879260672
+    m_Localized: Referenced Asset - {name} has a local version {localVersion} stored
+      on device. But the layout requires version {requiredVersion}. Do you want to
+      keep using the local version?
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942434
+  - m_Id: 40828184860549120
+    m_Localized: Link
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40831164800294912
+    m_Localized: Offload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994240
+    m_Localized: Ready for Local Streaming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994241
+    m_Localized: Update Available for Local Streaming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994242
+    m_Localized: Update
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755776
+    m_Localized: Start Streaming?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755777
+    m_Localized: Click to enter the 3D streaming with the selected asset.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652736
+    m_Localized: Organisation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652737
+    m_Localized: Project
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652738
+    m_Localized: Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3471058132994
+    m_Localized: Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862327975936
+    m_Localized: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644864
+    m_Localized: Unable to load an asset due to permission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644865
+    m_Localized: Save Layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644866
+    m_Localized: Save your 3D layout to the Asset Manager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644867
+    m_Localized: Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40857613896769536
+    m_Localized: Adding {asset}
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942434
+  - m_Id: 42308461222944768
+    m_Localized: Loading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44808540777340928
+    m_Localized: You don't have the write permission.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45884123531698176
+    m_Localized: Save failed, an unknown error occurred
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47728520850300928
+    m_Localized: Copied link to clipboard
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826617756942434
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4142910136320
+        - id: 268399107104768
+        - id: 22092926879260672
+        - id: 40857613896769536

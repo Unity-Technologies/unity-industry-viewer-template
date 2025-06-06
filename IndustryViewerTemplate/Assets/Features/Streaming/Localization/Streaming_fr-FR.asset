@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Streaming_fr-FR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr-FR
+  m_SharedData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826617756942438
+  m_TableData:
+  - m_Id: 2543798181888
+    m_Localized: Supprimer l'actif du disque local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2720789422080
+    m_Localized: "Es-tu s\xFBr? Veuillez noter que cette action est irr\xE9versible."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2966592413696
+    m_Localized: Retirer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3004496338944
+    m_Localized: "\xC9l\xE9ment supprim\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3080430018560
+    m_Localized: Annuler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3629921591296
+    m_Localized: "T\xE9l\xE9charger l'actif sur le disque local"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3705742024704
+    m_Localized: "Es-tu s\xFBr? Veuillez noter que le t\xE9l\xE9chargement peut prendre
+      un certain temps en raison de la taille du fichier."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862307004416
+    m_Localized: "T\xE9l\xE9charger"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3894355681280
+    m_Localized: "T\xE9l\xE9chargement de l'\xE9l\xE9ment..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4142910136320
+    m_Localized: "T\xE9l\xE9chargement de {name} \xE9l\xE9ment termin\xE9..."
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942438
+  - m_Id: 4789797642240
+    m_Localized: Disposition des charges
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5427377987584
+    m_Localized: Flux
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5709449125888
+    m_Localized: "Choisissez vos donn\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795449135104
+    m_Localized: "Quelle source de donn\xE9es souhaitez-vous utiliser\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858598576128
+    m_Localized: Nuage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5890873745408
+    m_Localized: Locale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399107104768
+    m_Localized: '{name} - Version: {num}'
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942438
+  - m_Id: 268399140659200
+    m_Localized: Nouvelle version disponible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659201
+    m_Localized: "Une nouvelle version de l'actif est disponible. Voulez-vous passer
+      \xE0 la nouvelle version ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659202
+    m_Localized: Changer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659203
+    m_Localized: Rejeter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659204
+    m_Localized: Quitter la diffusion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659205
+    m_Localized: "\xCAtes-vous s\xFBr de quitter la sc\xE8ne de streaming\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659206
+    m_Localized: Sortie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271402836942848
+    m_Localized: Nouvelle version. Disponible!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15579884532260864
+    m_Localized: Maillage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036333887488
+    m_Localized: "Pr\xE9server"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036354859008
+    m_Localized: "Vous souhaitez conserver les actifs r\xE9f\xE9renc\xE9s ? Cette
+      action est irr\xE9versible."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21710844147523584
+    m_Localized: "Il s'agit d'un actif r\xE9f\xE9renc\xE9 \xE0 partir d'une mise
+      en page. Es-tu s\xFBr? Veuillez noter que cette action est irr\xE9versible."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22092926879260672
+    m_Localized: "Actif r\xE9f\xE9renc\xE9\_:\_{name} poss\xE8de une version locale
+      {localVersion} stock\xE9e sur l'appareil. Mais la mise en page n\xE9cessite
+      la version {requiredVersion}. Voulez-vous continuer \xE0 utiliser la version
+      locale\_?"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942438
+  - m_Id: 40828184860549120
+    m_Localized: lien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40831164800294912
+    m_Localized: "D\xE9charger"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994240
+    m_Localized: "Pr\xEAt pour le streaming local"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994241
+    m_Localized: "Mise \xE0 jour dispo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994242
+    m_Localized: "Mise \xE0 jour"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755776
+    m_Localized: "D\xE9marrer la diffusion\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755777
+    m_Localized: Cliquer pour lancer le streaming 3D.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652736
+    m_Localized: Organisation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652737
+    m_Localized: Projet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652738
+    m_Localized: Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3471058132994
+    m_Localized: Sauvegarder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862327975936
+    m_Localized: Nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644864
+    m_Localized: Impossible de charger un actif en raison d'une autorisation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644865
+    m_Localized: Enregistrer la mise en page
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644866
+    m_Localized: Enregistrer votre mise en page 3D dans Asset Manager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644867
+    m_Localized: "S\xE9lectionner"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40857613896769536
+    m_Localized: Ajout de {asset}
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942438
+  - m_Id: 42308461222944768
+    m_Localized: Chargement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44808540777340928
+    m_Localized: "Vous n'avez pas l'autorisation d'\xE9criture."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45884123531698176
+    m_Localized: "L'enregistrement a \xE9chou\xE9, une erreur inconnue s'est produite"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47728520850300928
+    m_Localized: "Lien copi\xE9 vers le presse-papiers"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826617756942438
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4142910136320
+        - id: 268399107104768
+        - id: 22092926879260672
+        - id: 40857613896769536
