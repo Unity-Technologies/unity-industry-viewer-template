@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1; width: 120px; max-width: 120px; min-width: 120px; background-color: rgb(26, 26, 26); border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; align-items: center; justify-content: center; height: 56px; max-height: 56px; min-height: 56px;">
+        <Unity.AppUI.UI.ActionButton quiet="true" size="L" name="LogoutButton" style="height: 100%; width: 100%;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:57a7ebbc038a2427a989d443ddacef3e" entry="Id(15982369169408)" />
+            </Bindings>
+        </Unity.AppUI.UI.ActionButton>
+    </engine:VisualElement>
+</engine:UXML>

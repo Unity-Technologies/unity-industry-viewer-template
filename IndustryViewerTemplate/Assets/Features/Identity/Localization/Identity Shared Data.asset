@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Identity Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Identity
+  m_TableCollectionNameGuidString: 57a7ebbc038a2427a989d443ddacef3e
+  m_Entries:
+  - m_Id: 2213752594432
+    m_Key: Welcome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7997920108544
+    m_Key: Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9303762132992
+    m_Key: Or
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9420774825984
+    m_Key: Continue as guest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15982369169408
+    m_Key: Logout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32483335725056
+    m_Key: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33199882231808
+    m_Key: LogoutTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33283562790912
+    m_Key: LogoutDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33349040070656
+    m_Key: Awaiting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33437661519872
+    m_Key: Initializing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29800713151307776
+    m_Key: Credit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58408840369004544
+    m_Key: Offline Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58408840381587456
+    m_Key: Offline Mode Log in
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58409243970101248
+    m_Key: OK
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5534516623121580298
+  references:
+    version: 2
+    RefIds:
+    - rid: 5534516623121580298
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732622177328

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Mobile AR_fi
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fi
+  m_SharedData: {fileID: 11400000, guid: 8439f8a59aa98411c86af28e69b5af05, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 751689523200
+    m_Localized: Mobiili-AR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454209
+    m_Localized: Lukitusasento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454210
+    m_Localized: Peitto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648512
+    m_Localized: <u>Paikkasidos</u>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648513
+    m_Localized: Tallenna paikkasidos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648514
+    m_Localized: Lataa paikkasidos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648515
+    m_Localized: "Siirr\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648516
+    m_Localized: "K\xE4\xE4nn\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648517
+    m_Localized: Skaalaa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648518
+    m_Localized: "Lis\xE4\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648519
+    m_Localized: Palauta oletusasentoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648520
+    m_Localized: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506304
+    m_Localized: AR-ankkuri kohdistettu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506305
+    m_Localized: AR-ankkuri tallennettu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506306
+    m_Localized: "AR-ankkurin tallennus ep\xE4onnistui - Tuntematon"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506307
+    m_Localized: Skannaa ja napauta alustaaksesi resurssin sijainnin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506308
+    m_Localized: "Voit hienos\xE4\xE4t\xE4\xE4 omaisuuttasi ja painaa Lukitse sijainti"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627148898304
+    m_Localized: X-akseli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286912
+    m_Localized: Y-akseli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286913
+    m_Localized: Z-akseli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44105927752671232
+    m_Localized: Avausasento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947435593728
+    m_Localized: "Lataus ep\xE4onnistui"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947439788032
+    m_Localized: Sinulla ei ole kirjoitusoikeutta.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

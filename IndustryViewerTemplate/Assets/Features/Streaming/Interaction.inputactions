@@ -1,0 +1,74 @@
+{
+    "name": "Interaction",
+    "maps": [
+        {
+            "name": "Streaming",
+            "id": "b4b0209f-b6ac-4f5e-b01b-69167605c9ce",
+            "actions": [
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "62ff165d-ee4f-406f-9a8a-5cab223c1df5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pointer Position",
+                    "type": "Value",
+                    "id": "8759ef10-2bfa-4cc6-9165-fbc5b55bca88",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Double Tap",
+                    "type": "Button",
+                    "id": "62aecd46-f3de-4645-a80f-40d588fce786",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "MultiTap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "816cddc6-7559-43e9-b5e1-c4dd77b3a2eb",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e280bf2a-efe5-4314-a78d-b56f00dc7c07",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pointer Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a2721ce-1919-4255-9f81-4a9825a2cf7d",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Double Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

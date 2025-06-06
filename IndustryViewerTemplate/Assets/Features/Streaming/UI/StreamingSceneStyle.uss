@@ -1,0 +1,57 @@
+.BottomLeftIconButton > #appui-button__leadingcontainer > #appui-button__leadingicon {
+    width: 60%;
+    height: 60%;
+}
+
+.BottomLeftIconButton {
+    width: 90px;
+    height: 90px;
+    background-color: rgb(48, 48, 48);
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+}
+
+.MainToolIcon {
+    width: 60px;
+    height: 60px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.MainToolIcon > #appui-actionbutton__icon {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.appui-icon--upload {
+    background-image: url("project://database/Assets/UI/Textures/Upload.png");
+}
+
+#SceneBackButton{
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+}
+
+#SceneBackButton > #appui-button__leadingcontainer > #appui-button__leadingicon {
+    background-image: url("project://database/Assets/UI/Textures/Exit.png");
+}
+
+#SceneBackButton > #appui-button__leadingcontainer {
+    display: flex;
+}

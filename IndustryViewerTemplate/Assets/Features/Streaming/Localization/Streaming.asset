@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Streaming
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 90293e8c6d1674dbdae13d47be3c06fc, type: 2}
+  - {fileID: 11400000, guid: 07191b2edd7df4381a50825d7e77c438, type: 2}
+  - {fileID: 11400000, guid: c518efd87912a4954a8cef92042640ed, type: 2}
+  - {fileID: 11400000, guid: 1df2fc4e99b164d06bd054a6983bb157, type: 2}
+  - {fileID: 11400000, guid: 8552f8ef6e22847a394d760de9e09420, type: 2}
+  - {fileID: 11400000, guid: a61cf7d16049b41a6a3ad836a33c25a5, type: 2}
+  - {fileID: 11400000, guid: f795b99ff508f45ff9f12a0556c7f15f, type: 2}
+  - {fileID: 11400000, guid: 459adb268da074749a6389e84741c049, type: 2}
+  - {fileID: 11400000, guid: f82eb13c5de4444828170346d3ab9d4f, type: 2}
+  - {fileID: 11400000, guid: 80753919c75514fd29ac9ede1ae88b08, type: 2}
+  - {fileID: 11400000, guid: 66b51938fc2024c1986630fcf0efac61, type: 2}
+  - {fileID: 11400000, guid: 9642f375af97940c3a53286b02f1e364, type: 2}
+  - {fileID: 11400000, guid: 9e154ae529c6a4c6db4086a208c85fe1, type: 2}
+  - {fileID: 11400000, guid: 482a9ebb49c6a428baff1bd7931574b1, type: 2}
+  - {fileID: 11400000, guid: 1d0fec2c4d00b448ea619db6e38cc5a2, type: 2}
+  - {fileID: 11400000, guid: 6d534322ab9694baea7187af857e9cec, type: 2}
+  - {fileID: 11400000, guid: 8db0d88a2e9ce498a9bb98d0b8188c7d, type: 2}
+  m_Group: String Table

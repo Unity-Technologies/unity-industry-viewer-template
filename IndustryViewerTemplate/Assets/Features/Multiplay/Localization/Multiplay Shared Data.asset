@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Multiplay Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Multiplay
+  m_TableCollectionNameGuidString: 7753eeaebef2041d49757e3425fd4c85
+  m_Entries:
+  - m_Id: 5081708617728
+    m_Key: Toast Session Full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081977053184
+    m_Key: Toast Fail Join
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247488
+    m_Key: Join Presentation Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081981247489
+    m_Key: Join Presentation Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441792
+    m_Key: Join
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441793
+    m_Key: Dismiss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441794
+    m_Key: Presentation Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441795
+    m_Key: End Presentation Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441796
+    m_Key: End Presentation Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441797
+    m_Key: End
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441798
+    m_Key: Leave Presentation Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441799
+    m_Key: Leave Presentation Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441800
+    m_Key: Leave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441801
+    m_Key: Ask to join Presentation Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441802
+    m_Key: Ask to join Presentation Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441803
+    m_Key: Start Presentation Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441804
+    m_Key: Start Presentation Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441805
+    m_Key: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081985441806
+    m_Key: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065896267776
+    m_Key: ChangeLayoutTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42058065904656384
+    m_Key: ChangeLayoutDescription
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1314252995763110075
+  references:
+    version: 2
+    RefIds:
+    - rid: 1314252995763110075
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1733498802902

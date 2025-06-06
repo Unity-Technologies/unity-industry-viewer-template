@@ -1,0 +1,11 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement picking-mode="Ignore" style="flex-grow: 1; height: 40px; flex-direction: row; justify-content: space-between; max-height: 40px; min-height: 40px; align-items: center; width: 316px; max-width: 316px;">
+        <engine:VisualElement picking-mode="Ignore" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/Textures/Cube.png?fileID=2800000&amp;guid=632ffca245e884774a7e2990718f30f4&amp;type=3#Cube&quot;); width: 40px; height: 40px; max-width: 40px; min-width: 40px; max-height: 40px; min-height: 40px; margin-right: 4px;" />
+        <Unity.AppUI.UI.Text name="ToggleLabel" size="XXXL" style="height: 100%; min-width: 188px; max-width: 188px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;" />
+        <engine:VisualElement picking-mode="Ignore" style="flex-grow: 1; height: 100%; max-height: 100%; min-height: 100%; flex-direction: row; align-items: center; justify-content: flex-start; max-width: 120px; min-width: 80px;">
+            <Unity.AppUI.UI.IconButton quiet="true" icon="hotspot" name="FocusButton" style="height: 40px; width: 40px; display: none;" />
+            <Unity.AppUI.UI.IconButton quiet="true" icon="eye" name="VisibilityButton" style="height: 40px; width: 40px;" />
+            <Unity.AppUI.UI.IconButton quiet="true" icon="trash-simple" name="BinButton" style="height: 40px; width: 40px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

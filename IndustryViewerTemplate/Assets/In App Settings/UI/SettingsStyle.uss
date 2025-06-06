@@ -1,0 +1,4 @@
+#FPSToggle > #appui-checkbox__box {
+    height: 100%;
+    width: 100%;
+}

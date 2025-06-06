@@ -1,0 +1,25 @@
+{
+    "name": "Unity.Industry.Viewer.Shared",
+    "rootNamespace": "Unity.Industry.Viewer.Shared",
+    "references": [
+        "GUID:f2f9fbb8654eff343bf4a94f2a688687",
+        "GUID:5c605a9c9e9b6421a8d175d64aaa4beb",
+        "GUID:498d02e03062b2649b108f31a9668c56",
+        "GUID:b344fc90df84f5a4f968af99d3b862a9",
+        "GUID:ae052f549db434c89af6d304e7f1a8ed",
+        "GUID:73ee7612e773b45fe8fb2afaaa592cb3",
+        "GUID:18a3ee135d24342f7ae628142b5114cb",
+        "GUID:786a25291c56430c910c997c4a7e195b",
+        "GUID:2f101f87087d58f4ba92ca00188e763d",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

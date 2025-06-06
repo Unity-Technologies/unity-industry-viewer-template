@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Mobile AR_no
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: no
+  m_SharedData: {fileID: 11400000, guid: 8439f8a59aa98411c86af28e69b5af05, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 751689523200
+    m_Localized: Mobil AR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454209
+    m_Localized: "L\xE5seposisjon"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454210
+    m_Localized: Tildekking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648512
+    m_Localized: <u>Romlig anker</u>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648513
+    m_Localized: Lagre romlig anker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648514
+    m_Localized: Last inn romlig anker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648515
+    m_Localized: Flytt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648516
+    m_Localized: Roter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648517
+    m_Localized: Skaler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648518
+    m_Localized: "\xD8k"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648519
+    m_Localized: Tilbakestill til standardposisjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648520
+    m_Localized: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506304
+    m_Localized: AR-anker justert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506305
+    m_Localized: AR-anker lagret
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506306
+    m_Localized: Kunne ikke lagre AR-anker - Ukjent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506307
+    m_Localized: "Skann og trykk for \xE5 initialisere ressursposisjon"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506308
+    m_Localized: "Du kan finjustere eiendelen din og trykke p\xE5 L\xE5s posisjon"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627148898304
+    m_Localized: X-akse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286912
+    m_Localized: Y-akse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286913
+    m_Localized: Z-akse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44105927752671232
+    m_Localized: "L\xE5s opp posisjon"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947435593728
+    m_Localized: Lasting mislyktes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947439788032
+    m_Localized: Du har ikke skrivetillatelse.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

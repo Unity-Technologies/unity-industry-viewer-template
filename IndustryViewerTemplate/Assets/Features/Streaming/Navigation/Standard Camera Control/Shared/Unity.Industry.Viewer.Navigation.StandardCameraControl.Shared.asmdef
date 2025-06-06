@@ -1,0 +1,21 @@
+{
+    "name": "Unity.Industry.Viewer.Navigation.StandardCameraControl.Shared",
+    "rootNamespace": "Unity.Industry.Viewer.Navigation.StandardCameraControl.Shared",
+    "references": [
+        "GUID:786a25291c56430c910c997c4a7e195b",
+        "GUID:1a0fdbb751e584dc8b7a979eb83ba5ce",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:7652355c4d73b47e78a66a1e0890152f",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:498d02e03062b2649b108f31a9668c56"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,27 @@
+{
+    "name": "Unity.Industry.Viewer.Vivox",
+    "rootNamespace": "Unity.Industry.Viewer.Vivox",
+    "references": [
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:7652355c4d73b47e78a66a1e0890152f",
+        "GUID:18a3ee135d24342f7ae628142b5114cb",
+        "GUID:fe25561d224ed4743af4c60938a59d0b",
+        "GUID:5540e30183c82e84b954c033c388e06c",
+        "GUID:6087a74f6015aae4daed9a2577a7596c",
+        "GUID:2f101f87087d58f4ba92ca00188e763d",
+        "GUID:e0cd26848372d4e5c891c569017e11f1",
+        "GUID:7705325c82c714eddbdb41125903262e",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:3072efb1b5d06449eb35617ac762a62d",
+        "GUID:ded3a1fd6dfcb488e8056389a56a3f4f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

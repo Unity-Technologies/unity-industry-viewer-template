@@ -1,0 +1,19 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 0;">
+        <Unity.AppUI.UI.TouchSliderFloat label="Orbit Sensitivity" low-value="0.01" high-value="5" value="1" name="OrbitSensitivitySlider" increment-factor="0.01" format-string="g2" style="margin-bottom: 15px; margin-top: 15px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:2b1ee5ee94d4041f0bff4b3e7fe7a699" entry="Id(12455156637696)" />
+            </Bindings>
+        </Unity.AppUI.UI.TouchSliderFloat>
+        <Unity.AppUI.UI.TouchSliderFloat label="Pan Sensitivity" low-value="0.01" high-value="5" value="1" name="PanSensitivitySlider" increment-factor="0.01" format-string="g2" style="margin-bottom: 15px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:2b1ee5ee94d4041f0bff4b3e7fe7a699" entry="Id(12455160832000)" />
+            </Bindings>
+        </Unity.AppUI.UI.TouchSliderFloat>
+        <Unity.AppUI.UI.TouchSliderFloat label="Zoom Sensitivity" low-value="0.01" high-value="5" value="1" name="ZoomSensitivitySlider" increment-factor="0.01" format-string="g2" style="margin-bottom: 15px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:2b1ee5ee94d4041f0bff4b3e7fe7a699" entry="Id(12455160832001)" />
+            </Bindings>
+        </Unity.AppUI.UI.TouchSliderFloat>
+    </engine:VisualElement>
+</engine:UXML>

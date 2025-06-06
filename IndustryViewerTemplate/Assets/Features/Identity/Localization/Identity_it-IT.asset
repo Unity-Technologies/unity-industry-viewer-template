@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Identity_it-IT
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: it-IT
+  m_SharedData: {fileID: 11400000, guid: 57a7ebbc038a2427a989d443ddacef3e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2213752594432
+    m_Localized: "Visualizzatore del settore Unity \nProgetto modello"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7997920108544
+    m_Localized: Accedi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9303762132992
+    m_Localized: Oppure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9420774825984
+    m_Localized: Continua come ospite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15982369169408
+    m_Localized: Esci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32483335725056
+    m_Localized: Annulla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33199882231808
+    m_Localized: Disconnessione in corso...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33283562790912
+    m_Localized: Sei sicuro di voler uscire?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33349040070656
+    m_Localized: In attesa di accesso...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33437661519872
+    m_Localized: Inizializzazione in corso...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29800713151307776
+    m_Localized: Sviluppato e progettato da Unity Industry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58408840369004544
+    m_Localized: "Modalit\xE0 offline"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58408840381587456
+    m_Localized: "Attualmente sei in modalit\xE0 offline. Vuoi tornare alla modalit\xE0
+      online ed effettuare l'accesso?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58409243970101248
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

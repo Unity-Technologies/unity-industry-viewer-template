@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Streaming_no
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: no
+  m_SharedData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1545659760810917932
+  m_TableData:
+  - m_Id: 2543798181888
+    m_Localized: Fjern enhet fra lokal stasjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2720789422080
+    m_Localized: "Er du sikker? V\xE6r oppmerksom p\xE5 at denne handlingen er irreversibel."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2966592413696
+    m_Localized: Fjern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3004496338944
+    m_Localized: Enhet fjernet.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3080430018560
+    m_Localized: Avbryt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3629921591296
+    m_Localized: Last ned enhet til lokal stasjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3705742024704
+    m_Localized: "Er du sikker? V\xE6r oppmerksom p\xE5 at nedlastingen kan ta litt
+      tid p\xE5 grunn av filst\xF8rrelsen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862307004416
+    m_Localized: Last ned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3894355681280
+    m_Localized: Laster ned enhet...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4142910136320
+    m_Localized: "Ferdig med \xE5 laste ned {name} enhet..."
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917932
+  - m_Id: 4789797642240
+    m_Localized: Last inn layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5427377987584
+    m_Localized: "Str\xF8m"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5709449125888
+    m_Localized: Velg dataene dine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795449135104
+    m_Localized: Hvilken datakilde vil du bruke?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858598576128
+    m_Localized: Sky
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5890873745408
+    m_Localized: Lokal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399107104768
+    m_Localized: '{name} - Versjon: {num}'
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917932
+  - m_Id: 268399140659200
+    m_Localized: Ny versjon tilgjengelig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659201
+    m_Localized: En ny versjon av ressursen er tilgjengelig. Vil du bytte til den
+      nye versjonen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659202
+    m_Localized: Bytt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659203
+    m_Localized: Avvis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659204
+    m_Localized: "Avslutt str\xF8mming"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659205
+    m_Localized: "Er du sikker p\xE5 at du vil avslutte str\xF8mmingsscenen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659206
+    m_Localized: Avslutt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271402836942848
+    m_Localized: Ny versjon tilgjengelig!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15579884532260864
+    m_Localized: "Tr\xE5dramme"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036333887488
+    m_Localized: Bevare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036354859008
+    m_Localized: Vil du beholde refererte eiendeler? Denne handlingen er irreversibel.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21710844147523584
+    m_Localized: "Dette er en referert ressurs fra en layout. Er du sikker? V\xE6r
+      oppmerksom p\xE5 at denne handlingen er irreversibel."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22092926879260672
+    m_Localized: "Referert ressurs \u2013 {name} har en lokal versjon {localVersion}
+      lagret p\xE5 enheten. Men oppsettet krever versjon {requiredVersion}. Vil du
+      fortsette \xE5 bruke den lokale versjonen?"
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917932
+  - m_Id: 40828184860549120
+    m_Localized: Lenke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40831164800294912
+    m_Localized: Avlastning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994240
+    m_Localized: "Klar for lokal str\xF8mming"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994241
+    m_Localized: Oppdatering tilgjengelig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994242
+    m_Localized: Oppdater
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755776
+    m_Localized: "Begynn \xE5 streame?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755777
+    m_Localized: "Klikk for \xE5 starte 3D-str\xF8mming"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652736
+    m_Localized: Organisasjon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652737
+    m_Localized: Prosjekt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652738
+    m_Localized: Samling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3471058132994
+    m_Localized: Lagre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862327975936
+    m_Localized: Navn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644864
+    m_Localized: "Kan ikke laste inn en ressurs p\xE5 grunn av tillatelse"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644865
+    m_Localized: Lagre layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644866
+    m_Localized: Lagre 3D-oppsettet i Asset Manager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644867
+    m_Localized: Velge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40857613896769536
+    m_Localized: Legger til {asset}
+    m_Metadata:
+      m_Items:
+      - rid: 1545659760810917932
+  - m_Id: 42308461222944768
+    m_Localized: Laster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44808540777340928
+    m_Localized: Du har ikke skrivetillatelse.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45884123531698176
+    m_Localized: Lagring mislyktes, det oppstod en ukjent feil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47728520850300928
+    m_Localized: Kopierte lenken til utklippstavlen
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 1545659760810917932
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4142910136320
+        - id: 268399107104768
+        - id: 22092926879260672
+        - id: 40857613896769536

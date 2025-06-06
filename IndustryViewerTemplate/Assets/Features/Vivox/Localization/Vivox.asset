@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Vivox
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: a49b4948ab7c940959051620265455bf, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 7d8b4ae44ab7942b789f805bc4bbbccb, type: 2}
+  - {fileID: 11400000, guid: 524c14e4a058d4403949f85244899ee6, type: 2}
+  - {fileID: 11400000, guid: e2b81489cd4254825a4e1da1d35ea257, type: 2}
+  - {fileID: 11400000, guid: 5f6682fff1dc44896bfceb03aee224a8, type: 2}
+  - {fileID: 11400000, guid: 13e7a14e9dd7c417fbbdb2554eacee68, type: 2}
+  - {fileID: 11400000, guid: 6d27a2a0d6af74ede8b95e447a365379, type: 2}
+  - {fileID: 11400000, guid: 948e8b40c807c4efca4d318ad0391542, type: 2}
+  - {fileID: 11400000, guid: 70337034d96384a6785090e2f164a632, type: 2}
+  - {fileID: 11400000, guid: 7a00484c1a7a74b238bb6c49932a3f41, type: 2}
+  - {fileID: 11400000, guid: 63b5d1e1313b94655bc6b47af76ae751, type: 2}
+  - {fileID: 11400000, guid: 27f15543447c84685b527670b2c904b0, type: 2}
+  - {fileID: 11400000, guid: 4e30c3d5d968f49f59a60863610a66d4, type: 2}
+  - {fileID: 11400000, guid: 5d7c8b93a6dcf4cadb827142c29038df, type: 2}
+  - {fileID: 11400000, guid: cbc52555acd374a93ba33696a3b465b7, type: 2}
+  - {fileID: 11400000, guid: 9fc5018f970444df48a6c4dab0f905d0, type: 2}
+  - {fileID: 11400000, guid: aeda2a51a355b4f06b31f4aef33973f8, type: 2}
+  - {fileID: 11400000, guid: 1dcf40503fa5f4dea86018412ad434c4, type: 2}
+  m_Group: String Table

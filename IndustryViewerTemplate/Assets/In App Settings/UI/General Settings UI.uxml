@@ -1,0 +1,44 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1;">
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; margin-bottom: 8px;">
+            <Unity.AppUI.UI.Text style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(13261332480)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Text name="VersionLabel" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; flex-grow: 1;" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; margin-bottom: 8px;">
+            <Unity.AppUI.UI.Text style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(642184634368)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.TouchSliderInt name="RefreshRateSlider" increment-factor="10" low-value="30" value="30" size="L" high-value="60" style="height: 40px; flex-grow: 1;" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center; margin-bottom: 8px;">
+            <Unity.AppUI.UI.Text text="Show FPS" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(994900434944)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Checkbox name="FPSToggle" style="height: 30px; max-height: 30px; min-height: 30px; width: 30px; max-width: 30px; min-width: 30px;" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center;">
+            <Unity.AppUI.UI.Text text="Language" style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(53920947757056)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Dropdown size="L" name="LanguageDropdown" style="height: 40px; flex-grow: 1;" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center; margin-bottom: 8px;">
+            <Unity.AppUI.UI.Text style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Inter_28pt-ExtraLight.ttf?fileID=12800000&amp;guid=8c8481fa010d44d55a49ea03bb430cd6&amp;type=3#Inter_28pt-ExtraLight&quot;); font-size: 16px; width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(44170049240424448)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Toggle name="OfflineToggle" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

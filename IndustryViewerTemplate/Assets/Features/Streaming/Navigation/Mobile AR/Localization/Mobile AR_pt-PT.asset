@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Mobile AR_pt-PT
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-PT
+  m_SharedData: {fileID: 11400000, guid: 8439f8a59aa98411c86af28e69b5af05, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 751689523200
+    m_Localized: "RA m\xF3vel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454209
+    m_Localized: "Posi\xE7\xE3o de bloqueio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454210
+    m_Localized: "Oclus\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648512
+    m_Localized: "<u>\xC2ncora Espacial</u>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648513
+    m_Localized: "Salvar \xE2ncora"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648514
+    m_Localized: "\xC2ncora de carga"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648515
+    m_Localized: Mover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648516
+    m_Localized: Girar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648517
+    m_Localized: Escala
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648518
+    m_Localized: Incremento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648519
+    m_Localized: "Redefinir para o padr\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648520
+    m_Localized: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506304
+    m_Localized: "\xC2ncora RA alinhada"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506305
+    m_Localized: "\xC2ncora RA salva"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506306
+    m_Localized: "Falha ao salvar \xE2ncora RA: Desconhecido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506307
+    m_Localized: "Escaneie e prima para inicializar a posi\xE7\xE3o do recurso"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506308
+    m_Localized: "Voc\xEA pode ajustar seu ativo com precis\xE3o e clicar em Bloquear
+      posi\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627148898304
+    m_Localized: Eixo X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286912
+    m_Localized: Eixo Y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286913
+    m_Localized: Eixo Z
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44105927752671232
+    m_Localized: "Posi\xE7\xE3o de desbloqueio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947435593728
+    m_Localized: Falha no carregamento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947439788032
+    m_Localized: "Voc\xEA n\xE3o tem permiss\xE3o de grava\xE7\xE3o."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

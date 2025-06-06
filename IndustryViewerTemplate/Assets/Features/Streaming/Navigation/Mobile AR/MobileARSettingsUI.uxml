@@ -1,0 +1,157 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 0; padding-left: 8px; padding-right: 16px; padding-top: 16px; padding-bottom: 16px;">
+        <engine:VisualElement name="Content" style="flex-grow: 1; display: flex; margin-bottom: 8px;">
+            <Unity.AppUI.UI.Tabs direction="Horizontal" name="TransformTab" value="2">
+                <Unity.AppUI.UI.TabItem label="Move" style="width: 33.3%; justify-content: center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648515)" />
+                    </Bindings>
+                </Unity.AppUI.UI.TabItem>
+                <Unity.AppUI.UI.TabItem label="Rotate" style="width: 33.3%; justify-content: center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648516)" />
+                    </Bindings>
+                </Unity.AppUI.UI.TabItem>
+                <Unity.AppUI.UI.TabItem label="Scale" style="width: 33.3%; justify-content: center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648517)" />
+                    </Bindings>
+                </Unity.AppUI.UI.TabItem>
+            </Unity.AppUI.UI.Tabs>
+            <engine:VisualElement name="MoveContainer" style="display: none; padding-left: 8px;">
+                <engine:VisualElement style="flex-direction: row; margin-bottom: 8px; align-items: center; margin-top: 8px; justify-content: space-between;">
+                    <Unity.AppUI.UI.Text text="Increment" size="M" style="width: 100px; margin-right: 32px; font-size: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648518)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.FloatField size="L" name="MoveIncrementField" format-string="g2" unit="m" style="width: 170px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="unit" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648520)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.FloatField>
+                    <Unity.AppUI.UI.Stepper size="L" name="MoveStepper" value="1" style="margin-left: 8px;" />
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-direction: row; margin-bottom: 8px; align-items: center; justify-content: space-between;">
+                    <Unity.AppUI.UI.Text size="M" style="width: 100px; margin-right: 32px; font-size: 20px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(41362627148898304)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.FloatField size="L" name="XMoveField" format-string="g2" unit="m" style="width: 170px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="unit" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648520)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.FloatField>
+                    <Unity.AppUI.UI.Stepper size="L" name="MoveXStepper" value="1" style="margin-left: 8px;" />
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-direction: row; margin-bottom: 8px; align-items: center; justify-content: space-between;">
+                    <Unity.AppUI.UI.Text size="M" style="width: 100px; margin-right: 32px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 20px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(41362627157286912)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.FloatField size="L" name="YMoveField" format-string="g2" unit="m" style="width: 170px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="unit" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648520)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.FloatField>
+                    <Unity.AppUI.UI.Stepper size="L" name="MoveYStepper" value="1" style="margin-left: 8px;" />
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-direction: row; align-items: center; justify-content: space-between;">
+                    <Unity.AppUI.UI.Text size="M" style="width: 100px; margin-right: 32px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; font-size: 20px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(41362627157286913)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.FloatField size="L" name="ZMoveField" format-string="g2" unit="m" style="width: 170px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="unit" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648520)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.FloatField>
+                    <Unity.AppUI.UI.Stepper size="L" name="MoveZStepper" value="1" style="margin-left: 8px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="RotationContainer" style="display: none; padding-left: 8px;">
+                <engine:VisualElement style="flex-direction: row; margin-bottom: 8px; align-items: center; margin-top: 8px; justify-content: space-between;">
+                    <Unity.AppUI.UI.Text text="Increment" size="M" style="width: 100px; margin-right: 32px; font-size: 20px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648518)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.FloatField size="L" name="RotateIncrementField" format-string="g2" unit="°" style="width: 170px;" />
+                    <Unity.AppUI.UI.Stepper size="L" name="RotateStepper" value="1" style="margin-left: 8px;" />
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-direction: row; margin-bottom: 8px; align-items: center; justify-content: space-between;">
+                    <Unity.AppUI.UI.Text size="M" style="width: 100px; margin-right: 32px; font-size: 20px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(41362627148898304)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.FloatField size="L" name="XRotateField" format-string="g2" unit="°" style="width: 170px;" />
+                    <Unity.AppUI.UI.Stepper size="L" name="RotateXStepper" value="1" style="margin-left: 8px;" />
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-direction: row; margin-bottom: 8px; align-items: center; justify-content: space-between;">
+                    <Unity.AppUI.UI.Text size="M" style="width: 100px; margin-right: 32px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 20px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(41362627157286912)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.FloatField size="L" name="YRotateField" format-string="g2" unit="°" style="width: 170px;" />
+                    <Unity.AppUI.UI.Stepper size="L" name="RotateYStepper" value="1" style="margin-left: 8px;" />
+                </engine:VisualElement>
+                <engine:VisualElement style="flex-direction: row; align-items: center; justify-content: space-between;">
+                    <Unity.AppUI.UI.Text size="M" style="width: 100px; margin-right: 32px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; font-size: 20px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(41362627157286913)" />
+                        </Bindings>
+                    </Unity.AppUI.UI.Text>
+                    <Unity.AppUI.UI.FloatField size="L" name="ZRotateField" format-string="g2" unit="°" style="width: 170px;" />
+                    <Unity.AppUI.UI.Stepper size="L" name="RotateZStepper" value="1" style="margin-left: 8px;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="ScaleContainer" style="display: flex; margin-bottom: 8px; margin-top: 8px;">
+                <Unity.AppUI.UI.TouchSliderFloat name="ScaleSlider" high-value="2" value="1" format-string="f2" increment-factor="0.1" style="width: 100%;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 1; height: 40px; padding-left: 8px; flex-direction: row; margin-bottom: 8px;">
+            <Unity.AppUI.UI.Text style="width: 100px; margin-right: 32px; font-size: 20px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464783454210)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Toggle name="OcclusionToggle" size="L" style="margin-bottom: 10px; margin-top: 10px;" />
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 1; flex-direction: row; height: 40px; margin-bottom: 8px; padding-left: 8px;">
+            <Unity.AppUI.UI.Button name="ResetButton" title="Reset to default position" style="margin-right: 16px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="title" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648519)" />
+                </Bindings>
+            </Unity.AppUI.UI.Button>
+            <Unity.AppUI.UI.Button name="ConfirmButton" title="Confirm Position" variant="Accent">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="title" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464783454209)" />
+                </Bindings>
+            </Unity.AppUI.UI.Button>
+        </engine:VisualElement>
+        <engine:VisualElement name="SpatialContainer" style="flex-grow: 1; padding-left: 8px;">
+            <Unity.AppUI.UI.Text size="L" enable-rich-text="true" parse-escape-sequences="false" style="margin-bottom: 11.5px; -unity-font-style: bold; font-size: 18px; margin-top: 11.5px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648512)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <engine:VisualElement style="flex-direction: row; justify-content: flex-start; margin-bottom: 0; align-content: auto; align-items: stretch; height: 40px;">
+                <Unity.AppUI.UI.Button name="SaveMapButton" title="Save Spatial Anchor" style="margin-right: 8px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="title" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648513)" />
+                    </Bindings>
+                </Unity.AppUI.UI.Button>
+                <Unity.AppUI.UI.Button name="LoadMapButton" title="Load Spatial Anchor" style="margin-left: 8px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="title" table="GUID:8439f8a59aa98411c86af28e69b5af05" entry="Id(3464787648514)" />
+                    </Bindings>
+                </Unity.AppUI.UI.Button>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

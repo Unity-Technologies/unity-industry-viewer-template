@@ -1,0 +1,209 @@
+#AssetInfoPanelRoot .appui-text {
+    color: rgb(211, 211, 211);
+    font-size: 14px;
+    text-overflow: ellipsis;
+}
+
+#AssetInfoPanelRoot .field {
+    overflow: hidden;
+    margin-right: 6px;
+    width: 106px;
+    -unity-text-align: middle-left;
+}
+
+#AssetInfoPanelRoot #UpdateVersionButton > #appui-actionbutton__label {
+    color: rgb(255, 255, 255);
+}
+
+#AssetInfoPanelRoot #UpdateVersionButton > #appui-actionbutton__icon {
+    --unity-image-tint-color: rgb(255, 255, 255);
+}
+
+#AssetInfoPanelRoot #Tabs > #appui-tabs__indicator {
+    width: 33.3%;
+}
+
+.LinkedProject {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(74, 74, 74);
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
+    border-bottom-left-radius: 11px;
+    padding-top: 2px;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+}
+
+.LinkedProject #project-icon {
+    width: 16px;
+    height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-left-color: rgb(40, 40, 40);
+    border-right-color: rgb(40, 40, 40);
+    border-top-color: rgb(40, 40, 40);
+    border-bottom-color: rgb(40, 40, 40);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    background-image: url("project://database/Assets/UI/Textures/Project%20Cube.png?fileID=2800000&guid=04874049b567446208be02b6fd737c69&type=3#Project Cube");
+    background-size: 7.2px 7.2px;
+}
+
+.LinkedProject #project-name {
+    -unity-text-align: middle-left;
+    margin-right: 4px;
+    margin-left: 4px;
+    color: rgb(238, 238, 238);
+    font-size: 12px;
+}
+
+.LinkedProject #project-source-icon {
+    width: 16px;
+    height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    align-items: center;
+    justify-content: center;
+    background-size: 7.2px 7.2px;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.56);
+}
+
+.sourceProject {
+    background-image: url("project://database/Assets/UI/Textures/SourceProject.png?fileID=2800000&guid=ffde2bcbf374a4c169b82489be653f24&type=3#SourceProject");
+}
+
+.editProject {
+    background-image: url("project://database/Assets/UI/Textures/PencilCircle.png?fileID=2800000&guid=f114d081b43b04b35b865510903b207e&type=3#PencilCircle");
+}
+
+.AssetInfoTag {
+    padding-top: 2px;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    background-color: rgb(61, 61, 61);
+    font-size: 12px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.AssetStatusDropdownItem .unity-hidden {
+    display: flex;
+    width: 13px;
+    height: 13px;
+    --unity-image: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#UpdateVersionVE .appui-icon {
+    --unity-image-tint-color: rgb(255, 255, 255);
+}
+
+#UpdateVersionVE #appui-divider__content {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#UpdateVersionVE #appui-button__title {
+    -unity-text-align: middle-right;
+    overflow: hidden;
+}
+
+#FilesContainer #DownloadAssetButton > #appui-actionbutton__icon {
+    display: flex;
+    margin-right: 12px;
+}
+
+#FilesContainer #SelectAllCheckBox > #appui-checkbox__box {
+    margin-right: 19px;
+}
+
+#FilesContainer .datasetTitle {
+    height: 48px;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+#FilesContainer .datasetTitle > #appui-actionbutton__label {
+    -unity-text-align: middle-left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 75%;
+    max-width: 75%;
+}
+
+#FilesContainer .file-selection-checkbox {
+    height: 40px;
+}
+
+#FilesContainer .file-selection-checkbox > #appui-checkbox__box {
+    margin-right: 31px;
+}
+
+#FilesContainer .file-selection-checkbox > .appui-icon--primary {
+    width: 32px;
+    height: 32px;
+    background-color: rgb(28, 28, 28);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-left-color: rgba(255, 255, 255, 0.14);
+    border-right-color: rgba(255, 255, 255, 0.14);
+    border-top-color: rgba(255, 255, 255, 0.14);
+    border-bottom-color: rgba(255, 255, 255, 0.14);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    margin-right: 12px;
+    background-size: 55% 55%;
+}
+
+#FilesContainer .file-selection-pic > .appui-icon--primary {
+    background-image: url("project://database/Assets/UI/Textures/2d_placeholder.png?fileID=2800000&guid=ce625724800f44d70a4b3c507b44c102&type=3#2d_placeholder");
+}
+
+#FilesContainer .file-selection-model > .appui-icon--primary {
+    background-image: url("project://database/Assets/UI/Textures/model_placeholder.png?fileID=2800000&guid=8f949170fcc1b4062b82d858c1570f51&type=3#model_placeholder");
+}
+
+#FilesContainer .file-selection-other > .appui-icon--primary {
+    background-image: url("project://database/Assets/UI/Textures/other_placeholder.png?fileID=2800000&guid=7bbe4c9b979b9425a8b7f450f1bcc1a6&type=3#other_placeholder");
+}
+
+.NewVersionAvailable {
+    background-color: rgb(8, 146, 255);
+}
+
+.NewVersionAvailable .appui-icon {
+    width: 18px;
+    height: 18px;
+}

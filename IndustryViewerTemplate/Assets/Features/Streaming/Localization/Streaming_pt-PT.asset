@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Streaming_pt-PT
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-PT
+  m_SharedData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826617756942443
+  m_TableData:
+  - m_Id: 2543798181888
+    m_Localized: Remover recurso do disco local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2720789422080
+    m_Localized: "Tem certeza? Essa a\xE7\xE3o \xE9 irreversivel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2966592413696
+    m_Localized: Remover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3004496338944
+    m_Localized: Recurso removido.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3080430018560
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3629921591296
+    m_Localized: Baixar recurso ao disco local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3705742024704
+    m_Localized: Tem certeza? Observe que o download pode demorar algum tempo devido
+      ao tamanho do arquivo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862307004416
+    m_Localized: Baixar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3894355681280
+    m_Localized: Baixando recurso...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4142910136320
+    m_Localized: "O download de {name} recurso foi conclu\xEDdo..."
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942443
+  - m_Id: 4789797642240
+    m_Localized: Layout de carga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5427377987584
+    m_Localized: Stream
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5709449125888
+    m_Localized: Escolha seus dados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795449135104
+    m_Localized: Que fonte de dados gostarias de utilizar?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858598576128
+    m_Localized: Nuvem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5890873745408
+    m_Localized: Local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399107104768
+    m_Localized: "{name} - Vers\xE3o: {num}"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942443
+  - m_Id: 268399140659200
+    m_Localized: "Nova vers\xE3o dispon\xEDvel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659201
+    m_Localized: "Uma nova vers\xE3o deste recurso est\xE1 disponivel. Gostarias
+      de trocar pela nova vers\xE3o?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659202
+    m_Localized: Trocar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659203
+    m_Localized: Dispensar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659204
+    m_Localized: Sair do streaming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659205
+    m_Localized: Tem certeza de que deseja sair da cena de streaming?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659206
+    m_Localized: "Sa\xEDda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271402836942848
+    m_Localized: "Nova vers\xE3o dispon\xEDvel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15579884532260864
+    m_Localized: Malha de fios
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036333887488
+    m_Localized: Preservar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036354859008
+    m_Localized: "Voc\xEA deseja preservar os ativos referenciados? Esta a\xE7\xE3o
+      \xE9 irrevers\xEDvel."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21710844147523584
+    m_Localized: "Este \xE9 um ativo referenciado de um layout. Tem certeza? Observe
+      que esta a\xE7\xE3o \xE9 irrevers\xEDvel."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22092926879260672
+    m_Localized: "Ativo referenciado - {name} possui uma vers\xE3o local {localVersion}
+      armazenada no dispositivo. Mas o layout requer a vers\xE3o {requiredVersion}.
+      Quer continuar usando a vers\xE3o local?"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942443
+  - m_Id: 40828184860549120
+    m_Localized: Link
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40831164800294912
+    m_Localized: Descarregar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994240
+    m_Localized: Pronto para streaming local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994241
+    m_Localized: "Atualiza\xE7\xE3o dispon\xEDvel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994242
+    m_Localized: Atualizar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755776
+    m_Localized: "Iniciar a transmiss\xE3o?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755777
+    m_Localized: Clique para iniciar o streaming 3D.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652736
+    m_Localized: "Organiza\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652737
+    m_Localized: Projeto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652738
+    m_Localized: "Cole\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3471058132994
+    m_Localized: Salvar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862327975936
+    m_Localized: Nome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644864
+    m_Localized: "N\xE3o foi poss\xEDvel carregar um recurso devido \xE0 permiss\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644865
+    m_Localized: Salvar layout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644866
+    m_Localized: Salvar seu layout 3D no Asset Manager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644867
+    m_Localized: Selecione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40857613896769536
+    m_Localized: Adicionando {asset}
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942443
+  - m_Id: 42308461222944768
+    m_Localized: Carregando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44808540777340928
+    m_Localized: "Voc\xEA n\xE3o tem permiss\xE3o de grava\xE7\xE3o."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45884123531698176
+    m_Localized: Falha ao salvar, ocorreu um erro desconhecido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47728520850300928
+    m_Localized: "Link copiado para a \xE1rea de transfer\xEAncia"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826617756942443
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4142910136320
+        - id: 268399107104768
+        - id: 22092926879260672
+        - id: 40857613896769536

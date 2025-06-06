@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8189805337190003230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630817581311000802}
+  - component: {fileID: 5566567309891808973}
+  - component: {fileID: 3805530258908772848}
+  - component: {fileID: 7968087249051455355}
+  - component: {fileID: 2891413954205171489}
+  m_Layer: 0
+  m_Name: Fly Camera Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &630817581311000802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189805337190003230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5566567309891808973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189805337190003230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75914c53e9bae458fa857f9cff99f018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigationName:
+    m_TableReference:
+      m_TableCollectionName: GUID:4ae8c4accfa144438a938b2e4b7e9449
+    m_TableEntryReference:
+      m_KeyId: 620487499776
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  navigationCamera: {fileID: 0}
+  navigationOptionUIComponent: {fileID: 3805530258908772848}
+  cameraController: {fileID: 2891413954205171489}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &3805530258908772848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189805337190003230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d52441e16944eeba30aa7114d9cde9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigationIcon: {fileID: 2800000, guid: eb520bc8daaecad408c9683aeaaf30ef, type: 3}
+  navigationOptionUIAsset: {fileID: 9197481963319205126, guid: 26c61fdb4d61f46cfa774723c7c46d32,
+    type: 3}
+  m_FlyCameraNavigationController: {fileID: 5566567309891808973}
+  m_CameraInputSystemController: {fileID: 2891413954205171489}
+  m_UIDocument: {fileID: 0}
+  forceJoystickOnDebug: 0
+  initialLeftStickMultiplier: 2
+  invertLeftStickYAxis: 1
+  invertLeftStickXAxis: 0
+--- !u!114 &7968087249051455355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189805337190003230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05268f67881b744f597e42b14012589a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeedCeiling: 9
+  minSpeedPercentOfMaxSpeed: 0.75
+  m_Camera: {fileID: 0}
+  m_Settings: {fileID: 11400000, guid: 66ffcc0064c34a499f0094bbab3b3131, type: 2}
+--- !u!114 &2891413954205171489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8189805337190003230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58f61df04e2742e8a3ff63d49895e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 4b19e694-d72a-407b-a6dd-0881e53bc0cf
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 88252244485246008, guid: fe104ff2e3ac15d4b90642b9dfee20f2,
+      type: 3}
+  m_RotateActionProperty:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Rotate Action Property
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: edeab688-229d-4405-b6b4-4ccd2250afc9
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5648879733196879431, guid: fe104ff2e3ac15d4b90642b9dfee20f2,
+      type: 3}
+  m_Camera: {fileID: 7968087249051455355}

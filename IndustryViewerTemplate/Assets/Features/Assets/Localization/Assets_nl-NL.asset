@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Assets_nl-NL
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: nl-NL
+  m_SharedData: {fileID: 11400000, guid: e57257823a7964becb6eb06d6181f15a, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826606608744549
+  m_TableData:
+  - m_Id: 20735582208
+    m_Localized: Zoekopdracht...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3047743807488
+    m_Localized: Nieuwe versie beschikbaar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4032537026560
+    m_Localized: Naam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4496284442624
+    m_Localized: Versie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4881900363776
+    m_Localized: Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5355433091072
+    m_Localized: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5697486970880
+    m_Localized: Laatst gewijzigd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5951284305920
+    m_Localized: Laatst bewerkt door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6460099518464
+    m_Localized: Uploaddatum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6667159724032
+    m_Localized: Gemaakt door
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7216613548032
+    m_Localized: Downloaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11727306481664
+    m_Localized: Versie {num}
+    m_Metadata:
+      m_Items:
+      - rid: 7555826606608744549
+  - m_Id: 35648491741184
+    m_Localized: Er is een nieuwe versie van het item beschikbaar. Wilt u overstappen
+      naar de nieuwe versie?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35994052059136
+    m_Localized: Schakelaar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36144556269568
+    m_Localized: Afwijzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41819579604992
+    m_Localized: Selecteer Organisatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41959505780736
+    m_Localized: Geen project gevonden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42129496727552
+    m_Localized: Geen organisatie gevonden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52814918180864
+    m_Localized: Naam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52882140291072
+    m_Localized: Uploaddatum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53070703616000
+    m_Localized: Laatst gewijzigd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53211988746240
+    m_Localized: Beschrijving
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53544890654720
+    m_Localized: Status
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71435971190784
+    m_Localized: 'Sorteer op:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83968589291520
+    m_Localized: 2D-activum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84109517905920
+    m_Localized: 3D-model
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84218850828288
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84421402157056
+    m_Localized: Materiaal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84497860124672
+    m_Localized: Ander
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84533826281472
+    m_Localized: Script
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84673161060352
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84751309332480
+    m_Localized: Eenheidsredacteur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113148827787264
+    m_Localized: Item uploaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113743160664064
+    m_Localized: Organisatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 113829009678336
+    m_Localized: Project
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114272427302912
+    m_Localized: Verzameling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114765505486848
+    m_Localized: Bestandspad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 115961192505344
+    m_Localized: Selecteer het bestand dat u wilt uploaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116076095463424
+    m_Localized: Selectie verwijderen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116427913682944
+    m_Localized: Activa uploaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 117455979536384
+    m_Localized: Item uploaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 126885479571456
+    m_Localized: Item gemaakt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129700784496640
+    m_Localized: Selecteer Bestanden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25800459972239360
+    m_Localized: Bestandsgrootte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25800460005793792
+    m_Localized: Totaal bestand(en)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25801326007934976
+    m_Localized: Labels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25802025936609280
+    m_Localized: Item-ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938399420416
+    m_Localized: Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809024
+    m_Localized: Opmerkingen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809025
+    m_Localized: Bestanden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809026
+    m_Localized: Binnenkort beschikbaar...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26945938407809027
+    m_Localized: Selecteer Alles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26946288296648704
+    m_Localized: Beoordeling
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826606608744549
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 11727306481664

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Hierarchy Tool_zh-TW
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: zh-TW
+  m_SharedData: {fileID: 11400000, guid: 48832e3252a4b48af8afab88b5bbc379, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2275631161344
+    m_Localized: "\u5C64\u6B21\u7D50\u69CB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40541884567773184
+    m_Localized: "\u7DB2\u683C\u5C3A\u5BF8"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428906041346
+    m_Localized: "\u5FA9\u4F4D\u4F4D\u7F6E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42677741605085184
+    m_Localized: "\u8F09\u5165\u4E2D"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

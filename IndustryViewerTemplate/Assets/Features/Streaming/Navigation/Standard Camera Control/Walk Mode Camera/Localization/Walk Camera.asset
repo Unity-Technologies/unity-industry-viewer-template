@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Walk Camera
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 3bf1a8307fe86b8418904feee1cddd02, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: f33b3b16231a9c046a6075d3d1404f78, type: 2}
+  - {fileID: 11400000, guid: 413cfba82a9b7334cb5e1d35da4e94ec, type: 2}
+  - {fileID: 11400000, guid: 9fb7a3f35c2a4994c84db44ab223c4b6, type: 2}
+  - {fileID: 11400000, guid: 6af31f3659eb92f4c97d0f1638091712, type: 2}
+  - {fileID: 11400000, guid: 753c3d968aa8d444ca20bdd9fb5427c3, type: 2}
+  - {fileID: 11400000, guid: 20b924220c4ad3d448c8fdfe934ca72d, type: 2}
+  - {fileID: 11400000, guid: 33fd2bc4b2857b14b900ec2ce8480e6c, type: 2}
+  - {fileID: 11400000, guid: 03241ea536b695c4ebb13172275e1d85, type: 2}
+  - {fileID: 11400000, guid: ec52d05f27acc8b46805e03c100c049e, type: 2}
+  - {fileID: 11400000, guid: e57acbef1d81a0149919b51a03c7e208, type: 2}
+  - {fileID: 11400000, guid: 5aa84be0975d8ad44892ef7e82291c04, type: 2}
+  - {fileID: 11400000, guid: 25c5e1db25e439240976d9f3d16cf54b, type: 2}
+  - {fileID: 11400000, guid: c76d889753fa4ef45b3db07fe44e06ce, type: 2}
+  - {fileID: 11400000, guid: 22cc4fd1ef871c545b018d28e364ec20, type: 2}
+  - {fileID: 11400000, guid: ac99c3a3124ca82448f650b47a68d6bb, type: 2}
+  - {fileID: 11400000, guid: eceaa924fa512ea45b63bc3ae6ebb1d7, type: 2}
+  - {fileID: 11400000, guid: dcee5bf29c673184492466d2986707de, type: 2}
+  m_Group: String Table

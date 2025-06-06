@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Mobile AR_sv
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: sv
+  m_SharedData: {fileID: 11400000, guid: 8439f8a59aa98411c86af28e69b5af05, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 751689523200
+    m_Localized: Mobil AR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454209
+    m_Localized: "L\xE5sl\xE4ge"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464783454210
+    m_Localized: Ocklusion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648512
+    m_Localized: <u>Spatialt ankare</u>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648513
+    m_Localized: Spara spatialt ankare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648514
+    m_Localized: "L\xE4s in spatialt ankare"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648515
+    m_Localized: Flytta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648516
+    m_Localized: Rotera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648517
+    m_Localized: Skala
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648518
+    m_Localized: "\xD6ka"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648519
+    m_Localized: "\xC5terst\xE4ll till standardposition"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3464787648520
+    m_Localized: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506304
+    m_Localized: AR-ankare justerat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506305
+    m_Localized: AR-ankare sparad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506306
+    m_Localized: "Det gick inte att spara AR-ankaret - Ok\xE4nt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506307
+    m_Localized: "Skanna och tryck f\xF6r att initiera tillg\xE5ngens position"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7191313506308
+    m_Localized: "Du kan finjustera din tillg\xE5ng och trycka p\xE5 L\xE5s position"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627148898304
+    m_Localized: X-axeln
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286912
+    m_Localized: Y-axel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41362627157286913
+    m_Localized: Z-axel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44105927752671232
+    m_Localized: "L\xE5s upp position"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947435593728
+    m_Localized: Lastning misslyckades
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45568947439788032
+    m_Localized: "Du har inte skrivbeh\xF6righet."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

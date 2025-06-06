@@ -1,0 +1,274 @@
+.GridAssetNonSelected {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-left-color: rgb(77, 77, 77);
+    border-right-color: rgb(77, 77, 77);
+    border-top-color: rgb(77, 77, 77);
+    border-bottom-color: rgb(77, 77, 77);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.GridAssetSelected {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: rgb(80, 141, 248);
+    border-right-color: rgb(80, 141, 248);
+    border-top-color: rgb(80, 141, 248);
+    border-bottom-color: rgb(80, 141, 248);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    background-color: rgb(24, 39, 69);
+}
+
+.ProjectButtonClose > #appui-actionbutton__icon {
+    transition-property: rotate;
+    transition-timing-function: linear;
+    transition-duration: 0.25s;
+    rotate: 0;
+}
+
+.ProjectButtonOpen > #appui-actionbutton__icon {
+    transition-property: rotate;
+    transition-timing-function: linear;
+    transition-duration: 0.25s;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    rotate: 180deg;
+}
+
+.ProjectAssetActionButton > #appui-actionbutton__label {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-overflow: ellipsis;
+    -unity-text-align: middle-left;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ProjectAssetActionButton {
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right: 70px;
+    padding-left: 10px;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 40px;
+    border-width: 0;
+    align-self: flex-start;
+    width: 100%;
+    border-radius: 6px;
+    margin-right: 4px;
+}
+
+.ProjectAssetActionButtonNotSelected {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.ProjectAssetActionButton:hover {
+    background-color: rgb(1, 1, 1);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.ActionButtonArrow .appui-icon-- {
+    background-image: url("project://database/Assets/UI/Textures/DownArrow.png?fileID=2800000&guid=3e527df8ddfbf4713b33dc173ffa7696&type=3#DownArrow");
+    display: flex;
+    position: absolute;
+    right: 18.34px;
+    width: 23.34px;
+    height: 13.33px;
+}
+
+.ProjectAssetActionButtonLastLevel .appui-icon-- {
+    display: none;
+}
+
+.AssetDropDownCreation #appui-picker__caret {
+    width: 23.34px;
+    max-width: 23.34px;
+    min-width: 23.34px;
+    height: 13.33px;
+    max-height: 13.33px;
+    position: absolute;
+    right: 13.34px;
+}
+
+.AssetDropDownArrow #appui-picker__caret {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    width: 23.34px;
+    height: 13.33px;
+}
+
+#DatasetDropdown > #appui-picker__titlecontainer > #appui-picker__title > #appui-dropdown-item__label {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+.EmptyList > .unity-scroll-view--vertical-horizontal > #unity-content-and-vertical-scroll-container > #unity-content-viewport > #unity-content-container {
+    display: none;
+}
+
+#AddNewAssetButton > #appui-actionbutton__label {
+    font-size: 16px;
+    -unity-text-outline-color: rgb(255, 255, 255);
+    -unity-text-outline-width: 0.5px;
+}
+
+#AssetCreationFileList #FileLabel {
+    font-size: 16px;
+    margin-left: 20px;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+    overflow: hidden;
+    -unity-text-align: middle-left;
+    height: 30px;
+    max-height: 30px;
+    min-height: 30px;
+}
+
+#AssetDescriptionField > #appui-textarea__placeholder {
+    width: 660px;
+    height: 100%;
+}
+
+#AssetDescriptionField > #appui-textarea__input {
+    overflow: visible;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 680px;
+    max-width: 680px;
+}
+
+#AssetDescriptionField > #appui-textarea__input > #unity-text-input > .unity-scroll-view--vertical > #unity-content-and-vertical-scroll-container > #unity-content-viewport {
+    background-color: rgb(48, 48, 48);
+    width: 660px;
+    max-width: 660px;
+    min-width: 660px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: rgb(77, 77, 77);
+    border-right-color: rgb(77, 77, 77);
+    border-top-color: rgb(77, 77, 77);
+    border-bottom-color: rgb(77, 77, 77);
+}
+
+#AssetDescriptionField > #appui-textarea__input > #unity-text-input > .unity-scroll-view--vertical > #unity-content-and-vertical-scroll-container > #unity-content-viewport > #unity-content-container {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+#AssetDescriptionField > #appui-textarea__input > #unity-text-input > .unity-scroll-view--vertical > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller {
+    left: 10px;
+}
+
+#AssetDescriptionField #appui-textarea__resize-handle {
+    display: none;
+}
+
+#AssetCreationFileList > .unity-scroll-view--vertical {
+    width: 660px;
+    max-width: 660px;
+    background-color: rgb(48, 48, 48);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: rgb(77, 77, 77);
+    border-right-color: rgb(77, 77, 77);
+    border-top-color: rgb(77, 77, 77);
+    border-bottom-color: rgb(77, 77, 77);
+}
+
+#AssetCreationFileList > .unity-scroll-view--vertical > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller {
+    left: 22px;
+    width: 10px;
+    max-width: 10px;
+    min-width: 10px;
+}
+
+#AssetCreationFileList > .unity-collection-view__scroll-view > #unity-content-and-vertical-scroll-container > #unity-content-viewport {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+#AMButton > #appui-button__leadingcontainer > #appui-button__leadingicon {
+    background-image: url("project://database/Assets/UI/Textures/Globe.png?fileID=2800000&guid=2b271471c7feb4bcc812b13b448aa595&type=3#Globe");
+}
+
+#OrganizationButton > #appui-actionbutton__icon {
+    background-image: url("project://database/Assets/UI/Textures/UsersThree.png?fileID=2800000&guid=d8c9333cc1334463db2e8e7a5cd79b4a&type=3#UsersThree");
+    display: flex;
+    margin-right: 16px;
+    width: 40px;
+    height: 40px;
+    border-left-color: rgb(77, 77, 77);
+    border-right-color: rgb(77, 77, 77);
+    border-top-color: rgb(77, 77, 77);
+    border-bottom-color: rgb(77, 77, 77);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: rgb(48, 48, 48);
+    background-size: 31px 31px;
+    -unity-background-image-tint-color: rgb(188, 188, 188);
+}
+
+#OrganizationButton {
+    width: 456px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-size: 22px;
+    -unity-text-align: middle-left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#AssetLeftPanel {
+    padding-top: 11px;
+    padding-right: 10px;
+    padding-bottom: 11px;
+}

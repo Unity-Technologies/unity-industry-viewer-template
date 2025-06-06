@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Streaming_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 0f0e26e2fcb43452a837fa831753065b, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7555826617756942445
+  m_TableData:
+  - m_Id: 2543798181888
+    m_Localized: 'Eliminar recurso del disco local '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2720789422080
+    m_Localized: "\xBFEst\xE1 seguro? Esta acci\xF3n es irreversible"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2966592413696
+    m_Localized: Eliminar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3004496338944
+    m_Localized: "\u0420\u0435\u0441\u0443\u0440\u0441 \u0443\u0434\u0430\u043B\u0435\u043D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3080430018560
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3629921591296
+    m_Localized: Descargar recurso al disco local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3705742024704
+    m_Localized: "\xBFEst\xE1 seguro? La descarga puede tardar debido al tama\xF1o
+      del archivo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862307004416
+    m_Localized: Descargar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3894355681280
+    m_Localized: Descargando recurso...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4142910136320
+    m_Localized: "Termin\xF3 de descargar el recurso {name}..."
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942445
+  - m_Id: 4789797642240
+    m_Localized: "Cargar dise\xF1o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5427377987584
+    m_Localized: Stream
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5709449125888
+    m_Localized: Elige tus datos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795449135104
+    m_Localized: "\xBFQu\xE9 fuente de datos le gustar\xEDa utilizar?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858598576128
+    m_Localized: Nube
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5890873745408
+    m_Localized: Local
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399107104768
+    m_Localized: "{name} - Versi\xF3n: {num}"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942445
+  - m_Id: 268399140659200
+    m_Localized: "Nueva versi\xF3n disponible"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659201
+    m_Localized: "Hay una nueva versi\xF3n del recurso disponible. \xBFDesea cambiar
+      a la nueva versi\xF3n?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659202
+    m_Localized: Cambiar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659203
+    m_Localized: Rechazar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659204
+    m_Localized: Salir del streaming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659205
+    m_Localized: "\xBFEst\xE1 seguro de salir de la escena de streaming?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268399140659206
+    m_Localized: Salida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271402836942848
+    m_Localized: "Nueva versi\xF3n disponible"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15579884532260864
+    m_Localized: "Estructura al\xE1mbrica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036333887488
+    m_Localized: Preservar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21644036354859008
+    m_Localized: "\xBFQuiere conservar los activos referenciados? Esta acci\xF3n
+      es irreversible."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21710844147523584
+    m_Localized: "Este es un activo al que se hace referencia desde un dise\xF1o.
+      \xBFEst\xE1 seguro? Tenga en cuenta que esta acci\xF3n es irreversible."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22092926879260672
+    m_Localized: "Activo referenciado: {name} tiene una versi\xF3n local {localVersion}
+      almacenada en el dispositivo. Pero el dise\xF1o requiere la versi\xF3n {requiredVersion}.
+      \xBFQuieres seguir usando la versi\xF3n local?"
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942445
+  - m_Id: 40828184860549120
+    m_Localized: Enlace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40831164800294912
+    m_Localized: Descargar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994240
+    m_Localized: "Listo para transmisi\xF3n local"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994241
+    m_Localized: "Actualizaci\xF3n disponible"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40835830153994242
+    m_Localized: Actualizar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755776
+    m_Localized: "\xBFEmpezar a transmitir?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40847564071755777
+    m_Localized: Haz clic para iniciar el streaming 3D
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652736
+    m_Localized: "Organizaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652737
+    m_Localized: Proyecto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428897652738
+    m_Localized: "Recopilaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3471058132994
+    m_Localized: Ahorrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3862327975936
+    m_Localized: Nombre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644864
+    m_Localized: No se puede cargar un recurso debido al permiso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644865
+    m_Localized: "Guardar dise\xF1o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644866
+    m_Localized: "Guardar tu dise\xF1o 3D en Asset Manager"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40851833860644867
+    m_Localized: Seleccionar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40857613896769536
+    m_Localized: Agregar {asset}
+    m_Metadata:
+      m_Items:
+      - rid: 7555826617756942445
+  - m_Id: 42308461222944768
+    m_Localized: Cargando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44808540777340928
+    m_Localized: No tienes permiso de escritura.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45884123531698176
+    m_Localized: Error al guardar, se produjo un error desconocido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47728520850300928
+    m_Localized: Enlace copiado al portapapeles
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7555826617756942445
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 4142910136320
+        - id: 268399107104768
+        - id: 22092926879260672
+        - id: 40857613896769536

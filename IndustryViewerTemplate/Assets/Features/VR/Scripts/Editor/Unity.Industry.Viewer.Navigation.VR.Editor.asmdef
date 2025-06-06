@@ -1,0 +1,22 @@
+{
+    "name": "Unity.Industry.Viewer.Navigation.VR.Editor",
+    "rootNamespace": "Unity.Industry.Viewer.Navigation.VR.Editor",
+    "references": [
+        "GUID:e40ba710768534012815d3193fa296cb",
+        "GUID:f9fe0089ec81f4079af78eb2287a6163",
+        "GUID:9e6bdf94fcb245c585c26819fa23a202",
+        "GUID:4af21795022437d4bb139a86514b9ff9",
+        "GUID:4847341ff46394e83bb78fbd0652937e"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

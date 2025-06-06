@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: InAppSettings_it-IT
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: it-IT
+  m_SharedData: {fileID: 11400000, guid: 753eb184db2564b0bacaa9891468f216, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 13261332480
+    m_Localized: Versione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 642184634368
+    m_Localized: Frequenza di aggiornamento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 994900434944
+    m_Localized: Mostra FPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1747224354816
+    m_Localized: Generale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4932475281408
+    m_Localized: FPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53920947757056
+    m_Localized: Lingua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44170049240424448
+    m_Localized: "Modalit\xE0 offline"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45987493470789632
+    m_Localized: "Modalit\xE0 offline attivata"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

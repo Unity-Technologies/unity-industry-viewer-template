@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Orbit Camera_fi
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fi
+  m_SharedData: {fileID: 11400000, guid: 2b1ee5ee94d4041f0bff4b3e7fe7a699, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 12604054429696
+    m_Localized: Kiertokamera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12455156637696
+    m_Localized: Kiertonopeus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12455160832000
+    m_Localized: Panorointinopeus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12455160832001
+    m_Localized: Zoomausnopeus
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

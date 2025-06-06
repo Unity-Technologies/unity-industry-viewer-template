@@ -1,0 +1,28 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Features/Streaming/Navigation/Standard%20Camera%20Control/Shared/JoystickToggleStyle.uss?fileID=7433441132597879392&amp;guid=ca80b3b80e1286d4c852d3ddc57320ac&amp;type=3#JoystickToggleStyle" />
+    <engine:VisualElement style="flex-grow: 0;">
+        <Unity.AppUI.UI.TouchSliderFloat label="Move Sensitivity" low-value="0.01" high-value="5" value="1" name="MoveSensitivitySlider" increment-factor="0.01" format-string="g2" style="margin-bottom: 15px; margin-top: 15px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:3bf1a8307fe86b8418904feee1cddd02" entry="Id(29980151459840)" />
+            </Bindings>
+        </Unity.AppUI.UI.TouchSliderFloat>
+        <Unity.AppUI.UI.TouchSliderFloat label="Rotation Sensitivity" low-value="0.01" high-value="5" value="1" name="CameraHeightSlider" increment-factor="0.01" format-string="g2" style="margin-bottom: 15px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:3bf1a8307fe86b8418904feee1cddd02" entry="Id(754539096907776)" />
+            </Bindings>
+        </Unity.AppUI.UI.TouchSliderFloat>
+        <Unity.AppUI.UI.TouchSliderFloat label="Rotation Sensitivity" low-value="0.01" high-value="5" value="1" name="RotationSensitivitySlider" increment-factor="0.01" format-string="g2" style="margin-bottom: 15px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:3bf1a8307fe86b8418904feee1cddd02" entry="Id(29980151459841)" />
+            </Bindings>
+        </Unity.AppUI.UI.TouchSliderFloat>
+        <engine:VisualElement name="Joystick" style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center; color: rgb(255, 255, 255);">
+            <Unity.AppUI.UI.Text style="color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=993effd90b723914aa3d1d0650f5bbaf&amp;type=3#NotInter-Regular&quot;); font-size: 14px; width: 200px; -unity-font-style: normal; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:3bf1a8307fe86b8418904feee1cddd02" entry="Id(13492953057058816)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Toggle name="JoystickToggle" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d744d253268246e79562c2581e3025d, type: 3}
+  m_Name: New Asset Place Holder Scriptable Object
+  m_EditorClassIdentifier: 
+  m_AssetPlaceHolders:
+  - assetType: 0
+    assetTypeIcon: {fileID: 2800000, guid: ce625724800f44d70a4b3c507b44c102, type: 3}
+  - assetType: 1
+    assetTypeIcon: {fileID: 2800000, guid: 8f949170fcc1b4062b82d858c1570f51, type: 3}
+  - assetType: 2
+    assetTypeIcon: {fileID: 2800000, guid: 8f33165c4ac01471bad377d100be6548, type: 3}
+  - assetType: 3
+    assetTypeIcon: {fileID: 2800000, guid: 5727d7745d1f44e3b9f98bc4ef43ce52, type: 3}
+  - assetType: 4
+    assetTypeIcon: {fileID: 2800000, guid: 7bbe4c9b979b9425a8b7f450f1bcc1a6, type: 3}
+  - assetType: 5
+    assetTypeIcon: {fileID: 2800000, guid: 00748417804874cb1904f0e6b8941691, type: 3}
+  - assetType: 6
+    assetTypeIcon: {fileID: 2800000, guid: e99f7e0d7015047f58816cb9f9a6972c, type: 3}

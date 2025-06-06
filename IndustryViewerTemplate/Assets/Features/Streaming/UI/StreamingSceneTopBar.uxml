@@ -1,0 +1,18 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1; height: 40px; max-height: 40px; min-height: 40px; flex-direction: row;">
+        <Unity.AppUI.UI.Text name="AssetTitle" style="font-size: 30px; color: rgb(0, 0, 0); margin-right: 16px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 400px; min-width: 400px;" />
+        <engine:VisualElement name="AssetLoader" style="flex-grow: 0; flex-direction: row; margin-right: 16px;">
+            <Unity.AppUI.UI.CircularProgress color-override="#000000FF" style="margin-right: 4px;" />
+            <Unity.AppUI.UI.Text style="color: rgb(29, 29, 29); font-size: 22px; -unity-font-style: bold;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(42308461222944768)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+        </engine:VisualElement>
+        <Unity.AppUI.UI.ActionButton label="New Ver. Available!" size="L" name="VersionButton" style="height: 40px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="label" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(271402836942848)" />
+            </Bindings>
+        </Unity.AppUI.UI.ActionButton>
+    </engine:VisualElement>
+</engine:UXML>

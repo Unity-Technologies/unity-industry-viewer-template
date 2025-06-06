@@ -1,0 +1,7 @@
+.appui-icon-white{
+    --unity-image-tint-color: rgb(255, 255, 255);
+}
+
+.unity-base-slider__dragger {
+    background-color: #DCDCDC;
+}
