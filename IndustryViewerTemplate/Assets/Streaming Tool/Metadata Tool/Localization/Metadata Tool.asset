@@ -31,4 +31,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce2046f5b9e464fa18b23922c03f3c89, type: 2}
   - {fileID: 11400000, guid: 38e697c741e2a4fe4a5b5eb67490234d, type: 2}
   - {fileID: 11400000, guid: fdcd764f7261c41cfa0701cafe663d71, type: 2}
-  m_Group: String Table
+  m_Extensions:
+  - rid: 1314252993058308304
