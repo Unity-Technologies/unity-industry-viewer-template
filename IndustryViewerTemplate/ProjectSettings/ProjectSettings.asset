@@ -166,7 +166,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.unity.industryviewer
+    Android: com.unity.industry-viewer
     Standalone: com.unity.industry-viewer
     VisionOS: com.unity.industry-viewer
     iPhone: com.unity.industry-viewer
