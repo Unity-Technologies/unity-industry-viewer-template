@@ -294,7 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfc8f636a240481b8cb900c5774936e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serviceAccountCredentials: {fileID: 0}
+  serviceAccountCredentials: {fileID: 11400000, guid: 1f6c7ba0b434942de81403768a0e326b,
+    type: 2}
 --- !u!4 &685454538
 Transform:
   m_ObjectHideFlags: 0
