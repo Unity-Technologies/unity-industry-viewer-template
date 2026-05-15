@@ -4,15 +4,10 @@ using System.Linq;
 using UnityEngine;
 using System.Threading;
 using Unity.Cloud.Collaboration;
-using Unity.Cloud.Collaboration.Abstractions;
 using Unity.Industry.Viewer.Assets;
 using Unity.Industry.Viewer.Shared;
 using Unity.Cloud.Common;
 using System.Threading.Tasks;
-using Unity.Cloud.Collaboration.Models.Abstractions;
-using Unity.Cloud.Collaboration.Models.Annotations;
-using Unity.Cloud.Collaboration.Models.AttachmentRequest;
-using Unity.Cloud.Collaboration.Models.Attachments;
 using Unity.Industry.Viewer.Streaming;
 
 namespace Unity.Industry.Viewer.Collaboration
@@ -42,7 +37,7 @@ namespace Unity.Industry.Viewer.Collaboration
         public const string k_AssetVersionIdKey = "assetVersion";
         public const string k_AssetVersionNumberKey = "versionNumber";
 
-        private static IAnnotationManagement m_AnnotationManagement => PlatformServices.AnnotationManagement;
+        private static AnnotationManagement m_AnnotationManagement => PlatformServices.AnnotationManagement;
 
         private void Start()
         {
@@ -101,38 +96,37 @@ namespace Unity.Industry.Viewer.Collaboration
         {
             SpatialPosition position = new SpatialPosition(spatialAttachment.transform.localPosition.x,
                 spatialAttachment.transform.localPosition.y, spatialAttachment.transform.localPosition.z);
-            
+
             SpatialPosition cameraPosition = new SpatialPosition(Camera.main.transform.position.x,
                 Camera.main.transform.position.y, Camera.main.transform.position.z);
-            
+
             SpatialRotation cameraRotation = new SpatialRotation(Camera.main.transform.rotation.eulerAngles.x,
                 Camera.main.transform.rotation.eulerAngles.y, Camera.main.transform.rotation.eulerAngles.z);
-            
+
             ICameraDetails newCameraDetails = new CameraDetails(
                 position:  cameraPosition,
                 rotation: cameraRotation,
                 fieldOfView: Camera.main.fieldOfView
             );
-            
+
             var newSpatialAttachmentRequest = new CreateSpatial3DAttachmentRequest(
                 label: annotationId.ToString(),
                 position: position,
                 camera: newCameraDetails
             );
-            
+
             var done = false;
             GlobalCancellationTokenSource = token;
             var info = RetrieveInfo(assetInfo);
             try
             {
                 await m_AnnotationManagement.CreateAnnotationAttachmentAsync(
-                    projectId: info.ProjectId,
-                    annotationId: annotationId,
-                    requestModel: newSpatialAttachmentRequest,
-                    cancellationToken: token.Token);
-                
+                    new AnnotationReference(info.ProjectId, annotationId),
+                    newSpatialAttachmentRequest,
+                    token.Token);
+
                 token.Token.ThrowIfCancellationRequested();
-                
+
                 done = true;
             }
             catch (OperationCanceledException oe)
@@ -160,10 +154,9 @@ namespace Unity.Industry.Viewer.Collaboration
             try
             {
                 var newAttachmentRequestAsync = await m_AnnotationManagement.CreateAnnotationAttachmentAsync(
-                    projectId: info.ProjectId,
-                    annotationId: annotationId,
-                    requestModel: newAttachmentRequest,
-                    cancellationToken: token.Token);
+                    new AnnotationReference(info.ProjectId, annotationId),
+                    newAttachmentRequest,
+                    token.Token);
 
                 token.Token.ThrowIfCancellationRequested();
 
@@ -176,11 +169,9 @@ namespace Unity.Industry.Viewer.Collaboration
                 token.Token.ThrowIfCancellationRequested();
 
                 await PlatformServices.AnnotationManagement.FinalizeAnnotationAttachmentAsync(
-                    info.ProjectId,
-                    annotationId,
-                    attachmentId,
+                    new AttachmentReference(info.ProjectId, annotationId, attachmentId),
                     attachment.FileName,
-                    cancellationToken: token.Token);
+                    token.Token);
 
                 token.Token.ThrowIfCancellationRequested();
 
@@ -211,8 +202,9 @@ namespace Unity.Industry.Viewer.Collaboration
                 var success = false;
                 try
                 {
-                    await m_AnnotationManagement.DeleteAttachmentAsync(info.ProjectId,
-                        arg1.AnnotationId, arg2.AttachmentId, token.Token);
+                    await m_AnnotationManagement.DeleteAttachmentAsync(
+                        new AttachmentReference(info.ProjectId, arg1.AnnotationId, arg2.AttachmentId),
+                        token.Token);
                     success = true;
                 }
                 catch (Exception e)
@@ -241,10 +233,12 @@ namespace Unity.Industry.Viewer.Collaboration
                 {
                     if (add)
                     {
-                        await m_AnnotationManagement.CreateAnnotationReactionAsync(info.ProjectId, annotation.AnnotationId,
+                        await m_AnnotationManagement.CreateAnnotationReactionAsync(
+                            new AnnotationReference(info.ProjectId, annotation.AnnotationId),
                             code, token.Token);
                     } else {
-                        await m_AnnotationManagement.DeleteAnnotationReactionAsync(info.ProjectId, annotation.AnnotationId,
+                        await m_AnnotationManagement.DeleteAnnotationReactionAsync(
+                            new AnnotationReference(info.ProjectId, annotation.AnnotationId),
                             code, token.Token);
                     }
                 }
@@ -258,7 +252,7 @@ namespace Unity.Industry.Viewer.Collaboration
                 }
             }
         }
-        
+
         private void OnLoadUpdatedAnnotation(AssetInfo assetInfo, CancellationTokenSource token, AnnotationId annotationId, Action<IAnnotation> callback)
         {
             _ = LoadUpdated();
@@ -273,7 +267,8 @@ namespace Unity.Industry.Viewer.Collaboration
                 IAnnotation newAnnotation = null;
                 try
                 {
-                    newAnnotation = await m_AnnotationManagement.ReadAnnotationAsync(info.ProjectId, annotationId,
+                    newAnnotation = await m_AnnotationManagement.ReadAnnotationAsync(
+                        new AnnotationReference(info.ProjectId, annotationId),
                         token.Token);
                 } catch (Exception e)
                 {
@@ -301,14 +296,15 @@ namespace Unity.Industry.Viewer.Collaboration
                 {
                     if (!string.Equals(annotationToUpdate.Text, text))
                     {
-                        await m_AnnotationManagement.UpdateAnnotationAsync(info.ProjectId, annotationToUpdate.AnnotationId,
+                        await m_AnnotationManagement.UpdateAnnotationAsync(
+                            new AnnotationReference(info.ProjectId, annotationToUpdate.AnnotationId),
                             text, token.Token);
-                        
+
                         token?.Cancel();
                         token = new CancellationTokenSource();
                         GlobalCancellationTokenSource = token;
                     }
-                    
+
                     if (attachments != null && attachments.Count > 0)
                     {
                         foreach (var attachment in attachments)
@@ -316,7 +312,7 @@ namespace Unity.Industry.Viewer.Collaboration
                             _ = await UploadAttachment(assetInfo, token, annotationToUpdate.AnnotationId, attachment);
                         }
                     }
-                    
+
                     callback?.Invoke(annotationToUpdate);
                 } catch (Exception e)
                 {
@@ -338,7 +334,8 @@ namespace Unity.Industry.Viewer.Collaboration
                 var info = RetrieveInfo(assetInfo);
                 try
                 {
-                    await m_AnnotationManagement.DeleteAnnotationAsync(info.ProjectId, annotationToDelete.AnnotationId,
+                    await m_AnnotationManagement.DeleteAnnotationAsync(
+                        new AnnotationReference(info.ProjectId, annotationToDelete.AnnotationId),
                         token.Token);
                 } catch (Exception e)
                 {
@@ -361,22 +358,24 @@ namespace Unity.Industry.Viewer.Collaboration
                 token = new CancellationTokenSource();
                 GlobalCancellationTokenSource = token;
                 var info = RetrieveInfo(assetInfo);
-                
+
                 if (follow)
                 {
-                    await m_AnnotationManagement.SubscribeToThreadAsync(info.ProjectId, annotation.AnnotationId,
-                        cancellationToken: token.Token);
+                    await m_AnnotationManagement.SubscribeToAnnotationThreadAsync(
+                        new AnnotationReference(info.ProjectId, annotation.AnnotationId),
+                        token.Token);
                 } else
                 {
-                    await m_AnnotationManagement.UnsubscribeFromThreadAsync(info.ProjectId, annotation.AnnotationId,
-                        cancellationToken: token.Token);
+                    await m_AnnotationManagement.UnsubscribeFromAnnotationThreadAsync(
+                        new AnnotationReference(info.ProjectId, annotation.AnnotationId),
+                        token.Token);
                 }
-                
+
                 token?.Cancel();
                 token = new CancellationTokenSource();
                 GlobalCancellationTokenSource = token;
                 var isUserFollowing = await IsUserFollowing(assetInfo, annotation, token);
-                
+
                 callback?.Invoke(isUserFollowing, annotation);
             }
         }
@@ -393,9 +392,7 @@ namespace Unity.Industry.Viewer.Collaboration
                 try
                 {
                     var result = await m_AnnotationManagement.ReadAnnotationFileAttachmentDownloadUrlAsync(
-                        info.ProjectId,
-                        annotation.AnnotationId,
-                        attachment.AttachmentId,
+                        new AttachmentReference(info.ProjectId, annotation.AnnotationId, attachment.AttachmentId),
                         filePath: fileName,
                         cancellationToken: token.Token
                     );
@@ -418,8 +415,9 @@ namespace Unity.Industry.Viewer.Collaboration
         {
             var info = RetrieveInfo(assetInfo);
             GlobalCancellationTokenSource = token;
-            var result = await m_AnnotationManagement.IsSubscribedToThreadAsync(info.ProjectId,
-                annotation.AnnotationId, token.Token);
+            var result = await m_AnnotationManagement.IsSubscribedToAnnotationThreadAsync(
+                new AnnotationReference(info.ProjectId, annotation.AnnotationId),
+                token.Token);
             return result.IsSubscribed;
         }
 
@@ -428,11 +426,11 @@ namespace Unity.Industry.Viewer.Collaboration
             bool isStartingNewThread = rootAnnotationId == string.Empty;
             _ = NewAnnotation();
             return;
-            
+
             async Task NewAnnotation()
             {
                 var info = RetrieveInfo(assetInfo);
-                
+
                 var targetContext = new Dictionary<string, string>
                 {
                     { k_AssetVersionIdKey, info.assetVersion.ToString() },
@@ -446,22 +444,23 @@ namespace Unity.Industry.Viewer.Collaboration
                     token = new CancellationTokenSource();
                     GlobalCancellationTokenSource = token;
                     var newAnnotationId = await m_AnnotationManagement.CreateAnnotationAsync(
-                        info.ProjectId,
-                        info.target,
-                        targetContext: targetContext,
-                        text: message,
-                        rootAnnotationId: isStartingNewThread? null : rootAnnotationId,
-                        cancellationToken: token.Token);
+                        new StringReference(info.ProjectId, info.target),
+                        new CreateAnnotationData(
+                            targetContext: targetContext,
+                            text: message,
+                            rootAnnotationId: isStartingNewThread ? null : new AnnotationId(rootAnnotationId)
+                        ),
+                        token.Token);
                     token.Token.ThrowIfCancellationRequested();
-                    
+
                     bool hasAttachments = attachments != null && attachments.Count > 0;
                     bool allAttachmentsUploaded = true;
-                    
+
                     if (hasAttachments)
                     {
                         Debug.Log("Uploading " + attachments.Count + " attachments");
                         token.Token.ThrowIfCancellationRequested();
-                        
+
                         foreach (var attachment in attachments)
                         {
                             Debug.Log("Uploading attachment: " + attachment.FileName);
@@ -482,14 +481,15 @@ namespace Unity.Industry.Viewer.Collaboration
                             allAttachmentsUploaded = false;
                         }
                     }
-                    
-                    newAnnotation = await m_AnnotationManagement.ReadAnnotationAsync(info.ProjectId, newAnnotationId,
+
+                    newAnnotation = await m_AnnotationManagement.ReadAnnotationAsync(
+                        new AnnotationReference(info.ProjectId, newAnnotationId),
                         token.Token);
 
                     token.Token.ThrowIfCancellationRequested();
 
-                    success = success = !string.IsNullOrEmpty(newAnnotationId.ToString()) && allAttachmentsUploaded;
-                    
+                    success = !string.IsNullOrEmpty(newAnnotationId.ToString()) && allAttachmentsUploaded;
+
                 }
                 catch (OperationCanceledException oe)
                 {
@@ -517,28 +517,31 @@ namespace Unity.Industry.Viewer.Collaboration
                 token = new CancellationTokenSource();
                 GlobalCancellationTokenSource = token;
                 var info = RetrieveInfo(assetInfo);
-                
+
                 try
                 {
                     if (resolve)
                     {
-                        await m_AnnotationManagement.ResolveAnnotationAsync(info.ProjectId, arg1.AnnotationId,
-                            cancellationToken: token.Token);
+                        await m_AnnotationManagement.ResolveAnnotationAsync(
+                            new AnnotationReference(info.ProjectId, arg1.AnnotationId),
+                            token.Token);
                     }
                     else
                     {
-                        await m_AnnotationManagement.UnresolveAnnotationAsync(info.ProjectId, arg1.AnnotationId,
-                            cancellationToken: token.Token);
+                        await m_AnnotationManagement.UnresolveAnnotationAsync(
+                            new AnnotationReference(info.ProjectId, arg1.AnnotationId),
+                            token.Token);
                     }
                 } catch (Exception e)
                 {
                     Debug.Log(e.Message ?? e.ToString());
                 }
-                
+
                 token?.Cancel();
                 token = new CancellationTokenSource();
                 GlobalCancellationTokenSource = token;
-                var updatedAnnotation = await m_AnnotationManagement.ReadAnnotationAsync(info.ProjectId, arg1.AnnotationId,
+                var updatedAnnotation = await m_AnnotationManagement.ReadAnnotationAsync(
+                    new AnnotationReference(info.ProjectId, arg1.AnnotationId),
                     token.Token);
                 callback?.Invoke(updatedAnnotation);
             }
@@ -549,33 +552,40 @@ namespace Unity.Industry.Viewer.Collaboration
             var annotationList = new List<IAnnotation> { rootThread };
             _ = ReadReplies();
             return;
-            
+
             async Task ReadReplies()
             {
                 token?.Cancel();
                 token = new CancellationTokenSource();
                 GlobalCancellationTokenSource = token;
                 var info = RetrieveInfo(assetInfo);
-                
-                var isSubscribed = await m_AnnotationManagement.IsSubscribedToThreadAsync(info.ProjectId,
-                    rootThread.AnnotationId, token.Token);
-                
+
+                IsSubscribedToAnnotationThreadResult isSubscribed = default;
+                try
+                {
+                    isSubscribed = await m_AnnotationManagement.IsSubscribedToAnnotationThreadAsync(
+                        new AnnotationReference(info.ProjectId, rootThread.AnnotationId),
+                        token.Token);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e.Message ?? e.ToString());
+                }
+
                 string nextPage = null;
-                
+
                 do
                 {
                     token?.Cancel();
                     token = new CancellationTokenSource();
                     GlobalCancellationTokenSource = token;
-                    var replyAnnotations = m_AnnotationManagement.ReadRepliesAsync(info.ProjectId,
-                        rootThread.AnnotationId,
-                        sortingOrder: SortOrder.Ascending,
-                        cancellationToken: token.Token,
-                        limit: 100,
-                        next: nextPage);
-                
+                    var replyAnnotations = m_AnnotationManagement.ReadRepliesAsync(
+                        new AnnotationReference(info.ProjectId, rootThread.AnnotationId),
+                        new FilteringOptionsWithStatusFilter(next: nextPage, limit: 100, sortingOrder: SortOrder.Ascending),
+                        token.Token);
+
                     var result = await HandleRequest(token, replyAnnotations);
-                    
+
                     if (result.Annotations != null && result.Annotations.Count > 0)
                     {
                         annotationList.AddRange(result.Annotations.Where(x => string.Equals(x.Status, "Active")).ToList());
@@ -589,7 +599,7 @@ namespace Unity.Industry.Viewer.Collaboration
         private void OnAssetsCollaborationStarted(AssetInfo assetInfo, CancellationTokenSource token, FilterType filterType, Action<IReadOnlyList<IAnnotation>> callback)
         {
             var info = RetrieveInfo(assetInfo);
-            
+
             if(info.ProjectId == ProjectId.None || info.AssetId == AssetId.None) return;
             _ = QueryAnnotationsAsync();
             return;
@@ -599,20 +609,17 @@ namespace Unity.Industry.Viewer.Collaboration
                 string queryNext = null;
 
                 List<IAnnotation> resultAnnotation = new List<IAnnotation>();
-                
+
                 do
                 {
                     token?.Cancel();
                     token = new CancellationTokenSource();
                     GlobalCancellationTokenSource = token;
                     var allAnnotations = m_AnnotationManagement.ReadAnnotationsAsync(
-                        info.ProjectId,
-                        info.target + "/**",
-                        sortingOrder: SortOrder.Descending,
-                        cancellationToken: token.Token,
-                        limit: 100,
-                        next: queryNext);
-                    
+                        new StringReference(info.ProjectId, info.target + "/**"),
+                        new FilteringOptions(next: queryNext, limit: 100, sortingOrder: SortOrder.Descending),
+                        token.Token);
+
                     if(token.IsCancellationRequested) return;
 
                     var result = await HandleRequest(token, allAnnotations);
@@ -621,13 +628,13 @@ namespace Unity.Industry.Viewer.Collaboration
                         callback?.Invoke(null);
                         return;
                     }
-                    
+
                     queryNext = result.Next;
-                    
+
                     resultAnnotation.AddRange(result.Annotations.Where(x => string.IsNullOrEmpty(x.RootAnnotationId.ToString()) && string.Equals(x.Status, "Active")).ToList());
-                    
+
                 } while (!string.IsNullOrEmpty(queryNext));
-                
+
                 if(filterType == FilterType.Opened)
                 {
                     resultAnnotation = resultAnnotation.Where(x => !x.Resolved.HasValue).ToList();
@@ -640,7 +647,7 @@ namespace Unity.Industry.Viewer.Collaboration
         private async Task<TResult> HandleRequest<TResult>(CancellationTokenSource token, Task<TResult> requestTask)
         {
             await HandleRequest(token, requestTask, default);
-            return requestTask.Result;
+            return requestTask.IsCompletedSuccessfully ? requestTask.Result : default;
         }
 
         private async Task HandleRequest(CancellationTokenSource token, Task requestTask, Action<bool> callback = null)
@@ -687,7 +694,7 @@ namespace Unity.Industry.Viewer.Collaboration
                 assetVersion = offlineAsset.Descriptor.AssetVersion;
                 assetVersionNumber = offlineAsset.OfflineAssetInfo.assetVersion;
             }
-            
+
             string target = $"assets/projects/{projectId}/assets/{assetId}";
             return (projectId, assetId, assetVersion.Value, assetVersionNumber, target);
         }

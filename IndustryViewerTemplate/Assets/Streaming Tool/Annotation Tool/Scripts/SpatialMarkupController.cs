@@ -1,5 +1,4 @@
-using Unity.Cloud.Collaboration.Models.Annotations;
-using Unity.Cloud.Collaboration.Models.Attachments;
+using Unity.Cloud.Collaboration;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;

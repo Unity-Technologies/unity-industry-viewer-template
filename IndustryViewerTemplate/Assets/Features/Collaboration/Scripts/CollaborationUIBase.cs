@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 using Unity.AppUI.UI;
 using Button = Unity.AppUI.UI.Button;
 using Unity.Cloud.Identity;
-using Unity.Cloud.Collaboration.Models.Annotations;
+using Unity.Cloud.Collaboration;
 using System.Collections;
 using Unity.Industry.Viewer.Shared;
 using Unity.Industry.Viewer.Assets;
@@ -15,7 +15,6 @@ using Unity.AppUI.Core;
 using System.Threading.Tasks;
 using System.Threading;
 using UnityEngine.InputSystem;
-using Unity.Cloud.Collaboration.Models.Attachments;
 using UnityEngine.Localization;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -162,9 +161,10 @@ namespace Unity.Industry.Viewer.Collaboration
             container.Add(m_GuestModeText);
         }
         
-        public virtual async void InitializeUI(UIDocument uiDoc, VisualElement contentContainer, 
+        public virtual async void InitializeUI(UIDocument uiDoc, VisualElement contentContainer,
             CollaborationController.FilterType filterType)
         {
+            TokenSource ??= new CancellationTokenSource();
             m_AnnotationRoot = contentContainer.Q<VisualElement>(k_AnnotationRootName);
             
             m_AnnotationContainer = contentContainer.Q<ScrollView>(k_AnnotationParentName);
@@ -277,6 +277,7 @@ namespace Unity.Industry.Viewer.Collaboration
         public virtual void OnAnnotationLoaded(IReadOnlyList<IAnnotation> listOfAnnotations)
         {
             m_AnnotationContainer.Clear();
+            if (listOfAnnotations == null) return;
             _ = Populate();
             return;
 

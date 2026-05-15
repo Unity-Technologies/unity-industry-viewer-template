@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Unity.Cloud.Collaboration.Models.Attachments;
 using Unity.AppUI.UI;
 using System.Linq;
-using Unity.Cloud.Collaboration.Models.Annotations;
+using Unity.Cloud.Collaboration;
 using Unity.Industry.Viewer.Shared;
 using UnityEngine.UIElements;
 using Unity.AppUI.Core;

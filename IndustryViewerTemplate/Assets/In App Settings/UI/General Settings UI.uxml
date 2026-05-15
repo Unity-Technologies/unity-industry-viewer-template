@@ -3,42 +3,50 @@
         <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; margin-bottom: 8px;">
             <Unity.AppUI.UI.Text style="width: 200px; margin-right: 32px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:2a6c1c34211344e798bb376d8fa80190" entry="Id(53019533107205)" />
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:2a6c1c34211344e798bb376d8fa80190" entry="Id(53019533107205)"/>
                 </Bindings>
             </Unity.AppUI.UI.Text>
-            <Unity.AppUI.UI.Text name="VersionLabel" style="flex-grow: 1;" />
+            <Unity.AppUI.UI.Text name="VersionLabel" style="flex-grow: 1;"/>
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; margin-bottom: 8px;">
             <Unity.AppUI.UI.Text style="width: 200px; margin-right: 32px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(642184634368)" />
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(642184634368)"/>
                 </Bindings>
             </Unity.AppUI.UI.Text>
-            <Unity.AppUI.UI.TouchSliderInt name="RefreshRateSlider" increment-factor="10" low-value="30" value="30" size="L" high-value="60" style="height: 40px; flex-grow: 1; display: flex;" />
+            <Unity.AppUI.UI.TouchSliderInt name="RefreshRateSlider" increment-factor="10" low-value="30" value="30" size="L" high-value="60" style="height: 40px; flex-grow: 1; display: flex;"/>
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center; margin-bottom: 8px;">
             <Unity.AppUI.UI.Text text="Show FPS" style="width: 200px; margin-right: 32px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(994900434944)" />
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(994900434944)"/>
                 </Bindings>
             </Unity.AppUI.UI.Text>
-            <Unity.AppUI.UI.Checkbox name="FPSToggle" emphasized="true" />
+            <Unity.AppUI.UI.Checkbox name="FPSToggle" emphasized="true"/>
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center; margin-bottom: 8px;">
             <Unity.AppUI.UI.Text text="Language" style="width: 200px; margin-right: 32px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(53920947757056)" />
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(53920947757056)"/>
                 </Bindings>
             </Unity.AppUI.UI.Text>
-            <Unity.AppUI.UI.Dropdown size="L" name="LanguageDropdown" style="height: 40px; flex-grow: 1;" />
+            <Unity.AppUI.UI.Dropdown size="L" name="LanguageDropdown" style="height: 40px; flex-grow: 1;"/>
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center;">
             <Unity.AppUI.UI.Text style="width: 200px; margin-right: 32px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(44170049240424448)" />
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(44170049240424448)"/>
                 </Bindings>
             </Unity.AppUI.UI.Text>
-            <Unity.AppUI.UI.Toggle name="OfflineToggle" />
+            <Unity.AppUI.UI.Toggle name="OfflineToggle"/>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; display: flex; align-items: center; margin-bottom: 8px;">
+            <Unity.AppUI.UI.Text text="" style="width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(182571687927078912)"/>
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Checkbox name="LogConsoleToggle" emphasized="true"/>
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

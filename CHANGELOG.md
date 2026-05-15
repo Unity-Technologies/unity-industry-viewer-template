@@ -5,15 +5,28 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [2.2.1] - 2026-04-02
-### Fixes
-- Fixed on the duplication of the sample folders
+## [2.3.0] - 2026-05-15
+
+### Added
+- Ability to pin certificate in a VPC environment.
+- Log Console UI panel in In-App Settings.
+
+### Changed
+- Migrated Collaboration feature to `com.unity.cloud.collaboration` v0.5.0: updated all API calls to use reference-based overloads.
+- Updated Unity Cloud packages.
+
+### Fixed
+- `NullReferenceException` in `PlatformServices.IsUserLoggedIn` caused by destruction order when stopping the editor.
+- `NullReferenceException` in `AddModelToolUIController.OnDestroy` when `SharedUIManager` singleton was already destroyed.
+- Faulted-task `AggregateException` risk in `CollaborationController.HandleRequest` by guarding with `IsCompletedSuccessfully` before accessing `.Result`.
+- Null annotation list crash in `CollaborationUIBase.OnAnnotationLoaded`.
+- AR Placement bugs.
+- Various VR/XR UI fixes.
 
 ## [2.2.0] - 2026-03-31
 ### Added
 - Support Android XR deployment.
-- An interaction tool for interacting with objects with 3D data streaming.
-- VR walk mode
+- Interaction tool for interact object with 3D data streaming.
 
 ## [2.1.0] - 2026-02-06
 ### Fixes

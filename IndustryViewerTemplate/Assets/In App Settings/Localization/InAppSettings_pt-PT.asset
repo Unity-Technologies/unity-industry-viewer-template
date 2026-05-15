@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: "Configura\xE7\xF5es"
     m_Metadata:
       m_Items: []
+  - m_Id: 182571687927078912
+    m_Localized: Exibir registros
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

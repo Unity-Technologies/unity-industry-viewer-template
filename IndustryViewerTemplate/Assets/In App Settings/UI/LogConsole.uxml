@@ -1,0 +1,12 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Unity.AppUI.UI.Panel name="" style="padding-top: 12px; padding-right: 12px; padding-bottom: 12px; padding-left: 12px; border-left-color: rgb(48, 48, 48); border-right-color: rgb(48, 48, 48); border-top-color: rgb(48, 48, 48); border-bottom-color: rgb(48, 48, 48); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px;">
+        <engine:VisualElement style="flex-grow: 0; height: 40px; flex-direction: row; align-items: center; justify-content: space-evenly;">
+            <Unity.AppUI.UI.Button title="Copy All Logs" name="CopyButton"/>
+            <Unity.AppUI.UI.Checkbox name="LogCheckBox" label=" Logs" value="Checked" emphasized="false"/>
+            <Unity.AppUI.UI.Checkbox label="&lt;color=&quot;yellow&quot;&gt; Warnings&lt;/color&gt;" name="WarningCheckBox" value="Checked"/>
+            <Unity.AppUI.UI.Checkbox name="ErrorCheckBox" label="&lt;color=&quot;red&quot;&gt; Errors&lt;/color&gt;" value="Checked"/>
+            <Unity.AppUI.UI.Button title="Clear" name="ClearButton"/>
+        </engine:VisualElement>
+        <engine:ListView show-border="true" virtualization-method="DynamicHeight" style="flex-grow: 1; margin-top: 12px; margin-right: 12px; margin-bottom: 12px; margin-left: 12px;"/>
+    </Unity.AppUI.UI.Panel>
+</engine:UXML>

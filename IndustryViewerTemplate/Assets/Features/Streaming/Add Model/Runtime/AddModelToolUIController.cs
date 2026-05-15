@@ -83,7 +83,7 @@ namespace Unity.Industry.Viewer.Streaming.AddModel
             {
                 SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Remove(m_StyleSheet);
             }
-            SharedUIManager.Instance.AssetsContainer?.UnregisterCallback<GeometryChangedEvent>(OnGeometryChanged);
+            SharedUIManager.Instance?.AssetsContainer?.UnregisterCallback<GeometryChangedEvent>(OnGeometryChanged);
             ToolPanelUIController.OpenToolPanel -= OnOpenToolPanel;
             RemoveToolButton();
             NetworkDetector.OnNetworkStatusChanged -= OnNetworkStatusChanged;

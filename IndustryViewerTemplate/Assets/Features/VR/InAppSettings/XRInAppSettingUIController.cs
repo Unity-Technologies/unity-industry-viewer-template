@@ -5,12 +5,13 @@ using System.Linq;
 using Unity.Industry.Viewer.Shared;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
-using Unity.AppUI.UI;
 
 namespace Unity.Industry.Viewer.VR
 {
     public class XRInAppSettingUIController : InAppSettings
     {
+        public static UIDocument fpsUIDocument;
+        
         [SerializeField]
         private XRControllerMenu m_XRControllerMenu;
         
@@ -21,10 +22,11 @@ namespace Unity.Industry.Viewer.VR
         
         [SerializeField]
         private LocalizedString m_SettingsUITitle;
-
+        
         protected override void Start()
         {
             base.Start();
+            fpsUIDocument = m_FPSUIDocument;
             SceneManager.activeSceneChanged += OnSceneManagerOnactiveSceneChanged;
         }
 

@@ -1,4 +1,4 @@
-using Unity.Cloud.Collaboration.Models.Annotations;
+using Unity.Cloud.Collaboration;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Unity.AppUI.UI;
@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 using System.Threading;
 using Unity.Industry.Viewer.Assets;
 using Unity.AppUI.Core;
-using Unity.Cloud.Collaboration.Abstractions;
 using Unity.Industry.Viewer.Shared;
 using Avatar = Unity.AppUI.UI.Avatar;
 using Button = Unity.AppUI.UI.Button;
-using MessageType = Unity.Cloud.Collaboration.Abstractions.MessageType;
+using MessageType = Unity.Cloud.Collaboration.MessageType;
 using UnityEngine.InputSystem;
 using UnityEngine.ResourceManagement.AsyncOperations;
 

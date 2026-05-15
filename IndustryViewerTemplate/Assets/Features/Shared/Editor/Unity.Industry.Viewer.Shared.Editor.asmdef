@@ -1,0 +1,18 @@
+{
+    "name": "Unity.Industry.Viewer.Shared.Editor",
+    "rootNamespace": "Unity.Industry.Viewer.Shared.Editor",
+    "references": [
+        "GUID:3072efb1b5d06449eb35617ac762a62d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

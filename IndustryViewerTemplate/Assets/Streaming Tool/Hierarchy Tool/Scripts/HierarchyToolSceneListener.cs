@@ -158,6 +158,15 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             {
                 m_CachedHierarchyData.Remove(obj);
             }
+            if(m_InstanceStates == null || m_InstanceStates.Count == 0) return;
+            lock (m_InstanceStates)
+            {
+                if(!m_InstanceStates.ContainsKey(obj.ModelStreamId))
+                {
+                    return;
+                }
+                m_InstanceStates.Remove(obj.ModelStreamId);
+            }
         }
         
         private async Task CreateRepositories()

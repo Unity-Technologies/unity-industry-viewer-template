@@ -79,6 +79,11 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
         
         private bool m_HasShownRequestSceneCapture = false;
 
+        // Guard against the trigger press that opened AR mode firing placement immediately.
+        // SingleActivate fires after a 0.25s WaitForDoubleClick delay; 0.5s safely clears that window.
+        private float m_placingStartTime;
+        private const float k_MinPlacingDelay = 0.5f;
+
         public bool IsWorldMapSupported => false; //Make it false for now as we don't have a way to test it.
         
         public bool isWorldMapFound { get; private set; } = false;
@@ -259,6 +264,7 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
                     }
                     TransformController.Instance.transform.localScale = Vector3.one;
                     TransformController.Instance.gameObject.SetActive(false);
+                    m_placingStartTime = Time.unscaledTime;
                     VRInteractionController.SubscribeSingleActivate(this, SingleActivateAction);
                     break;
                 
@@ -289,6 +295,7 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
 
         private void SingleActivateAction(Ray ray, int controllerInstanceId)
         {
+            if (Time.unscaledTime - m_placingStartTime < k_MinPlacingDelay) return;
             if (m_StreamingModelController == null || m_placingMakerGO == null)
             {
                 return;

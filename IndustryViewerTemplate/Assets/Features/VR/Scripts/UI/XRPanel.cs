@@ -326,7 +326,8 @@ namespace Unity.Industry.Viewer.VR
                         FindObjectsByType<UIDocument>(FindObjectsInactive.Include, FindObjectsSortMode.None);
                     foreach (var uiDoc in uiDocuments)
                     {
-                        if(uiDoc.rootVisualElement == null || uiDoc == Instance.m_UIDocument) continue;
+                        if(uiDoc.rootVisualElement == null || uiDoc == Instance.m_UIDocument || 
+                           uiDoc == XRInAppSettingUIController.fpsUIDocument) continue;
                         Instance.UIDocumentEnabledStates ??= new Dictionary<UIDocument, (bool, bool?)>();
 
                         bool? boxColliderEnabled = null;

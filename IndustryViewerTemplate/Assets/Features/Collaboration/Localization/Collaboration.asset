@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
   m_Name: Collaboration
-  m_EditorClassIdentifier: Unity.Localization.Editor::UnityEditor.Localization.StringTableCollection
+  m_EditorClassIdentifier: 
   m_SharedTableData: {fileID: 11400000, guid: 5a5b0fdb44e374c3f950b188f7c8b8cd, type: 2}
   m_Tables:
   - {fileID: 11400000, guid: 3fd7a4101fe8e43f5b9c73a4df413a7a, type: 2}
@@ -32,7 +32,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0369b88ce18245e5856376535ff3c41, type: 2}
   - {fileID: 11400000, guid: 97f7fb974afb34087a1504c2e5ac6b16, type: 2}
   m_Extensions: []
- []
   m_Group: String Table
   references:
     version: 2
