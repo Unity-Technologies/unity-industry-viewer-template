@@ -1,3 +1,3 @@
 using Unity.Cloud.Common;
 
-[assembly: ApiSourceVersion("Industry Viewer Template", "2.2.0")]
+[assembly: ApiSourceVersion("Industry Viewer Template", "2.3.0")]

@@ -42,7 +42,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.cloud.collaboration": {
-      "version": "0.4.0-exp.1",
+      "version": "0.5.0-exp.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -51,7 +51,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.cloud.common": {
-      "version": "1.6.0",
+      "version": "1.7.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -62,7 +62,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.cloud.data-streaming": {
-      "version": "1.15.0",
+      "version": "1.16.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {

@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: Settings
     m_Metadata:
       m_Items: []
+  - m_Id: 182571687927078912
+    m_Key: Show Logs Console
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

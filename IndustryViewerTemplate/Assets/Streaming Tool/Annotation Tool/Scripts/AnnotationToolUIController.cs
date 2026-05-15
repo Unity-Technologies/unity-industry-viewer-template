@@ -1,6 +1,5 @@
 using System;
-using Unity.Cloud.Collaboration.Models.Annotations;
-using Unity.Cloud.Collaboration.Models.Attachments;
+using Unity.Cloud.Collaboration;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Unity.Industry.Viewer.Collaboration;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using Unity.Industry.Viewer.Shared;
 using Unity.Industry.Viewer.Identity;
 using System.Collections;
-using Unity.Cloud.Collaboration.Abstractions;
 using UnityEngine.EventSystems;
 
 namespace Unity.Industry.Viewer.Streaming.Annotation

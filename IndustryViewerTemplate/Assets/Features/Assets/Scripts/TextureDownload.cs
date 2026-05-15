@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using Unity.Cloud.Assets;
 using UnityEngine;
 using System.Threading.Tasks;
-using UnityEngine.Networking;
 using System.Text;
+using Unity.Industry.Viewer.Shared;
+using Unity.Industry.Viewer.Identity;
+using Unity.Cloud.Common;
 
 namespace Unity.Industry.Viewer.Assets
 {
@@ -93,6 +96,7 @@ namespace Unity.Industry.Viewer.Assets
 
         static async Task Download(int key, string versionId, string url, Action<Texture2D> actionCallBack)
         {
+            Debug.Log(url);
             if(!s_TextureCache.TryGetValue(key, out var entry))
             {
                 entry = new TextureDownloadEntry
@@ -161,17 +165,23 @@ namespace Unity.Industry.Viewer.Assets
         
         static async Task<Texture2D> DownloadTexture(string url, CancellationToken cancellationToken = default)
         {
-            using var uwr = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET);
-            uwr.downloadHandler = new DownloadHandlerTexture();
+            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+            var httpClient = IdentityController.GuestMode? PlatformServices.ServiceAccountServiceHttpClient : PlatformServices.ServiceHttpClient;
 
-            var operation = uwr.SendWebRequest();
-
-            while (!operation.isDone)
+            try
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Task.Yield();
+                HttpResponseMessage responseMessage = await httpClient.SendAsync(requestMessage, cancellationToken);
+                responseMessage.EnsureSuccessStatusCode();
+                var bytes = await responseMessage.Content.ReadAsByteArrayAsync();
+                var texture = new Texture2D(2, 2);
+                texture.LoadImage(bytes);
+                return texture;
             }
-            return DownloadHandlerTexture.GetContent(uwr);
+            catch (HttpRequestException e)
+            {
+                Debug.Log($"Failed to download texture from {url}: {e.Message}");
+            }
+            return null;
         }
         
         static void OnTextureDownloaded(TextureDownloadEntry entry)

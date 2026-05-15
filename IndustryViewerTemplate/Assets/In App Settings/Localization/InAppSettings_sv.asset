@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: Innstillinger
     m_Metadata:
       m_Items: []
+  - m_Id: 182571687927078912
+    m_Localized: Vis logger
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

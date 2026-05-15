@@ -1,12 +1,11 @@
 using System.IO;
 using System.Threading;
-using Unity.Cloud.Collaboration.Models.Attachments;
+using Unity.Cloud.Collaboration;
 using UnityEngine.UIElements;
 using Unity.AppUI.UI;
 using UnityEngine;
 using System.Threading.Tasks;
 using Unity.AppUI.Core;
-using Unity.Cloud.Collaboration.Models.Annotations;
 using Unity.Industry.Viewer.Assets;
 using Unity.Industry.Viewer.Shared;
 using UnityEngine.Networking;

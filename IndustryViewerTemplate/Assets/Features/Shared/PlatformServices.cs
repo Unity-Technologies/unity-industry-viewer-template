@@ -24,14 +24,17 @@ namespace Unity.Industry.Viewer.Shared
     public static class PlatformServices
     {
         private const string k_ServiceAccountEnvVar = "UNITY_SERVICE_ACCOUNT_CREDENTIALS";
+
+        private static ICertificateValidationPolicy _sCertificateValidationPolicy;
         
         static ICompositeAuthenticator _sCompositeAuthenticator;
         
         public static ICompositeAuthenticator CompositeAuthenticator => _sCompositeAuthenticator;
         
-        public static bool IsUserLoggedIn => CompositeAuthenticator.AuthenticationState == AuthenticationState.LoggedIn || 
-                                             (ServiceAccountServiceAuthenticator != null && 
-                                              ServiceAccountServiceAuthenticator.AuthenticationState == AuthenticationState.LoggedIn);
+        public static bool IsUserLoggedIn => _sCompositeAuthenticator != null &&
+                                             (_sCompositeAuthenticator.AuthenticationState == AuthenticationState.LoggedIn ||
+                                              (ServiceAccountServiceAuthenticator != null &&
+                                               ServiceAccountServiceAuthenticator.AuthenticationState == AuthenticationState.LoggedIn));
         
         public static ServiceConnector ServiceConnector { get; private set; }
         
@@ -106,15 +109,20 @@ namespace Unity.Industry.Viewer.Shared
         
         #region Collaboration
 
-        public static IAnnotationManagement AnnotationManagement { get; private set; }
+        public static AnnotationManagement AnnotationManagement { get; private set; }
         
         private static AnnotationManagementFactory m_aManagementFactory = new AnnotationManagementFactory();
 
         #endregion
 
-        public static void Create(VPCCredentials vpcCredentials, ServiceAccountCredentials serviceAccountCredentials)
+        public static void Create(VPCCredentials vpcCredentials, ServiceAccountCredentials serviceAccountCredentials, bool pinCertificate)
         {
-            HttpClient = new UnityHttpClient();
+            if (pinCertificate)
+            {
+                _sCertificateValidationPolicy = new PublicKeyPinningCertificateValidationPolicy();
+            }
+            
+            HttpClient = new UnityHttpClient(pinCertificate? _sCertificateValidationPolicy : null);
             var playerSettings = UnityCloudPlayerSettings.Instance;
             var platformSupport = PlatformSupportFactory.GetAuthenticationPlatformSupport();
 
@@ -142,7 +150,7 @@ namespace Unity.Industry.Viewer.Shared
             #endregion
             
             #region Collaboration
-            AnnotationManagement = m_aManagementFactory.GetAnnotationManagement(ServiceHttpClient, ServiceHostResolver);
+            AnnotationManagement = m_aManagementFactory.CreateAnnotationManagement(ServiceHttpClient, ServiceHostResolver);
             #endregion
 
             #region Service Account

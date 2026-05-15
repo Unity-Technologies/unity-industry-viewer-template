@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
   m_Name: Section Cut
-  m_EditorClassIdentifier: Unity.Localization.Editor::UnityEditor.Localization.StringTableCollection
+  m_EditorClassIdentifier: 
   m_SharedTableData: {fileID: 11400000, guid: 88f5d7360291544fd8b69234e98f8fa3, type: 2}
   m_Tables:
   - {fileID: 11400000, guid: 68c1029d4bb274fbd9bfbbb478dfd540, type: 2}
@@ -32,7 +32,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50ead707f6881436c93eb470ae26f098, type: 2}
   - {fileID: 11400000, guid: 5bd2fa1c0613f45d990066ed6275ef36, type: 2}
   m_Extensions: []
- []
   m_Group: String Table
   references:
     version: 2

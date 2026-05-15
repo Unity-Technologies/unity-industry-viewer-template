@@ -165,6 +165,7 @@ MonoBehaviour:
     Address: 127.0.0.1
     Port: 7777
     ServerListenAddress: 0.0.0.0
+    ClientBindPort: 0
   DebugSimulator:
     PacketDelayMS: 0
     PacketJitterMS: 0
@@ -998,6 +999,7 @@ MonoBehaviour:
   attachmentUITemplate: {fileID: 9197481963319205126, guid: 426eb1b32899a47f8b7d5d1a57b5f147,
     type: 3}
   defaultFileIcon: {fileID: 2800000, guid: 9ba121993c313427cac1846ed52d3ab9, type: 3}
+  isCurrentThreadSubscribed: 0
   FilterType: 0
   LocalizedStringAsset: {fileID: 11400000, guid: 13af8fb68cbcb40349f8cfe4a3a99289,
     type: 2}
@@ -1089,6 +1091,7 @@ MonoBehaviour:
     type: 3}
   m_StyleSheet: {fileID: 7433441132597879392, guid: 0ccd06581b22f4fe48c0ce2ac8dff7dd,
     type: 3}
+  logsHistory: 100
   m_GeneralLocalizedString:
     m_TableReference:
       m_TableCollectionName: GUID:753eb184db2564b0bacaa9891468f216

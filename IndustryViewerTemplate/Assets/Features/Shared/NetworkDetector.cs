@@ -41,6 +41,7 @@ namespace Unity.Industry.Viewer.Shared
         private const float PingInterval = 10f; // 10 seconds
         private readonly WaitForSeconds _pingInterval = new(PingInterval);
         private bool _isConnected;
+        private bool _hasInitializedNetworkStatus;
 
 #if UNITY_EDITOR
         [SerializeField] private bool m_SimulateOffLine = false;
@@ -101,15 +102,17 @@ namespace Unity.Industry.Viewer.Shared
 
                 if (success)
                 {
-                    if (_isConnected) yield break;
+                    if (_isConnected && _hasInitializedNetworkStatus) yield break;
                     _isConnected = true;
+                    _hasInitializedNetworkStatus = true;
                     OnNetworkStatusChanged?.Invoke(true);
                     Debug.Log($"Ping to {PingAddress} successful.");
                 }
                 else
                 {
-                    if (!_isConnected) yield break;
+                    if (!_isConnected && _hasInitializedNetworkStatus) yield break;
                     _isConnected = false;
+                    _hasInitializedNetworkStatus = true;
                     OnNetworkStatusChanged?.Invoke(false);
                     Debug.Log($"Ping to {PingAddress} failed. Error: {request.error}");
                 }

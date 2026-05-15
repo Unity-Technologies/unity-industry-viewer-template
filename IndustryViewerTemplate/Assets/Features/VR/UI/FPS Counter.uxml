@@ -1,3 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Unity.AppUI.UI.Text size="L" name="FPSLabel" style="height: 25px; background-color: rgb(46, 46, 46); border-top-left-radius: 12.5px; border-top-right-radius: 12.5px; border-bottom-right-radius: 12.5px; border-bottom-left-radius: 12.5px; -unity-text-align: middle-center; max-width: 120px; display: none; padding-top: 5px; padding-right: 10px; padding-bottom: 5px; padding-left: 10px;" />
+    <ui:Template name="LogConsole" src="project://database/Assets/In%20App%20Settings/UI/LogConsole.uxml?fileID=9197481963319205126&amp;guid=db2fe09d1e5c74e458bb42f34cda0169&amp;type=3#LogConsole"/>
+    <ui:VisualElement style="flex-grow: 1; align-items: center;">
+        <Unity.AppUI.UI.Text size="L" name="FPSLabel" style="height: 25px; background-color: rgb(46, 46, 46); border-top-left-radius: 12.5px; border-top-right-radius: 12.5px; border-bottom-right-radius: 12.5px; border-bottom-left-radius: 12.5px; -unity-text-align: middle-center; max-width: 120px; display: none; padding-top: 5px; padding-right: 10px; padding-bottom: 5px; padding-left: 10px;"/>
+        <ui:Instance template="LogConsole" name="LogConsole" style="width: 1000px; height: 200px; margin-top: 10px; display: none;"/>
+    </ui:VisualElement>
 </ui:UXML>

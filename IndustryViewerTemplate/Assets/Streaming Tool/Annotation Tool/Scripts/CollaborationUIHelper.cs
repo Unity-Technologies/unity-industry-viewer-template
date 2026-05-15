@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Unity.Cloud.Collaboration.Models.Annotations;
+using Unity.Cloud.Collaboration;
 using Unity.Industry.Viewer.Collaboration;
 using UnityEngine;
 using Unity.Industry.Viewer.Assets;
 using System.Threading.Tasks;
 using Unity.Industry.Viewer.Shared;
 using System.Linq;
-using Unity.Cloud.Collaboration.Models.Attachments;
 using UnityEngine.UIElements;
 
 namespace Unity.Industry.Viewer.Streaming.Annotation
@@ -103,6 +102,7 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
         public override void OnAnnotationLoaded(IReadOnlyList<IAnnotation> listOfAnnotations)
         {
             m_AnnotationContainer.Clear();
+            if (listOfAnnotations == null) return;
             _ = Populate();
             return;
             
