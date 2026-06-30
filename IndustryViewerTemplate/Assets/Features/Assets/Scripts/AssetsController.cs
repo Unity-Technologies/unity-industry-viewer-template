@@ -258,6 +258,7 @@ namespace Unity.Industry.Viewer.Assets
             }
             else
             {
+                CancelVersionChecking();
                 m_VersionCheckCoroutine = StartCoroutine(StartVersionChecking());
             }
         }
@@ -430,7 +431,7 @@ namespace Unity.Industry.Viewer.Assets
                     }
                 }
                 
-                foreach (var assetProject in assetInfo.Properties.Value.LinkedProjects.SkipWhile(x => x.ProjectId == assetInfo.Properties.Value.SourceProject.ProjectId))
+                foreach (var assetProject in assetInfo.Properties.Value.LinkedProjects.Where(x => x.ProjectId != assetInfo.Properties.Value.SourceProject.ProjectId))
                 {
                     if (m_AllAssetProjects.All(x => x.AssetProject.Descriptor != assetProject)) continue;
                     var project = m_AllAssetProjects.FirstOrDefault(x => x.AssetProject.Descriptor == assetProject);
@@ -827,7 +828,7 @@ namespace Unity.Industry.Viewer.Assets
                     assetCollectionDescriptor = SharedUIManager.AssetCollection.Descriptor;
                     searchFilter.Collections.WhereContains(assetCollectionDescriptor.Value.Path);
                     assets = assetProject.QueryAssets().SelectWhereMatchesFilter(searchFilter)
-                        .OrderBy(m_SortingType.GetPropertyName())
+                        .OrderBy(m_SortingType.GetPropertyName(), sortingOrder)
                         .WithCacheConfiguration(cacheConfiguration)
                         .ExecuteAsync(localAssetRepositoryCancellationTokenSource.Token);
                     break;

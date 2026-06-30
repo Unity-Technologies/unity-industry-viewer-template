@@ -103,10 +103,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             TransformController.ModelRemoved -= OnModelRemoved;
             if (m_PanelDocument != null)
             {
-                if (m_PanelDocument.rootVisualElement.styleSheets.Contains(m_HierarchyToolStyleSheet))
-                {
-                    m_PanelDocument.rootVisualElement.styleSheets.Remove(m_HierarchyToolStyleSheet);
-                }
+                m_PanelDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_HierarchyToolStyleSheet);
             }
             
             UninitializeUI();
@@ -221,10 +218,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
         {
             m_PanelDocument = uiDocument;
             
-            if (!m_PanelDocument.rootVisualElement.styleSheets.Contains(m_HierarchyToolStyleSheet))
-            {
-                m_PanelDocument.rootVisualElement.styleSheets.Add(m_HierarchyToolStyleSheet);
-            }
+            m_PanelDocument.rootVisualElement.AddStyleSheetIfMissing(m_HierarchyToolStyleSheet);
             
             if (controller.TryGetComponent(out m_Controller))
             {

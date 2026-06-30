@@ -21,7 +21,12 @@ namespace Unity.Industry.Viewer.Shared
                 _instance?.StopAllCoroutines();
                 if (!value)
                 {
+                    // Resume connectivity polling: an immediate check plus the recurring routine
+                    // (mirrors Start). Previously only the one-shot PingServer ran, so the 10s
+                    // poll never restarted after toggling back online and reconnections/drops
+                    // went undetected for the rest of the session.
                     _instance?.StartCoroutine(_instance.PingServer());
+                    _instance?.StartCoroutine(_instance.PingServerRoutine());
                 }
                 else
                 {
@@ -34,7 +39,9 @@ namespace Unity.Industry.Viewer.Shared
         private static bool _requestedOfflineMode = false;
         
         public static Action<bool> OnNetworkStatusChanged;
-        public static bool IsOffline => !_instance._isConnected;
+        // Guard against _instance being null (queried before Awake) or destroyed (teardown).
+        // Treats "no detector" as offline, matching the pre-first-ping default (_isConnected == false).
+        public static bool IsOffline => _instance == null || !_instance._isConnected;
 
         private static NetworkDetector _instance;
         private const string PingAddress = "https://www.google.com"; // Cloudflare DNS
@@ -53,6 +60,16 @@ namespace Unity.Industry.Viewer.Shared
             _lastSimulateOffline = m_SimulateOffLine;
 #endif
             _instance = this;
+        }
+
+        private void OnDestroy()
+        {
+            // Clear the static reference so IsOffline and the RequestedOfflineMode setter don't
+            // dereference a destroyed instance after this detector is torn down.
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         private IEnumerator Start()

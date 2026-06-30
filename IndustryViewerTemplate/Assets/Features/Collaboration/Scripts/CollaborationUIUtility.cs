@@ -485,21 +485,31 @@ namespace Unity.Industry.Viewer.Collaboration
         
         public static async Task<string> GetMemberName(OrganizationId orgId, string userId)
         {
-            while(m_OrganizationMembers == null && gettingMembers)
+            while (gettingMembers)
             {
                 await Task.Yield();
             }
             
-            if (m_OrganizationMembers == null && !gettingMembers)
+            if (m_OrganizationMembers == null)
             {
-                await GetOrgMembers(orgId);
+                // Set the flag before awaiting so concurrent callers wait in the loop above instead
+                // of each re-running GetOrgMembers (which appended duplicate members). Reset in a
+                // finally so a not-found org doesn't leave it stuck and hang later waiters.
                 gettingMembers = true;
+                try
+                {
+                    await GetOrgMembers(orgId);
+                }
+                finally
+                {
+                    gettingMembers = false;
+                }
             }
 
             if (m_OrganizationMembers == null) return string.Empty;
             if (m_OrganizationMembers.TryGetValue(orgId, out var members))
             {
-                var member = members.First(x => string.Equals(x.UserId.ToString(), userId));
+                var member = members.FirstOrDefault(x => string.Equals(x.UserId.ToString(), userId));
                 if (member != null)
                 {
                     return member.Name;
@@ -530,7 +540,7 @@ namespace Unity.Industry.Viewer.Collaboration
         
         private static List<IUserInfo> ReturnSuggestedNames(OrganizationId organizationId, string searchName)
         {
-            if (m_OrganizationMembers.TryGetValue(organizationId, out var members))
+            if (m_OrganizationMembers != null && m_OrganizationMembers.TryGetValue(organizationId, out var members))
             {
                 var ids = m_OrganizationMembers[organizationId];
                 if (ids.Count == 0) return null;

@@ -68,10 +68,7 @@ namespace Unity.Industry.Viewer.Vivox
             VivoxController.ChannelLeft -= OnChannelLeft;
             VivoxController.ParticipantAudioEnergyChanged -= OnParticipantAudioEnergyChanged;
             
-            if (SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Remove(m_StyleSheet);
-            }
+            SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_StyleSheet);
             
             if(m_MicButton == null) return;
             m_MicButton.RemoveFromHierarchy();
@@ -356,27 +353,33 @@ namespace Unity.Industry.Viewer.Vivox
         
         protected virtual void InitializeUI()
         {
-            var avatar = SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.Q<Avatar>(k_AvatarName);
+            var root = SharedUIManager.Instance.AssetsUIDocument.rootVisualElement;
+            var avatar = root.Q<Avatar>(k_AvatarName);
+            SetupMicButton(root, avatar.parent, avatar.parent, avatar);
+        }
 
-            if (!SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Add(m_StyleSheet);
-            }
+        // Sets up the shared Vivox mic button: ensures the stylesheet is present, clears any existing
+        // mic button, then creates, tooltips, wires and inserts a fresh one. The new button is inserted
+        // at insertBeforeAnchor's position within insertParent — resolved AFTER the old button is
+        // removed so the index can't be stale — or at the front when insertBeforeAnchor is null.
+        protected void SetupMicButton(VisualElement styleSheetRoot, VisualElement micSearchRoot,
+            VisualElement insertParent, VisualElement insertBeforeAnchor)
+        {
+            styleSheetRoot.AddStyleSheetIfMissing(m_StyleSheet);
 
-            var micButton = avatar.parent.Q<MicComponent>();
-            if (micButton != null)
+            var existingMic = micSearchRoot.Q<MicComponent>();
+            if (existingMic != null)
             {
-                micButton.RemoveFromHierarchy();
-                micButton.clicked -= OnMicButtonClicked;
+                existingMic.clicked -= OnMicButtonClicked;
+                existingMic.RemoveFromHierarchy();
             }
 
             m_MicButton = new MicComponent(VivoxService.Instance.IsInputDeviceMuted);
             UpdateToolTips();
             m_MicButton.clicked += OnMicButtonClicked;
-            
-            int index = avatar.parent.IndexOf(avatar);
 
-            avatar.parent.Insert(index, m_MicButton);
+            int insertIndex = insertBeforeAnchor != null ? insertParent.IndexOf(insertBeforeAnchor) : 0;
+            insertParent.Insert(insertIndex, m_MicButton);
         }
 
         protected void OnMicButtonClicked()

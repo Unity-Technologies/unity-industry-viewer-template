@@ -46,10 +46,7 @@ namespace Unity.Industry.Viewer.Streaming.Environment
         public override void InitializeUI(UIDocument uiDocument, VisualElement parent, GameObject controller)
         {
             m_PanelDocument = uiDocument;
-            if (!m_PanelDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                m_PanelDocument.rootVisualElement.styleSheets.Add(m_StyleSheet);
-            }
+            m_PanelDocument.rootVisualElement.AddStyleSheetIfMissing(m_StyleSheet);
             m_EnvironmentsListView = parent.Q<ListView>(k_EnvironmentsListViewName);
             m_EnvironmentsListView.bindItem = BindListItem;
             m_EnvironmentsListView.itemsSource = m_Settings.Scenes;
@@ -59,7 +56,11 @@ namespace Unity.Industry.Viewer.Streaming.Environment
 
         private void SetSelectedIndex()
         {
-            m_EnvironmentsListView.selectedIndex = Array.FindIndex(m_Settings.Scenes, scene => scene.id == EnvironmentToolController.CurrentEnvironmentSettings.id);
+            // CurrentEnvironmentSettings is null until a default is assigned (and stays null if no
+            // scene has the default id), so guard before dereferencing its id.
+            var current = EnvironmentToolController.CurrentEnvironmentSettings;
+            if (current == null) return;
+            m_EnvironmentsListView.selectedIndex = Array.FindIndex(m_Settings.Scenes, scene => scene.id == current.id);
         }
 
         private async void BindListItem(VisualElement item, int index)
@@ -71,7 +72,8 @@ namespace Unity.Industry.Viewer.Streaming.Environment
                 return;
             }
             
-            bool isSelected = EnvironmentToolController.CurrentEnvironmentSettings.id == environmentSettings.id;
+            bool isSelected = EnvironmentToolController.CurrentEnvironmentSettings != null
+                && EnvironmentToolController.CurrentEnvironmentSettings.id == environmentSettings.id;
             
             var background = item.Q<VisualElement>("Background");
             SetSelectedVE(background, isSelected);
@@ -145,10 +147,7 @@ namespace Unity.Industry.Viewer.Streaming.Environment
 
         public override void UninitializeUI()
         {
-            if (SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Remove(m_StyleSheet);
-            }
+            SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_StyleSheet);
             if (m_EnvironmentsListView != null)
             {
                 m_EnvironmentsListView.selectedIndicesChanged -= OnSelectedIndicesChanged;

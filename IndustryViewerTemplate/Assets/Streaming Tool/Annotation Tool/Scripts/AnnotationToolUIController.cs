@@ -6,8 +6,6 @@ using Unity.Industry.Viewer.Collaboration;
 using System.Collections.Generic;
 using Unity.Industry.Viewer.Shared;
 using Unity.Industry.Viewer.Identity;
-using System.Collections;
-using UnityEngine.EventSystems;
 
 namespace Unity.Industry.Viewer.Streaming.Annotation
 {
@@ -45,10 +43,7 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
             DeselectAllMarkUp();
             if (m_PanelDocument != null)
             {
-                if (m_PanelDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-                {
-                    m_PanelDocument.rootVisualElement.styleSheets.Remove(m_StyleSheet);
-                }
+                m_PanelDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_StyleSheet);
             }
             if (m_AnnotationToSpatialController != null)
             {
@@ -60,23 +55,7 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
             m_AnnotationToSpatialController?.Clear();
             m_AnnotationToSpatialController = null;
             RemoveUnfinishedEntry();
-            // There is a bug in Unity that multiple gameobject will be recreated when reopening this tool again.
-            // Here is a workaround to fix this for now.
-            // This can be removed when Unity fixed this issue.
-            GameObject workaroundObject = new GameObject("temp");
-            CoroutineRunner coroutineRunner = workaroundObject.AddComponent<CoroutineRunner>();
-            coroutineRunner.RunCoroutine(RefreshEventSystem(), null);
-            return;
-
-            IEnumerator RefreshEventSystem()
-            {
-                if(EventSystem.current.gameObject == null) yield break;
-                yield return null;
-                var eventGameObject = EventSystem.current.gameObject;
-                eventGameObject?.SetActive(false);
-                yield return null;
-                eventGameObject?.SetActive(true);
-            }
+            UIUtility.RefreshEventSystem();
         }
 
         private void OnAnnotationHasBeenUpdated(IAnnotation newAnnotation)
@@ -90,10 +69,7 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
         {
             m_PanelDocument = uiDocument;
             
-            if (!m_PanelDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                m_PanelDocument.rootVisualElement.styleSheets.Add(m_StyleSheet);
-            }
+            m_PanelDocument.rootVisualElement.AddStyleSheetIfMissing(m_StyleSheet);
             
             VisualElement root = parent.Q<VisualElement>(k_AnnotationRootName);
             
@@ -221,7 +197,12 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
         public override void UninitializeUI()
         {
             m_CollaborationUIHelper.UninitializeUI();
-            annotationToolController.OnNewAnnotationPositionDefining -= OnNewAnnotationPositionDefining;
+            // annotationToolController is null when InitializeUI returned early (offline/guest/not
+            // logged in), so guard before unsubscribing to avoid an NRE on teardown.
+            if (annotationToolController != null)
+            {
+                annotationToolController.OnNewAnnotationPositionDefining -= OnNewAnnotationPositionDefining;
+            }
             RemoveUnfinishedEntry();
         }
 

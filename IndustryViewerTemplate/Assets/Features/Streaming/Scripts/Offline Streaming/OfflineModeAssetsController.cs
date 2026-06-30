@@ -173,6 +173,11 @@ namespace Unity.Industry.Viewer.Streaming
         private void OnRequestAssetCollections(AssetProjectInfo? assetProject, Action<List<IAssetCollection>> arg2)
         {
             List<IAssetCollection> collections = new List<IAssetCollection>();
+            if (m_OfflineAssets == null || !assetProject.HasValue)
+            {
+                arg2?.Invoke(collections);
+                return;
+            }
             var allAssets = m_OfflineAssets.FindAll(x => x.Asset.Descriptor.ProjectDescriptor == assetProject.Value.AssetProject.Descriptor);
             
             var offlineCollections = allAssets.SelectMany(x => ((OfflineAsset)x.Asset).OfflineAssetInfo.collectionPaths).Distinct();
@@ -247,6 +252,7 @@ namespace Unity.Industry.Viewer.Streaming
                     SelectedAssetProject = null;
                     SelectedCollection = null;
                 }
+                if (SharedUIManager.Organization == null) return;
                 var selectedOrganizationAssets = m_OfflineAssets.FindAll(x => x.Asset.Descriptor.OrganizationId == SharedUIManager.Organization.Id);
                 if(!string.IsNullOrEmpty(m_SearchString))
                 {

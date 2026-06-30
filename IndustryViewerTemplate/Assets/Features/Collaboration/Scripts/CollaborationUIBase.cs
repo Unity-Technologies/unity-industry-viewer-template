@@ -227,10 +227,7 @@ namespace Unity.Industry.Viewer.Collaboration
             m_AttachmentGridView.bindItem = BindAttachmentGridViewItem;
             m_AttachmentGridView.unbindItem = UnbindAttachmentItem;
             
-            if (!uiDoc.rootVisualElement.styleSheets.Contains(annotationStylesheet))
-            {
-                uiDoc.rootVisualElement.styleSheets.Add(annotationStylesheet);
-            }
+            uiDoc.rootVisualElement.AddStyleSheetIfMissing(annotationStylesheet);
             
             if (!m_ReplyContainer.ClassListContains(k_ReadyToSendClassName))
             {
@@ -817,14 +814,14 @@ namespace Unity.Industry.Viewer.Collaboration
         
         protected virtual void OnAnnotationCreated(bool success, IAnnotation newAnnotation)
         {
-            Debug.Log("Succeed " + success);
+            //Debug.Log("Succeed " + success);
             ResetReplyInput();
             LoadingUIPanel.HideLoadingPanel?.Invoke(() =>
             {
                 if (success)
                 {
                     var isNewAnnotationARoot =
-                        string.IsNullOrEmpty(newAnnotation.RootAnnotationId.ToString());
+                        newAnnotation.RootAnnotationId == null;
                     OpenRootThread(isNewAnnotationARoot ? newAnnotation : m_currentRootAnnotation);
                 }
                 else

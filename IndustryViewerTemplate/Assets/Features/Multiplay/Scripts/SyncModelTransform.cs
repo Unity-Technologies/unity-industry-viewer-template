@@ -54,7 +54,7 @@ namespace Unity.Industry.Viewer.Multiplay
 
         public override void OnNetworkDespawn()
         {
-            TransformController.ModelRemoved += OnModelRemoved;
+            TransformController.ModelRemoved -= OnModelRemoved;
             m_ModelName.OnValueChanged -= OnNameValueChanged;
             m_Position.OnValueChanged -= OnPositionValueChanged;
             m_Rotation.OnValueChanged -= OnRotationValueChanged;

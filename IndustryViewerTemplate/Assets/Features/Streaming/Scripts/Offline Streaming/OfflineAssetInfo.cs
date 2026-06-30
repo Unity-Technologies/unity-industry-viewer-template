@@ -61,7 +61,7 @@ namespace Unity.Industry.Viewer.Streaming
         public string projectStatus { get; set; }
 
         [JsonProperty]
-        public List<string> collectionPaths { get; set; }
+        public List<string> collectionPaths { get; set; } = new List<string>();
 
         [JsonProperty]
         public string lastModifiedDateString { get; set; }
@@ -117,13 +117,28 @@ namespace Unity.Industry.Viewer.Streaming
         {
             try
             {
+                await PopulateInfo(assetInfo, storedPath);
+            }
+            finally
+            {
+                // Always release the awaiter in DownloadStreamingDataController.WriteJSONFile,
+                // even when a cloud call throws or an early return is hit, so the offline
+                // download can never hang waiting on m_Completed.
+                m_Completed.TrySetResult(true);
+            }
+        }
+
+        private async Task PopulateInfo(AssetInfo assetInfo, string storedPath)
+        {
+            try
+            {
                 var previewImage = await assetInfo.Asset.GetPreviewUrlAsync(CancellationToken.None);
                 previewPic = previewImage.ToString();
             }
             catch (Exception e)
             {
+                // A missing/expired preview URL must not abort gathering the rest of the info.
                 Console.WriteLine(e);
-                throw;
             }
 
             if (!string.IsNullOrEmpty(previewPic))
@@ -205,7 +220,6 @@ namespace Unity.Industry.Viewer.Streaming
             {
                 collectionPaths.Add(collection.Path);
             }
-            m_Completed.SetResult(true);
         }
 
         [OnSerializing]

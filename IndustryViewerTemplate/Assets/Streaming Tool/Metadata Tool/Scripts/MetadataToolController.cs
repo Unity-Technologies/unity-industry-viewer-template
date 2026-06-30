@@ -134,44 +134,25 @@ namespace Unity.Industry.Viewer.Streaming.Metadata
                 try
                 {
                     var raycastResult = await m_StreamingModelController.Stage.RaycastAsync((DoubleRay) ray, m_StreamingModelController.ActiveCamera.farClipPlane, RaycastOptions.ExcludeHiddenInstances | RaycastOptions.ExcludeNormalFromResult);
-                    RaycastHit hit;
                     if (raycastResult.InstanceId == InstanceId.None)
                     {
-                        if (!checkWorldSpaceUI || !Physics.Raycast(ray, out hit, m_StreamingModelController.ActiveCamera.farClipPlane,
+                        if (!checkWorldSpaceUI || !Physics.Raycast(ray, out _, m_StreamingModelController.ActiveCamera.farClipPlane,
                                 LayerMask.GetMask("UI")))
                         {
                             ResetAll();
                             return;
                         }
                     }
-                    
+
                     if (NetworkDetector.RequestedOfflineMode)
                     {
                         return;
                     }
-                    
-                    if (checkWorldSpaceUI)
+
+                    if (checkWorldSpaceUI && WorldSpaceUiBlocksRay(ray, m_StreamingModelController.ActiveCamera.farClipPlane,
+                            raycastResult.InstanceId != InstanceId.None, raycastResult.Point.ToVector3()))
                     {
-                        if (Physics.Raycast(ray, out hit, m_StreamingModelController.ActiveCamera.farClipPlane, LayerMask.GetMask("UI")))
-                        {
-                            if (raycastResult.InstanceId != InstanceId.None)
-                            {
-                                var stageRaycastPoint = raycastResult.Point.ToVector3();
-                                var uiRaycastPoint = hit.point;
-                        
-                                // Calculate distances along the ray using dot product
-                                float uiDistance = Vector3.Dot(uiRaycastPoint - ray.origin, ray.direction);
-                                float stageDistance = Vector3.Dot(stageRaycastPoint - ray.origin, ray.direction);
-
-                                bool isUIInFront = uiDistance < stageDistance;
-
-                                if (isUIInFront) return;
-                            }
-                            else
-                            {
-                                return;
-                            }
-                        }
+                        return;
                     }
                     ResetAll();
                     ModelStreamId modelStreamId = raycastResult.ModelId;

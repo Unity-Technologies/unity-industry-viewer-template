@@ -53,8 +53,14 @@ namespace Unity.Industry.Viewer.Streaming.CrossSection
 
         void Update()
         {
-            lineWidth = Mathf.Lerp(m_MinLineWidth, m_MaxLineWidth,
-                (transform.position - Camera.main.transform.position).magnitude * m_LineWidthDistanceFactor);
+            // Camera.main can be null when the active camera isn't tagged MainCamera (e.g. AR/passthrough);
+            // keep the previous line width instead of dereferencing null every frame.
+            var mainCamera = Camera.main;
+            if (mainCamera != null)
+            {
+                lineWidth = Mathf.Lerp(m_MinLineWidth, m_MaxLineWidth,
+                    (transform.position - mainCamera.transform.position).magnitude * m_LineWidthDistanceFactor);
+            }
             UpdateWireframeFaces();
         }
 

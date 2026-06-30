@@ -63,10 +63,7 @@ namespace Unity.Industry.Viewer.Streaming.AddModel
             NavigationController.RequestDefaultHomeView += CloseUI;
             SharedUIManager.Instance.AssetsContainer.RegisterCallback<GeometryChangedEvent>(OnGeometryChanged);
             
-            if (!SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Add(m_StyleSheet);
-            }
+            SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.AddStyleSheetIfMissing(m_StyleSheet);
 
             InitializeToolButton();
             StreamSceneController.ExitSceneConfirmed += CloseUI;
@@ -264,10 +261,7 @@ namespace Unity.Industry.Viewer.Streaming.AddModel
 
         protected virtual async void InitializeUI()
         {
-            if (!SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Add(m_StyleSheet);
-            }
+            SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.AddStyleSheetIfMissing(m_StyleSheet);
 
             if (m_FolderButton != null)
             {

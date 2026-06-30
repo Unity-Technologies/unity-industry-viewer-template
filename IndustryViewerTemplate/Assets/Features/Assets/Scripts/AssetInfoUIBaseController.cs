@@ -215,9 +215,11 @@ namespace Unity.Industry.Viewer.Assets
 
         private string ReturnDateTimeFormat(DateTime dateTime)
         {
-            string timeZone = dateTime.ToString("zzz").Replace(":00", "");
-            int timeZoneInInt = int.Parse(timeZone.Remove(0,1));
+            // "zzz" yields e.g. "+05:30"; take the sign and whole-hour part separately. Parsing the
+            // raw string (after stripping ":00") threw for non-whole-hour offsets like +05:30 / -03:30.
+            string timeZone = dateTime.ToString("zzz");
             string timeZoneSign = timeZone[0].ToString();
+            int timeZoneInInt = int.Parse(timeZone.Substring(1).Split(':')[0]);
             return $"{dateTime:MMMM dd, yyyy - hh:mm:ss tt} GMT{timeZoneSign}{timeZoneInInt:0}";
         }
         

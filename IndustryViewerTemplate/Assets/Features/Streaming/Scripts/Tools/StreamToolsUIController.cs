@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.AppUI.UI;
@@ -15,14 +14,16 @@ namespace Unity.Industry.Viewer.Streaming
     public class StreamToolsUIController : StreamToolsUIControllerBase
     {
         private const string k_MainToolIconClassName = "MainToolIcon";
-        
+
         private const string k_ToolScrollListName = "ToolScrollList";
         protected const string k_SubToolScrollListName = "SubToolScrollList";
-        
+
         protected UIDocument m_UIDocument;
         private ScrollView m_ToolScrollList;
         protected ScrollView m_SubToolScrollList;
-        
+
+        protected override UIDocument ToolPanelUIDocument => m_UIDocument;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -30,7 +31,7 @@ namespace Unity.Industry.Viewer.Streaming
             StreamToolsController.ToolActiveChanged += OnToolActiveChanged;
             ToolPanelUIController.CloseToolPanel += CloseToolPanel;
             UpdateToolPanel += OnUpdateToolPanel;
-            
+
             InitializeUI();
         }
 
@@ -45,49 +46,11 @@ namespace Unity.Industry.Viewer.Streaming
             m_SubToolScrollList?.Clear();
         }
 
-        private void CloseToolPanel()
-        {
-            StreamToolsController.DisableAllTools?.Invoke(false);
-        }
-
-        private void OnUpdateToolPanel(StreamingToolAsset toolAsset, GameObject controller, bool active)
-        {
-            if (active)
-            {
-                //Add tool to panel
-                if(controller.TryGetComponent(out StreamToolUIBase toolUI))
-                {
-                    if(controller.TryGetComponent(out StreamToolControllerBase toolController))
-                    {
-                        toolController.OnToolOpened();
-                    }
-
-                    VisualElement toolPanel = null;
-                    if (toolUI.ToolUIAsset != null)
-                    {
-                        toolPanel = toolUI.ToolUIAsset.Instantiate().Children().First();
-                        toolPanel.userData = controller;
-                    }
-                    
-                    toolUI.InitializeUI(m_UIDocument, toolPanel, controller);
-                    if (toolPanel != null)
-                    {
-                        ToolPanelUIController.OpenToolPanel?.Invoke(toolAsset.ToolName, toolPanel, toolAsset.resizablePanel);
-                    }
-                }
-            }
-            else
-            {
-                //Remove tool from panel
-                ToolPanelUIController.CloseToolPanel?.Invoke();
-            }
-        }
-
         protected virtual void InitializeUI()
         {
             m_UIDocument = SharedUIManager.Instance.AssetsUIDocument;
             m_ToolScrollList = m_UIDocument.rootVisualElement.Q<ScrollView>(k_ToolScrollListName);
-            
+
             m_SubToolScrollList = m_UIDocument.rootVisualElement.Q<ScrollView>(k_SubToolScrollListName);
             m_SubToolScrollList.style.display = DisplayStyle.None;
         }
@@ -125,7 +88,7 @@ namespace Unity.Industry.Viewer.Streaming
                 {
                     newButton.AddToClassList(styleClassName);
                 }
-                
+
                 Icon icon = newButton.Q<Icon>("appui-actionbutton__icon");
                 icon.image = toolAsset.toolIcon;
                 var newButtonData = new StreamToolData(toolAsset);

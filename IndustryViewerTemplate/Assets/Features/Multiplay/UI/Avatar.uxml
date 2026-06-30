@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="Container" picking-mode="Ignore" style="flex-grow: 0; height: 55px; flex-direction: row; border-top-left-radius: 27.5px; border-top-right-radius: 27.5px; border-bottom-right-radius: 27.5px; border-bottom-left-radius: 27.5px; background-color: rgb(46, 46, 46); justify-content: center; align-items: center; padding-top: 7.5px; padding-right: 7.5px; padding-bottom: 7.5px; padding-left: 7.5px;">
         <ui:VisualElement name="Color" picking-mode="Ignore" style="flex-grow: 0; height: 40px; background-color: rgb(255, 45, 45); width: 40px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; align-items: center; justify-content: center; min-width: 40px; min-height: 40px;">
-            <Unity.AppUI.UI.Text name="InitialLabel" size="XL" picking-mode="Ignore" style="color: rgb(255, 255, 255); -unity-font-style: bold;" />
+            <Unity.AppUI.UI.Text name="InitialLabel" size="XL" picking-mode="Ignore" style="color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center;"/>
         </ui:VisualElement>
-        <Unity.AppUI.UI.Text size="XL" name="NameLabel" picking-mode="Ignore" style="margin-left: 10px; -unity-text-align: middle-center; margin-right: 5px; display: flex; color: rgb(255, 255, 255); max-width: 115px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" />
+        <Unity.AppUI.UI.Text size="XL" name="NameLabel" picking-mode="Ignore" style="margin-left: 10px; -unity-text-align: middle-center; margin-right: 5px; display: flex; color: rgb(255, 255, 255); max-width: 115px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"/>
     </ui:VisualElement>
 </ui:UXML>

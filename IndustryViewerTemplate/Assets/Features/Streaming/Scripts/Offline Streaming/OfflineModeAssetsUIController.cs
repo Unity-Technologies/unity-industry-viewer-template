@@ -496,7 +496,7 @@ namespace Unity.Industry.Viewer.Streaming
 
             if (!string.IsNullOrEmpty(offlineAsset.OfflineAssetInfo.previewPic))
             {
-                HandleThumbnailDownload(iconPlaceHolder, offlineAsset.OfflineAssetInfo.assetType, bindingId =>
+                HandleThumbnailDownload(iconPlaceHolder, offlineAsset.Descriptor.AssetId.GetHashCode(), bindingId =>
                 {
                     _ = TextureDownload.DownloadThumbnail(offlineAsset.Descriptor.AssetId.GetHashCode(), offlineAsset.Descriptor.AssetVersion.ToString(), offlineAsset.OfflineAssetInfo.previewPic, textureResult =>
                     {

@@ -131,6 +131,7 @@ namespace Unity.Industry.Viewer.VR
                 {
                     Debug.LogWarning($"No tracked pose driver found for {m_Side} hand in TrackedHandMode.");
                     m_Parent = null;
+                    m_SwitchInProgress = false;
                     return;
                 }
             }

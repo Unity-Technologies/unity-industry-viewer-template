@@ -148,11 +148,11 @@ namespace Unity.Industry.Viewer.Streaming
             // Set the resource limits for the streaming model controller, feel free to change as it only affects WEBGL and VR
             if (m_ResourceLimitAsset != null)
             {
-                bool isNonTethered = false;
+                bool isVRBuild = false;
 #if VR_MODE
-                isNonTethered = true;
+                isVRBuild = true;
 #endif
-                var limitSettings = m_ResourceLimitAsset.ResourceLimits.FirstOrDefault(x => x.IsNonTethered == isNonTethered && x.Platform == Application.platform);
+                var limitSettings = m_ResourceLimitAsset.ResourceLimits.FirstOrDefault(x => x.IsVRBuild == isVRBuild && x.Platform == Application.platform);
                 if (limitSettings != null)
                 {
                     builder.ConfigureDefaultResourceLimiter(x => x.SetMaxTriangleCount(limitSettings.MaxResources));
@@ -424,7 +424,13 @@ namespace Unity.Industry.Viewer.Streaming
                 m_Stage.Observers.Remove(m_CurrentObserver);
                 m_ActiveCamera = null;
             }
+            
+#if VR_MODE
+            m_CurrentObserver = new ProximityAwareObserver(observeCamera);
+#else
             m_CurrentObserver = StageObserverFactory.CreateCameraObserver(observeCamera);
+#endif
+            
             m_ActiveCamera = observeCamera;
 
             m_Stage.Observers.Add(m_CurrentObserver);
@@ -455,11 +461,17 @@ namespace Unity.Industry.Viewer.Streaming
                 }
                 catch (Exception e)
                 {
-                    // Handle exception
+                    Debug.LogException(e);
                 }
                 finally
                 {
-                    onComplete?.Invoke(targetDataset, properties.Value);
+                    // Only complete when the dataset and its properties were actually retrieved.
+                    // On failure both stay null, and the onComplete handler dereferences
+                    // datasetProperties.Value / targetDataset, so invoking it would throw.
+                    if (targetDataset != null && properties.HasValue)
+                    {
+                        onComplete?.Invoke(targetDataset, properties);
+                    }
                 }
             }
         }

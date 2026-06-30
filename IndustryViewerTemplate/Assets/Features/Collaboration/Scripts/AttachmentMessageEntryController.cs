@@ -136,7 +136,7 @@ namespace Unity.Industry.Viewer.Collaboration
             void Callback(bool success, IAnnotation annotation)
             {
                 if(!success) return;
-                bool isRoot = string.IsNullOrEmpty(annotation.RootAnnotationId.ToString());
+                bool isRoot = annotation.RootAnnotationId == null;
                 if (_attachment is ISpatial3DAttachment)
                 {
                     _annotationEntryController.CollaborationUIController.DeleteSpatialAttachment(annotation, _attachment);

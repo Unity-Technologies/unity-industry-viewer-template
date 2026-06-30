@@ -7,6 +7,7 @@ using UnityEditor.SceneManagement;
 using UnityEditor.Build;
 using UnityEngine.XR.ARCore;
 using UnityEngine.XR.OpenXR;
+using UnityEngine.Rendering;
 
 //Enable this if want to use Oculus Loader
 //using Unity.XR.Oculus;
@@ -19,6 +20,12 @@ namespace Unity.Industry.Viewer.VR.Editor
 
         private const string k_MetaFeatureSetID = "com.unity.openxr.featureset.meta";
         private const string k_AndroidXRFeatureSetID = "com.unity.openxr.featureset.android";
+
+        // URP render pipeline assets per VR platform, and the non-VR default used as the restore fallback.
+        private const string k_AndroidXRUrpPath = "Assets/Settings/URP-Android XR.asset";
+        private const string k_StandaloneVRUrpPath = "Assets/Settings/URP-Standalone VR.asset";
+        private const string k_DefaultUrpPath = "Assets/Settings/URP-HighFidelity.asset";
+        private const string k_PreviousDefaultRpKey = "PreviousDefaultRenderPipelinePath";
         
         static string[] vrScenes = new string[]
         {
@@ -71,6 +78,9 @@ namespace Unity.Industry.Viewer.VR.Editor
             LoaderControl.DisableFeatureGroup(BuildTargetGroup.Android, k_MetaFeatureSetID);
             LoaderControl.EnableFeatureGroup(BuildTargetGroup.Android, k_AndroidXRFeatureSetID);
             #endregion
+
+            // Pin the Android XR URP asset (active quality level + global default).
+            ApplyRenderPipeline(k_AndroidXRUrpPath);
             
             #region Add Android XR to Scripting Define Symbols
 
@@ -129,6 +139,9 @@ namespace Unity.Industry.Viewer.VR.Editor
             LoaderControl.EnableFeatureGroup(BuildTargetGroup.Android, k_MetaFeatureSetID);
             LoaderControl.DisableFeatureGroup(BuildTargetGroup.Android, k_AndroidXRFeatureSetID);
             #endregion
+
+            // Pin the Standalone VR URP asset (active quality level + global default).
+            ApplyRenderPipeline(k_StandaloneVRUrpPath);
 
 #region Add VR Mode to Scripting Define Symbols
 
@@ -345,6 +358,9 @@ namespace Unity.Industry.Viewer.VR.Editor
                 SetDefaultQualityLevel(targetQualityIndex);
             }
 #endregion
+
+            // Restore the global default render pipeline saved before VR setup.
+            RestoreRenderPipeline();
             
 #region Setup XR Plugin Management
 
@@ -423,6 +439,60 @@ namespace Unity.Industry.Viewer.VR.Editor
             {
                 Debug.LogWarning($"Target quality level '{{QualitySettings.names[targetQualityIndex]}}' not found. Available levels: " + string.Join(", ", QualitySettings.names));
             }
+        }
+
+        // Pins the given URP asset as the active render pipeline: assigns it to the now-active
+        // VR quality level and to the global GraphicsSettings default. Call AFTER the quality
+        // level has been switched (SetDefaultQualityLevel) so QualitySettings.renderPipeline
+        // targets the VR level. The pre-existing global default is remembered once so
+        // "Disable XR Setup" can restore it.
+        private static void ApplyRenderPipeline(string urpAssetPath)
+        {
+            var pipeline = AssetDatabase.LoadAssetAtPath<RenderPipelineAsset>(urpAssetPath);
+            if (pipeline == null)
+            {
+                Debug.LogWarning($"Render pipeline asset not found at '{urpAssetPath}'. Render pipeline not changed.");
+                return;
+            }
+
+            // Remember the original default only once, so switching between VR setups (or
+            // re-running a setup) never overwrites the true non-VR default.
+            if (!EditorPrefs.HasKey(k_PreviousDefaultRpKey))
+            {
+                var currentDefault = GraphicsSettings.defaultRenderPipeline;
+                var currentPath = currentDefault != null ? AssetDatabase.GetAssetPath(currentDefault) : string.Empty;
+                EditorPrefs.SetString(k_PreviousDefaultRpKey, currentPath);
+                Debug.Log($"Saved previous default render pipeline: {(string.IsNullOrEmpty(currentPath) ? "<none>" : currentPath)}");
+            }
+
+            // Active quality level was already switched to the VR level by SetDefaultQualityLevel.
+            QualitySettings.renderPipeline = pipeline;
+            GraphicsSettings.defaultRenderPipeline = pipeline;
+            AssetDatabase.SaveAssets();
+            Debug.Log($"Render pipeline set to: {urpAssetPath}");
+        }
+
+        // Restores the global default render pipeline saved before the first VR setup
+        // (falls back to URP-HighFidelity). Per-quality VR-level assignments are left intact.
+        private static void RestoreRenderPipeline()
+        {
+            string targetPath = EditorPrefs.HasKey(k_PreviousDefaultRpKey)
+                ? EditorPrefs.GetString(k_PreviousDefaultRpKey)
+                : k_DefaultUrpPath;
+            EditorPrefs.DeleteKey(k_PreviousDefaultRpKey);
+
+            if (string.IsNullOrEmpty(targetPath)) targetPath = k_DefaultUrpPath;
+
+            var pipeline = AssetDatabase.LoadAssetAtPath<RenderPipelineAsset>(targetPath);
+            if (pipeline == null)
+            {
+                Debug.LogWarning($"Could not restore default render pipeline from '{targetPath}'.");
+                return;
+            }
+
+            GraphicsSettings.defaultRenderPipeline = pipeline;
+            AssetDatabase.SaveAssets();
+            Debug.Log($"Default render pipeline restored to: {targetPath}");
         }
     }
 }

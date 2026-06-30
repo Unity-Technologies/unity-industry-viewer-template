@@ -183,7 +183,7 @@ namespace Unity.Industry.Viewer.Navigation.WalkModeCamera
                 m_PlayerVelocity.y += Physics.gravity.y * Time.deltaTime;
             }
 
-            Mathf.Clamp(m_PlayerVelocity.y, m_MaxFallSpeed, m_MaxFallSpeed * -1f);
+            m_PlayerVelocity.y = Mathf.Clamp(m_PlayerVelocity.y, m_MaxFallSpeed, m_MaxFallSpeed * -1f);
         }
 
         void HandleStepUp()

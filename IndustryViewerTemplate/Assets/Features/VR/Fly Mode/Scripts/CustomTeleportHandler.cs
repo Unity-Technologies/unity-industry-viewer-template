@@ -61,6 +61,8 @@ namespace Unity.Industry.Viewer.VR.FlyMode
             }
         }
 
+        private bool m_FindingTarget;
+
         // Update is called once per frame
         void Update()
         {
@@ -83,7 +85,10 @@ namespace Unity.Industry.Viewer.VR.FlyMode
 
             if (pointsWritten > 0)
             {
-                _ = FindTargetPosition(m_Positions, pointsWritten);
+                if (!m_FindingTarget)
+                {
+                    _ = FindTargetPosition(m_Positions, pointsWritten);
+                }
                 if (m_ReticleInstance != null)
                 {
                     var stickInput = m_MovementController.TeleportDirectionInputReference.action.ReadValue<Vector2>();
@@ -140,6 +145,21 @@ namespace Unity.Industry.Viewer.VR.FlyMode
         }
 
         private async Task FindTargetPosition(Vector3[] points, int count)
+        {
+            // Prevent overlapping invocations: Update fires this every frame, but the async raycast
+            // can span multiple frames and races on shared m_Positions/TargetPosition/lineRenderer.
+            m_FindingTarget = true;
+            try
+            {
+                await FindTargetPositionImpl(points, count);
+            }
+            finally
+            {
+                m_FindingTarget = false;
+            }
+        }
+
+        private async Task FindTargetPositionImpl(Vector3[] points, int count)
         {
             if (m_MovementController.StreamingModelController == null)
             {

@@ -5,11 +5,19 @@ namespace Unity.Industry.Viewer.Streaming
 {
     public static class SceneUtility
     {
-        public static bool IsMainSceneActive => Object.FindFirstObjectByType<MainSceneController>().gameObject.scene == SceneManager.GetActiveScene();
+        public static bool IsMainSceneActive
+        {
+            get
+            {
+                var mainSceneController = Object.FindFirstObjectByType<MainSceneController>();
+                return mainSceneController != null && mainSceneController.gameObject.scene == SceneManager.GetActiveScene();
+            }
+        }
 
         public static string GetStreamingSceneName()
         {
-            return Object.FindFirstObjectByType<MainSceneController>().StreamingSceneName;
+            var mainSceneController = Object.FindFirstObjectByType<MainSceneController>();
+            return mainSceneController != null ? mainSceneController.StreamingSceneName : string.Empty;
         }
     }
 }

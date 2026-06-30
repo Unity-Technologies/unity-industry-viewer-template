@@ -167,6 +167,7 @@ public class XRHierarchyUIController : MonoBehaviour
     {
         float value = Mathf.Round(sliderValue * 10) / 10;
         m_GridViewManager?.SetGridUnit(value);
+        if (TransformGizmo.Instance == null) return;
         TransformGizmo.Instance.movementSnap = value;
         TransformGizmo.Instance.rotationSnap = value;
     }

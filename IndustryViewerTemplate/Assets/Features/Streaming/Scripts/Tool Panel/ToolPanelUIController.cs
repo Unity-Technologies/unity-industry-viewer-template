@@ -53,9 +53,9 @@ namespace Unity.Industry.Viewer.Streaming
             m_ToolPanelContent?.RemoveFromHierarchy();
             m_CloseToolPanelButton.clickable.clicked -= OnCloseToolPanelButtonClicked;
             
-            m_ResizeHandle?.RegisterCallback<PointerDownEvent>(OnPointerDown);
-            m_ResizeHandle?.RegisterCallback<PointerMoveEvent>(OnPointerMove);
-            m_ResizeHandle?.RegisterCallback<PointerUpEvent>(OnPointerUp);
+            m_ResizeHandle?.UnregisterCallback<PointerDownEvent>(OnPointerDown);
+            m_ResizeHandle?.UnregisterCallback<PointerMoveEvent>(OnPointerMove);
+            m_ResizeHandle?.UnregisterCallback<PointerUpEvent>(OnPointerUp);
         }
 
         protected virtual void InitializeUI()

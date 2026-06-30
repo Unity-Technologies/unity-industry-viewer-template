@@ -212,8 +212,13 @@ namespace Unity.Industry.Viewer.Streaming
             var m_settings = m_PostProcessSettingsUI.Instantiate().Children().First();
             
             m_PostProcessingToggle = m_settings.Q<Toggle>();
-            Camera.main.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData);
-            m_PostProcessingToggle.value = cameraData.renderPostProcessing;
+            // Camera.main can be null (no active MainCamera-tagged camera) and may lack URP camera
+            // data; guard both instead of NRE-ing when the settings panel opens.
+            var mainCamera = Camera.main;
+            if (mainCamera != null && mainCamera.TryGetComponent<UniversalAdditionalCameraData>(out var cameraData))
+            {
+                m_PostProcessingToggle.value = cameraData.renderPostProcessing;
+            }
             m_PostProcessingToggle.RegisterValueChangedCallback(ChangePostProcessingValue);
             
             InAppSettings.InitializeSection(m_RenderingTitle, ref newTitle, m_settings);

@@ -19,8 +19,6 @@ namespace Unity.Industry.Viewer.Navigation.FlyCamera
         [SerializeField]
         private FlyCameraInputSystemController m_CameraInputSystemController;
 
-        private IconButton m_HomeButton;
-
         private TouchSliderFloat m_MoveSensitivitySlider;
         private TouchSliderFloat m_RotationSensitivitySlider;
 
@@ -29,25 +27,7 @@ namespace Unity.Industry.Viewer.Navigation.FlyCamera
             base.m_baseCameraInputSystemController = m_CameraInputSystemController;
             base.OnEnable();
 
-            if (m_HomeButton == null)
-            {
-                var UIDocument = SharedUIManager.Instance.AssetsUIDocument;
-                var streamingContainer = UIDocument.rootVisualElement.Q<VisualElement>(StreamingUtils.StreamingPanelName);
-                var bottomLeftContainer = streamingContainer.Q<VisualElement>(StreamingUtils.BottomLeftContainerName);
-                
-                m_HomeButton = new IconButton()
-                {
-                    icon = "camera-overhead"
-                };
-
-                m_HomeButton.AddToClassList(StreamingUtils.BottomLeftButtonStyleName);
-                m_HomeButton.clicked += OnHomeButtonClicked;
-                bottomLeftContainer.Insert(bottomLeftContainer.childCount, m_HomeButton);
-            }
-            else
-            {
-                m_HomeButton.style.display = DisplayStyle.Flex;
-            }
+            ShowOrCreateHomeButton();
 
             InAppSettings.SettingsPanelShown += SettingsPanelUp;
         }
@@ -56,11 +36,8 @@ namespace Unity.Industry.Viewer.Navigation.FlyCamera
         {
             base.OnDisable();
 
-            if (m_HomeButton != null)
-            {
-                m_HomeButton.style.display = DisplayStyle.None;
-            }
-            
+            HideHomeButton();
+
             InAppSettings.SettingsPanelShown -= SettingsPanelUp;
             if (m_SettingsPanel != null && m_SettingsPanel.Contains(m_Title))
                 m_SettingsPanel.Q<ScrollView>().Remove(m_Title);
@@ -70,53 +47,17 @@ namespace Unity.Industry.Viewer.Navigation.FlyCamera
         {
             base.OnDestroy();
 
-            if (m_HomeButton != null)
-            {
-                m_HomeButton.clicked -= OnHomeButtonClicked;
-                m_HomeButton.RemoveFromHierarchy();
-            }
-        }
-
-        private void OnHomeButtonClicked()
-        {
-            NavigationController.RequestDefaultHomeView?.Invoke();
+            DestroyHomeButton();
         }
 
         protected override void InitialUI(VisualElement panel)
         {
             base.InitialUI(panel);
 
-            m_MoveSensitivitySlider = panel.Q<TouchSliderFloat>(k_MoveSensitivitySlider);
-            m_RotationSensitivitySlider = panel.Q<TouchSliderFloat>(k_RotationSensitivitySlider);
-
-            m_MoveSensitivitySlider.RegisterValueChangingCallback(OnMoveSensitivityChanging);
-            m_MoveSensitivitySlider.RegisterValueChangedCallback(OnMoveSensitivityChanged);
-            
-            m_RotationSensitivitySlider.RegisterValueChangingCallback(OnRotateSensitivityChanging);
-            m_RotationSensitivitySlider.RegisterValueChangedCallback(OnRotateSensitivityChanged);
-            
-            m_MoveSensitivitySlider.SetValueWithoutNotify(m_CameraInputSystemController.MoveSensitivity);
-            m_RotationSensitivitySlider.SetValueWithoutNotify(m_CameraInputSystemController.RotateSensitivity);
-        }
-
-        private void OnRotateSensitivityChanged(ChangeEvent<float> evt)
-        {
-            m_CameraInputSystemController.UpdateRotateSensitivity(evt.newValue);
-        }
-
-        private void OnRotateSensitivityChanging(ChangingEvent<float> evt)
-        {
-            m_CameraInputSystemController.UpdateRotateSensitivity(evt.newValue);
-        }
-
-        private void OnMoveSensitivityChanged(ChangeEvent<float> evt)
-        {
-            m_CameraInputSystemController.UpdateMoveSensitivity(evt.newValue);
-        }
-
-        private void OnMoveSensitivityChanging(ChangingEvent<float> evt)
-        {
-            m_CameraInputSystemController.UpdateMoveSensitivity(evt.newValue);
+            m_MoveSensitivitySlider = WireSensitivitySlider(panel, k_MoveSensitivitySlider,
+                m_CameraInputSystemController.MoveSensitivity, m_CameraInputSystemController.UpdateMoveSensitivity);
+            m_RotationSensitivitySlider = WireSensitivitySlider(panel, k_RotationSensitivitySlider,
+                m_CameraInputSystemController.RotateSensitivity, m_CameraInputSystemController.UpdateRotateSensitivity);
         }
     }
 }

@@ -137,10 +137,7 @@ namespace Unity.Industry.Viewer.DeepLinking
 
             UIDocument m_UIDocument = SharedUIManager.Instance.AssetsUIDocument;
 
-            if (!m_UIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                m_UIDocument.rootVisualElement.styleSheets.Add(m_StyleSheet);
-            }
+            m_UIDocument.rootVisualElement.AddStyleSheetIfMissing(m_StyleSheet);
 
             var topRightBar = m_UIDocument.rootVisualElement.Q<VisualElement>(k_TopRightBarName);
 
@@ -328,6 +325,13 @@ namespace Unity.Industry.Viewer.DeepLinking
                 return;
             }
             
+            if (!info.Properties.HasValue)
+            {
+                // No properties to classify the asset; can't build a deep link, so hide the button.
+                copyDeepLinkButton?.DisplayOff();
+                return;
+            }
+
             if (!info.Properties.Value.IsLayout())
             {
                 enableDeepLinkButton = await StreamAssetUIController.HasStreamableDataset(info);

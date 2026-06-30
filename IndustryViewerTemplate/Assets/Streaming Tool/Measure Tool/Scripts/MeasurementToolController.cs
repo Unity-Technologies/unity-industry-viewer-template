@@ -258,7 +258,7 @@ namespace Unity.Industry.Viewer.Streaming.Measurement
                 float uiDistance = Vector3.Dot(uiRaycastPoint - ray.origin, ray.direction);
                 float stageDistance = Vector3.Dot(hitPoint.Value - ray.origin, ray.direction);
 
-                if (Mathf.Abs(uiDistance - stageDistance) <= 0.01f)
+                if (uiDistance < stageDistance)
                 {
                     Debug.Log("Hit on the UI, ignoring this raycast");
                     // UI is in front of the stage, ignore this raycast

@@ -94,10 +94,7 @@ namespace Unity.Industry.Viewer.Assets
                     m_AssetPlaceHolderScriptableObject);
             }
             
-            if (!m_AssetsUIDocument.rootVisualElement.styleSheets.Contains(m_AssetsStyleSheet))
-            {
-                m_AssetsUIDocument.rootVisualElement.styleSheets.Add(m_AssetsStyleSheet);
-            }
+            m_AssetsUIDocument.rootVisualElement.AddStyleSheetIfMissing(m_AssetsStyleSheet);
         }
 
         // Initialization
@@ -111,9 +108,13 @@ namespace Unity.Industry.Viewer.Assets
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            SharedUIManager.Instance.Dispose();
             IdentityController.AuthenticationStateChangedEvent -= OnAuthStateChanged;
             UninitializeUI();
+            // Dispose AFTER UninitializeUI: Dispose() nulls SharedUIManager.Instance, and
+            // UninitializeUI skips its entire unsubscribe block when Instance is null — disposing
+            // first would silently leak every grid/search/sorting/button callback subscription.
+            // Null-conditional guards the known destroy-order case where the singleton is already gone.
+            SharedUIManager.Instance?.Dispose();
         }
         
         private async void ShowSelectOrgButton()
@@ -448,10 +449,7 @@ namespace Unity.Industry.Viewer.Assets
 
         protected override void InitializeExtraUIController()
         {
-            if (!m_AssetsUIDocument.rootVisualElement.styleSheets.Contains(m_AssetsCreationStyleSheet))
-            {
-                m_AssetsUIDocument.rootVisualElement.styleSheets.Add(m_AssetsCreationStyleSheet);
-            }
+            m_AssetsUIDocument.rootVisualElement.AddStyleSheetIfMissing(m_AssetsCreationStyleSheet);
 
             m_AssetInfoUIBaseController ??= new AssetsInfoUIToolkitController();
             m_AssetInfoUIBaseController.RegisterCallbacks();
@@ -497,7 +495,7 @@ namespace Unity.Industry.Viewer.Assets
         {
             if (assetInfo.Properties.Value.PreviewFileDescriptor != null)
             {
-                HandleThumbnailDownload(iconPlaceHolder, assetInfo.Properties.Value.Type, bindingId =>
+                HandleThumbnailDownload(iconPlaceHolder, assetInfo.Asset.Descriptor.AssetId.GetHashCode(), bindingId =>
                 {
                     _ = TextureDownload.DownloadThumbnail(assetInfo.Asset, textureResult =>
                     {
