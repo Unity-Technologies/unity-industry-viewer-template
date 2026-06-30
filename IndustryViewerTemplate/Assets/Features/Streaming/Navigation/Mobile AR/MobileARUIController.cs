@@ -159,11 +159,7 @@ namespace Unity.Industry.Viewer.Navigation.MobileAR
 
         private void OnEnable()
         {
-            if (!SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Contains(
-                    m_MobileARUIStyleSheet))
-            {
-                SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Add(m_MobileARUIStyleSheet);
-            }
+            SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.AddStyleSheetIfMissing(m_MobileARUIStyleSheet);
 
             var topBarLabels = SharedUIManager.Instance.AssetsUIDocument.rootVisualElement
                 .Query<VisualElement>(className: "TopBarLabel").ToList();
@@ -187,11 +183,7 @@ namespace Unity.Industry.Viewer.Navigation.MobileAR
             {
                 ToolPanelUIController.CloseToolPanel.Invoke();
             }
-            if (SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Contains(
-                    m_MobileARUIStyleSheet))
-            {
-                SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.styleSheets.Remove(m_MobileARUIStyleSheet);
-            }
+            SharedUIManager.Instance.AssetsUIDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_MobileARUIStyleSheet);
             
             var topBarLabels = SharedUIManager.Instance.AssetsUIDocument.rootVisualElement
                 .Query<VisualElement>(className: "TopBarLabel").ToList();
@@ -459,19 +451,21 @@ namespace Unity.Industry.Viewer.Navigation.MobileAR
                     break;
             }
             string messageText;
+            NotificationStyle toastStyle;
             if (saved)
             {
                 messageText = m_ARAnchorSavedLocalizedString.GetTitleLocalizedStringForAppUI();
+                toastStyle = NotificationStyle.Positive;
             }
             else
             {
-
                 messageText = errorMessage.Contains("Forbidden") || errorMessage.Contains("Not Authorized")
                     ? m_FailSaveWriteAccessLocalizedString.GetTitleLocalizedStringForAppUI()
-                    : m_ARAnchorSavedLocalizedString.GetTitleLocalizedStringForAppUI();
+                    : m_FailSaveARAnchorUnknownLocalizedString.GetTitleLocalizedStringForAppUI();
+                toastStyle = NotificationStyle.Negative;
             }
             
-            var toast = Toast.Build(m_SaveMapButton, messageText, NotificationDuration.Long).SetStyle(NotificationStyle.Positive);
+            var toast = Toast.Build(m_SaveMapButton, messageText, NotificationDuration.Long).SetStyle(toastStyle);
             toast.Show();
         }
 

@@ -497,6 +497,7 @@ namespace Unity.Industry.Viewer.Assets
             if(SharedUIManager.Instance.AssetsContainer.resolvedStyle.display == DisplayStyle.None) return;
             if (SceneManager.GetActiveScene() == SharedUIManager.Instance.AssetsUIDocument.gameObject.scene)
             {
+                AssetsController.NewVersionAvailable -= NewVersionAvailable;
                 AssetsController.NewVersionAvailable += NewVersionAvailable;
             }
         }

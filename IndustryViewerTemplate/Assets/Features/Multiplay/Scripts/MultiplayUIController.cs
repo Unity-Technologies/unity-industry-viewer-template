@@ -146,7 +146,13 @@ namespace Unity.Industry.Viewer.Multiplay
         // cleanup of event handlers and UI elements
         protected virtual void OnDestroy()
         {
-            NetworkManager.Singleton.OnClientStopped -= OnClientStopped;
+            // NetworkManager.Singleton can already be destroyed during teardown (guarded the same
+            // way elsewhere, e.g. MultiplayController); dereferencing it unguarded throws and skips
+            // the remaining cleanup below.
+            if (NetworkManager.Singleton != null)
+            {
+                NetworkManager.Singleton.OnClientStopped -= OnClientStopped;
+            }
             NetworkPlayerController.OnColorChanged -= OnColorChanged;
             NetworkPlayerController.OnNameChanged -= OnNameChanged;
             MultiplayController.AskToJoinLayout -= OnAskToJoinLayout;
@@ -185,10 +191,7 @@ namespace Unity.Industry.Viewer.Multiplay
             
             if(m_UIDocument == null) return;
             
-            if (m_UIDocument.rootVisualElement.styleSheets.Contains(m_MultiplayStyleSheet))
-            {
-                m_UIDocument.rootVisualElement.styleSheets.Remove(m_MultiplayStyleSheet);
-            }
+            m_UIDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_MultiplayStyleSheet);
         }
 
         private void OnSessionRemoved(ISession obj)
@@ -478,7 +481,7 @@ namespace Unity.Industry.Viewer.Multiplay
                 {
                     targetPosition.y -= playerObject.EyeLevelInVR.Value;
                 }
-                NavigationController.PlayerTranslateTo?.Invoke(playerObject.transform.position, playerObject.transform.rotation);
+                NavigationController.PlayerTranslateTo?.Invoke(targetPosition, playerObject.transform.rotation);
             }
             m_LastClickTime = currentTime;
             m_LastClickedElement = evt.target;
@@ -514,10 +517,7 @@ namespace Unity.Industry.Viewer.Multiplay
 
         protected virtual async void InitializeUI()
         {
-            if (!m_UIDocument.rootVisualElement.styleSheets.Contains(m_MultiplayStyleSheet))
-            {
-                m_UIDocument.rootVisualElement.styleSheets.Add(m_MultiplayStyleSheet);
-            }
+            m_UIDocument.rootVisualElement.AddStyleSheetIfMissing(m_MultiplayStyleSheet);
             
             var topRightBar = m_UIDocument.rootVisualElement.Q<VisualElement>(k_TopRightBarName);
             

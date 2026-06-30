@@ -37,6 +37,7 @@ namespace Unity.Industry.Viewer.Multiplay
         public override void OnDestroy()
         {
             MultiplayController.OnClientConnected -= OnClientConnected;
+            base.OnDestroy();
         }
 
         public override void OnNetworkDespawn()

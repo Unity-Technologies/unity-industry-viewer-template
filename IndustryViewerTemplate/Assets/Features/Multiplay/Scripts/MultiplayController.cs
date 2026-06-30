@@ -349,7 +349,7 @@ namespace Unity.Industry.Viewer.Multiplay
         // Handles the end presentation event by checking if the leaver is the presenter.
         private void OnEndPresentation(ulong leaverClientId)
         {
-            var playerObject = m_PlayerObjects[leaverClientId];
+            if (!m_PlayerObjects.TryGetValue(leaverClientId, out var playerObject)) return;
 
             if (!playerObject.TryGetComponent(out NetworkPlayerController playerController)) return;
             if (playerController.IsPresenter.Value)
@@ -511,6 +511,9 @@ namespace Unity.Industry.Viewer.Multiplay
     
     public static class TaskExtensions
     {
-        public static void Forget(this Task task) { }
+        public static void Forget(this Task task)
+        {
+            task.ContinueWith(t => Debug.LogException(t.Exception), TaskContinuationOptions.OnlyOnFaulted);
+        }
     }
 }

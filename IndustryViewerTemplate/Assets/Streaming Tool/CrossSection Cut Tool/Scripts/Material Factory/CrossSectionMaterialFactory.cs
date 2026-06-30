@@ -68,7 +68,7 @@ namespace Unity.Industry.Viewer.Streaming.CrossSection
         /// </returns>
         public override bool Equals(object obj)
         {
-            return obj is MaterialType type && Equals(type);
+            return obj is CustomMaterialType type && Equals(type);
         }
 
         /// <summary>

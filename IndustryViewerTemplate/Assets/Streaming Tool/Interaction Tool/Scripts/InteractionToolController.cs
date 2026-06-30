@@ -186,8 +186,7 @@ namespace Unity.Industry.Viewer.Streaming.Interaction
                         }
                     }
                 }
-                m_TransformGizmo.OnHandlerSelected -= OnCheckForSelectedAxis;
-                m_TransformGizmo.OnHandlerReleased -= OnCheckForReleaseAxis;
+                UnsubscribeGizmoHandlers(m_TransformGizmo);
                 Destroy(m_TransformGizmo);
             }
 #if !VR_MODE
@@ -217,44 +216,25 @@ namespace Unity.Industry.Viewer.Streaming.Interaction
                 try
                 {
                     var raycastResult = await m_StreamingModelController.Stage.RaycastAsync((DoubleRay) ray, m_StreamingModelController.ActiveCamera.farClipPlane, RaycastOptions.ExcludeHiddenInstances | RaycastOptions.ExcludeNormalFromResult);
-                    RaycastHit hit;
                     if (raycastResult.InstanceId == InstanceId.None)
                     {
-                        if (!checkWorldSpaceUI || !Physics.Raycast(ray, out hit, m_StreamingModelController.ActiveCamera.farClipPlane,
+                        if (!checkWorldSpaceUI || !Physics.Raycast(ray, out _, m_StreamingModelController.ActiveCamera.farClipPlane,
                                 LayerMask.GetMask("UI")))
                         {
                             ResetAll();
                             return;
                         }
                     }
-                    
+
                     if (NetworkDetector.RequestedOfflineMode)
                     {
                         return;
                     }
-                    
-                    if (checkWorldSpaceUI)
+
+                    if (checkWorldSpaceUI && WorldSpaceUiBlocksRay(ray, m_StreamingModelController.ActiveCamera.farClipPlane,
+                            raycastResult.InstanceId != InstanceId.None, raycastResult.Point.ToVector3()))
                     {
-                        if (Physics.Raycast(ray, out hit, m_StreamingModelController.ActiveCamera.farClipPlane, LayerMask.GetMask("UI")))
-                        {
-                            if (raycastResult.InstanceId != InstanceId.None)
-                            {
-                                var stageRaycastPoint = raycastResult.Point.ToVector3();
-                                var uiRaycastPoint = hit.point;
-                        
-                                // Calculate distances along the ray using dot product
-                                float uiDistance = Vector3.Dot(uiRaycastPoint - ray.origin, ray.direction);
-                                float stageDistance = Vector3.Dot(stageRaycastPoint - ray.origin, ray.direction);
-
-                                bool isUIInFront = uiDistance < stageDistance;
-
-                                if (isUIInFront) return;
-                            }
-                            else
-                            {
-                                return;
-                            }
-                        }
+                        return;
                     }
                     ResetAll();
                     ModelStreamId modelStreamId = raycastResult.ModelId;
@@ -331,11 +311,7 @@ namespace Unity.Industry.Viewer.Streaming.Interaction
             m_TransformGizmo.snapOverride = false;
             m_TransformGizmo.SetType(transformType);
             m_TransformGizmo.SetSpace(transformSpace);
-            m_TransformGizmo.OnHandlerSelected -= OnCheckForSelectedAxis;
-            m_TransformGizmo.OnHandlerReleased -= OnCheckForReleaseAxis;
-            
-            m_TransformGizmo.OnHandlerSelected += OnCheckForSelectedAxis;
-            m_TransformGizmo.OnHandlerReleased += OnCheckForReleaseAxis;
+            SubscribeGizmoHandlers(m_TransformGizmo);
             m_TransformGizmo.SetTarget(target);
             
             Renderer[] allRenderers = target.GetComponentsInChildren<Renderer>();
@@ -368,15 +344,6 @@ namespace Unity.Industry.Viewer.Streaming.Interaction
         }
 #endif
         
-        private void OnCheckForSelectedAxis()
-        {
-            NavigationController.PauseCameraControl?.Invoke(true);
-        }
-        
-        private void OnCheckForReleaseAxis()
-        {
-            NavigationController.PauseCameraControl?.Invoke(false);
-        }
 
         public void RemoveGeoGameObject(GeoGameObjectDetails details, out bool isCurrentSelected)
         {
@@ -401,22 +368,41 @@ namespace Unity.Industry.Viewer.Streaming.Interaction
 
         public void MakeItInteractable()
         {
-            if (!m_ModelStreamId.HasValue || !m_InstanceId.HasValue) return;
+            if (!m_ModelStreamId.HasValue || !m_InstanceId.HasValue)
+            {
+                // Nothing to instantiate: clear the loading panel the UI showed on click.
+                GeoGameObjectCreated?.Invoke(null);
+                return;
+            }
             InstantiateGameObject();
-            
+
             async void InstantiateGameObject()
             {
+                // Every exit must raise GeoGameObjectCreated (null on failure) because the UI only
+                // hides its loading panel from that handler; a silent return leaves it stuck.
                 var metadataRepository = m_ModelIDRepositoriesMapping[m_ModelStreamId.Value];
                 var metadata = await metadataRepository.Query().WhereInstanceEquals(m_InstanceId.Value)
                     .Select(MetadataPathCollection.None, new OptionalData(OptionalData.Fields.Name | OptionalData.Fields.Geometry))
                     .GetFirstOrDefaultAsync(CancellationToken.None);
-                if (metadata == null || metadata.Geometry == null) return;
+                if (metadata == null || metadata.Geometry == null)
+                {
+                    GeoGameObjectCreated?.Invoke(null);
+                    return;
+                }
                 var geometryData = metadata.Geometry;
-                if(!geometryData.HasValue) return;
+                if(!geometryData.HasValue)
+                {
+                    GeoGameObjectCreated?.Invoke(null);
+                    return;
+                }
                 var geometry = geometryData.Value;
                 StreamingModel[] streamingModels = TransformController.Instance.GetComponentsInChildren<StreamingModel>();
                 StreamingModel streamModel = streamingModels.FirstOrDefault(x => x.ModelStream.Id == m_ModelStreamId.Value);
-                if (streamModel == null) return;
+                if (streamModel == null)
+                {
+                    GeoGameObjectCreated?.Invoke(null);
+                    return;
+                }
                 try
                 {
                     var geometryObject =
@@ -437,6 +423,7 @@ namespace Unity.Industry.Viewer.Streaming.Interaction
                 } catch (Exception e)
                 {
                     Debug.LogException(e);
+                    GeoGameObjectCreated?.Invoke(null);
                 }
             }
         }

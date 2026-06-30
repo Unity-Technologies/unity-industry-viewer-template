@@ -251,7 +251,7 @@ namespace Unity.Industry.Viewer. VR.CameraPassThrough
         private void OnDestroy()
         {
             CameraPassThroughController.OnStateChange -= OnARStateChange;
-            ToolPanelUIController.CloseToolPanel += OnCloseToolPanel;
+            ToolPanelUIController.CloseToolPanel -= OnCloseToolPanel;
         }
         
         private void OnPlaceOnSurfaceButtonClicked()
@@ -509,10 +509,7 @@ namespace Unity.Industry.Viewer. VR.CameraPassThrough
 
             m_XRToolPanel ??= FindFirstObjectByType<XRToolPanel>();
             if(m_XRToolPanel == null) return;
-            if (!m_XRToolPanel.UIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                m_XRToolPanel.UIDocument.rootVisualElement.styleSheets.Add(m_StyleSheet);
-            }
+            m_XRToolPanel.UIDocument.rootVisualElement.AddStyleSheetIfMissing(m_StyleSheet);
         }
         
         private void OnSaveMapButtonClicked()
@@ -616,10 +613,7 @@ namespace Unity.Industry.Viewer. VR.CameraPassThrough
                 m_ToolButton.primary = false;
             }
             if(m_XRToolPanel == null) return;
-            if (m_XRToolPanel.UIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                m_XRToolPanel.UIDocument.rootVisualElement.styleSheets.Remove(m_StyleSheet);
-            }
+            m_XRToolPanel.UIDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_StyleSheet);
         }
         
         private void OnRotateIncrementStepperChanged(ChangeEvent<int> evt)

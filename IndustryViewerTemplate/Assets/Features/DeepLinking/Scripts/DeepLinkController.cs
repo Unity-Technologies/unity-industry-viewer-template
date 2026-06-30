@@ -68,6 +68,10 @@ namespace Unity.Industry.Viewer.DeepLinking
         private static AssetDescriptor GetAssetDescriptor(ResourceId resourceId)
         {
             var splitId = resourceId.ToString().Split(',');
+            if (splitId.Length < 4)
+            {
+                throw new System.FormatException($"Unexpected deep link ResourceId format (expected 4 comma-separated parts): {resourceId}");
+            }
             var orgId = splitId[0];
             var projectId = splitId[1];
             var assetId = splitId[2];

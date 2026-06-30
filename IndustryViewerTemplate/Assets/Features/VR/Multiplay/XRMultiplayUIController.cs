@@ -45,7 +45,13 @@ namespace Unity.Industry.Viewer.VR
         private void LateUpdate()
         {
             if(m_PlayerAvatars == null || m_PlayerAvatars.Count <= 1) return;
-            bool isAllInVR = m_PlayerAvatars.All(x => (x.Value.userData as NetworkPlayerController).IsInVR.Value);
+            // m_MyAvatar (the local player) is added without a NetworkPlayerController in userData,
+            // so skip entries whose cast is null instead of dereferencing it every frame. The local
+            // user is in VR in this controller, so excluding it doesn't change the all-in-VR result.
+            bool isAllInVR = m_PlayerAvatars.Values
+                .Select(avatar => avatar.userData as NetworkPlayerController)
+                .Where(playerController => playerController != null)
+                .All(playerController => playerController.IsInVR.Value);
             m_PresentationModeButton.style.display = isAllInVR ? DisplayStyle.None: DisplayStyle.Flex;
         }
 
@@ -80,10 +86,7 @@ namespace Unity.Industry.Viewer.VR
 
         protected override void InitializeUI()
         {
-            if (!m_UiDocument.rootVisualElement.styleSheets.Contains(m_MultiplayStyleSheet))
-            {
-                m_UiDocument.rootVisualElement.styleSheets.Add(m_MultiplayStyleSheet);
-            }
+            m_UiDocument.rootVisualElement.AddStyleSheetIfMissing(m_MultiplayStyleSheet);
 
             m_TitleText = m_UiDocument.rootVisualElement.Q<Text>(k_AssetTitle);
             

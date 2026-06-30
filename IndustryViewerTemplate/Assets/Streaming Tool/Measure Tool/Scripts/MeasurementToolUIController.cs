@@ -11,7 +11,6 @@ using Unity.Industry.Viewer.Shared;
 using UnityEngine.Localization;
 using TextField = Unity.AppUI.UI.TextField;
 using System.Threading.Tasks;
-using UnityEngine.EventSystems;
 using System.Collections;
 using RaycastResult = Unity.Cloud.DataStreaming.Runtime.RaycastResult;
 #if VR_MODE
@@ -165,29 +164,10 @@ namespace Unity.Industry.Viewer.Streaming.Measurement
             
             if (m_PanelDocument != null)
             {
-                if (m_PanelDocument.rootVisualElement.styleSheets.Contains(m_measurementToolStyle))
-                {
-                    m_PanelDocument.rootVisualElement.styleSheets.Remove(m_measurementToolStyle);
-                }
+                m_PanelDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_measurementToolStyle);
             }
             
-            // There is a bug in Unity that multiple gameobject will be recreated when reopening this tool again.
-            // Here is a workaround to fix this for now.
-            // This can be removed when Unity fixed this issue.
-            GameObject workaroundObject = new GameObject("temp");
-            CoroutineRunner coroutineRunner = workaroundObject.AddComponent<CoroutineRunner>();
-            coroutineRunner.RunCoroutine(RefreshEventSystem(), null);
-            return;
-
-            IEnumerator RefreshEventSystem()
-            {
-                if(EventSystem.current.gameObject == null) yield break;
-                yield return null;
-                var eventGameObject = EventSystem.current.gameObject;
-                eventGameObject?.SetActive(false);
-                yield return null;
-                eventGameObject?.SetActive(true);
-            }
+            UIUtility.RefreshEventSystem();
         }
 
         public override async void InitializeUI(UIDocument uiDocument, VisualElement parent, GameObject controller)
@@ -203,10 +183,7 @@ namespace Unity.Industry.Viewer.Streaming.Measurement
             MeasurementToolController.UpdatedMeasurement += OnUpdateMeasurement;
             MeasurementToolController.ResetCurrentMeasurement += OnResetCurrentMeasurement;
             
-            if (!m_PanelDocument.rootVisualElement.styleSheets.Contains(m_measurementToolStyle))
-            {
-                m_PanelDocument.rootVisualElement.styleSheets.Add(m_measurementToolStyle);
-            }
+            m_PanelDocument.rootVisualElement.AddStyleSheetIfMissing(m_measurementToolStyle);
             
             m_LineCreatorNameContainer = parent.Q<VisualElement>(k_LineCreatorNameContainer);
             m_LineCreatorConfirmationContainer = parent.Q<VisualElement>(k_LineCreatorConfirmationContainer);
@@ -456,28 +433,19 @@ namespace Unity.Industry.Viewer.Streaming.Measurement
                 modal.dismissed -= SavePanelModalOnDismissed;
                 m_SaveModal = null;
                 m_SavePanelSaveButton = null;
-                if (m_PanelDocument.rootVisualElement.styleSheets.Contains(m_MeasurementSavePanelStyle))
-                {
-                    m_PanelDocument.rootVisualElement.styleSheets.Remove(m_MeasurementSavePanelStyle);
-                }
+                m_PanelDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_MeasurementSavePanelStyle);
             }
 
             void OnSavePanelShown(Modal modal)
             {
                 modal.shown -= OnSavePanelShown;
-                if (!m_PanelDocument.rootVisualElement.styleSheets.Contains(m_MeasurementSavePanelStyle))
-                {
-                    m_PanelDocument.rootVisualElement.styleSheets.Add(m_MeasurementSavePanelStyle);
-                }
+                m_PanelDocument.rootVisualElement.AddStyleSheetIfMissing(m_MeasurementSavePanelStyle);
             }
 #else
             void OnSavePanelShown(XRPanel.CustomXRPanel panel)
             {
                 panel.Shown -= OnSavePanelShown;
-                if (!panel.UIDocument.rootVisualElement.styleSheets.Contains(m_MeasurementSavePanelStyle))
-                {
-                    panel.UIDocument.rootVisualElement.styleSheets.Add(m_MeasurementSavePanelStyle);
-                }
+                panel.UIDocument.rootVisualElement.AddStyleSheetIfMissing(m_MeasurementSavePanelStyle);
             }
 #endif
             
@@ -800,7 +768,11 @@ namespace Unity.Industry.Viewer.Streaming.Measurement
         {
             if(m_CurrentActiveCursorController == null) return;
 #if !VR_MODE
-            ray = new Ray(Camera.main.transform.position, (newPosition - Camera.main.transform.position).normalized);
+            // Camera.main can be null when the active camera isn't tagged MainCamera (e.g. mobile AR);
+            // abort the cursor update rather than NRE building the ray.
+            var mainCamera = Camera.main;
+            if (mainCamera == null) return;
+            ray = new Ray(mainCamera.transform.position, (newPosition - mainCamera.transform.position).normalized);
 #endif
             int index = m_CurrentActiveCursorController == m_StartCursorController ? 0 : 1;
             m_MeasurementToolController?.UpdateCurrentAnchorPosition(index, ray.Value, CallbackResult);

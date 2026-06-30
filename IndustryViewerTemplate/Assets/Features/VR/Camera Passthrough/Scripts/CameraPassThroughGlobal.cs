@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 namespace Unity.Industry.Viewer.VR.CameraPassThrough
 {
@@ -12,8 +13,10 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
         private static Color originalBackgroundColor;
         private static CameraClearFlags originalCameraFlags;
         
+        
         public static void ToggleCameraPassThrough(bool newValue)
         {
+            if (Camera.main == null) return;
             if (!Camera.main.transform.TryGetComponent(out ARCameraManager ARCameraManager))
             {
                 ARCameraManager = Camera.main.gameObject.AddComponent<ARCameraManager>();
@@ -44,11 +47,53 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
                 }
                 Camera.main.clearFlags = CameraClearFlags.SolidColor;
                 Camera.main.backgroundColor = Color.clear;
+                ControllerVisibility(false);
+                
             }
             else
             {
                 Camera.main.clearFlags = originalCameraFlags;
                 Camera.main.backgroundColor = originalBackgroundColor;
+                ControllerVisibility(true);
+            }
+        }
+        
+        private static void ControllerVisibility(bool visibility)
+        {
+            var inputModalityManager = Object.FindFirstObjectByType<XRInputModalityManager>(FindObjectsInactive.Include);
+            if (inputModalityManager == null) return;
+            if (inputModalityManager.leftController != null &&
+                inputModalityManager.leftController.activeSelf)
+            {
+                RendererEnable(inputModalityManager.leftController, visibility);
+            }
+
+            if (inputModalityManager.rightController != null &&
+                inputModalityManager.rightController.activeSelf)
+            {
+                RendererEnable(inputModalityManager.rightController, visibility);
+            }
+
+            if (inputModalityManager.leftHand != null &&
+                inputModalityManager.leftHand.activeSelf)
+            {
+                RendererEnable(inputModalityManager.leftHand, visibility);
+            }
+
+            if (inputModalityManager.rightHand != null &&
+                inputModalityManager.rightHand.activeSelf)
+            {
+                RendererEnable(inputModalityManager.rightHand, visibility);
+            }
+            return;
+            
+            void RendererEnable(GameObject go, bool newState)
+            {
+                foreach (var rendererComponent in go.GetComponentsInChildren<Renderer>())
+                {
+                    if(rendererComponent is LineRenderer) continue;
+                    rendererComponent.enabled = newState;
+                }
             }
         }
     }

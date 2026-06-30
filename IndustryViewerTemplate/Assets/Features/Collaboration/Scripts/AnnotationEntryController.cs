@@ -438,9 +438,9 @@ namespace Unity.Industry.Viewer.Collaboration
                 bool hasReaction = Annotation.Reactions.Any(x => x.Code == reaction && x.UserIds.Contains(CollaborationUIController.UserInfo.UserId.ToString()));
                 CollaborationController.AddReactionToAnnotation?.Invoke(CollaborationUIController.SelectedAsset.Value, CollaborationUIController.TokenSource, Annotation, reaction, !hasReaction, () =>
                 {
-                    bool isRoot = string.IsNullOrEmpty(Annotation.RootAnnotationId.ToString());
+                    bool isRoot = Annotation.RootAnnotationId == null;
                     CollaborationController.LoadUpdatedAnnotation?.Invoke(CollaborationUIController.SelectedAsset.Value, CollaborationUIController.TokenSource,
-                        isRoot? Annotation.AnnotationId: Annotation.RootAnnotationId, LoadCallback);
+                        isRoot? Annotation.AnnotationId: Annotation.RootAnnotationId.Value, LoadCallback);
                 });
             });
             return;
@@ -469,7 +469,7 @@ namespace Unity.Industry.Viewer.Collaboration
 
             void Callback(IAnnotation resultAnnotation)
             {
-                bool isRoot = string.IsNullOrEmpty(resultAnnotation.RootAnnotationId.ToString());
+                bool isRoot = resultAnnotation.RootAnnotationId == null;
                 if (isRoot)
                 {
                     CollaborationController.LoadUpdatedAnnotation.Invoke(CollaborationUIController.SelectedAsset.Value, CollaborationUIController.TokenSource,
@@ -614,7 +614,7 @@ namespace Unity.Industry.Viewer.Collaboration
             {
                 LoadingUIPanel.HideLoadingPanel(null);
                 if(!success) return;
-                bool isRoot = string.IsNullOrEmpty(arg2.RootAnnotationId.ToString());
+                bool isRoot = arg2.RootAnnotationId == null;
                 if (isRoot)
                 {
                     CollaborationController.LoadUpdatedAnnotation.Invoke(CollaborationUIController.SelectedAsset.Value, CollaborationUIController.TokenSource,
@@ -690,7 +690,7 @@ namespace Unity.Industry.Viewer.Collaboration
                 LoadingUIPanel.HideLoadingPanel?.Invoke(() =>
                 {
                     if(!success) return;
-                    if (string.IsNullOrEmpty(Annotation.RootAnnotationId.ToString()))
+                    if (Annotation.RootAnnotationId == null)
                     {
                         CollaborationUIController.RootAnnotationDeleted?.Invoke(Annotation);
                         CollaborationUIController.BackToAllThreadsButtonOnClicked();
@@ -707,12 +707,12 @@ namespace Unity.Industry.Viewer.Collaboration
         {
             m_Popover?.Dismiss();
             if(!CollaborationUIController.SelectedAsset.HasValue) return;
-            bool isRoot = string.IsNullOrEmpty(Annotation.RootAnnotationId.ToString());
+            bool isRoot = Annotation.RootAnnotationId == null;
             var orgId = CollaborationUIController.SelectedAsset.Value.Asset.Descriptor.OrganizationId;
             var projectId = CollaborationUIController.SelectedAsset.Value.Asset.Descriptor.ProjectId;
             var assetId = CollaborationUIController.SelectedAsset.Value.Asset.Descriptor.AssetId;
             var versionId = CollaborationUIController.SelectedAsset.Value.Asset.Descriptor.AssetVersion;
-            var threadId = !isRoot ? Annotation.RootAnnotationId: Annotation.AnnotationId;
+            var threadId = !isRoot ? Annotation.RootAnnotationId.Value : Annotation.AnnotationId;
             var link = string.Format(CollaborationUIBase.THREAD_URL_TEMPLATE, orgId, projectId, assetId, versionId, threadId);
             if (!isRoot)
             {

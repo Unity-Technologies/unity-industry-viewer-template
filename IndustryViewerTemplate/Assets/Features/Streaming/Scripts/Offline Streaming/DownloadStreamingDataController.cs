@@ -33,7 +33,7 @@ namespace Unity.Industry.Viewer.Streaming
         public static Action<string, int, int, Action<bool>> KeepExistingAssets;
         
         public Action<IAsset, float> DownloadProgress;
-        private float Progress => Mathf.Min((float)m_TotalDownloaded / m_TotalDownload, 0.9f);
+        private float Progress => m_TotalDownload == 0 ? 0f : Mathf.Min((float)m_TotalDownloaded / m_TotalDownload, 0.9f);
         private AssetInfo m_SelectedAsset;
         private IDataset m_DataSet;
         private AssetType m_AssetType;
@@ -51,7 +51,14 @@ namespace Unity.Industry.Viewer.Streaming
         private bool m_PauseLooping = false;
         private LayoutJson m_LayoutJson;
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-        
+
+        // Bounds how many files download at once across every controller instance (including the
+        // child controllers spawned for layout models) so peak memory stays within the platform
+        // budget (e.g. iOS jetsam limit). Without this a large tileset starts every GLB/JSON
+        // download simultaneously and can exceed the memory high-watermark.
+        private const int k_MaxConcurrentDownloads = 6;
+        private static readonly SemaphoreSlim s_DownloadSemaphore = new SemaphoreSlim(k_MaxConcurrentDownloads);
+
 
         public DownloadStreamingDataController(AssetInfo assetInfo, IDataset dataSet, bool referenced = false)
         {
@@ -139,35 +146,58 @@ namespace Unity.Industry.Viewer.Streaming
 
         private async Task DownloadFile(Uri path)
         {
+            // Count the request as pending up front (synchronously, before any await) so queued-but-
+            // waiting downloads are included in the completion check below.
             m_PendingDownloads++;
-            HttpRequestMessage requestMessage = new HttpRequestMessage();
-            requestMessage.RequestUri = path;
-            requestMessage.Method = HttpMethod.Get;
-            
-            var httpClient = IdentityController.GuestMode? PlatformServices.ServiceAccountServiceHttpClient : PlatformServices.ServiceHttpClient;
-            
+            var fileName = path.Segments[^1];
+            var extension = Path.GetExtension(fileName);
+            string jsonString = null;
+
             try
             {
-                HttpResponseMessage responseMessage = await httpClient.SendAsync(requestMessage, _cancellationTokenSource.Token);
-                responseMessage.EnsureSuccessStatusCode();
-                var jsonString = await responseMessage.Content.ReadAsStringAsync();
-
-                var fileName = path.Segments[^1];
-                
-                await using Stream responseStream = await responseMessage.Content.ReadAsStreamAsync();
-                if (!Directory.Exists(m_DestinationPath))
+                // Throttle concurrent downloads so peak memory stays bounded on memory-constrained
+                // platforms; a large tileset would otherwise download every chunk at once.
+                await s_DownloadSemaphore.WaitAsync(_cancellationTokenSource.Token);
+                try
                 {
-                    Directory.CreateDirectory(m_DestinationPath);
-                }
-                
-                var finalPath = Path.Combine(m_DestinationPath, fileName);
-                
-                await using FileStream fileStream =
-                    new FileStream(finalPath, FileMode.Create, FileAccess.Write, FileShare.None);
-                
-                await responseStream.CopyToAsync(fileStream, _cancellationTokenSource.Token);
+                    HttpRequestMessage requestMessage = new HttpRequestMessage();
+                    requestMessage.RequestUri = path;
+                    requestMessage.Method = HttpMethod.Get;
 
-                if (string.Equals(Path.GetExtension(fileName), ".json"))
+                    var httpClient = IdentityController.GuestMode? PlatformServices.ServiceAccountServiceHttpClient : PlatformServices.ServiceHttpClient;
+
+                    // ResponseHeadersRead returns as soon as the headers arrive instead of buffering the
+                    // whole body in memory first, so large GLB chunks stream straight to disk.
+                    using HttpResponseMessage responseMessage = await httpClient.SendAsync(requestMessage,
+                        HttpCompletionOption.ResponseHeadersRead, null, _cancellationTokenSource.Token);
+                    responseMessage.EnsureSuccessStatusCode();
+
+                    if (!Directory.Exists(m_DestinationPath))
+                    {
+                        Directory.CreateDirectory(m_DestinationPath);
+                    }
+
+                    var finalPath = Path.Combine(m_DestinationPath, fileName);
+
+                    await using (Stream responseStream = await responseMessage.Content.ReadAsStreamAsync())
+                    await using (FileStream fileStream = new FileStream(finalPath, FileMode.Create, FileAccess.Write, FileShare.None))
+                    {
+                        await responseStream.CopyToAsync(fileStream, _cancellationTokenSource.Token);
+                    }
+
+                    // Only JSON descriptors need to be parsed; reading them back from disk keeps the
+                    // (potentially huge) GLB geometry out of managed memory entirely.
+                    if (string.Equals(extension, ".json"))
+                    {
+                        jsonString = await File.ReadAllTextAsync(finalPath, _cancellationTokenSource.Token);
+                    }
+                }
+                finally
+                {
+                    s_DownloadSemaphore.Release();
+                }
+
+                if (string.Equals(extension, ".json"))
                 {
                     if (m_AssetType == AssetType.Streamable)
                     {
@@ -182,7 +212,7 @@ namespace Unity.Industry.Viewer.Streaming
                         ParseLayoutJson(jsonString);
                     }
                 }
-                else if (string.Equals(Path.GetExtension(fileName), ".glb"))
+                else if (string.Equals(extension, ".glb"))
                 {
                     m_GLBFiles ??= new Queue<string>();
                     if (m_GLBFiles.Count > 0)
@@ -407,7 +437,7 @@ namespace Unity.Industry.Viewer.Streaming
                     currentProgress += controller.Progress;
                 }
             }
-            DownloadProgress?.Invoke(m_SelectedAsset.Asset, Mathf.Min(currentProgress / m_TotalDownload, 0.9f));
+            DownloadProgress?.Invoke(m_SelectedAsset.Asset, m_TotalDownload == 0 ? 0f : Mathf.Min(currentProgress / m_TotalDownload, 0.9f));
             if (progress >= 1f)
             {
                 m_TotalDownloaded++;

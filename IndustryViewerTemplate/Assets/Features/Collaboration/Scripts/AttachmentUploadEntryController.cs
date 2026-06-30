@@ -9,7 +9,7 @@ namespace Unity.Industry.Viewer.Collaboration
 {
     public class AttachmentUploadEntryController : IDisposable
     {
-        private static CollaborationUIBase _uiController;
+        private readonly CollaborationUIBase _uiController;
 
         private const string k_RemoveAttachmentButtonName = "RemoveAttachmentButton";
         private const string k_PreviewIconName = "PreviewIcon";
@@ -26,7 +26,7 @@ namespace Unity.Industry.Viewer.Collaboration
         {
             Attachment = attachment;
             EntryElement = entryElement;
-            _uiController ??= uiController;
+            _uiController = uiController;
             m_GridView = gridView;
             m_deleteIconButton = EntryElement.Q<IconButton>(k_RemoveAttachmentButtonName);
             m_deleteIconButton.clicked += OnDeleteClicked;

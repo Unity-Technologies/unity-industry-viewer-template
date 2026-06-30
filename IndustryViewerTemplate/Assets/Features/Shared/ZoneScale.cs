@@ -27,10 +27,11 @@ namespace Unity.Industry.Viewer.Shared
         
         void LateUpdate()
         {
-            var cameraTransform = Camera.main.transform;
-            
-            if (cameraTransform == null)
+            var mainCamera = Camera.main;
+            if (mainCamera == null)
                 return;
+
+            var cameraTransform = mainCamera.transform;
 
             var cameraPosition = cameraTransform.position;
             var deltaToCamera = cameraPosition - transform.position;

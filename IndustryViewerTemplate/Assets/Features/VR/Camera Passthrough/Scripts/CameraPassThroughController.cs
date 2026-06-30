@@ -17,7 +17,6 @@ using Unity.Industry.Viewer.VR;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion;
 using Unity.Cloud.DataStreaming.Runtime;
-using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 namespace Unity.Industry.Viewer.VR.CameraPassThrough
 {
@@ -29,7 +28,7 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
         ConfirmPosition
     }
     
-    public class CameraPassThroughController : NavigationOption
+    public class CameraPassThroughController : ARPlacementNavigationOption
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
         const string k_DefaultMetaPermissionId = "com.oculus.permission.USE_SCENE";
@@ -38,8 +37,7 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
         
         public static Action<ARState> OnStateChange;
         public static Action<bool> RequestOcclusionOnOff;
-        public Action OnAssetPlaceOnSurfaceComplete;
-        
+
         [SerializeField]
         MeshFilter m_MeshFilterForARMeshManager;
 
@@ -65,8 +63,6 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
         
         private StreamingModelController m_StreamingModelController;
         
-        private Vector3 m_OriginalPosition;
-        private Quaternion m_OriginalRotation;
         private Vector3 m_OriginalXROriginPosition;
         private Vector3 m_OriginalXROriginLookDirection;
 
@@ -93,8 +89,6 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
         private CameraUtility Utility;
         
         DoubleBounds? m_Bounds;
-        
-        private XRInputModalityManager m_XRInputModalityManager;
         
         private void Awake()
         {
@@ -145,7 +139,13 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
 #if UNITY_ANDROID
                     if (XRPlatformUnderstanding.CurrentPlatform == XRPlatformType.OpenXRMeta)
                     {
-                        if(plane.alignment != PlaneAlignment.HorizontalUp)
+                        // Accept any upward-facing horizontal plane via its surface normal rather than the
+                        // exact PlaneAlignment enum — different Meta package versions classify a floor's
+                        // alignment differently, so relying on the normal is more robust than `== HorizontalUp`
+                        // (which is kept as a fallback).
+                        float upDot = plane != null ? Vector3.Dot(plane.transform.up, Vector3.up) : 1f;
+                        bool upwardHorizontal = plane == null || upDot >= 0.9f || plane.alignment == PlaneAlignment.HorizontalUp;
+                        if (!upwardHorizontal)
                         {
                             m_placingMakerGO?.SetActive(false);
                             return;
@@ -411,10 +411,7 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
             StartCoroutine(WaitForOneFrame());
         }
         
-        public void Scale(float value)
-        {
-            TransformController.Instance.transform.localScale = Vector3.one * value;
-        }
+
 
         private void StartPassthrough()
         {
@@ -496,8 +493,6 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
             TransformController.Instance.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             TransformController.Instance.transform.localScale = Vector3.one;
             TransformController.Instance.gameObject.SetActive(false);
-
-            ControllerVisibility(false);
             
 #if UNITY_ANDROID
             var currentPlatform = XRPlatformUnderstanding.CurrentPlatform;
@@ -534,45 +529,6 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
             
         }
 
-        private void ControllerVisibility(bool visibility)
-        {
-            m_XRInputModalityManager ??= FindFirstObjectByType<XRInputModalityManager>(FindObjectsInactive.Include);
-            if (m_XRInputModalityManager == null) return;
-            if (m_XRInputModalityManager.leftController != null &&
-                m_XRInputModalityManager.leftController.activeSelf)
-            {
-                RendererEnable(m_XRInputModalityManager.leftController, visibility);
-            }
-
-            if (m_XRInputModalityManager.rightController != null &&
-                m_XRInputModalityManager.rightController.activeSelf)
-            {
-                RendererEnable(m_XRInputModalityManager.rightController, visibility);
-            }
-
-            if (m_XRInputModalityManager.leftHand != null &&
-                m_XRInputModalityManager.leftHand.activeSelf)
-            {
-                RendererEnable(m_XRInputModalityManager.leftHand, visibility);
-            }
-                
-            if (m_XRInputModalityManager.rightHand != null &&
-                m_XRInputModalityManager.rightHand.activeSelf)
-            {
-                RendererEnable(m_XRInputModalityManager.rightHand, visibility);
-            }
-            return;
-            
-            void RendererEnable(GameObject go, bool newState)
-            {
-                foreach (var rendererComponent in go.GetComponentsInChildren<Renderer>())
-                {
-                    if(rendererComponent is LineRenderer) continue;
-                    rendererComponent.enabled = newState;
-                }
-            }
-        }
-
         private void ARMeshManagerOnMeshesChanged(ARMeshesChangedEventArgs eventArgs)
         {
             foreach (var meshFilter in eventArgs.added)
@@ -592,30 +548,7 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
         }
 #endif
         
-        public void PlaceOnSurface()
-        {
-            TransformController.Instance.transform.position = new Vector3(
-                TransformController.Instance.transform.position.x, m_OriginalPosition.y,
-                TransformController.Instance.transform.position.z);
-            StartCoroutine(WaitForBoundsUpdate());
-            
-            return;
 
-            IEnumerator WaitForBoundsUpdate()
-            {
-                yield return null;
-                StreamingModelController streamingModelController = FindAnyObjectByType<StreamingModelController>(FindObjectsInactive.Include);
-                DoubleBounds tmpBounds = streamingModelController.GetWorldBounds();
-                var height = (float)tmpBounds.Extents.y;
-                var lowestPoint = (float)(tmpBounds.Center.y - height);
-                var offsetY = m_OriginalPosition.y - lowestPoint;
-                TransformController.Instance.transform.position = new Vector3(
-                    TransformController.Instance.transform.position.x,
-                    TransformController.Instance.transform.position.y + offsetY,
-                    TransformController.Instance.transform.position.z);
-                OnAssetPlaceOnSurfaceComplete?.Invoke();
-            }
-        }
 
         public override void OnNavigationOptionDisable()
         {
@@ -653,8 +586,6 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
             
             VRInteractionController.UnsubscribeSingleActivate(this);
             m_placingMakerGO?.SetActive(false);
-            
-            ControllerVisibility(true);
 
             if (TransformController.Instance == null) return;
             TransformController.Instance.gameObject.SetActive(true);
@@ -672,117 +603,42 @@ namespace Unity.Industry.Viewer.VR.CameraPassThrough
             #endif
         }
 
-        public override GameObject GetNavigationGameObject()
-        {
-            return null;
-        }
 
-        public override void SetDefaultView()
-        {
-            
-        }
 
-        public override void TranslateTo(Vector3 position, Quaternion rotation)
-        {
-            
-        }
 
-        public override void FollowPresenter(GameObject presenter)
-        {
-            
-        }
 
-        public override void FocusToPoint(DoubleBounds bounds)
-        {
-            
-        }
+
+
+
+
+
         
-        public void ResetPosition()
-        {
-            TransformController.Instance.transform.position = m_OriginalPosition;
-        }
+
         
-        public void ResetRotation()
-        {
-            TransformController.Instance.transform.rotation = m_OriginalRotation;
-        }
+
         
-        public void MoveZPositionBy(float value)
-        {
-            var originalPos = TransformController.Instance.transform.position;
-            originalPos.z += value;
-            TransformController.Instance.transform.position = originalPos;
-        }
+
         
-        public void MoveYPositionBy(float value)
-        {
-            var originalPos = TransformController.Instance.transform.position;
-            originalPos.y += value;
-            TransformController.Instance.transform.position = originalPos;
-        }
 
-        public void MoveXPositionBy(float value)
-        {
-            var originalPos = TransformController.Instance.transform.position;
-            originalPos.x += value;
-            TransformController.Instance.transform.position = originalPos;
-        }
+
+
         
-        public void MoveZPosition(float value)
-        {
-            var originalPos = TransformController.Instance.transform.position;
-            originalPos.z = value;
-            TransformController.Instance.transform.position = originalPos;
-        }
 
-        public void MoveYPosition(float value)
-        {
-            var originalPos = TransformController.Instance.transform.position;
-            originalPos.y = value;
-            TransformController.Instance.transform.position = originalPos;
-        }
 
-        public void MoveXPosition(float value)
-        {
-            var originalPos = TransformController.Instance.transform.position;
-            originalPos.x = value;
-            TransformController.Instance.transform.position = originalPos;
-        }
+
+
+
         
-        public void RotateZBy(float value)
-        {
-            TransformController.Instance.transform.Rotate(0f, 0f, value, Space.Self);
-        }
 
-        public void RotateYBy(float value)
-        {
-            TransformController.Instance.transform.Rotate(0f, value, 0f,Space.Self);
-        }
 
-        public void RotateXBy(float value)
-        {
-            TransformController.Instance.transform.Rotate(value, 0f, 0f,Space.Self);
-        }
 
-        public void RotateZ(float newValue)
-        {
-            TransformController.Instance.transform.rotation = Quaternion.Euler(TransformController.Instance.transform.eulerAngles.x, 
-                TransformController.Instance.transform.eulerAngles.y, 
-                newValue);
-        }
 
-        public void RotateY(float newValue)
-        {
-            TransformController.Instance.transform.rotation = Quaternion.Euler(TransformController.Instance.transform.eulerAngles.x, 
-                newValue, 
-                TransformController.Instance.transform.eulerAngles.z);
-        }
 
-        public void RotateX(float newValue)
-        {
-            TransformController.Instance.transform.rotation = Quaternion.Euler(newValue, 
-                TransformController.Instance.transform.eulerAngles.y, 
-                TransformController.Instance.transform.eulerAngles.z);
-        }
+
+
+
+
+
+
     }
 }

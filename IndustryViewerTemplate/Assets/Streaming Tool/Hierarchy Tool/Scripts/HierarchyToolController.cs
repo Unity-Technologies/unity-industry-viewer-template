@@ -95,7 +95,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             m_Instance = null;
             NetworkDetector.OnNetworkStatusChanged -= OnNetworkStatusChanged;
             StreamingModelController.AddObserver -= AddObserver;
-            m_HierarchyToolSceneListener.ResetHierarchyModifiers(true, false);
+            m_HierarchyToolSceneListener?.ResetHierarchyModifiers(true, false);
 
             StreamingModelController.RemoveStreamModel -= RemoveStreamModel;
             DestroyTransformHandle();
@@ -108,8 +108,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             m_RefreshDebounceTokenSource = null;
             if (m_TransformGizmo != null)
             {
-                m_TransformGizmo.OnHandlerSelected -= OnCheckForSelectedAxis;
-                m_TransformGizmo.OnHandlerReleased -= OnCheckForReleaseAxis;
+                UnsubscribeGizmoHandlers(m_TransformGizmo);
                 Destroy(m_TransformGizmo);
             }
 #if !VR_MODE
@@ -417,30 +416,10 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             {
                 MetadataToolController.InstanceSelected?.Invoke(default, InstanceId.None);
                 var raycastResult = await m_StreamingModelController.Stage.RaycastAsync((DoubleRay) ray, m_StreamingModelController.ActiveCamera.farClipPlane, RaycastOptions.ExcludeHiddenInstances | RaycastOptions.ExcludeNormalFromResult);
-                if (checkUIWorldSpace)
+                if (checkUIWorldSpace && WorldSpaceUiBlocksRay(ray, m_StreamingModelController.ActiveCamera.farClipPlane,
+                        raycastResult.InstanceId != InstanceId.None, raycastResult.Point.ToVector3()))
                 {
-                    if (Physics.Raycast(ray, out var hit, m_StreamingModelController.ActiveCamera.farClipPlane, LayerMask.GetMask("UI")))
-                    {
-                        if (raycastResult.InstanceId != InstanceId.None)
-                        {
-                            var stageRaycastPoint = raycastResult.Point.ToVector3();
-                            var uiRaycastPoint = hit.point;
-                        
-                            // Calculate distances along the ray using dot product
-                            float uiDistance = Vector3.Dot(uiRaycastPoint - ray.origin, ray.direction);
-                            float stageDistance = Vector3.Dot(stageRaycastPoint - ray.origin, ray.direction);
-
-                            bool isUIInFront = uiDistance < stageDistance;
-                            if (isUIInFront)
-                            {
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            return;
-                        }
-                    }
+                    return;
                 }
                 if (raycastResult.InstanceId == InstanceId.None)
                 {
@@ -583,9 +562,8 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
         private void AddObserver(Camera obj)
         {
             if (m_TransformGizmo == null) return;
-            m_TransformGizmo.OnHandlerSelected -= OnCheckForSelectedAxis;
-            m_TransformGizmo.OnHandlerReleased -= OnCheckForReleaseAxis;
-            
+            UnsubscribeGizmoHandlers(m_TransformGizmo);
+
             var target = m_TransformGizmo.mainTargetRoot;
             var type = m_TransformGizmo.transformType;
             Destroy(m_TransformGizmo);
@@ -622,11 +600,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             m_TransformGizmo.SetType(type);
             m_TransformGizmo.movementSnap = GridViewManager.GetGridUnit();
             m_TransformGizmo.rotationSnap = GridViewManager.GetGridUnit();
-            m_TransformGizmo.OnHandlerSelected -= OnCheckForSelectedAxis;
-            m_TransformGizmo.OnHandlerReleased -= OnCheckForReleaseAxis;
-            
-            m_TransformGizmo.OnHandlerSelected += OnCheckForSelectedAxis;
-            m_TransformGizmo.OnHandlerReleased += OnCheckForReleaseAxis;
+            SubscribeGizmoHandlers(m_TransformGizmo);
             m_TransformGizmo.SetTarget(target);
 #if !VR_MODE
             m_PointerPress.action.Enable();
@@ -653,15 +627,6 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
         }
 #endif
 
-        private void OnCheckForReleaseAxis()
-        {
-            NavigationController.PauseCameraControl?.Invoke(false);
-        }
-
-        private void OnCheckForSelectedAxis()
-        {
-            NavigationController.PauseCameraControl?.Invoke(true);
-        }
 
         public void SwitchGizmoMode(TransformType type)
         {

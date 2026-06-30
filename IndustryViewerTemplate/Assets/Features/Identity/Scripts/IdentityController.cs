@@ -90,6 +90,7 @@ namespace Unity.Industry.Viewer.Identity
             
             PlatformServices.ServiceAccountCreation();
             if(m_ServiceAccountAuthenticator == null) return;
+            m_ServiceAccountAuthenticator.AuthenticationStateChanged -= OnAuthenticationStateChanged;
             m_ServiceAccountAuthenticator.AuthenticationStateChanged += OnAuthenticationStateChanged;
             _ = PlatformServices.InitializeServiceAccountAsync();
         }
@@ -184,7 +185,11 @@ namespace Unity.Industry.Viewer.Identity
                 return string.Empty;
             }
 
-            var nameParts = fullName.Split(' ');
+            var nameParts = fullName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (nameParts.Length == 0)
+            {
+                return string.Empty;
+            }
             if (nameParts.Length < 2)
             {
                 return nameParts[0][0].ToString().ToUpper();

@@ -7,7 +7,7 @@ namespace Unity.Industry.Viewer.Assets
     [UxmlElement("LinkedProject")]
     public partial class LinkedProjectVE : VisualElement
     {
-        private static readonly Color k_ProjectDefaultColor = new(74, 74, 74);
+        private static readonly Color k_ProjectDefaultColor = new Color32(74, 74, 74, 255);
         private static readonly Color[] k_ProjectColors = new[]
         {
                 HexToColor("#E93D82"),

@@ -133,10 +133,7 @@ namespace Unity.Industry.Viewer.Collaboration
             base.UninitializeUI();
             if (m_UIDocument == null) return;
             if (m_UIDocument?.rootVisualElement?.styleSheets == null) return;
-            if (m_UIDocument.rootVisualElement.styleSheets.Contains(annotationStylesheet))
-            {
-                m_UIDocument.rootVisualElement.styleSheets.Remove(annotationStylesheet);
-            }
+            m_UIDocument.rootVisualElement.RemoveStyleSheetIfPresent(annotationStylesheet);
         }
 
         public override void DeleteSpatialAttachment(IAnnotation annotation, IAttachment attachment)

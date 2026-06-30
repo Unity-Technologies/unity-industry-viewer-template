@@ -264,12 +264,24 @@ namespace Unity.Industry.Viewer.Streaming.Environment
                     m_EnvSceneRootObjectIDs = listOfRootObjects.Select(go => go.GetInstanceID()).ToHashSet();
 
                     //If not in the default streaming scene
+                    // Resolve the environment layer once. Mathf.Log(value,2) is only valid for a
+                    // single-bit mask and returns -Infinity for an empty mask (cast to a garbage
+                    // layer index); isolate the lowest set bit and skip assignment when unset.
+                    int environmentLayer = -1;
+                    int maskValue = m_EnvironmentLayerMask.value;
+                    if (maskValue != 0)
+                    {
+                        environmentLayer = (int)Mathf.Log(maskValue & -maskValue, 2);
+                    }
                     foreach (var rootObject in listOfRootObjects)
                     {
                         var allChildren = rootObject.GetComponentsInChildren<Transform>(true);
                         foreach (var child in allChildren)
                         {
-                            child.gameObject.layer = (int)Mathf.Log(m_EnvironmentLayerMask.value, 2);
+                            if (environmentLayer >= 0)
+                            {
+                                child.gameObject.layer = environmentLayer;
+                            }
                         }
                     }
                     

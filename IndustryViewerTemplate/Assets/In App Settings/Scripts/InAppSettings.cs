@@ -114,10 +114,7 @@ namespace Unity.Industry.Viewer.AppSettings
 
         protected virtual void Start()
         {
-            if (!m_UIDocument.rootVisualElement.styleSheets.Contains(m_StyleSheet))
-            {
-                m_UIDocument.rootVisualElement.styleSheets.Add(m_StyleSheet);
-            }
+            m_UIDocument.rootVisualElement.AddStyleSheetIfMissing(m_StyleSheet);
             SettingsButton = m_UIDocument.rootVisualElement.Q<IconButton>(k_SettingsButton);
             SettingsButton.clickable.clicked += OnSettingsButtonClicked;
             SettingsPanelShow += OnSettingsPanelShow;

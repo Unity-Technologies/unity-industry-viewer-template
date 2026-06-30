@@ -45,7 +45,6 @@ namespace Unity.Industry.Viewer.Multiplay
         public NetworkVariable<bool> IsInVR = new NetworkVariable<bool>();
         public NetworkVariable<ulong> LeftHandTrackerId = new NetworkVariable<ulong>();
         public NetworkVariable<ulong> RightHandTrackerId = new NetworkVariable<ulong>();
-        public NetworkVariable<ulong> HeadTrackerId = new NetworkVariable<ulong>();
         
         private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         
@@ -79,10 +78,7 @@ namespace Unity.Industry.Viewer.Multiplay
         
         private NetworkTransform m_rightHandNetworkTransform;
         private NetworkTransform m_leftHandNetworkTransform;
-        private NetworkTransform m_headNetworkTransform;
 
-        [SerializeField]
-        private GameObject m_HeadVisualsRoot;
         private GameObject m_LeftHandTracker;
         private GameObject m_RightHandTracker;
         private XROrigin m_XROrigin;
@@ -162,6 +158,27 @@ namespace Unity.Industry.Viewer.Multiplay
 
             if (IsInVR.Value)
             {
+                EnsureVRHandTrackers();
+            }
+            
+            AvatarMeshControl(false);
+
+            if (IdentityController.UserInfo == null) return;
+            PlayerName.Value = IdentityController.UserInfo.Name;
+            PlayerName.CheckDirtyState();
+        }
+
+        // Lazily creates the left/right hand tracker NetworkObjects on the owner.
+        // Idempotent and safe to call whenever VR is active — including when VR is
+        // activated after the avatar has already spawned — so the owner LateUpdate
+        // never dereferences a null tracker NetworkTransform.
+        private void EnsureVRHandTrackers()
+        {
+            if (!IsOwner) return;
+            m_XROrigin ??= FindFirstObjectByType<XROrigin>(FindObjectsInactive.Exclude);
+
+            if (m_leftHandNetworkTransform == null)
+            {
                 var leftHandTracker = Instantiate(m_trackerPrefab, transform);
                 leftHandTracker.name = "Left Hand Tracker";
                 m_leftHandNetworkTransform = leftHandTracker.GetComponent<NetworkTransform>();
@@ -170,7 +187,10 @@ namespace Unity.Industry.Viewer.Multiplay
                 leftNetworkObject.TrySetParent(NetworkObject, false);
                 LeftHandTrackerId.Value = leftNetworkObject.NetworkObjectId;
                 LeftHandTrackerId.CheckDirtyState();
-                
+            }
+
+            if (m_rightHandNetworkTransform == null)
+            {
                 var rightHandTracker = Instantiate(m_trackerPrefab, transform);
                 rightHandTracker.name = "Right Hand Tracker";
                 m_rightHandNetworkTransform = rightHandTracker.GetComponent<NetworkTransform>();
@@ -179,24 +199,7 @@ namespace Unity.Industry.Viewer.Multiplay
                 rightNetworkObject.TrySetParent(NetworkObject, false);
                 RightHandTrackerId.Value = rightNetworkObject.NetworkObjectId;
                 RightHandTrackerId.CheckDirtyState();
-                
-                var headTracker = Instantiate(m_trackerPrefab, transform);
-                headTracker.name = "Head Tracker";
-                m_headNetworkTransform = headTracker.GetComponent<NetworkTransform>();
-                var headNetworkObject = headTracker.GetComponent<NetworkObject>();
-                headNetworkObject.Spawn(true);
-                headNetworkObject.TrySetParent(NetworkObject, false);
-                HeadTrackerId.Value = headNetworkObject.NetworkObjectId;
-                HeadTrackerId.CheckDirtyState();
-
-                m_XROrigin = FindFirstObjectByType<XROrigin>(FindObjectsInactive.Exclude);
             }
-            
-            AvatarMeshControl(false);
-
-            if (IdentityController.UserInfo == null) return;
-            PlayerName.Value = IdentityController.UserInfo.Name;
-            PlayerName.CheckDirtyState();
         }
 
         public void AvatarMeshControl(bool active)
@@ -294,7 +297,7 @@ namespace Unity.Industry.Viewer.Multiplay
             IsInVR.OnValueChanged -= OnVRValueChanged;
             if (IsPresenter.Value)
             {
-                MultiplayController.EndPresentation.Invoke(OwnerClientId);
+                MultiplayController.EndPresentation?.Invoke(OwnerClientId);
             }
         }
 
@@ -332,7 +335,7 @@ namespace Unity.Industry.Viewer.Multiplay
             //If there is a presenter
             if (newvalue)
             {
-                MultiplayController.RequestToJoinPresentation.Invoke();
+                MultiplayController.RequestToJoinPresentation?.Invoke();
             }
             else
             {
@@ -341,7 +344,7 @@ namespace Unity.Industry.Viewer.Multiplay
                     InPresentation.Value = false;
                     InPresentation.CheckDirtyState();
                 }
-                MultiplayController.EndPresentation.Invoke(OwnerClientId);
+                MultiplayController.EndPresentation?.Invoke(OwnerClientId);
             }
         }
 
@@ -483,46 +486,29 @@ namespace Unity.Industry.Viewer.Multiplay
                     //Make sure the hands are following the network object
                     if (m_leftHand.activeSelf)
                     {
-                        if (m_leftHandNetworkTransform == null)
+                        if (m_leftHandNetworkTransform == null && LeftHandTrackerId.Value != 0 &&
+                            NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(LeftHandTrackerId.Value, out var leftHandTracker) &&
+                            leftHandTracker != null)
                         {
-                            var leftHandTracker = NetworkManager.Singleton.SpawnManager.SpawnedObjects[LeftHandTrackerId.Value];
-                            if (leftHandTracker != null)
-                            {
-                                leftHandTracker.TryGetComponent(out m_leftHandNetworkTransform);
-                            }
+                            leftHandTracker.TryGetComponent(out m_leftHandNetworkTransform);
                         }
 
                         if (m_leftHandNetworkTransform != null)
                         {
-                            m_leftHand.transform.SetLocalPositionAndRotation(m_leftHandNetworkTransform.transform.localPosition, m_leftHandNetworkTransform.transform.localRotation);  
+                            m_leftHand.transform.SetLocalPositionAndRotation(m_leftHandNetworkTransform.transform.localPosition, m_leftHandNetworkTransform.transform.localRotation);
                         }
                     }
                     if (m_rightHand.activeSelf)
                     {
-                        if (m_rightHandNetworkTransform == null)
+                        if (m_rightHandNetworkTransform == null && RightHandTrackerId.Value != 0 &&
+                            NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(RightHandTrackerId.Value, out var rightHandTracker) &&
+                            rightHandTracker != null)
                         {
-                            var rightHandTracker = NetworkManager.Singleton.SpawnManager.SpawnedObjects[RightHandTrackerId.Value];
-                            if (rightHandTracker != null)
-                            {
-                                rightHandTracker.TryGetComponent(out m_rightHandNetworkTransform);
-                            }
+                            rightHandTracker.TryGetComponent(out m_rightHandNetworkTransform);
                         }
                         if (m_rightHandNetworkTransform != null)
                         {
                             m_rightHand.transform.SetLocalPositionAndRotation(m_rightHandNetworkTransform.transform.localPosition, m_rightHandNetworkTransform.transform.localRotation);
-                        }
-                    }
-
-                    if (m_HeadVisualsRoot != null)
-                    {
-                        var headTracker = NetworkManager.Singleton.SpawnManager.SpawnedObjects[HeadTrackerId.Value];
-                        if (headTracker != null)
-                        {
-                            headTracker.TryGetComponent(out m_headNetworkTransform);
-                        }
-                        if (m_headNetworkTransform != null)
-                        {
-                            m_HeadVisualsRoot.transform.SetLocalPositionAndRotation(m_headNetworkTransform.transform.localPosition, m_headNetworkTransform.transform.localRotation);
                         }
                     }
                 }
@@ -550,17 +536,20 @@ namespace Unity.Industry.Viewer.Multiplay
             //if it is the owner, and in VR, then we need to hook up the network position and rotation based on left/right hand controllers/position
             if (IsInVR.Value)
             {
+                m_XROrigin ??= FindFirstObjectByType<XROrigin>(FindObjectsInactive.Exclude);
                 if(m_XROrigin == null) return;
+                // VR may have been activated after spawn; make sure the trackers exist.
+                EnsureVRHandTrackers();
                 transform.position = m_XROrigin.Camera.transform.position;
                 transform.rotation = m_XROrigin.Camera.transform.rotation;
-                
+
                 m_LeftHandTracker ??= GameObject.FindGameObjectWithTag("Left Hand Tracker");
                 m_RightHandTracker ??= GameObject.FindGameObjectWithTag("Right Hand Tracker");
-                if (m_LeftHandTracker != null)
+                if (m_LeftHandTracker != null && m_leftHandNetworkTransform != null)
                 {
                     var worldPositionOfLeftHand = m_LeftHandTracker.transform.position;
                     var localPositionOfLeftHand = transform.InverseTransformPoint(worldPositionOfLeftHand);
-                    
+
                     var worldRotationOfLeftHand = m_LeftHandTracker.transform.rotation;
                     // Calculate the local rotation of the left hand relative to this player object
                     var localRotationOfLeftHand = Quaternion.Inverse(transform.rotation) * worldRotationOfLeftHand;
@@ -568,28 +557,16 @@ namespace Unity.Industry.Viewer.Multiplay
                     m_leftHandNetworkTransform.transform.SetLocalPositionAndRotation(localPositionOfLeftHand, localRotationOfLeftHand);
                 }
 
-                if (m_RightHandTracker != null)
+                if (m_RightHandTracker != null && m_rightHandNetworkTransform != null)
                 {
                     var worldPositionOfRightHand = m_RightHandTracker.transform.position;
                     var localPositionOfRightHand = transform.InverseTransformPoint(worldPositionOfRightHand);
-                    
+
                     var worldRotationOfRightHand = m_RightHandTracker.transform.rotation;
                     // Calculate the local rotation of the right hand relative to this player object
                     var localRotationOfRightHand = Quaternion.Inverse(transform.rotation) * worldRotationOfRightHand;
                     // Set the local position and rotation of the right hand tracker
                     m_rightHandNetworkTransform.transform.SetLocalPositionAndRotation(localPositionOfRightHand, localRotationOfRightHand);
-                }
-                ;
-                if (m_HeadVisualsRoot != null)
-                {
-                    var worldPositionOfMainCamera = m_XROrigin.Camera.transform.position;
-                    var localPositionOfMainCamera = transform.InverseTransformPoint(worldPositionOfMainCamera);
-                    
-                    var worldRotationOfMainCamera = m_XROrigin.Camera.transform.rotation;
-                    // Calculate the local rotation of the main camera relative to this player object
-                    var localRotationOfMainCamera = Quaternion.Inverse(transform.rotation) * worldRotationOfMainCamera;
-                    
-                    m_headNetworkTransform.transform.SetLocalPositionAndRotation(localPositionOfMainCamera, localRotationOfMainCamera);
                 }
             }
             else

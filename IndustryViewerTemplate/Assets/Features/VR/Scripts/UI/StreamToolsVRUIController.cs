@@ -3,7 +3,6 @@ using Unity.Industry.Viewer.Streaming;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
-using System.Linq;
 using Unity.AppUI.UI;
 using Unity.Industry.Viewer.Shared;
 
@@ -15,9 +14,11 @@ namespace Unity.Industry.Viewer.VR
 
         [SerializeField]
         private XRControllerMenu m_XRControllerMenu;
-        
+
         [SerializeField]
         UIDocument m_XRPanelUIDocument;
+
+        protected override UIDocument ToolPanelUIDocument => m_XRPanelUIDocument;
 
         private void Start()
         {
@@ -35,17 +36,15 @@ namespace Unity.Industry.Viewer.VR
             StreamToolsController.ToolActiveChanged -= OnToolActiveChanged;
             ToolPanelUIController.CloseToolPanel -= CloseToolPanel;
             UpdateToolPanel -= OnUpdateToolPanel;
-            foreach (var toolButton in m_toolButtons.Values)
+            if (m_toolButtons != null)
             {
-                XRRoundButton xrRoundButton = toolButton as XRRoundButton;
-                xrRoundButton.RemoveFromHierarchy();
+                foreach (var toolButton in m_toolButtons.Values)
+                {
+                    XRRoundButton xrRoundButton = toolButton as XRRoundButton;
+                    xrRoundButton?.RemoveFromHierarchy();
+                }
+                m_toolButtons.Clear();
             }
-            m_toolButtons?.Clear();
-        }
-
-        private void CloseToolPanel()
-        {
-            StreamToolsController.DisableAllTools?.Invoke(false);
         }
 
         private void OnToolActiveChanged(StreamingToolAsset toolAsset, bool active)
@@ -53,39 +52,6 @@ namespace Unity.Industry.Viewer.VR
             if(m_toolButtons == null || !m_toolButtons.TryGetValue(toolAsset, out var button)) return;
             var xrButton = button as XRRoundButton;
             xrButton.primary = active;
-        }
-        
-        private void OnUpdateToolPanel(StreamingToolAsset toolAsset, GameObject controller, bool active)
-        {
-            if (active)
-            {
-                //Add tool to panel
-                if(controller.TryGetComponent(out StreamToolUIBase toolUI))
-                {
-                    if(controller.TryGetComponent(out StreamToolControllerBase toolController))
-                    {
-                        toolController.OnToolOpened();
-                    }
-
-                    VisualElement toolPanel = null;
-                    if (toolUI.ToolUIAsset != null)
-                    {
-                        toolPanel = toolUI.ToolUIAsset.Instantiate().Children().First();
-                        toolPanel.userData = controller;
-                    }
-                    
-                    toolUI.InitializeUI(m_XRPanelUIDocument, toolPanel, controller);
-                    if (toolPanel != null)
-                    {
-                        ToolPanelUIController.OpenToolPanel?.Invoke(toolAsset.ToolName, toolPanel, toolAsset.resizablePanel);
-                    }
-                }
-            }
-            else
-            {
-                //Remove tool from panel
-                ToolPanelUIController.CloseToolPanel?.Invoke();
-            }
         }
 
         private void OnToolInitializing(StreamingToolAsset[] tools)
@@ -108,7 +74,7 @@ namespace Unity.Industry.Viewer.VR
                 {
                     newButton.AddToClassList(k_MainToolIconClassName);
                 }
-                
+
                 newButton.IconTexture = tools[i].toolIcon;
 
                 var newButtonData = new StreamToolData(tools[i]);

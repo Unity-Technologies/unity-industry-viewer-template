@@ -10,6 +10,7 @@ using System.Text;
 using Unity.Industry.Viewer.Shared;
 using Unity.Industry.Viewer.Identity;
 using Unity.Cloud.Common;
+using UnityEngine.Networking;
 
 namespace Unity.Industry.Viewer.Assets
 {
@@ -52,6 +53,12 @@ namespace Unity.Industry.Viewer.Assets
             foreach (var entry in textureCacheCopy)
             {
                 entry.CancelToken();
+                // Release the native texture memory; without this every cached thumbnail's GPU
+                // texture leaks on each org switch (ClearCache caller).
+                if (entry.Texture2D != null)
+                {
+                    UnityEngine.Object.Destroy(entry.Texture2D);
+                }
             }            
         }
 
@@ -96,7 +103,6 @@ namespace Unity.Industry.Viewer.Assets
 
         static async Task Download(int key, string versionId, string url, Action<Texture2D> actionCallBack)
         {
-            Debug.Log(url);
             if(!s_TextureCache.TryGetValue(key, out var entry))
             {
                 entry = new TextureDownloadEntry
@@ -113,28 +119,12 @@ namespace Unity.Industry.Viewer.Assets
                 }
                 
                 s_TextureCache.Add(key, entry);
-
                 try
                 {
                     var taskTexture = DownloadTexture(url.ToString(), entry.CancellationTokenSource.Token);
-                    if (await Task.WhenAny(taskTexture) == taskTexture)
-                    {
-                        if (!entry.IsCancelled())
-                        {
-                            entry.Texture2D = taskTexture.Result;
-                            entry.IsDownloading = false;
-                        }
-                    }
-                    else
-                    {
-                        //Get Preset
-                        entry.IsDownloading = false;
-                        if (!entry.IsCancelled())
-                        {
-                            actionCallBack?.Invoke(null);
-                        }
-                        return;
-                    }
+                    var texture = await taskTexture;
+                    if (entry.IsCancelled()) return;
+                    entry.Texture2D = texture;
                 }
                 catch (OperationCanceledException)
                 {
@@ -144,14 +134,18 @@ namespace Unity.Industry.Viewer.Assets
                 catch (Exception e)
                 {
                     Debug.LogError(e);
-                    if (!entry.IsCancelled())
-                    {
-                        OnTextureDownloaded(entry);
-                        actionCallBack?.Invoke(null);
-                    }
+                    if (entry.IsCancelled()) return;
+                    // entry.Texture2D stays null; listeners are notified with null below.
                 }
-                
-            } else if (entry.IsDownloading)
+
+                // Notify every listener (including this caller, which was added above) exactly once.
+                // The direct actionCallBack invoke that used to follow caused a double callback on
+                // success and a triple callback on exception, since actionCallBack is already a listener.
+                OnTextureDownloaded(entry);
+                return;
+            }
+
+            if (entry.IsDownloading)
             {
                 lock (entry.Listeners)
                 {
@@ -159,23 +153,41 @@ namespace Unity.Industry.Viewer.Assets
                 }
                 return;
             }
-            OnTextureDownloaded(entry);
+
+            // Cache hit: texture already downloaded and this caller was never added as a listener,
+            // so invoke its callback directly (once).
             actionCallBack?.Invoke(entry.Texture2D);
         }
         
         static async Task<Texture2D> DownloadTexture(string url, CancellationToken cancellationToken = default)
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
-            var httpClient = IdentityController.GuestMode? PlatformServices.ServiceAccountServiceHttpClient : PlatformServices.ServiceHttpClient;
-
             try
             {
-                HttpResponseMessage responseMessage = await httpClient.SendAsync(requestMessage, cancellationToken);
-                responseMessage.EnsureSuccessStatusCode();
-                var bytes = await responseMessage.Content.ReadAsByteArrayAsync();
-                var texture = new Texture2D(2, 2);
-                texture.LoadImage(bytes);
-                return texture;
+                if (!url.StartsWith("file://"))
+                {
+                    //If Loading from the cloud
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+                    var httpClient = IdentityController.GuestMode? PlatformServices.ServiceAccountServiceHttpClient : PlatformServices.ServiceHttpClient;
+                    HttpResponseMessage responseMessage = await httpClient.SendAsync(requestMessage, cancellationToken);
+                    responseMessage.EnsureSuccessStatusCode();
+                    var bytes = await responseMessage.Content.ReadAsByteArrayAsync();
+                    var texture = new Texture2D(2, 2);
+                    texture.LoadImage(bytes);
+                    return texture;
+                }
+
+                //If loading local asset - Offline mode
+                using var uwr = new UnityWebRequest(url, UnityWebRequest.kHttpVerbGET);
+                uwr.downloadHandler = new DownloadHandlerTexture();
+                var operation = uwr.SendWebRequest();
+
+                while (!operation.isDone)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    await Task.Yield();
+                }
+                return DownloadHandlerTexture.GetContent(uwr);
+
             }
             catch (HttpRequestException e)
             {

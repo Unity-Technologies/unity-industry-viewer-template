@@ -185,7 +185,7 @@ namespace Unity.Industry.Viewer.Navigation.StandardCameraControl.Shared
             if (m_Camera is null || Touch.activeTouches.Count == 0 || Touch.activeTouches.Count > 2 || !m_MoveAction.enabled || !m_RotateAction.enabled) return;
             foreach (var touch in Touch.activeTouches)
             {
-                if (EventSystem.current.IsPointerOverGameObject(touch.touchId)) continue;
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.touchId)) continue;
                 if (touch.phase != TouchPhase.Began) continue;
                 m_Touch = touch;
                 m_IsTouching = true;

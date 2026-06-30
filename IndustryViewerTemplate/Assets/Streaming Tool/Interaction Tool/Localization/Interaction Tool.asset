@@ -32,6 +32,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c40f6563858ac4cd29f8d6cd9bb5aa1b, type: 2}
   - {fileID: 11400000, guid: d31e3b70400ff432381ddb2f93733cb9, type: 2}
   m_Extensions: []
+ []
+  m_Extensions: []
+ []
+  m_Extensions: []
   m_Group: String Table
   references:
     version: 2

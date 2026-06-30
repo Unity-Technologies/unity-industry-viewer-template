@@ -326,6 +326,9 @@ namespace Unity.Industry.Viewer.Vivox
     // Extension method to handle tasks without awaiting them
     public static class TaskExtensions
     {
-        public static void Forget(this Task task) { }
+        public static void Forget(this Task task)
+        {
+            task.ContinueWith(t => Debug.LogException(t.Exception), TaskContinuationOptions.OnlyOnFaulted);
+        }
     }
 }

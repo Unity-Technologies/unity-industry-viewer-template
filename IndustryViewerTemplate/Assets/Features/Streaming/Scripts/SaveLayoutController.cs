@@ -120,6 +120,7 @@ namespace Unity.Industry.Viewer.Streaming
                         m_saveCompleteCallback?.Invoke(null, e.Message);
                         Clear();
                         Debug.Log(e.Message);
+                        return;
                     }
                 }
                 else
@@ -141,6 +142,7 @@ namespace Unity.Industry.Viewer.Streaming
                         m_saveCompleteCallback?.Invoke(null, e.Message);
                         Clear();
                         Debug.Log(e.Message);
+                        return;
                     }
                 }
                 

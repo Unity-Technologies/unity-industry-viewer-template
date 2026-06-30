@@ -204,6 +204,7 @@ namespace Unity.Industry.Viewer.Streaming.Measurement
         
         private void OnPointerDownDraggablePad(PointerDownEvent evt)
         {
+            if (Camera.main == null) return;
             m_dragStartPosition = evt.position;
             m_DraggablePadDistance = Vector3.Distance(Camera.main.transform.position, transform.position);
             NavigationController.PauseCameraControl?.Invoke(true);
@@ -216,8 +217,10 @@ namespace Unity.Industry.Viewer.Streaming.Measurement
             if (delta.magnitude >= m_Tolerance && !IsDragging){
                 IsDragging = true;
             }
-            if (!IsDragging) return; 
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(newPos.x, newPos.y, m_DraggablePadDistance));
+            if (!IsDragging) return;
+            var mainCamera = Camera.main;
+            if (mainCamera == null) return;
+            Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(newPos.x, newPos.y, m_DraggablePadDistance));
             transform.position = worldPos;
             Vector3 newCursorPos = new Vector3(worldPos.x, worldPos.y + MeasurementToolUIController.DraggablePadOffset, worldPos.z);
             NewCursorPosition?.Invoke(newCursorPos, null);

@@ -421,21 +421,18 @@ namespace Unity.Industry.Viewer.Assets
         
         protected abstract void HandleAssetThumbnail(AssetInfo asset, VisualElement iconPlaceHolder);
         
-        private static int s_BindingIdCounter = 0;
-        
-        protected void HandleThumbnailDownload(VisualElement iconPlaceHolder, AssetType assetType, Action<int> downloadAction)
+        protected void HandleThumbnailDownload(VisualElement iconPlaceHolder, int downloadKey, Action<int> downloadAction)
         {
-            // Cancel any existing download for this visual element
-            if (iconPlaceHolder.userData is int existingAssetId)
+            // downloadKey is the asset's TextureDownload cache key (AssetId hashcode). If this cell
+            // was showing a different asset, cancel that still-in-flight download. The previous code
+            // stored a monotonic counter here, so CancelDownload never matched a cache key (no-op).
+            if (iconPlaceHolder.userData is int existingKey && existingKey != downloadKey)
             {
-                TextureDownload.CancelDownload(existingAssetId);
+                TextureDownload.CancelDownload(existingKey);
             }
 
-            // Generate a unique binding ID for this specific bind operation
-            var bindingId = ++s_BindingIdCounter;
-            iconPlaceHolder.userData = bindingId;
-            
-            downloadAction(bindingId);
+            iconPlaceHolder.userData = downloadKey;
+            downloadAction(downloadKey);
         }
         
         protected void OnThumbnailDownloaded(VisualElement iconPlaceHolder, int bindingId, Texture2D textureResult, AssetType assetType)

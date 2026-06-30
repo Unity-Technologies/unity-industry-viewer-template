@@ -298,7 +298,7 @@ namespace Unity.Industry.Viewer.Collaboration
                     {
                         await m_AnnotationManagement.UpdateAnnotationAsync(
                             new AnnotationReference(info.ProjectId, annotationToUpdate.AnnotationId),
-                            text, token.Token);
+                            new UpdateAnnotationData(text: text), token.Token);
 
                         token?.Cancel();
                         token = new CancellationTokenSource();
@@ -312,11 +312,15 @@ namespace Unity.Industry.Viewer.Collaboration
                             _ = await UploadAttachment(assetInfo, token, annotationToUpdate.AnnotationId, attachment);
                         }
                     }
-
-                    callback?.Invoke(annotationToUpdate);
                 } catch (Exception e)
                 {
                     Debug.Log(e.Message ?? e.ToString());
+                }
+                finally
+                {
+                    // Always fire the callback so the caller's loading/edit UI is released even if
+                    // the update or an attachment upload threw.
+                    callback?.Invoke(annotationToUpdate);
                 }
             }
         }
@@ -359,24 +363,36 @@ namespace Unity.Industry.Viewer.Collaboration
                 GlobalCancellationTokenSource = token;
                 var info = RetrieveInfo(assetInfo);
 
-                if (follow)
+                // Optimistic default so a failed call still reports the requested state and the
+                // follow/unfollow toggle is never left stuck; a later refresh reconciles it.
+                bool isUserFollowing = follow;
+                try
                 {
-                    await m_AnnotationManagement.SubscribeToAnnotationThreadAsync(
-                        new AnnotationReference(info.ProjectId, annotation.AnnotationId),
-                        token.Token);
-                } else
-                {
-                    await m_AnnotationManagement.UnsubscribeFromAnnotationThreadAsync(
-                        new AnnotationReference(info.ProjectId, annotation.AnnotationId),
-                        token.Token);
+                    if (follow)
+                    {
+                        await m_AnnotationManagement.SubscribeToAnnotationThreadAsync(
+                            new AnnotationReference(info.ProjectId, annotation.AnnotationId),
+                            token.Token);
+                    } else
+                    {
+                        await m_AnnotationManagement.UnsubscribeFromAnnotationThreadAsync(
+                            new AnnotationReference(info.ProjectId, annotation.AnnotationId),
+                            token.Token);
+                    }
+
+                    token?.Cancel();
+                    token = new CancellationTokenSource();
+                    GlobalCancellationTokenSource = token;
+                    isUserFollowing = await IsUserFollowing(assetInfo, annotation, token);
                 }
-
-                token?.Cancel();
-                token = new CancellationTokenSource();
-                GlobalCancellationTokenSource = token;
-                var isUserFollowing = await IsUserFollowing(assetInfo, annotation, token);
-
-                callback?.Invoke(isUserFollowing, annotation);
+                catch (Exception e)
+                {
+                    Debug.Log(e.Message ?? e.ToString());
+                }
+                finally
+                {
+                    callback?.Invoke(isUserFollowing, annotation);
+                }
             }
         }
 
@@ -518,6 +534,9 @@ namespace Unity.Industry.Viewer.Collaboration
                 GlobalCancellationTokenSource = token;
                 var info = RetrieveInfo(assetInfo);
 
+                // Fall back to the original annotation if the re-read fails, so the callback always
+                // runs with a non-null value and the resolve button is never left disabled.
+                IAnnotation updatedAnnotation = arg1;
                 try
                 {
                     if (resolve)
@@ -532,18 +551,21 @@ namespace Unity.Industry.Viewer.Collaboration
                             new AnnotationReference(info.ProjectId, arg1.AnnotationId),
                             token.Token);
                     }
+
+                    token?.Cancel();
+                    token = new CancellationTokenSource();
+                    GlobalCancellationTokenSource = token;
+                    updatedAnnotation = await m_AnnotationManagement.ReadAnnotationAsync(
+                        new AnnotationReference(info.ProjectId, arg1.AnnotationId),
+                        token.Token);
                 } catch (Exception e)
                 {
                     Debug.Log(e.Message ?? e.ToString());
                 }
-
-                token?.Cancel();
-                token = new CancellationTokenSource();
-                GlobalCancellationTokenSource = token;
-                var updatedAnnotation = await m_AnnotationManagement.ReadAnnotationAsync(
-                    new AnnotationReference(info.ProjectId, arg1.AnnotationId),
-                    token.Token);
-                callback?.Invoke(updatedAnnotation);
+                finally
+                {
+                    callback?.Invoke(updatedAnnotation);
+                }
             }
         }
 
@@ -631,7 +653,7 @@ namespace Unity.Industry.Viewer.Collaboration
 
                     queryNext = result.Next;
 
-                    resultAnnotation.AddRange(result.Annotations.Where(x => string.IsNullOrEmpty(x.RootAnnotationId.ToString()) && string.Equals(x.Status, "Active")).ToList());
+                    resultAnnotation.AddRange(result.Annotations.Where(x => x.RootAnnotationId == null && string.Equals(x.Status, "Active")).ToList());
 
                 } while (!string.IsNullOrEmpty(queryNext));
 

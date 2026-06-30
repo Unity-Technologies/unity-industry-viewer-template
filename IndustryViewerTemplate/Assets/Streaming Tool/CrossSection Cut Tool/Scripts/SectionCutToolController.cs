@@ -185,11 +185,7 @@ namespace Unity.Industry.Viewer.Streaming.CrossSection
             m_TargetHandleSizeFactor = type == TransformType.Rotate? rotateHandleSizeFactor: 1f;
             m_TransformGizmo.SetType(type);
             m_TransformGizmo.SetSpace(TransformSpace.Local);
-            m_TransformGizmo.OnHandlerSelected -= OnCheckForSelectedAxis;
-            m_TransformGizmo.OnHandlerReleased -= OnCheckForReleaseAxis;
-            
-            m_TransformGizmo.OnHandlerSelected += OnCheckForSelectedAxis;
-            m_TransformGizmo.OnHandlerReleased += OnCheckForReleaseAxis;
+            SubscribeGizmoHandlers(m_TransformGizmo);
 #if !VR_MODE
             m_PointerPress.action.Enable();
             m_PointerClick.action.Enable();
@@ -204,8 +200,7 @@ namespace Unity.Industry.Viewer.Streaming.CrossSection
         {
             if (m_TransformGizmo != null)
             {
-                m_TransformGizmo.OnHandlerSelected -= OnCheckForSelectedAxis;
-                m_TransformGizmo.OnHandlerReleased -= OnCheckForReleaseAxis;
+                UnsubscribeGizmoHandlers(m_TransformGizmo);
                 Destroy(m_TransformGizmo);
             }
 #if !VR_MODE
@@ -342,15 +337,6 @@ namespace Unity.Industry.Viewer.Streaming.CrossSection
             }
         }
         
-        private void OnCheckForReleaseAxis()
-        {
-            NavigationController.PauseCameraControl?.Invoke(false);
-        }
-
-        private void OnCheckForSelectedAxis()
-        {
-            NavigationController.PauseCameraControl?.Invoke(true);
-        }
 
         public override void OnToolOpened()
         {

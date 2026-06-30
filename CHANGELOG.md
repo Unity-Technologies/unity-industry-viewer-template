@@ -5,8 +5,21 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [2.3.0] - 2026-05-15
+## [2.3.1] - 2026-06-29
 
+### Changed
+- Refactored the Mobile AR and VR camera passthrough controllers to share a common `ARPlacementNavigationOption` base class, removing duplicated transform and surface-placement logic (internal refactor, no behavioral change).
+- Refactored the Fly, Orbit and Walk camera navigation options to share a common `StandardCameraNavigationOption` base class, centralising their shared navigation-option lifecycle (internal refactor, no behavioral change).
+- Reduced duplicated UI code by sharing the streaming tool-panel update logic, the navigation home-button and sensitivity-slider wiring, and the Vivox microphone-button setup across their respective controllers (internal refactor, no behavioral change).
+- Reduced duplicated logic across the in-experience streaming tools by sharing the world-space-UI raycast occlusion check and the transform-gizmo handler wiring on `StreamToolControllerBase`, and added shared `UIUtility` helpers for stylesheet add/remove and the EventSystem-refresh workaround (internal refactor, no behavioral change).
+
+### Fixed
+- Fixed the VR transform-gizmo free-rotate handle using the controller's world position instead of its pointing direction, which caused erratic rotation.
+- Various bug fixes across asset browsing, streaming tools, collaboration, multiplayer, VR, and deep linking (mainly null-reference and runtime-exception guards).
+- Fixed several event-subscription and resource leaks.
+- General stability and memory improvements.
+
+## [2.3.0] - 2026-05-15
 ### Added
 - Ability to pin certificate in a VPC environment.
 - Log Console UI panel in In-App Settings.
@@ -22,6 +35,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Null annotation list crash in `CollaborationUIBase.OnAnnotationLoaded`.
 - AR Placement bugs.
 - Various VR/XR UI fixes.
+
+## [2.2.1] - 2026-04-02
+### Fixes
+- Fixed on the duplication of the sample folders
 
 ## [2.2.0] - 2026-03-31
 ### Added

@@ -44,7 +44,9 @@ namespace Unity.Industry.Viewer.Collaboration
 
         public void Click()
         {
-            _currentPopover.Dismiss();
+            // _currentPopover is static and nulled by Dispose() (fired on any button's detach),
+            // so it can be null here when invoked from the keyboard path.
+            _currentPopover?.Dismiss();
             CollaborationUIUtility.InsertNameTagging(UserInfo, _currentTextArea);
         }
 

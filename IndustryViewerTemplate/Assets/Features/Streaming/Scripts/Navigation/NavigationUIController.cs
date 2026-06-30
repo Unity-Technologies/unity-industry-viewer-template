@@ -67,10 +67,7 @@ namespace Unity.Industry.Viewer.Streaming
 
             m_UIDocument = SharedUIManager.Instance.AssetsUIDocument;
             if(m_UIDocument == null) return;
-            if (!m_UIDocument.rootVisualElement.styleSheets.Contains(m_StreamingStyleSheet))
-            {
-                m_UIDocument.rootVisualElement.styleSheets.Add(m_StreamingStyleSheet);
-            }
+            m_UIDocument.rootVisualElement.AddStyleSheetIfMissing(m_StreamingStyleSheet);
             var streamingContainer = m_UIDocument.rootVisualElement.Q<VisualElement>(StreamingUtils.StreamingPanelName);
             m_BottomLeftContainer = streamingContainer.Q<VisualElement>(StreamingUtils.BottomLeftContainerName);
 

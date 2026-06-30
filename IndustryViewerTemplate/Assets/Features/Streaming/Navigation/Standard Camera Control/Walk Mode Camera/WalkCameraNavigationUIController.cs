@@ -44,55 +44,17 @@ namespace Unity.Industry.Viewer.Navigation.WalkModeCamera
         {
             base.InitialUI(panel);
 
-            m_MoveSensitivitySlider = panel.Q<TouchSliderFloat>(k_MoveSensitivitySlider);
-            m_RotationSensitivitySlider = panel.Q<TouchSliderFloat>(k_RotationSensitivitySlider);
-            m_CameraHeightSlider = panel.Q<TouchSliderFloat>(k_CameraHeightSlider);
+            m_MoveSensitivitySlider = WireSensitivitySlider(panel, k_MoveSensitivitySlider,
+                m_CameraInputSystemController.MoveSensitivity, m_CameraInputSystemController.UpdateMoveSensitivity);
+            m_RotationSensitivitySlider = WireSensitivitySlider(panel, k_RotationSensitivitySlider,
+                m_CameraInputSystemController.RotateSensitivity, m_CameraInputSystemController.UpdateRotateSensitivity);
 
-            m_MoveSensitivitySlider.RegisterValueChangingCallback(OnMoveSensitivityChanging);
-            m_MoveSensitivitySlider.RegisterValueChangedCallback(OnMoveSensitivityChanged);
-
-            m_RotationSensitivitySlider.RegisterValueChangingCallback(OnRotateSensitivityChanging);
-            m_RotationSensitivitySlider.RegisterValueChangedCallback(OnRotateSensitivityChanged);
-
-            m_CameraHeightSlider.RegisterValueChangingCallback(OnCameraHeightChanging);
-            m_CameraHeightSlider.RegisterValueChangedCallback(OnCameraHeightChanged);
-
-            m_MoveSensitivitySlider.SetValueWithoutNotify(m_CameraInputSystemController.MoveSensitivity);
-            m_RotationSensitivitySlider.SetValueWithoutNotify(m_CameraInputSystemController.RotateSensitivity);
             m_CameraHeight = m_CameraInputSystemController.WalkModeMoveController.CharacterHeight;
-            m_CameraHeightSlider.SetValueWithoutNotify(m_CameraHeight);
-        }
-
-        private void OnRotateSensitivityChanged(ChangeEvent<float> evt)
-        {
-            m_CameraInputSystemController.UpdateRotateSensitivity(evt.newValue);
-        }
-
-        private void OnRotateSensitivityChanging(ChangingEvent<float> evt)
-        {
-            m_CameraInputSystemController.UpdateRotateSensitivity(evt.newValue);
-        }
-
-        private void OnMoveSensitivityChanged(ChangeEvent<float> evt)
-        {
-            m_CameraInputSystemController.UpdateMoveSensitivity(evt.newValue);
-        }
-
-        private void OnMoveSensitivityChanging(ChangingEvent<float> evt)
-        {
-            m_CameraInputSystemController.UpdateMoveSensitivity(evt.newValue);
-        }
-
-        private void OnCameraHeightChanging(ChangingEvent<float> evt)
-        {
-            m_CameraInputSystemController.WalkModeMoveController.CharacterHeight = evt.newValue;
-            m_CameraHeight = evt.newValue;
-        }
-
-        private void OnCameraHeightChanged(ChangeEvent<float> evt)
-        {
-            m_CameraInputSystemController.WalkModeMoveController.CharacterHeight = evt.newValue;
-            m_CameraHeight = evt.newValue;
+            m_CameraHeightSlider = WireSensitivitySlider(panel, k_CameraHeightSlider, m_CameraHeight, value =>
+            {
+                m_CameraInputSystemController.WalkModeMoveController.CharacterHeight = value;
+                m_CameraHeight = value;
+            });
         }
     }
 }

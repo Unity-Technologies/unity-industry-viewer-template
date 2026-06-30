@@ -114,6 +114,7 @@ PlayerSettings:
   xboxEnableGuest: 0
   xboxEnablePIXSampling: 0
   metalFramebufferOnly: 0
+  metalUseMetalDisplayLink: 0
   xboxOneResolution: 0
   xboxOneSResolution: 0
   xboxOneXResolution: 3
@@ -148,6 +149,8 @@ PlayerSettings:
   - {fileID: 11400000, guid: 04dae70fc7af8f94b9da4d84ee52b081, type: 2}
   - {fileID: -944628639613478452, guid: dc22970ab69319a4ca0d5e591bad8f73, type: 3}
   - {fileID: 11400000, guid: 36a43c0f24f4a4e8da3c294273744628, type: 2}
+  - {fileID: 2929106519370664289, guid: 8b4fc3ca12b7345a99c2dd9efc3c8642, type: 2}
+  - {fileID: 6867549396767309537, guid: 039f95dd1f23aaf459ae146c5c31fc0c, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -169,49 +172,10 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.unity.industryviewer
-    Standalone: com.unity.industry-viewer
-    VisionOS: com.unity.industry-viewer
-    iPhone: com.unity.industry-viewer
-  buildNumber:
-    Standalone: 0
-    VisionOS: 0
-    iPhone: 0
-    tvOS: 0
-  overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 29
-  AndroidTargetSdkVersion: 0
-  AndroidPreferredInstallLocation: 1
-  AndroidPreferredDataLocation: 1
-  aotOptions: 
-  stripEngineCode: 1
-  iPhoneStrippingLevel: 0
-  iPhoneScriptCallOptimization: 0
-  ForceInternetPermission: 0
-  ForceSDCardPermission: 0
-  CreateWallpaper: 0
-  androidSplitApplicationBinary: 0
-  keepLoadedShadersAlive: 0
-  StripUnusedMeshComponents: 0
-  strictShaderVariantMatching: 0
-  VertexChannelCompressionMask: 4054
-  iPhoneSdkVersion: 988
-  iOSSimulatorArchitecture: 0
-  iOSTargetOSVersionString: 15.0
-  tvOSSdkVersion: 0
-  tvOSSimulatorArchitecture: 0
-  tvOSRequireExtendedGameController: 0
-  tvOSTargetOSVersionString: 15.0
-  VisionOSSdkVersion: 0
-  VisionOSTargetOSVersionString: 1.0
-  uIPrerenderedIcon: 0
-  uIRequiresPersistentWiFi: 0
-  uIRequiresFullScreen: 1
-  uIStatusBarHidden: 1
-  uIExitOnSuspend: 0
-  uIStatusBarStyle: 0
-  appleTVSplashScreen: {fileID: 0}
+  Android: com.unity.industryviewer
+  Standalone: com.unity.industry-viewer
+  VisionOS: com.unity.industry-viewer
+  iPhone: com.unity.industry-viewer
   appleTVSplashScreen2x: {fileID: 0}
   tvOSSmallIconLayers: []
   tvOSSmallIconLayers2x: []
@@ -890,14 +854,11 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;META_USE_STICK_CONTROL_THUMBSTICKS
-    Standalone: EXPERIMENTAL_WEBGL_PROXY;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;META_USE_STICK_CONTROL_THUMBSTICKS
-    WebGL: EXPERIMENTAL_WEBGL_PROXY
-    Windows Store Apps: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
-    iPhone: UNITY_XR_ARKIT_LOADER_ENABLED
-  additionalCompilerArguments: {}
-  platformArchitecture: {}
-  scriptingBackend: {}
+  Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
+  Standalone: EXPERIMENTAL_WEBGL_PROXY;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
+  WebGL: EXPERIMENTAL_WEBGL_PROXY
+  Windows Store Apps: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
+  iPhone: UNITY_XR_ARKIT_LOADER_ENABLED
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   il2cppStacktraceInformation: {}
@@ -1008,10 +969,10 @@ PlayerSettings:
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 
-  framebufferDepthMemorylessMode: 0
+  
   qualitySettingsNames: []
   projectName: 
-  organizationId: 
+  
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

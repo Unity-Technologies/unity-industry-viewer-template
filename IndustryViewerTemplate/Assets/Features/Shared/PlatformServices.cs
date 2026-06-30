@@ -115,14 +115,14 @@ namespace Unity.Industry.Viewer.Shared
 
         #endregion
 
-        public static void Create(VPCCredentials vpcCredentials, ServiceAccountCredentials serviceAccountCredentials, bool pinCertificate)
+        public static void Create(VPCCredentials vpcCredentials, ServiceAccountCredentials serviceAccountCredentials)
         {
-            if (pinCertificate)
+            if (CertificatePinning.HasBuiltInManifest)
             {
                 _sCertificateValidationPolicy = new PublicKeyPinningCertificateValidationPolicy();
             }
             
-            HttpClient = new UnityHttpClient(pinCertificate? _sCertificateValidationPolicy : null);
+            HttpClient = new UnityHttpClient(CertificatePinning.HasBuiltInManifest? _sCertificateValidationPolicy : null);
             var playerSettings = UnityCloudPlayerSettings.Instance;
             var platformSupport = PlatformSupportFactory.GetAuthenticationPlatformSupport();
 
@@ -209,7 +209,9 @@ namespace Unity.Industry.Viewer.Shared
             HttpClient = null;
             m_DataStreamer = null;
             ServiceAccountLogout();
+            (ServiceAccountServiceAuthenticator as IDisposable)?.Dispose();
             ServiceAccountServiceAuthenticator = null;
+            (ServiceAccountServiceHttpClient as IDisposable)?.Dispose();
             ServiceAccountServiceHttpClient = null;
             ServiceAccountAssetRepository = null;
         }

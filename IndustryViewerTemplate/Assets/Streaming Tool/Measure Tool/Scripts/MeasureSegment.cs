@@ -45,7 +45,13 @@ namespace Unity.Industry.Viewer.Streaming.Measurement
 
         void LateUpdate()
         {
-            m_MeasureLine.Update(m_StartPoint.position, m_EndPoint.position, Camera.main.transform.position);
+            // Camera.main can be null when the active streaming camera isn't tagged MainCamera
+            // (e.g. AR/passthrough); skip the camera-relative line update rather than NRE every frame.
+            var mainCamera = Camera.main;
+            if (mainCamera != null)
+            {
+                m_MeasureLine.Update(m_StartPoint.position, m_EndPoint.position, mainCamera.transform.position);
+            }
             UpdateLabel();
         }
 

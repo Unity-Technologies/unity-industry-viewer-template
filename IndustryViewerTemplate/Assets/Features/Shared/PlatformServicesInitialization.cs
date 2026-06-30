@@ -11,9 +11,6 @@ namespace Unity.Industry.Viewer.Shared
         
         [Tooltip("Scriptable Object that contains VPC credentials.")]
         [SerializeField] private VPCCredentials vpcCredentials;
-
-        [Tooltip("Pin the certificate for VPC connections.")]
-        [SerializeField] private bool pinCertificate;
         
         void Awake()
         {
@@ -22,7 +19,7 @@ namespace Unity.Industry.Viewer.Shared
 
         public void StartServices()
         {
-            PlatformServices.Create(vpcCredentials, serviceAccountCredentials, pinCertificate);
+            PlatformServices.Create(vpcCredentials, serviceAccountCredentials);
             _ = Initialize();
             return;
 

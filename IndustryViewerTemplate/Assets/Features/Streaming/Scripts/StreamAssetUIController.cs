@@ -990,7 +990,8 @@ namespace Unity.Industry.Viewer.Streaming
 
             toast.Show();
 
-            if (SharedUIManager.SelectedAsset.Value.Asset.Descriptor.AssetId != assetInfo.Asset.Descriptor.AssetId ||
+            if (!SharedUIManager.SelectedAsset.HasValue ||
+                SharedUIManager.SelectedAsset.Value.Asset.Descriptor.AssetId != assetInfo.Asset.Descriptor.AssetId ||
                 SharedUIManager.SelectedAsset.Value.Asset.Descriptor.ProjectDescriptor != assetInfo.Asset.Descriptor.ProjectDescriptor)
             {
                 return;

@@ -4,47 +4,24 @@ using Unity.Cloud.HighPrecision.Runtime;
 
 namespace Unity.Industry.Viewer.Navigation.OrbitCamera
 {
-    public class OrbitCameraNavigationController : NavigationOption
+    public class OrbitCameraNavigationController : StandardCameraNavigationOption
     {
         [SerializeField]
         private OrbitCameraInputSystemController cameraController;
 
         [SerializeField]
         private FreeOrbitCamera freeOrbitCamera;
-        
-        DoubleBounds m_CurrentBounds;
-        
-        public override void Initialize()
-        {
-            navigationOptionUIComponent ??= GetComponent<NavigationOptionUI>();
-            StreamingModelController.BoundsUpdated += OnBoundsUpdated;
-        }
 
-        public override void Uninitialize()
-        {
-            StreamingModelController.BoundsUpdated -= OnBoundsUpdated;
-        }
-        
         public override void OnNavigationOptionEnable()
         {
             NavigationController.RequestDefaultHomeView -= SetDefaultView;
             NavigationController.RequestDefaultHomeView += SetDefaultView;
-            StreamingModelController.AddObserver?.Invoke(navigationCamera);
+            base.OnNavigationOptionEnable();
         }
 
         public override void OnNavigationOptionDisable()
         {
             NavigationController.RequestDefaultHomeView -= SetDefaultView;
-        }
-        
-        public override bool IsSupported()
-        {
-            return true;
-        }
-
-        public override GameObject GetNavigationGameObject()
-        {
-            return navigationCamera.gameObject;
         }
 
         public override void SetDefaultView()
@@ -69,7 +46,7 @@ namespace Unity.Industry.Viewer.Navigation.OrbitCamera
             freeOrbitCamera.FollowPresenter(presenterObject, GetNavigationGameObject());
         }
 
-        private void OnBoundsUpdated(DoubleBounds bounds, bool skipCameraUpdate)
+        protected override void OnBoundsUpdated(DoubleBounds bounds, bool skipCameraUpdate)
         {
             m_CurrentBounds = bounds;
             if (!skipCameraUpdate)

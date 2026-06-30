@@ -20,18 +20,11 @@ namespace RuntimeGizmos
         {
             public Ray Ray { private set; get; }
             public int Id { private set; get; }
-            public bool IsSelecting { private set; get; }
-            
-            public CustomRay(Ray ray, int id, bool isSelecting)
+
+            public CustomRay(Ray ray, int id)
             {
                 Ray = ray;
                 Id = id;
-                IsSelecting = isSelecting;
-            }
-
-            public void SetSelectingValue(bool value)
-            {
-                IsSelecting = value;
             }
 
             public void UpdateRay(Ray ray)
@@ -215,6 +208,7 @@ namespace RuntimeGizmos
         
         bool selecting = false;
         private Vector3 _previousPointerPosition;
+        private Vector3 _previousRayDirection;
 
         void Awake()
         {
@@ -321,7 +315,6 @@ namespace RuntimeGizmos
                         CustomRay updatedRay = customRay.Value;
                         updatedRay.UpdateRay(ray);
                         customRay = updatedRay;
-                        _previousPointerPosition = ray.origin;
                     }
                     else
                     {
@@ -333,22 +326,19 @@ namespace RuntimeGizmos
             SetNearAxis(ray, true);
 
             if (nearAxis == Axis.None) return;
-            customRay = new CustomRay(ray, rayId, false);
-            _previousPointerPosition = ray.origin;
+            customRay = new CustomRay(ray, rayId);
         }
         
         private void OnSelectEvent(bool beingPress, Ray ray, int rayID)
         {
-            if (beingPress && customRay.HasValue && customRay.Value.Id == rayID && !customRay.Value.IsSelecting)
+            if (beingPress && customRay.HasValue && customRay.Value.Id == rayID)
             {
                 selecting = true;
-                customRay.Value.SetSelectingValue(true);
             } else if (!beingPress && customRay.HasValue && customRay.Value.Id == rayID)
             {
                 selecting = false;
-                customRay.Value.SetSelectingValue(false);
             }
-            
+
             if (selecting && mainTargetRoot != null)
             {
                 if (nearAxis == Axis.None)
@@ -356,6 +346,10 @@ namespace RuntimeGizmos
                     SetNearAxis(ray, true);
                 }
                 if(nearAxis == Axis.None) return;
+                if (customRay.HasValue)
+                {
+                    _previousRayDirection = customRay.Value.Ray.direction.normalized;
+                }
                 StartCoroutine(TransformSelected(translatingType));
             }
         }
@@ -906,14 +900,20 @@ namespace RuntimeGizmos
             if(_inputMoveAction == null && !customRay.HasValue) return inputDelta;
 
             if (_inputMoveAction == null && customRay.HasValue){
-                
-                // Use the rotation of the VR controller to calculate the delta
-                Quaternion currentRotation = Quaternion.LookRotation(customRay.Value.Ray.direction.normalized);
-                Quaternion previousRotation = Quaternion.LookRotation(_previousPointerPosition.normalized);
+
+                // Frame-to-frame angular delta of the VR controller's pointing direction.
+                Vector3 currentDirection = customRay.Value.Ray.direction.normalized;
+                if (_previousRayDirection == Vector3.zero)
+                {
+                    _previousRayDirection = currentDirection;
+                }
+                Quaternion currentRotation = Quaternion.LookRotation(currentDirection);
+                Quaternion previousRotation = Quaternion.LookRotation(_previousRayDirection);
                 Quaternion deltaRotation = currentRotation * Quaternion.Inverse(previousRotation);
 
                 inputDelta = deltaRotation * Vector3.forward;
-                
+
+                _previousRayDirection = currentDirection;
                 return inputDelta;
             }
             

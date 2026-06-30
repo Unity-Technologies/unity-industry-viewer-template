@@ -26,7 +26,9 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
         
         void OnEnable()
         {
-            m_lastCameraPosition = Camera.main.transform.position;
+            var mainCamera = Camera.main;
+            if (mainCamera == null) return;
+            m_lastCameraPosition = mainCamera.transform.position;
             transform.rotation = GetTargetRotation();
         }
         
@@ -54,10 +56,11 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
         
         Quaternion GetTargetRotation()
         {
-            var cameraTransform = Camera.main.transform;
-            
-            if (cameraTransform == null)
+            var mainCamera = Camera.main;
+            if (mainCamera == null)
                 return Quaternion.identity;
+
+            var cameraTransform = mainCamera.transform;
             
             var facePosition = cameraTransform.position;
             var forward = facePosition - transform.position;

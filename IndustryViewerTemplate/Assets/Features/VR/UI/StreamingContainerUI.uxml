@@ -1,29 +1,29 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Features/VR/UI/StreamingContainerUIStyle.uss?fileID=7433441132597879392&amp;guid=9c0cd5464d8a24e0d90a2c5f19ae490d&amp;type=3#StreamingContainerUIStyle" />
+    <Style src="project://database/Assets/Features/VR/UI/StreamingContainerUIStyle.uss?fileID=7433441132597879392&amp;guid=9c0cd5464d8a24e0d90a2c5f19ae490d&amp;type=3#StreamingContainerUIStyle"/>
     <ui:VisualElement style="flex-grow: 0; flex-direction: row; align-items: center; justify-content: center;">
         <ui:VisualElement style="flex-grow: 0; flex-direction: row; align-items: center;">
             <ui:VisualElement name="OfflineModeContainer" style="flex-grow: 0; height: 40px; background-color: rgb(209, 113, 0); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; padding-top: 8px; padding-bottom: 8px; padding-right: 12px; padding-left: 12px; flex-direction: row; align-items: center; justify-content: center; margin-right: 16px; margin-left: 0; display: none;">
-                <ui:VisualElement style="flex-grow: 0; width: 24px; height: 24px; background-image: url(&quot;project://database/Packages/com.unity.dt.app-ui/PackageResources/Icons/Regular/WifiX.png?fileID=2800000&amp;guid=d23abfe4aebc74a059cf10b2e5344e48&amp;type=3#WifiX&quot;); margin-right: 12px;" />
+                <ui:VisualElement style="flex-grow: 0; width: 24px; height: 24px; background-image: url(&quot;project://database/Packages/com.unity.dt.app-ui/PackageResources/Icons/Regular/WifiX.png?fileID=2800000&amp;guid=d23abfe4aebc74a059cf10b2e5344e48&amp;type=3#WifiX&quot;); margin-right: 12px;"/>
                 <Unity.AppUI.UI.Text style="-unity-text-align: middle-center; height: 14px; color: rgb(255, 255, 255);">
                     <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(45987493470789632)" />
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:753eb184db2564b0bacaa9891468f216" entry="Id(45987493470789632)"/>
                     </Bindings>
                 </Unity.AppUI.UI.Text>
             </ui:VisualElement>
             <Unity.AppUI.UI.ActionButton name="VersionButton" selected="true" accent="true" style="margin-right: 16px; height: 40px; display: none; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
                 <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(271402836942848)" />
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(271402836942848)"/>
                 </Bindings>
             </Unity.AppUI.UI.ActionButton>
             <ui:VisualElement name="StreamingContainer" style="flex-grow: 0; justify-content: center; flex-direction: row-reverse; align-items: center; height: 55px; background-color: rgb(46, 46, 46); border-top-left-radius: 27.5px; border-top-right-radius: 27.5px; border-bottom-right-radius: 27.5px; border-bottom-left-radius: 27.5px; padding-right: 6px; padding-left: 6px; display: flex;">
-                <Unity.AppUI.UI.Text name="First-Name-Label" style="height: 42px; margin-left: 6.5px; font-size: 15px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; -unity-text-align: middle-center; margin-right: 12px; display: none;" />
+                <Unity.AppUI.UI.Text name="First-Name-Label" style="height: 42px; margin-left: 6.5px; font-size: 15px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; -unity-text-align: middle-center; margin-right: 12px; display: none;"/>
                 <Unity.Industry.Viewer.Identity.CustomAvatar name="IdentityAvatar" size="L" background-color="#0892FF" class="cursor--pointer" style="width: 42px; height: 42px; display: none; margin-right: 6.5px;">
-                    <Unity.AppUI.UI.Text size="L" name="IdentityAvatarInitialLabel" picking-mode="Ignore" style="width: 40px; height: 40px; color: rgb(255, 255, 255);" />
+                    <Unity.AppUI.UI.Text size="L" name="IdentityAvatarInitialLabel" picking-mode="Ignore" style="width: 40px; height: 40px; color: rgb(255, 255, 255); -unity-text-align: middle-center;"/>
                 </Unity.Industry.Viewer.Identity.CustomAvatar>
-                <ui:VisualElement name="ClientsParent" style="flex-grow: 1; margin-right: 13px; border-right-width: 1px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); height: 42px; padding-right: 16px; display: none;" />
-                <Unity.AppUI.UI.Text name="AssetTitle" style="height: 13px; min-width: 100px; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" />
+                <ui:VisualElement name="ClientsParent" style="flex-grow: 1; margin-right: 13px; border-right-width: 1px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); height: 42px; padding-right: 16px; display: none;"/>
+                <Unity.AppUI.UI.Text name="AssetTitle" style="height: 13px; min-width: 100px; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <Unity.AppUI.UI.CircularProgress color-override="#FFFFFFFF" style="margin-left: 16px;" />
+        <Unity.AppUI.UI.CircularProgress color-override="#FFFFFFFF" style="margin-left: 16px;"/>
     </ui:VisualElement>
 </ui:UXML>

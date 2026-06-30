@@ -49,10 +49,7 @@ namespace Unity.Industry.Viewer.Streaming.Metadata
             }
             if (m_PanelDocument != null)
             {
-                if (m_PanelDocument.rootVisualElement.styleSheets.Contains(m_MetadataPanelStyleSheet))
-                {
-                    m_PanelDocument.rootVisualElement.styleSheets.Remove(m_MetadataPanelStyleSheet);
-                }
+                m_PanelDocument.rootVisualElement.RemoveStyleSheetIfPresent(m_MetadataPanelStyleSheet);
             }
             MetadataToolController.OfflineAssetSelected -= OnOfflineAssetSelected;
             MetadataToolController.MetadataFound -= OnMetadataFound;
@@ -108,10 +105,7 @@ namespace Unity.Industry.Viewer.Streaming.Metadata
                 m_Controller.ToolClosed += OnToolClosed;
             }
             
-            if (!m_PanelDocument.rootVisualElement.styleSheets.Contains(m_MetadataPanelStyleSheet))
-            {
-                m_PanelDocument.rootVisualElement.styleSheets.Add(m_MetadataPanelStyleSheet);
-            }
+            m_PanelDocument.rootVisualElement.AddStyleSheetIfMissing(m_MetadataPanelStyleSheet);
             
             m_MetadataScrollView = parent.Q<ScrollView>(k_MetadataScrollViewName);
             m_SearchField = parent.Q<TextField>(k_SearchFieldName);
