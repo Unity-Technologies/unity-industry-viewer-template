@@ -6,6 +6,12 @@
                 <Unity.AppUI.UI.IconButton icon="x" name="ToolCloseButton" quiet="true" size="L" style="position: absolute; width: 42px; height: 42px; top: 0; left: 0;" />
             </ui:VisualElement>
             <ui:VisualElement name="Content" style="flex-grow: 1;" />
+            <ui:VisualElement name="ResizeHandle" class="cursor--pointer" style="flex-grow: 1; position: absolute; top: 50%; left: -24px; width: 56px; height: 56px; display: none;">
+                <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; width: 28px; height: 56px; overflow: hidden;">
+                    <ui:VisualElement picking-mode="Ignore" style="flex-grow: 0; height: 56px; width: 56px; background-color: rgba(19, 19, 19, 0.9); border-top-left-radius: 28px; border-bottom-left-radius: 28px;" />
+                </ui:VisualElement>
+                <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; background-image: url(&quot;project://database/Packages/com.unity.dt.app-ui/PackageResources/Icons/Regular/ArrowsInLineHorizontal.png?fileID=2800000&amp;guid=ad8f08df1302b48de86d9c4fc331138a&amp;type=3#ArrowsInLineHorizontal&quot;); position: absolute; top: 0%; left: 0%; bottom: 0%; right: 0%; -unity-background-scale-mode: scale-to-fit; background-size: 32px 32px;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </Unity.AppUI.UI.Panel>
 </ui:UXML>

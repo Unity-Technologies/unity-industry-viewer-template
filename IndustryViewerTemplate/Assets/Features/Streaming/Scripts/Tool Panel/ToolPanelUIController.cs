@@ -26,7 +26,7 @@ namespace Unity.Industry.Viewer.Streaming
         protected VisualElement m_ToolPanelContent;
         protected VisualElement m_ContentPanel;
         
-        private VisualElement m_ResizeHandle;
+        protected VisualElement m_ResizeHandle;
         private bool m_Resizing = false;
         private float m_StartWidth;
         private Vector2 m_StartPointer;
@@ -45,7 +45,7 @@ namespace Unity.Industry.Viewer.Streaming
             InitializeUI();
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             IsOpened = false;
             OpenToolPanel -= OnOpenToolPanel;
@@ -88,8 +88,15 @@ namespace Unity.Industry.Viewer.Streaming
         {
             IsOpened = true;
             AddContentToPanel(title, content);
+            SetupResizeHandle(resizable);
+        }
 
+        // Wires (once) and shows/hides the drag-to-resize handle. Shared by the desktop
+        // panel and the VR world-space panel (XRToolPanel) so both behave identically.
+        protected void SetupResizeHandle(bool resizable)
+        {
             m_ResizeHandle = m_ToolPanelRoot.Q<VisualElement>("ResizeHandle");
+            if (m_ResizeHandle == null) return;
             if (resizable)
             {
                 if (!m_InitializedHandle)
@@ -105,10 +112,10 @@ namespace Unity.Industry.Viewer.Streaming
             {
                 m_ResizeHandle.style.display = DisplayStyle.None;
             }
-            
+
             StartCoroutine(WaitForUIRefresh());
             return;
-            
+
             IEnumerator WaitForUIRefresh()
             {
                 yield return new WaitForEndOfFrame();
@@ -120,8 +127,16 @@ namespace Unity.Industry.Viewer.Streaming
         {
             if (!m_Resizing) return;
             float delta = m_StartPointer.x - evt.position.x; // Invert direction
-            m_ToolPanelRoot.style.width = Mathf.Clamp(m_StartWidth + delta, m_OriginalWidth,
-                m_OriginalWidth * 2.5f);
+            float target = Mathf.Clamp(m_StartWidth + delta, m_OriginalWidth, m_OriginalWidth * 2.5f);
+            ApplyResizeWidth(target);
+        }
+
+        // Applies the dragged width. Desktop sets the panel element's width directly; the VR
+        // world-space panel overrides this to grow the fixed-size UIDocument surface instead
+        // (setting the element width there would just overflow and clip the fixed quad).
+        protected virtual void ApplyResizeWidth(float width)
+        {
+            m_ToolPanelRoot.style.width = width;
         }
 
         void OnPointerUp(PointerUpEvent evt)

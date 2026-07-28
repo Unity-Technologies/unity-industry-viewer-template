@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Items:
     - rid: 7555826617756942433
   m_TableData:
+  - m_Id: 124621959373774849
+    m_Localized: 減少 Z 衝突
+    m_Metadata:
+      m_Items: []
   - m_Id: 2543798181888
     m_Localized: "\u5F9E\u672C\u6A5F\u78C1\u789F\u6A5F\u4E2D\u522A\u9664\u8CC7\u7522"
     m_Metadata:

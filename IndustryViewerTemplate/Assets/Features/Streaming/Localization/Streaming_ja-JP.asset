@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Items:
     - rid: 7555826617756942441
   m_TableData:
+  - m_Id: 124621959373774849
+    m_Localized: Zファイティングを軽減
+    m_Metadata:
+      m_Items: []
   - m_Id: 2543798181888
     m_Localized: "\u30ED\u30FC\u30AB\u30EB\u30C9\u30E9\u30A4\u30D6\u304B\u3089\u30A2\u30BB\u30C3\u30C8\u3092\u524A\u9664\u3059\u308B"
     m_Metadata:

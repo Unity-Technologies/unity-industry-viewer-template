@@ -34,7 +34,12 @@ namespace Unity.Industry.Viewer.Streaming
         public abstract void FocusToPoint(DoubleBounds bounds);
         
         public abstract void TranslateTo(Vector3 position, Quaternion rotation);
-        
+
+        // Restores a saved camera viewpoint (world position + rotation). Defaults to a teleport;
+        // orbit overrides this to also set its look-at pivot, otherwise a plain teleport leaves the
+        // orbit pivot stale and the view snaps when the user next orbits.
+        public virtual void FocusToSavedView(Vector3 position, Quaternion rotation) => TranslateTo(position, rotation);
+
         public abstract void FollowPresenter(GameObject presenter);
     }
 }

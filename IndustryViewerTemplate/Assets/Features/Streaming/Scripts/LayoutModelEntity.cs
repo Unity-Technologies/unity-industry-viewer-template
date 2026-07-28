@@ -23,6 +23,7 @@ namespace Unity.Industry.Viewer.Streaming
         public string assetID;
         public string datasetID;
         public string gameObjectName;
+        public string anchorId;
         public string versionID;
         public int version;
         public int instanceNumber;
@@ -50,6 +51,7 @@ namespace Unity.Industry.Viewer.Streaming
             version = model.Version;
 
             gameObjectName = model.gameObject.name;
+            anchorId = model.AnchorId;
             instanceNumber = model.InstanceNumber;
 
             isStreaming = model.IsStreaming;

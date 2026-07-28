@@ -17,6 +17,7 @@ namespace Unity.Industry.Viewer.Streaming
     public class NavigationController : MonoBehaviour
     {
         public static Action<Vector3, Quaternion> PlayerTranslateTo;
+        public static Action<Vector3, Quaternion> FocusToSavedView;
         public static Action<bool> PauseCameraControl;
         public static Action<NavigationOption> OnNavigationOptionChanged;
         public static Action<NavigationOption> ChangeToNewNavigationOption;
@@ -57,6 +58,7 @@ namespace Unity.Industry.Viewer.Streaming
         {
             ChangeToNewNavigationOption += SetNavigationOption;
             PlayerTranslateTo += OnPlayerRequestTranslateTo;
+            FocusToSavedView += OnFocusToSavedView;
             FollowPresenter += OnFollowPresenter;
             FocusToPoint += OnFocusToPoint;
             RequestDefaultHomeView += OnRequestDefaultHomeView;
@@ -75,6 +77,7 @@ namespace Unity.Industry.Viewer.Streaming
         {
             ChangeToNewNavigationOption -= SetNavigationOption;
             PlayerTranslateTo -= OnPlayerRequestTranslateTo;
+            FocusToSavedView -= OnFocusToSavedView;
             FollowPresenter -= OnFollowPresenter;
             FocusToPoint -= OnFocusToPoint;
             RequestDefaultHomeView -= OnRequestDefaultHomeView;
@@ -145,6 +148,12 @@ namespace Unity.Industry.Viewer.Streaming
         private void OnPlayerRequestTranslateTo(Vector3 targetPosition, Quaternion targetRotation)
         {
             m_CurrentNavigationOption.TranslateTo(targetPosition, targetRotation);
+        }
+
+        private void OnFocusToSavedView(Vector3 position, Quaternion rotation)
+        {
+            if (m_CurrentNavigationOption == null || m_CurrentNavigationOption.GetNavigationGameObject() == null) return;
+            m_CurrentNavigationOption.FocusToSavedView(position, rotation);
         }
 
         private void SetNavigationOption(NavigationOption navigationOption)

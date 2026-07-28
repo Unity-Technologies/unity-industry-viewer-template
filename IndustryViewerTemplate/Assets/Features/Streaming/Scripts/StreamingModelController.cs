@@ -39,7 +39,7 @@ namespace Unity.Industry.Viewer.Streaming
         public static Action<DoubleBounds, bool> BoundsUpdated;
         public static Action RequestBoundsUpdate;
         public static Action<Camera> AddObserver;
-        public static Action<AssetInfo, string, int?> AddStreamModel;
+        public static Action<AssetInfo, string, int?, string> AddStreamModel;
         public static Action<StreamingModel> RemoveStreamModel;
         public static Action<bool> PauseWireframeMode;
 
@@ -339,7 +339,7 @@ namespace Unity.Industry.Viewer.Streaming
                     GetLayoutJson(assetInfo.Asset, assetInfo.Asset is OfflineAsset);
                     return;
                 }
-                AddStreamModel?.Invoke(StreamingAsset.Value, string.Empty, null);
+                AddStreamModel?.Invoke(StreamingAsset.Value, string.Empty, null, null);
             } else {
                 //Wait for session removed
                 MultiplayerService.Instance.SessionRemoved += InstanceOnSessionRemoved;
@@ -357,7 +357,7 @@ namespace Unity.Industry.Viewer.Streaming
                 GetLayoutJson(assetInfo.Asset, assetInfo.Asset is OfflineAsset);
                 return;
             }
-            AddStreamModel?.Invoke(StreamingAsset.Value, string.Empty, null);
+            AddStreamModel?.Invoke(StreamingAsset.Value, string.Empty, null, null);
             
 #endif
             
@@ -374,7 +374,7 @@ namespace Unity.Industry.Viewer.Streaming
                 }
                 else
                 {
-                    reconnectionAction = () => AddStreamModel?.Invoke(StreamingAsset.Value, string.Empty, null); 
+                    reconnectionAction = () => AddStreamModel?.Invoke(StreamingAsset.Value, string.Empty, null, null); 
                 }
                 
                 StartCoroutine(WaitForNetworkDisconnectFully());
@@ -532,7 +532,7 @@ namespace Unity.Industry.Viewer.Streaming
         
 
         // Called when a streaming model is added
-        private void OnAddStreamModel(AssetInfo assetInfo, string targetName, int? instanceNumber)
+        private void OnAddStreamModel(AssetInfo assetInfo, string targetName, int? instanceNumber, string anchorId)
         {
             OfflineAsset offlineAsset = null;
             if (assetInfo.Asset is OfflineAsset asset)
@@ -565,7 +565,7 @@ namespace Unity.Industry.Viewer.Streaming
                         FinishedInitialLoading = true;
                         var model = m_Stage.Models.Add(x => x.FromDataset(targetDataset, m_ServiceHttpClient, m_ServiceHostResolver));
                         var modelStream = HandleNewModelStream(assetInfo.Asset.Descriptor.AssetId.ToString(), targetName);
-                        modelStream.Initialize(model, assetInfo, targetDataset, true, instanceNumber);
+                        modelStream.Initialize(model, assetInfo, targetDataset, true, instanceNumber, anchorId);
                         TransformController.ModelAdded?.Invoke(modelStream.gameObject, model.Transform);
                     }
                     else
@@ -591,7 +591,7 @@ namespace Unity.Industry.Viewer.Streaming
                     Properties = null
                 };
                 FinishedInitialLoading = true;
-                streamModel.Initialize(model, newAssetInfo, false, instanceNumber);
+                streamModel.Initialize(model, newAssetInfo, false, instanceNumber, anchorId);
                 TransformController.ModelAdded?.Invoke(streamModel.gameObject, model.Transform);
             }
 
@@ -664,7 +664,8 @@ namespace Unity.Industry.Viewer.Streaming
                             Properties = null
                         },
                         targetName,
-                        layoutModelEntity.instanceNumber);
+                        layoutModelEntity.instanceNumber,
+                        layoutModelEntity.anchorId);
                 }).ToList();
 
                 // Wait for all models to be processed in batches of 5
@@ -757,7 +758,7 @@ namespace Unity.Industry.Viewer.Streaming
                                 targetName = ReturnTargetName(layoutModelEntity);
                             }
 
-                            await HandleAddingModel(selectedAsset, selectedAssetProperties, targetName, layoutModelEntity.instanceNumber);
+                            await HandleAddingModel(selectedAsset, selectedAssetProperties, targetName, layoutModelEntity.instanceNumber, layoutModelEntity.anchorId);
                         }
                         else
                         {
@@ -785,7 +786,7 @@ namespace Unity.Industry.Viewer.Streaming
                                     targetName = ReturnTargetName(layoutModelEntity);
                                 }
 
-                                await HandleAddingModel(selectedAsset, null, targetName, layoutModelEntity.instanceNumber);
+                                await HandleAddingModel(selectedAsset, null, targetName, layoutModelEntity.instanceNumber, layoutModelEntity.anchorId);
                             }
                             catch
                             {
@@ -829,7 +830,8 @@ namespace Unity.Industry.Viewer.Streaming
                 IAsset asset,
                 AssetProperties? properties,
                 string targetName,
-                int? instanceNumber)
+                int? instanceNumber,
+                string anchorId)
             {
                 var offlineAssetInfo = StreamingUtils.ReturnOfflineAssetInfo(asset);
 
@@ -844,7 +846,7 @@ namespace Unity.Industry.Viewer.Streaming
                 if (offlineAssetInfo == null)
                 {
                     //Add found Asset directly using cloud data
-                    AddStreamModel?.Invoke(onlineAsset, targetName, instanceNumber);
+                    AddStreamModel?.Invoke(onlineAsset, targetName, instanceNumber, anchorId);
                 }
                 else
                 {
@@ -856,7 +858,7 @@ namespace Unity.Industry.Viewer.Streaming
                         Properties = null
                     };
 
-                    StreamSceneUIController.ShowPickSourceDialog?.Invoke(onlineAsset, offlineAsset, targetName);
+                    StreamSceneUIController.ShowPickSourceDialog?.Invoke(onlineAsset, offlineAsset, targetName, anchorId);
                 }
             }
 

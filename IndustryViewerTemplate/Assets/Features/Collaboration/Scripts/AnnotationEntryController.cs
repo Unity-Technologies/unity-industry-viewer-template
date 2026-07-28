@@ -13,7 +13,6 @@ using Unity.Industry.Viewer.Shared;
 using Avatar = Unity.AppUI.UI.Avatar;
 using Button = Unity.AppUI.UI.Button;
 using MessageType = Unity.Cloud.Collaboration.MessageType;
-using UnityEngine.InputSystem;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Unity.Industry.Viewer.Collaboration
@@ -141,23 +140,8 @@ namespace Unity.Industry.Viewer.Collaboration
                 m_EditTextArea.RegisterValueChangingCallback(OnEditTextAreaValueChanging);
                 m_EditTextArea.RegisterValueChangedCallback(OnEditTextAreaValueChanged);
                 
-                var textField = m_EditTextArea.Q<UnityEngine.UIElements.TextField>(); 
-                if (Keyboard.current == null)
-                {
-                    textField.hideMobileInput = true;
-                    textField.Q<TextElement>().enableRichText = false;
-                }
-                else
-                {
-                    textField.hideMobileInput = false;
-                    textField.Q<TextElement>().enableRichText = true;
-                }
-                
-                /*if (TouchScreenKeyboard.isSupported)
-                {
-                    InputSystem.onDeviceChange += OnDevicesChanged;
-                }*/
-                
+                CollaborationUIUtility.SetupMentionComposer(m_EditTextArea, () => CollaborationUIController.SelectedAsset);
+
                 m_SaveEditButton.clicked += OnSaveEditClicked;
                 m_AttachmentGridView = m_EditContainer.Q<GridView>();
                 m_AttachmentGridView.makeItem = CollaborationUIController.AttachmentGridViewItem;
@@ -463,8 +447,8 @@ namespace Unity.Industry.Viewer.Collaboration
         {
             if(NetworkDetector.IsOffline) return;
             var existingList = m_AttachmentGridView.itemsSource as List<Attachment>;
-            CollaborationController.UpdateAnnotation?.Invoke(CollaborationUIController.SelectedAsset.Value, CollaborationUIController.TokenSource, Annotation, 
-                m_EditTextArea.value, existingList, Callback);
+            CollaborationController.UpdateAnnotation?.Invoke(CollaborationUIController.SelectedAsset.Value, CollaborationUIController.TokenSource, Annotation,
+                CollaborationUIUtility.GetCloudText(m_EditTextArea), existingList, Callback);
             return;
 
             void Callback(IAnnotation resultAnnotation)
@@ -493,8 +477,10 @@ namespace Unity.Industry.Viewer.Collaboration
 
         private void OnEditTextAreaValueChanging(ChangingEvent<string> evt)
         {
-            //Current Disable this as Rich Text in TextArea is not supported yet, not allow user to tag other users in a text area.
-            //CollaborationUIUtility.OnTextAreaValueChanging(CollaborationUIController.SelectedAsset.Value, evt);
+            if (CollaborationUIController.SelectedAsset.HasValue)
+            {
+                CollaborationUIUtility.OnTextAreaValueChanging(CollaborationUIController.SelectedAsset.Value, evt);
+            }
             CollaborationUIUtility.CheckValidInput(m_EditTextArea, m_AttachmentGridView, m_SaveEditButton);
         }
 
@@ -502,6 +488,7 @@ namespace Unity.Industry.Viewer.Collaboration
         {
             m_MessageLabel.SetDisplay(!string.IsNullOrWhiteSpace(m_MessageLabel.text));
             m_EditContainer.DisplayOff();
+            CollaborationUIUtility.ClearMentions(m_EditTextArea);
             m_AttachmentGridView.itemsSource = null;
             m_AttachmentGridView.style.display = DisplayStyle.None;
         }
@@ -669,7 +656,10 @@ namespace Unity.Industry.Viewer.Collaboration
             m_MessageLabel.style.display = DisplayStyle.None;
             m_EditContainer.style.display = DisplayStyle.Flex;
             m_EditContainer.SetEnabled(true);
-            m_EditTextArea.value = Annotation.Text;
+            // Stored mentions (:user[name]{#id}) become plain "@Name" text backed by spans,
+            // so they can be edited like fresh ones and are re-converted at save time.
+            CollaborationUIUtility.LoadCloudTextIntoComposer(m_EditTextArea, Annotation.Text);
+            CollaborationUIUtility.CheckValidInput(m_EditTextArea, m_AttachmentGridView, m_SaveEditButton);
             m_EditTextArea.Focus();
             AnnotationEditModeEnter?.Invoke(Annotation);
         }
@@ -734,6 +724,7 @@ namespace Unity.Industry.Viewer.Collaboration
             if(NetworkDetector.IsOffline) return;
             //Open thread
             CollaborationUIController.OpenRootThread(Annotation);
+            AnnotationCameraFocus.FocusToAnnotationCamera(Annotation);
         }
 
         private async Task GetCreatorName()
@@ -811,23 +802,10 @@ namespace Unity.Industry.Viewer.Collaboration
             AnnotationEntryRoot.UnregisterCallback<PointerLeaveEvent>(OnPointerOut);
             m_EditTextArea?.UnregisterValueChangingCallback(OnEditTextAreaValueChanging);
             m_EditTextArea?.UnregisterValueChangedCallback(OnEditTextAreaValueChanged);
-            
-            /*if (TouchScreenKeyboard.isSupported)
-            {
-                InputSystem.onDeviceChange -= OnDevicesChanged;
-            }*/
-            
+
             AnnotationEntryRoot.UnregisterCallback<ClickEvent>(OnCommentClicked);
             m_Popover?.Dismiss();
         }
-
-        /*private void OnDevicesChanged(InputDevice arg1, InputDeviceChange arg2)
-        {
-            var blurEvent =
-                BlurEvent.GetPooled(m_EditTextArea, null, FocusChangeDirection.none, m_EditTextArea.focusController);
-            m_EditTextArea.SendEvent(blurEvent);
-            CollaborationUIUtility.TextAreaRichTextEnable(m_EditTextArea);
-        }*/
 
         private static string GetDateTimeLabel(TimeSpan timeDiff)
         {

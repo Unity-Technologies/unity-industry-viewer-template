@@ -5,6 +5,23 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - 2026-07-28
+
+### Added
+- Metadata is now shown in a second tab within the Hierarchy tool panel, driven by the current hierarchy/3D selection (desktop and VR).
+- Double-click a Hierarchy entry to zoom-to-focus the selected object (when the asset provides per-instance geometry bounds).
+- The streaming tool panel can now be resized in VR by dragging its edge handle (works with controllers and hand-tracking), matching the desktop/tablet resize.
+- Clicking a collaboration comment or its 3D annotation marker now focuses the camera to the viewpoint saved with the annotation (position, orientation, and field of view), matching the Unity Asset Manager web viewer. Works in orbit/fly/walk navigation and VR.
+- In multi-model layouts, a spatial annotation (its 3D marker and saved camera viewpoint) now anchors to the specific model it was placed on and follows that model when it is moved, including across saved-layout reloads and multiplayer sessions; annotations on the primary model, and existing annotations, continue to behave as before.
+- Annotation comments now support @-mentions: type `@` in the comment, reply, or edit composer to search your organization's members and tag them. Mentions are highlighted in the composer and stored in the Unity Cloud mention format, so the tagged member is notified and the mention renders correctly in the Asset Manager web viewer. Works with mouse and touch, hardware keyboards (arrow keys + Enter to pick a suggestion, including iPad keyboard covers), on-screen keyboards on tablets, and the system keyboard on VR headsets.
+
+### Changed
+- Retired the standalone Metadata tool; its functionality is now integrated into the Hierarchy tool.
+- Annotation viewpoints are now stored and restored in the model's local space (consistent with the annotation marker and the web viewer) instead of world space, so saved camera views stay correct when the model is moved, rotated, or scaled.
+
+### Fixed
+- Opening a resolved annotation thread from the streaming scene's annotation tool now shows the full conversation (the thread's resolution entry silently aborted the list population).
+
 ## [2.3.1] - 2026-06-29
 
 ### Changed

@@ -94,25 +94,62 @@ namespace Unity.Industry.Viewer.Collaboration
         private static async Task<bool> UploadSpatialAttachment(AssetInfo assetInfo, CancellationTokenSource token,
             AnnotationId annotationId, GameObject spatialAttachment)
         {
-            SpatialPosition position = new SpatialPosition(spatialAttachment.transform.localPosition.x,
-                spatialAttachment.transform.localPosition.y, spatialAttachment.transform.localPosition.z);
+            // Root-relative marker + camera pose (the fallback used by single-model / web-viewer clients).
+            // The marker may now be parented under a specific model, so derive the root-relative position
+            // from world space rather than localPosition. At identity single-model this is byte-identical
+            // to before, preserving the web-viewer round-trip.
+            Transform modelRoot = TransformController.Instance != null ? TransformController.Instance.transform : null;
+            Vector3 markerRootLocal = modelRoot != null
+                ? modelRoot.InverseTransformPoint(spatialAttachment.transform.position)
+                : spatialAttachment.transform.position;
+            SpatialPosition position = new SpatialPosition(markerRootLocal.x, markerRootLocal.y, markerRootLocal.z);
 
-            SpatialPosition cameraPosition = new SpatialPosition(Camera.main.transform.position.x,
-                Camera.main.transform.position.y, Camera.main.transform.position.z);
+            Vector3 camLocalPos = modelRoot != null
+                ? modelRoot.InverseTransformPoint(Camera.main.transform.position)
+                : Camera.main.transform.position;
+            Quaternion camLocalRot = modelRoot != null
+                ? Quaternion.Inverse(modelRoot.rotation) * Camera.main.transform.rotation
+                : Camera.main.transform.rotation;
 
-            SpatialRotation cameraRotation = new SpatialRotation(Camera.main.transform.rotation.eulerAngles.x,
-                Camera.main.transform.rotation.eulerAngles.y, Camera.main.transform.rotation.eulerAngles.z);
+            SpatialPosition cameraPosition = new SpatialPosition(camLocalPos.x, camLocalPos.y, camLocalPos.z);
 
+            SpatialRotation cameraRotation = new SpatialRotation(camLocalRot.eulerAngles.x,
+                camLocalRot.eulerAngles.y, camLocalRot.eulerAngles.z);
+
+            // In VR the "main" camera is the HMD, whose FOV is device-driven and meaningless to desktop /
+            // other clients, so don't persist it (focus then leaves the viewer's FOV untouched).
+#if VR_MODE
+            float? savedFieldOfView = null;
+#else
+            float? savedFieldOfView = Camera.main.fieldOfView;
+#endif
             ICameraDetails newCameraDetails = new CameraDetails(
                 position:  cameraPosition,
                 rotation: cameraRotation,
-                fieldOfView: Camera.main.fieldOfView
+                fieldOfView: savedFieldOfView
             );
+
+            // When the marker is anchored to a specific model (multi-model layout), also store the marker
+            // and camera positions in that model's local frame plus the model's id, so both follow the
+            // model when it's moved. Left null for root-anchored markers (they use the fields above).
+            ILocalSpaceDetails localSpace = default;
+            Transform anchor = spatialAttachment.transform.parent;
+            if (anchor != null && anchor.TryGetComponent(out StreamingModel anchorModel)
+                && !string.IsNullOrEmpty(anchorModel.AnchorId))
+            {
+                Vector3 markerModelLocal = spatialAttachment.transform.localPosition;
+                Vector3 camModelLocal = anchor.InverseTransformPoint(Camera.main.transform.position);
+                localSpace = new LocalSpaceDetails(
+                    anchorModel.AnchorId,
+                    new SpatialPosition(markerModelLocal.x, markerModelLocal.y, markerModelLocal.z),
+                    new SpatialPosition(camModelLocal.x, camModelLocal.y, camModelLocal.z));
+            }
 
             var newSpatialAttachmentRequest = new CreateSpatial3DAttachmentRequest(
                 label: annotationId.ToString(),
                 position: position,
-                camera: newCameraDetails
+                camera: newCameraDetails,
+                local: localSpace
             );
 
             var done = false;

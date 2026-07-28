@@ -40,7 +40,7 @@ namespace Unity.Industry.Viewer.Streaming
         private const string k_SaveLayoutButtonName = "SaveLayoutButton";
         
         public static Action ShowFailToAddModelToast;
-        public static Action<AssetInfo, AssetInfo, string> ShowPickSourceDialog;
+        public static Action<AssetInfo, AssetInfo, string, string> ShowPickSourceDialog;
         
         [SerializeField]
         private VisualTreeAsset m_streamingBarTemplate;
@@ -63,6 +63,26 @@ namespace Unity.Industry.Viewer.Streaming
         [SerializeField] private LocalizedString m_RenderingTitle;
         [SerializeField] protected VisualTreeAsset m_PostProcessSettingsUI;
         private Toggle m_PostProcessingToggle;
+
+        [SerializeField] protected VisualTreeAsset m_CoincidenceBiasSettingsUI;
+        [SerializeField, Tooltip("Default coincident-surface separation, in metres, applied when the " +
+            "feature is on (also the initial slider position). 0.0003 = 0.3 mm.")]
+        private float m_CoincidenceBias = 0.0003f;
+        [SerializeField, Tooltip("Separation at 100% strength, in metres. The strength slider maps " +
+            "0-100% onto 0..this. Lower it for tiny manufacturing-scale models.")]
+        private float m_MaxCoincidenceBias = 0.002f;
+        private Toggle m_CoincidenceBiasToggle;
+        private BaseSlider<float, float> m_CoincidenceBiasSlider;
+        // Remembered separation (metres) so toggling off then on restores the last strength.
+        private float m_CurrentBias;
+        private const string k_CoincidenceBiasToggleName = "CoincidenceBiasToggle";
+        private const string k_CoincidenceBiasSliderName = "CoincidenceBiasStrengthSlider";
+        // Must match the shader graph global property's Reference name ("_Bias").
+        private static readonly int k_CoincidenceBiasId = Shader.PropertyToID("_Bias");
+
+        // VR controllers can't drag the App UI TouchSliderFloat, so the VR subclass overrides this to use
+        // the regular SliderFloat (arrows / input field, controller-friendly) instead.
+        protected virtual bool CoincidenceBiasUsesTouchSlider => true;
         
         public IStage Stage => m_Stage;
         IStage m_Stage;
@@ -146,6 +166,12 @@ namespace Unity.Industry.Viewer.Streaming
             StreamingModel.OnActivityStateChanged += OnActivityStateChanged;
             InAppSettings.SettingsPanelShow += OnSettingsPanelShow;
             InAppSettings.SettingsPanelDismissed += OnSettingsPanelDismissed;
+
+            // Coincidence-bias z-fighting mitigation defaults ON; the settings toggle turns it off and
+            // the strength slider tunes the amount. base.Start() runs for the VR subclass too, so this
+            // applies in both streaming scenes.
+            m_CurrentBias = m_CoincidenceBias;
+            Shader.SetGlobalFloat(k_CoincidenceBiasId, m_CurrentBias);
         }
 
         protected virtual void OnDestroy()
@@ -222,6 +248,36 @@ namespace Unity.Industry.Viewer.Streaming
             m_PostProcessingToggle.RegisterValueChangedCallback(ChangePostProcessingValue);
             
             InAppSettings.InitializeSection(m_RenderingTitle, ref newTitle, m_settings);
+
+            // Second row in the same Rendering section: the coincidence-bias (z-fighting) controls,
+            // which drive the streamed-geometry shader's "_Bias" global. The toggle is the master
+            // on/off; the strength slider (0-100%) tunes the separation amount.
+            if (m_CoincidenceBiasSettingsUI != null)
+            {
+                var biasSettings = m_CoincidenceBiasSettingsUI.Instantiate().Children().First();
+                bool biasEnabled = Shader.GetGlobalFloat(k_CoincidenceBiasId) > 0f;
+
+                m_CoincidenceBiasToggle = biasSettings.Q<Toggle>(k_CoincidenceBiasToggleName);
+                m_CoincidenceBiasToggle.value = biasEnabled;
+                m_CoincidenceBiasToggle.RegisterValueChangedCallback(ChangeCoincidenceBiasEnabled);
+
+                // Non-VR (desktop/mobile) uses the drag-based TouchSliderFloat; VR uses the regular
+                // SliderFloat (controller-friendly). Both live in the UXML hidden; unhide the chosen one.
+                m_CoincidenceBiasSlider = CoincidenceBiasUsesTouchSlider
+                    ? (BaseSlider<float, float>)biasSettings.Q<TouchSliderFloat>(k_CoincidenceBiasSliderName)
+                    : biasSettings.Q<SliderFloat>(k_CoincidenceBiasSliderName);
+                if (m_CoincidenceBiasSlider != null)
+                {
+                    m_CoincidenceBiasSlider.style.display = DisplayStyle.Flex;
+                    m_CoincidenceBiasSlider.SetValueWithoutNotify(BiasToStrength(m_CurrentBias));
+                    m_CoincidenceBiasSlider.SetEnabled(biasEnabled);
+                    m_CoincidenceBiasSlider.RegisterValueChangingCallback(ChangeCoincidenceBiasStrengthLive);
+                    m_CoincidenceBiasSlider.RegisterValueChangedCallback(ChangeCoincidenceBiasStrength);
+                }
+
+                newTitle.Q<VisualElement>("Content").Add(biasSettings);
+            }
+
             vePanel.Q<ScrollView>().Add(newTitle);
         }
         
@@ -229,6 +285,18 @@ namespace Unity.Industry.Viewer.Streaming
         {
             m_PostProcessingToggle.UnregisterValueChangedCallback(ChangePostProcessingValue);
             m_PostProcessingToggle = null;
+
+            if (m_CoincidenceBiasToggle != null)
+            {
+                m_CoincidenceBiasToggle.UnregisterValueChangedCallback(ChangeCoincidenceBiasEnabled);
+                m_CoincidenceBiasToggle = null;
+            }
+            if (m_CoincidenceBiasSlider != null)
+            {
+                m_CoincidenceBiasSlider.UnregisterValueChangingCallback(ChangeCoincidenceBiasStrengthLive);
+                m_CoincidenceBiasSlider.UnregisterValueChangedCallback(ChangeCoincidenceBiasStrength);
+                m_CoincidenceBiasSlider = null;
+            }
         }
 
         private void ChangePostProcessingValue(ChangeEvent<bool> evt)
@@ -242,6 +310,35 @@ namespace Unity.Industry.Viewer.Streaming
                 }
             }
         }
+
+        // Master on/off for the coincidence bias: applies the remembered strength when on, 0 when off.
+        private void ChangeCoincidenceBiasEnabled(ChangeEvent<bool> evt)
+        {
+            Shader.SetGlobalFloat(k_CoincidenceBiasId, evt.newValue ? m_CurrentBias : 0f);
+            if (m_CoincidenceBiasSlider != null) m_CoincidenceBiasSlider.SetEnabled(evt.newValue);
+        }
+
+        // Strength slider (0-100%) -> separation in metres. Handle both the live drag (ValueChanging)
+        // and the final release (ValueChanged) so the effect updates as the slider moves.
+        private void ChangeCoincidenceBiasStrengthLive(ChangingEvent<float> evt) => ApplyCoincidenceBiasStrength(evt.newValue);
+
+        private void ChangeCoincidenceBiasStrength(ChangeEvent<float> evt) => ApplyCoincidenceBiasStrength(evt.newValue);
+
+        private void ApplyCoincidenceBiasStrength(float strengthPercent)
+        {
+            m_CurrentBias = StrengthToBias(strengthPercent);
+            // Apply live only while the effect is enabled.
+            if (m_CoincidenceBiasToggle != null && m_CoincidenceBiasToggle.value)
+            {
+                Shader.SetGlobalFloat(k_CoincidenceBiasId, m_CurrentBias);
+            }
+        }
+
+        private float BiasToStrength(float biasMetres) =>
+            m_MaxCoincidenceBias > 0f ? Mathf.Clamp01(biasMetres / m_MaxCoincidenceBias) * 100f : 0f;
+
+        private float StrengthToBias(float strengthPercent) =>
+            Mathf.Clamp01(strengthPercent / 100f) * m_MaxCoincidenceBias;
 
         protected virtual void OnNetworkStatusChanged(bool connected)
         {
@@ -679,7 +776,7 @@ namespace Unity.Industry.Viewer.Streaming
             modal.Show();
         }
         
-        protected virtual async void ShowPickSourceDialogHandler(AssetInfo onlineAssetInfo, AssetInfo offlineAssetInfo, string targetName)
+        protected virtual async void ShowPickSourceDialogHandler(AssetInfo onlineAssetInfo, AssetInfo offlineAssetInfo, string targetName, string anchorId)
         {
             //Ask user if he wants to add the asset from the local storage
             var whichDataSourceDialog = new AlertDialog
@@ -704,11 +801,11 @@ namespace Unity.Industry.Viewer.Streaming
 
             whichDataSourceDialog.SetPrimaryAction(97, await m_CloudOption.GetTitleLocalizedStringForAppUIAsync(), () =>
             {
-                StreamingModelController.AddStreamModel?.Invoke(onlineAssetInfo, targetName, null);
+                StreamingModelController.AddStreamModel?.Invoke(onlineAssetInfo, targetName, null, anchorId);
             });
             whichDataSourceDialog.SetSecondaryAction(96, await m_LocalOption.GetTitleLocalizedStringForAppUIAsync(), () =>
             {
-                StreamingModelController.AddStreamModel?.Invoke(offlineAssetInfo, targetName, null);
+                StreamingModelController.AddStreamModel?.Invoke(offlineAssetInfo, targetName, null, anchorId);
             });
             whichDataSourceDialog.SetCancelAction(0, await m_CancelOption.GetTitleLocalizedStringForAppUIAsync());
                     

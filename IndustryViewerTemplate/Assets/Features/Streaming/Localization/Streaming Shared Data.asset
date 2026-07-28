@@ -179,6 +179,10 @@ MonoBehaviour:
     m_Key: Rendering
     m_Metadata:
       m_Items: []
+  - m_Id: 124621959373774849
+    m_Key: Reduce Z-Fighting
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -211,6 +211,9 @@ MonoBehaviour:
     m_LocalVariables: []
   m_PostProcessSettingsUI: {fileID: 9197481963319205126, guid: 2009ae8e302c542d19cd7bbe977a975a,
     type: 3}
+  m_CoincidenceBiasSettingsUI: {fileID: 9197481963319205126, guid: eab604bb767e7486793accde76dc503f,
+    type: 3}
+  m_CoincidenceBias: 0.0003
   m_SavePanelTemplate: {fileID: 9197481963319205126, guid: 362dfd91687a04bff84fe7d48dbb8a2c,
     type: 3}
   m_AssetLoadFailureToast:
@@ -442,14 +445,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232434870}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 0
     m_Resolution: -1
@@ -1224,7 +1227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   streamingToolAssets:
   - {fileID: 11400000, guid: a05213e80388ae24781b53e4726ed3cf, type: 2}
-  - {fileID: 11400000, guid: d36f2ff40952b0c49acdf8a1773669ad, type: 2}
   - {fileID: 11400000, guid: f0b84633b35794cafa8d8c7dbfccfe0b, type: 2}
   - {fileID: 11400000, guid: 36f07f3bfc2a14fb585fbb34c2e762a5, type: 2}
 --- !u!4 &1309377621
