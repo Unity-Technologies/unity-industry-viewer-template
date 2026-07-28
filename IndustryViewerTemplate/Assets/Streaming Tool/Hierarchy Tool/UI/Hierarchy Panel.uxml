@@ -1,11 +1,33 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1;">
-        <ui:TreeView name="HierarchyTreeView" horizontal-scrolling="true" item-template="project://database/Assets/Streaming%20Tool/Hierarchy%20Tool/UI/Hierarchy%20Item%20Template.uxml?fileID=9197481963319205126&amp;guid=166ee20e97a27414c8f7930df0437a5c&amp;type=3#Hierarchy Item Template" fixed-item-height="40" focusable="false" class="HierarchyStyle" style="width: 100%; max-width: 100%; min-width: 100%; max-height: 4000px; margin-bottom: 8px;" />
-        <Unity.AppUI.UI.ActionButton name="ResetAllVisibilityButton" accent="true" selected="true" style="margin-bottom: 16px; white-space: nowrap; text-overflow: ellipsis; height: 40px;">
-            <Bindings>
-                <UnityEngine.Localization.LocalizedString property="label" table="GUID:48832e3252a4b48af8afab88b5bbc379" entry="Id(115508050741207040)" />
-            </Bindings>
-        </Unity.AppUI.UI.ActionButton>
+        <Unity.AppUI.UI.Tabs name="HierarchyTabs" value="0" style="margin-bottom: 12px;">
+            <Unity.AppUI.UI.TabItem name="HierarchyTabItem" label="Hierarchy" style="justify-content: center; flex-grow: 1; min-height: 40px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:48832e3252a4b48af8afab88b5bbc379" entry="Id(2275631161344)" />
+                </Bindings>
+            </Unity.AppUI.UI.TabItem>
+            <Unity.AppUI.UI.TabItem name="MetadataTabItem" label="Metadata" style="justify-content: center; flex-grow: 1; min-height: 40px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:6efcd4a9cb0e446d2a317f1da935b0ba" entry="Id(632743256064)" />
+                </Bindings>
+            </Unity.AppUI.UI.TabItem>
+        </Unity.AppUI.UI.Tabs>
+        <ui:VisualElement name="HierarchyTab" picking-mode="Ignore" style="flex-grow: 1; display: flex;">
+            <ui:TreeView name="HierarchyTreeView" horizontal-scrolling="true" item-template="project://database/Assets/Streaming%20Tool/Hierarchy%20Tool/UI/Hierarchy%20Item%20Template.uxml?fileID=9197481963319205126&amp;guid=166ee20e97a27414c8f7930df0437a5c&amp;type=3#Hierarchy Item Template" fixed-item-height="40" focusable="false" class="HierarchyStyle" style="width: 100%; max-width: 100%; min-width: 100%; max-height: 4000px; margin-bottom: 8px;" />
+            <Unity.AppUI.UI.ActionButton name="ResetAllVisibilityButton" accent="true" selected="true" style="margin-bottom: 16px; white-space: nowrap; text-overflow: ellipsis; height: 40px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:48832e3252a4b48af8afab88b5bbc379" entry="Id(115508050741207040)" />
+                </Bindings>
+            </Unity.AppUI.UI.ActionButton>
+        </ui:VisualElement>
+        <ui:VisualElement name="MetadataTab" style="flex-grow: 1; display: none;">
+            <Unity.AppUI.UI.TextField name="SearchField" leading-icon-name="magnifying-glass" style="height: 40px; max-height: 40px; min-height: 40px; margin-bottom: 10px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="placeholder" table="GUID:2a6c1c34211344e798bb376d8fa80190" entry="Id(53019528912896)" />
+                </Bindings>
+            </Unity.AppUI.UI.TextField>
+            <ui:ScrollView name="MetadataScrollView" style="flex-grow: 1; padding-left: 16px;" />
+        </ui:VisualElement>
         <ui:VisualElement name="Loading" style="flex-grow: 1; align-items: center; justify-content: center; position: absolute; top: 0; left: 0; bottom: 0; right: 0; display: flex; background-color: rgba(0, 0, 0, 0.12);">
             <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: center; align-items: center;">
                 <Unity.AppUI.UI.CircularProgress size="S" color-override="#FFFFFFFF" style="width: 32px; height: 32px;" />

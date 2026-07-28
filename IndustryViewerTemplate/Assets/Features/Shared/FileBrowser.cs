@@ -2,7 +2,9 @@
 using SFB;
 #endif
 using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Linq;
 using System.Collections.Generic;
 
@@ -23,7 +25,7 @@ namespace Unity.Industry.Viewer.Shared
         private static HashSet<string> m_DefaultImageFileExtensionsHashSet =
             DefaultImageFileExtensions.Split(',').ToHashSet();
 
-        private static string PrepareFileExtensionForComapision(string extension)
+        private static string PrepareFileExtensionForComparison(string extension)
         {
             if (string.IsNullOrEmpty(extension))
             {
@@ -35,15 +37,54 @@ namespace Unity.Industry.Viewer.Shared
 
         public static bool IsSupportedStreamingFileExtension(string extension)
         {
-            return m_SupportedStreamingFileExtensionsHashSet.Contains(PrepareFileExtensionForComapision(extension));
+            return m_SupportedStreamingFileExtensionsHashSet.Contains(PrepareFileExtensionForComparison(extension));
         }
 
         public static bool IsDefaultImageFileExtension(string extension)
         {
-            return m_DefaultImageFileExtensionsHashSet.Contains(PrepareFileExtensionForComapision(extension));
+            return m_DefaultImageFileExtensionsHashSet.Contains(PrepareFileExtensionForComparison(extension));
         }
 
-        
+        // Native file dialogs disagree on how they report a cancelled/empty selection: the Editor and
+        // Windows backends return a zero-length array, but the macOS/Linux backends split an empty
+        // native string and hand back a single empty entry ([""]). Strip null/empty/whitespace paths
+        // so callers reliably get an empty array on cancel and never create a phantom (empty-path) entry.
+        private static string[] SanitizePaths(string[] paths)
+        {
+            return paths == null
+                ? Array.Empty<string>()
+                : paths.Where(path => !string.IsNullOrWhiteSpace(path)).ToArray();
+        }
+
+#if UNITY_STANDALONE || UNITY_EDITOR
+        // Builds the SFB desktop extension filter from a comma-separated list (null when none given).
+        private static ExtensionFilter[] BuildDesktopFilter(string extension)
+        {
+            return string.IsNullOrEmpty(extension)
+                ? null
+                : new[] { new ExtensionFilter("Supported Files", extension.Split(',')) };
+        }
+#endif
+
+#if UNITY_IOS || UNITY_ANDROID
+        // Converts a comma-separated extension list to native mobile file types. Custom extensions are
+        // supported on iOS only; Android ignores them, so this returns null there.
+        // https://github.com/yasirkula/UnityNativeFilePicker?tab=readme-ov-file#unity-native-file-picker-plugin
+        private static string[] BuildMobileFileTypes(string extension)
+        {
+#if UNITY_IOS
+            if (!string.IsNullOrEmpty(extension))
+            {
+                return extension.Split(",")
+                    .Select(ext => NativeFilePicker.ConvertExtensionToFileType(ext))
+                    .ToArray();
+            }
+#endif
+            return null;
+        }
+#endif
+
+
         public static void OpenFile(string title, string defaultFolder, string extension, Action<string> callback)
         {
             if (callback == null) throw new ArgumentNullException(nameof(callback));
@@ -54,18 +95,11 @@ namespace Unity.Industry.Viewer.Shared
 #endif
 
 #if UNITY_STANDALONE// || UNITY_WEBGL
-            ExtensionFilter[] convertedExtensions = null;
-            if (!string.IsNullOrEmpty(extension))
-            {
-                convertedExtensions = new[]
-                {
-                    new ExtensionFilter("Supported Files", extension.Split(','))
-                };
-            }
+            var convertedExtensions = BuildDesktopFilter(extension);
 
             StandaloneFileBrowser.OpenFilePanelAsync(title, defaultFolder, convertedExtensions, false, (paths) =>
             {
-                callback(paths?.Length > 0 ? paths[0] : string.Empty);
+                callback(SanitizePaths(paths).FirstOrDefault() ?? string.Empty);
             });
 
             return;
@@ -75,17 +109,7 @@ namespace Unity.Industry.Viewer.Shared
 #if UNITY_IOS || UNITY_ANDROID
             if( NativeFilePicker.IsFilePickerBusy() )
                 return;
-            string[] convertedMobileExtensions = null;
-#if UNITY_IOS
-            // NOTE: custom file extensions are supported on iOS only.
-            // https://github.com/yasirkula/UnityNativeFilePicker?tab=readme-ov-file#unity-native-file-picker-plugin
-            if (!string.IsNullOrEmpty(extension))
-            {
-                convertedMobileExtensions = extension.Split(",")
-                    .Select(extension => NativeFilePicker.ConvertExtensionToFileType(extension))
-                    .ToArray();
-            }
-#endif
+            var convertedMobileExtensions = BuildMobileFileTypes(extension);
             NativeFilePicker.PickFile((path) => { callback(path); }, convertedMobileExtensions);
             return;
 #endif
@@ -98,16 +122,10 @@ namespace Unity.Industry.Viewer.Shared
             if(callback == null) throw new ArgumentNullException(nameof(callback));
             
 #if UNITY_EDITOR || UNITY_STANDALONE
-            ExtensionFilter[] convertedExtensions = null;
-            if (!string.IsNullOrEmpty(extension))
-            {
-                convertedExtensions = new[]
-                {
-                    new ExtensionFilter("Supported Files", extension.Split(','))
-                };
-            }
-            
-            StandaloneFileBrowser.OpenFilePanelAsync(title, defaultFolder, convertedExtensions, true, callback);      
+            var convertedExtensions = BuildDesktopFilter(extension);
+
+            StandaloneFileBrowser.OpenFilePanelAsync(title, defaultFolder, convertedExtensions, true,
+                (paths) => callback(SanitizePaths(paths)));
             return;
 #endif
             
@@ -115,19 +133,9 @@ namespace Unity.Industry.Viewer.Shared
 #if (UNITY_IOS || UNITY_ANDROID) && !UNITY_EDITOR
             if( NativeFilePicker.IsFilePickerBusy() )
                 return;
-            string[] convertedMobileExtensions = null;
-#if UNITY_IOS
-            // NOTE: custom file extensions are supported on iOS only.
-            // https://github.com/yasirkula/UnityNativeFilePicker?tab=readme-ov-file#unity-native-file-picker-plugin
-            if (!string.IsNullOrEmpty(extension))
-            {
-                convertedMobileExtensions = extension.Split(",")
-                    .Select(extension => NativeFilePicker.ConvertExtensionToFileType(extension))
-                    .ToArray();
-            }
-#endif
-            
-            NativeFilePicker.PickMultipleFiles((files) => { callback(files); }, convertedMobileExtensions);
+            var convertedMobileExtensions = BuildMobileFileTypes(extension);
+
+            NativeFilePicker.PickMultipleFiles((files) => { callback(SanitizePaths(files)); }, convertedMobileExtensions);
             return;
 #endif
             

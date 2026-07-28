@@ -9,7 +9,6 @@ using System.Threading;
 using Unity.Cloud.DataStreaming.Runtime;
 using Unity.Cloud.HighPrecision.Runtime;
 using Unity.Cloud.DataStreaming.Metadata;
-using Unity.Industry.Viewer.Streaming.Metadata;
 using UnityEngine.EventSystems;
 using RuntimeGizmos;
 using Unity.Industry.Viewer.Shared;
@@ -39,6 +38,13 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
         public static Action<ModelStreamId, MetadataInstance, Dictionary<InstanceId, List<InstanceData>>> InstanceSelectedOnModel;
         public static Action<InstanceData, bool> UpdateToggleUI;
         public static Action RequestTreeViewRefresh;
+
+        // Full metadata for the currently-selected instance, consumed by the Hierarchy tool's Metadata tab.
+        public static Action<List<MetadataInstance>> MetadataForSelection;
+
+        // Fires when an instance is selected (model + instance id); persisted by HierarchyToolSceneListener
+        // for restore-on-open. Formerly MetadataToolController.InstanceSelected.
+        public static Action<ModelStreamId, InstanceId> InstanceSelected;
 
         public static event Action<bool> VisibilityReset;
 
@@ -159,13 +165,12 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
 
         private void FindSelectedInstance()
         {
-            var sceneListeners = FindAnyObjectByType<MetadataSceneListener>();
-            if(sceneListeners == null) return;
-            if (sceneListeners.SelectedInstanceID == InstanceId.None || sceneListeners.SelectedModelID == default)
+            if (m_HierarchyToolSceneListener == null) return;
+            if (m_HierarchyToolSceneListener.SelectedInstanceID == InstanceId.None || m_HierarchyToolSceneListener.SelectedModelID == default)
             {
                 return;
             }
-            QueryData(sceneListeners.SelectedModelID, sceneListeners.SelectedInstanceID, true);
+            QueryData(m_HierarchyToolSceneListener.SelectedModelID, m_HierarchyToolSceneListener.SelectedInstanceID, true);
         }
 
         // This function handles the selection of an instance from the panel.
@@ -178,14 +183,15 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             
             if (data == null || data.Instance == null)
             {
+                MetadataForSelection?.Invoke(null);
                 return;
             }
-            
+
             QueryData(data.StreamModel.Id, data.Instance.Id, false);
             
             if (!data.Instance.HasChildren)
             {
-                MetadataToolController.InstanceSelected?.Invoke(data.StreamModel.Id, data.Instance.Id);
+                InstanceSelected?.Invoke(data.StreamModel.Id, data.Instance.Id);
                 return;
             }
             DestroyTransformHandle();
@@ -414,7 +420,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
 
             async Task Raycast()
             {
-                MetadataToolController.InstanceSelected?.Invoke(default, InstanceId.None);
+                InstanceSelected?.Invoke(default, InstanceId.None);
                 var raycastResult = await m_StreamingModelController.Stage.RaycastAsync((DoubleRay) ray, m_StreamingModelController.ActiveCamera.farClipPlane, RaycastOptions.ExcludeHiddenInstances | RaycastOptions.ExcludeNormalFromResult);
                 if (checkUIWorldSpace && WorldSpaceUiBlocksRay(ray, m_StreamingModelController.ActiveCamera.farClipPlane,
                         raycastResult.InstanceId != InstanceId.None, raycastResult.Point.ToVector3()))
@@ -455,6 +461,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
 
             if (repository == null)
             {
+                MetadataForSelection?.Invoke(null);
                 m_HierarchyToolSceneListener.HighlightInstance(modelId, id);
                 QueryAbort?.Invoke();
                 return;
@@ -474,7 +481,9 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
 
                 m_HierarchyToolSceneListener.HighlightInstance(modelId, id);
                 
-                MetadataToolController.InstanceSelected?.Invoke(modelId, id);
+                InstanceSelected?.Invoke(modelId, id);
+
+                _ = QueryMetadataForSelection(repository, id, token);
 
                 if (!invokeEvent) return;
                 {
@@ -537,7 +546,65 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
                 Debug.LogException(ex);
             }
         }
-        
+
+        // Fetches full metadata for the selected instance and pushes it to the Metadata tab.
+        // Ported from the standalone Metadata tool so the tab works while the Hierarchy tool is open.
+        private async Task QueryMetadataForSelection(IMetadataRepository repository, InstanceId id, CancellationToken token)
+        {
+            if (repository == null)
+            {
+                MetadataForSelection?.Invoke(null);
+                return;
+            }
+
+            try
+            {
+                var firstQuery = await repository
+                    .Query()
+                    .Select(MetadataPathCollection.All)
+                    .WhereInstanceEquals(id)
+                    .WhereHasAncestor(InstanceId.None, int.MaxValue)
+                    .GetFirstOrDefaultAsync(token);
+
+                if (firstQuery == null)
+                {
+                    MetadataForSelection?.Invoke(null);
+                    return;
+                }
+
+                var found = new List<MetadataInstance>();
+
+                if (firstQuery.Properties.Count == 0 && firstQuery.AncestorIds is { Count: > 0 })
+                {
+                    // Selected instance has no properties of its own - fall back to its parent.
+                    var parentId = firstQuery.AncestorIds[^1];
+                    var secondQuery = await repository
+                        .Query()
+                        .Select(MetadataPathCollection.All)
+                        .WhereInstanceEquals(parentId)
+                        .GetFirstOrDefaultAsync(token);
+                    if (secondQuery != null)
+                    {
+                        found.Add(secondQuery);
+                    }
+                }
+                else
+                {
+                    found.Add(firstQuery);
+                }
+
+                MetadataForSelection?.Invoke(found);
+            }
+            catch (OperationCanceledException)
+            {
+                // Query was canceled, ignore.
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
+            }
+        }
+
         private void RemoveStreamModel(StreamingModel obj)
         {
             RemoveTransformHandle();

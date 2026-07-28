@@ -502,6 +502,13 @@ namespace Unity.Industry.Viewer.Navigation.OrbitCamera
             m_Camera.ResetTracking(newPosition, ((Bounds)bounds).center);
         }
 
+        // Restores an exact camera pose plus its orbit look-at pivot (used for annotation viewpoints),
+        // so the view is stable and doesn't snap around a stale pivot when the user next orbits.
+        public void RestoreView(Vector3 position, Vector3 lookAt)
+        {
+            m_Camera.ResetTracking(position, lookAt);
+        }
+
         public void UpdateView(DoubleBounds bounds)
         {
             m_MainBounds = bounds;

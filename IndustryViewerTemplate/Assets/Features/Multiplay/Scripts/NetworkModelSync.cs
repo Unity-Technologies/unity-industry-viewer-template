@@ -19,6 +19,7 @@ namespace Unity.Industry.Viewer.Multiplay
         public string AssetId;
         public string AssetVersionId;
         public string GameObjectName;
+        public string AnchorId;
         public int InstanceNumber;
 
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
@@ -29,6 +30,8 @@ namespace Unity.Industry.Viewer.Multiplay
             serializer.SerializeValue(ref GameObjectName);
             serializer.SerializeValue(ref AssetVersionId);
             serializer.SerializeValue(ref InstanceNumber);
+            // Serialized last so the added field doesn't shift the layout of the pre-existing fields.
+            serializer.SerializeValue(ref AnchorId);
         }
 
         public override bool Equals(object obj)
@@ -38,7 +41,7 @@ namespace Unity.Industry.Viewer.Multiplay
 
         override public int GetHashCode()
         {
-            return HashCode.Combine(OrgId, ProjectId, AssetId, AssetVersionId, GameObjectName, InstanceNumber);
+            return HashCode.Combine(OrgId, ProjectId, AssetId, AssetVersionId, GameObjectName, AnchorId, InstanceNumber);
         }
 
         public bool Equals(ModelSyncData other)
@@ -48,6 +51,7 @@ namespace Unity.Industry.Viewer.Multiplay
                    AssetId == other.AssetId &&
                    AssetVersionId == other.AssetVersionId &&
                    GameObjectName == other.GameObjectName &&
+                   AnchorId == other.AnchorId &&
                    InstanceNumber == other.InstanceNumber;
         }
 
@@ -112,6 +116,7 @@ namespace Unity.Industry.Viewer.Multiplay
                         AssetId = model.Asset.Descriptor.AssetId.ToString(),
                         AssetVersionId = model.Asset.Descriptor.AssetVersion.ToString(),
                         GameObjectName = child.gameObject.name,
+                        AnchorId = model.AnchorId,
                         InstanceNumber = model.InstanceNumber
                     });
                     
@@ -223,9 +228,10 @@ namespace Unity.Industry.Viewer.Multiplay
                     AssetId = model.Asset.Descriptor.AssetId.ToString(),
                     AssetVersionId = model.Asset.Descriptor.AssetVersion.ToString(),
                     GameObjectName = newModelAssetObject.name,
+                    AnchorId = model.AnchorId,
                     InstanceNumber = model.InstanceNumber
                 });
-                
+
                 m_ModelSyncData.CheckDirtyState();
             }
             else
@@ -235,6 +241,7 @@ namespace Unity.Industry.Viewer.Multiplay
                     model.Asset.Descriptor.AssetId.ToString(),
                     model.Asset.Descriptor.AssetVersion.ToString(),
                     newModelAssetObject.name,
+                    model.AnchorId,
                     model.InstanceNumber);
             }
         }
@@ -246,6 +253,7 @@ namespace Unity.Industry.Viewer.Multiplay
             FixedString64Bytes assetId,
             FixedString64Bytes assetVersionId,
             FixedString64Bytes gameObjectName,
+            FixedString64Bytes anchorId,
             int instanceNumber)
         {
             if(!IsOwner) return;
@@ -257,6 +265,7 @@ namespace Unity.Industry.Viewer.Multiplay
                 AssetId = assetId.ToString(),
                 AssetVersionId = assetVersionId.ToString(),
                 GameObjectName = gameObjectName.ToString(),
+                AnchorId = anchorId.ToString(),
                 InstanceNumber = instanceNumber
             });
 
@@ -347,6 +356,7 @@ namespace Unity.Industry.Viewer.Multiplay
                     assetID = modelData.AssetId,
                     versionID = modelData.AssetVersionId,
                     gameObjectName = modelData.GameObjectName,
+                    anchorId = modelData.AnchorId,
                     instanceNumber = modelData.InstanceNumber
                 });
 

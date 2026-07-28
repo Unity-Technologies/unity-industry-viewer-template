@@ -14,7 +14,6 @@ using System;
 using Unity.AppUI.Core;
 using System.Threading.Tasks;
 using System.Threading;
-using UnityEngine.InputSystem;
 using UnityEngine.Localization;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -134,14 +133,6 @@ namespace Unity.Industry.Viewer.Collaboration
         
         public LocalizedStringAsset LocalizedStringAsset;
 
-        /*protected virtual void OnDestroy()
-        {
-            if (TouchScreenKeyboard.isSupported)
-            {
-                InputSystem.onDeviceChange -= OnDevicesChanged;
-            }
-        }*/
-
         protected Text m_GuestModeText;
 
         public async void InsertCollaborationNotAvailable(VisualElement container)
@@ -176,22 +167,8 @@ namespace Unity.Industry.Viewer.Collaboration
             var textField = m_TextArea.Q<UnityEngine.UIElements.TextField>(); 
             textField.multiline = true;
             
-            if (Keyboard.current == null)
-            {
-                textField.hideMobileInput = true;
-                textField.Q<TextElement>().enableRichText = false;
-            }
-            else
-            {
-                textField.hideMobileInput = false;
-                textField.Q<TextElement>().enableRichText = true;
-            }
-            
-            /*if (TouchScreenKeyboard.isSupported)
-            {
-                InputSystem.onDeviceChange += OnDevicesChanged;
-            }*/
-            
+            CollaborationUIUtility.SetupMentionComposer(m_TextArea, () => SelectedAsset);
+
             m_TextArea.RegisterCallback<FocusInEvent>(OnTextAreaFocus);
             m_TextArea.RegisterCallback<FocusOutEvent>(OnTextAreaLoseFocus);
             m_TextArea.RegisterValueChangingCallback(OnTextAreaValueChanging);
@@ -352,6 +329,7 @@ namespace Unity.Industry.Viewer.Collaboration
             }
             m_TextArea.placeholder = await LocalizedStringAsset.ReplyPlaceHolderLocalizedString.GetTitleLocalizedStringForAppUIAsync();
             m_TextArea.SetValueWithoutNotify(string.Empty);
+            CollaborationUIUtility.ClearMentions(m_TextArea);
             m_NewCommentButton.SetEnabled(true);
             CollaborationUIUtility.CheckValidInput(m_TextArea, m_AttachmentGridView, m_SendIconButton);
             m_AttachmentGridView.itemsSource = null;
@@ -779,6 +757,7 @@ namespace Unity.Industry.Viewer.Collaboration
             m_AnnotationContainer.Clear();
             m_ReplyContainer.style.display = DisplayStyle.Flex;
             m_TextArea.SetValueWithoutNotify(string.Empty);
+            CollaborationUIUtility.ClearMentions(m_TextArea);
             m_SendIconButton.SetEnabled(false);
             m_ThreadMenuIconButton.SetEnabled(false);
             m_ResolveButton.SetEnabled(false);
@@ -805,7 +784,7 @@ namespace Unity.Industry.Viewer.Collaboration
             LoadingUIPanel.ShowLoadingPanel?.Invoke(() =>
             {
                 string rootId = ReadingThread? m_currentRootAnnotation.AnnotationId.ToString(): string.Empty;
-                string text = CollaborationUIUtility.ConvertUserTagsForCloud(m_TextArea.value);
+                string text = CollaborationUIUtility.GetCloudText(m_TextArea);
                 var attachments = m_AttachmentGridView.itemsSource as List<Attachment>;
                 
                 CollaborationController.NewAnnotation?.Invoke(SelectedAsset.Value, TokenSource, rootId, text, attachments, SpatialAttachment, OnAnnotationCreated);
@@ -834,6 +813,7 @@ namespace Unity.Industry.Viewer.Collaboration
             void ResetReplyInput()
             {
                 m_TextArea.SetValueWithoutNotify(string.Empty);
+                CollaborationUIUtility.ClearMentions(m_TextArea);
                 if (m_TextArea.ClassListContains(k_TextAreaFocusClassName))
                 {
                     m_TextArea.RemoveFromClassList(k_TextAreaFocusClassName);
@@ -859,8 +839,10 @@ namespace Unity.Industry.Viewer.Collaboration
 
         private void OnTextAreaValueChanging(ChangingEvent<string> evt)
         {
-            ////Current Disable this as Rich Text in TextArea is not supported yet, not allow user to tag other users in a text area.
-            //CollaborationUIUtility.OnTextAreaValueChanging(SelectedAsset.Value, evt);
+            if (SelectedAsset.HasValue)
+            {
+                CollaborationUIUtility.OnTextAreaValueChanging(SelectedAsset.Value, evt);
+            }
             CollaborationUIUtility.CheckValidInput(m_TextArea, m_AttachmentGridView, m_SendIconButton);
         }
         
@@ -930,15 +912,6 @@ namespace Unity.Industry.Viewer.Collaboration
             }
         }
         
-        //A Potential check if we want to disable rich text when input from certain devices
-        /*private void OnDevicesChanged(InputDevice arg1, InputDeviceChange arg2)
-        {
-            var blurEvent =
-                BlurEvent.GetPooled(m_TextArea, null, FocusChangeDirection.none, m_TextArea.focusController);
-            m_TextArea.SendEvent(blurEvent);
-            CollaborationUIUtility.TextAreaRichTextEnable(m_TextArea);
-        }*/
-
         protected void ClearToken()
         {
             TokenSource?.Cancel();

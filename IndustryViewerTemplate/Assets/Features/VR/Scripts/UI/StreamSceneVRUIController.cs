@@ -50,6 +50,10 @@ namespace Unity.Industry.Viewer.VR
         
         private bool m_IsLoadingPanelVisible;
 
+        // VR: the App UI TouchSliderFloat can't be dragged with controllers, so use the regular
+        // SliderFloat (arrows / input field) for the coincidence-bias strength control instead.
+        protected override bool CoincidenceBiasUsesTouchSlider => false;
+
         protected override void Start()
         {
             base.Start();
@@ -198,7 +202,7 @@ namespace Unity.Industry.Viewer.VR
         }
 
         protected override void ShowPickSourceDialogHandler(AssetInfo onlineAssetInfo, AssetInfo offlineAssetInfo,
-            string targetName)
+            string targetName, string anchorId)
         {
             bool loadingPanelVisible = LoadingUIPanel.IsLoadingPanelVisible;
             if (loadingPanelVisible)
@@ -217,7 +221,7 @@ namespace Unity.Industry.Viewer.VR
                     m_AddDescription.GetTitleLocalizedStringForAppUI());
                 xrAlertPanel.SetPrimaryButton(m_CloudOption.GetTitleLocalizedStringForAppUI(), () =>
                 {
-                    StreamingModelController.AddStreamModel?.Invoke(onlineAssetInfo, targetName, null);
+                    StreamingModelController.AddStreamModel?.Invoke(onlineAssetInfo, targetName, null, anchorId);
                 });
                 
                 xrAlertPanel.TitleText.variables = new object[]
@@ -231,7 +235,7 @@ namespace Unity.Industry.Viewer.VR
                 xrAlertPanel.PrimaryButton.icon = "broadcast";
                 xrAlertPanel.SetSecondaryButton(m_LocalOption.GetTitleLocalizedStringForAppUI(), () =>
                 {
-                    StreamingModelController.AddStreamModel?.Invoke(offlineAssetInfo, targetName, null);
+                    StreamingModelController.AddStreamModel?.Invoke(offlineAssetInfo, targetName, null, anchorId);
                 });
                 xrAlertPanel.SetCancelButton(m_CancelOption.GetTitleLocalizedStringForAppUI());
             

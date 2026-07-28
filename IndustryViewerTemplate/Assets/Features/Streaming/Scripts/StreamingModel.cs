@@ -17,6 +17,7 @@ namespace Unity.Industry.Viewer.Streaming
         private IDataset m_Dataset;
         private AssetProperties? m_AssetProperties;
         private int m_InstanceNumber;
+        private string m_AnchorId;
 
         public string AssetId => m_Asset.Descriptor.AssetId.ToString();
 
@@ -66,12 +67,39 @@ namespace Unity.Industry.Viewer.Streaming
         public int InstanceNumber => m_InstanceNumber;
         public bool IsStreaming { get; private set; }
 
+        // Immutable, per-instance id (a GUID minted once at creation, persisted in the layout and synced in
+        // multiplayer). Used to anchor collaboration annotations to a specific model instance, decoupled from
+        // the mutable gameObject.name so a load-time rename can't orphan an annotation.
+        public string AnchorId => m_AnchorId;
+
+        // Resolves a loaded model child by its AnchorId, used to re-anchor collaboration annotations to the
+        // specific model they were placed on. Falls back to a gameObject.name match so annotations authored
+        // before AnchorId existed still resolve. Returns null when the id is empty, there is no
+        // TransformController, or no model matches.
+        public static Transform FindModelTransformByAnchorId(string id)
+        {
+            if (string.IsNullOrEmpty(id) || TransformController.Instance == null) return null;
+            var models = TransformController.Instance.GetComponentsInChildren<StreamingModel>(true);
+            return (models.FirstOrDefault(model => model.AnchorId == id)
+                    ?? models.FirstOrDefault(model => model.gameObject.name == id))?.transform;
+        }
+
+        // Resolves the loaded model whose stream matches the given id (e.g. from a raycast hit).
+        public static StreamingModel FindByModelStreamId(ModelStreamId id)
+        {
+            if (TransformController.Instance == null) return null;
+            return TransformController.Instance
+                .GetComponentsInChildren<StreamingModel>(true)
+                .FirstOrDefault(model => model.ModelStream != null && model.ModelStream.Id == id);
+        }
+
         public void Initialize(
             IModelStream modelStream,
             AssetInfo asset,
             IDataset dataset,
             bool isStreaming,
-            int? instanceNumber = null)
+            int? instanceNumber = null,
+            string anchorId = null)
         {
             m_ModelStream = modelStream;
             m_AssetProperties = asset.Properties;
@@ -79,18 +107,31 @@ namespace Unity.Industry.Viewer.Streaming
             m_Dataset = dataset;
             IsStreaming = isStreaming;
             m_InstanceNumber = instanceNumber is null or 0 ? GetInstanceNumber() : instanceNumber.Value;
+            // Seed from the model's initial name (deterministic "{assetId}@1" for the primary/first model,
+            // "{assetId}@{guid}" for others) so a self-loaded model has a stable id across sessions and
+            // multiplayer clients; a persisted/synced anchorId (from a layout or another client) overrides
+            // it. This value is frozen here and never reassigned, so a later gameObject.name rename can't
+            // orphan an annotation.
+            m_AnchorId = string.IsNullOrEmpty(anchorId) ? gameObject.name : anchorId;
         }
 
         public void Initialize(
             IModelStream modelStream,
             AssetInfo offlineAsset,
             bool isStreaming,
-            int? instanceNumber = null)
+            int? instanceNumber = null,
+            string anchorId = null)
         {
             m_Asset = offlineAsset.Asset;
             m_ModelStream = modelStream;
             IsStreaming = isStreaming;
             m_InstanceNumber = instanceNumber is null or 0 ? GetInstanceNumber() : instanceNumber.Value;
+            // Seed from the model's initial name (deterministic "{assetId}@1" for the primary/first model,
+            // "{assetId}@{guid}" for others) so a self-loaded model has a stable id across sessions and
+            // multiplayer clients; a persisted/synced anchorId (from a layout or another client) overrides
+            // it. This value is frozen here and never reassigned, so a later gameObject.name rename can't
+            // orphan an annotation.
+            m_AnchorId = string.IsNullOrEmpty(anchorId) ? gameObject.name : anchorId;
         }
 
         private int GetInstanceNumber()

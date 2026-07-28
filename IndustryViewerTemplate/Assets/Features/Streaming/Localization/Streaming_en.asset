@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Items:
     - rid: 7555826617756942434
   m_TableData:
+  - m_Id: 124621959373774849
+    m_Localized: Reduce Z-Fighting
+    m_Metadata:
+      m_Items: []
   - m_Id: 2543798181888
     m_Localized: Remove Asset from local drive
     m_Metadata:

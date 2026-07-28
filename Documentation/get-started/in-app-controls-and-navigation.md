@@ -41,6 +41,8 @@ Selecting the hierarchy option allows you to check the original asset structure 
 
 The annotation option allows you to attach comments directly to the asset in the 3D scene. You can add text and attach images or files to the annotation if required.
 
+You can also mention other members of your organization in a comment: type `@` followed by a name to open a suggestion list, then pick a member with the mouse, with the arrow keys and **Enter**, or by tapping the entry. Mentions are highlighted in the comment text and are stored in the `:user[name]{#id}` format that Unity Cloud uses to notify the mentioned member.
+
 ### Tool
 
 The tool options, represented by a briefcase icon, allows you to access various tools for asset manipulation and interaction.

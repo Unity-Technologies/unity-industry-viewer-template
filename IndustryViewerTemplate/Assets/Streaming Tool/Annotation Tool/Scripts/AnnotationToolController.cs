@@ -15,7 +15,9 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
 {
     public class AnnotationToolController: StreamToolControllerBase
     {
-        public Action<Vector3?, bool, int?> OnNewAnnotationPositionDefining;
+        // hitModel is the specific streamed model child the ray hit (null on a miss/UI-blocked), so the
+        // annotation marker can be anchored to that model and follow it when it's moved in a layout.
+        public Action<Vector3?, bool, int?, Transform> OnNewAnnotationPositionDefining;
         
         [HideInInspector]
         public CollaborationController.FilterType CurrentFilterType = CollaborationController.FilterType.All;
@@ -102,7 +104,7 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
             var raycastResult = await m_StreamingModelController.Stage.RaycastAsync((DoubleRay) ray, m_StreamingModelController.ActiveCamera.farClipPlane, RaycastOptions.ExcludeHiddenInstances | RaycastOptions.ExcludeNormalFromResult);
             if (raycastResult.InstanceId == InstanceId.None)
             {
-                OnNewAnnotationPositionDefining?.Invoke(null, isFinalPosition, instanceId);
+                OnNewAnnotationPositionDefining?.Invoke(null, isFinalPosition, instanceId, null);
                 return;
             }
 
@@ -119,12 +121,15 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
 
                 if (isUIInFront)
                 {
-                    OnNewAnnotationPositionDefining?.Invoke(null, isFinalPosition, instanceId);
+                    OnNewAnnotationPositionDefining?.Invoke(null, isFinalPosition, instanceId, null);
                     return;
                 }
             }
-            
-            OnNewAnnotationPositionDefining?.Invoke(hitPoint, isFinalPosition, instanceId);
+
+            // Resolve the hit model only on the final placement (not on every hover/move), so the marker
+            // anchors to the model it's actually placed on and we avoid a per-move hierarchy scan.
+            Transform hitModel = isFinalPosition ? StreamingModel.FindByModelStreamId(raycastResult.ModelId)?.transform : null;
+            OnNewAnnotationPositionDefining?.Invoke(hitPoint, isFinalPosition, instanceId, hitModel);
         }
     }
 }

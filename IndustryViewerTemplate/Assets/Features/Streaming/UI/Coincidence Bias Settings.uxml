@@ -1,0 +1,17 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/In%20App%20Settings/UI/SettingsStyle.uss?fileID=7433441132597879392&amp;guid=0ccd06581b22f4fe48c0ce2ac8dff7dd&amp;type=3#SettingsStyle" />
+    <engine:VisualElement style="flex-grow: 1;">
+        <engine:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; height: 40px;">
+            <Unity.AppUI.UI.Text text="Reduce Z-Fighting" style="width: 200px; margin-right: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:0f0e26e2fcb43452a837fa831753065b" entry="Id(124621959373774849)" />
+                </Bindings>
+            </Unity.AppUI.UI.Text>
+            <Unity.AppUI.UI.Toggle name="CoincidenceBiasToggle" style="height: 40px; max-height: 40px; min-height: 40px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="StrengthRow" style="flex-grow: 0; flex-direction: row; height: 40px; margin-top: 4px;">
+            <Unity.AppUI.UI.TouchSliderFloat name="CoincidenceBiasStrengthSlider" low-value="0" high-value="100" value="15" format-string="0'%'" increment-factor="1" style="flex-grow: 1; height: 40px; display: none;" />
+            <Unity.AppUI.UI.SliderFloat name="CoincidenceBiasStrengthSlider" low-value="0" high-value="100" value="15" format-string="0'%'" show-input-field="true" style="flex-grow: 1; height: 40px; display: none;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

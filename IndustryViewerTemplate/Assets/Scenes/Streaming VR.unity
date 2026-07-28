@@ -1213,6 +1213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Industry.Viewer.VR::Unity.Industry.Viewer.VR.XRToolPanel
   m_UIDocument: {fileID: 125432187}
   m_SpawnDistance: 5.5
+  m_ResizeMaxScale: 2.5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1477,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigationCamera: {fileID: 0}
   navigationOptionUIComponent: {fileID: 950343831}
+  m_CurrentNavigationMode: 0
+  m_CollisionRaysHorizontal: 1
+  m_CollisionRaysVertical: 1
+  m_CollisionBodyWidth: 0.4
+  m_CollisionBodyHeightMin: 0.4
+  m_CollisionBodyHeightMax: 0.8
   m_Settings: {fileID: 11400000, guid: 66ffcc0064c34a499f0094bbab3b3131, type: 2}
   m_LeftHandJoystickInputReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
@@ -1547,12 +1554,6 @@ MonoBehaviour:
   m_TeleportDirectionInputReference: {fileID: -440298646266941818, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   m_TeleportMoveDelay: 0.375
-  m_CurrentNavigationMode: 0
-  m_CollisionRaysHorizontal: 1
-  m_CollisionRaysVertical: 1
-  m_CollisionBodyWidth: 0.4
-  m_CollisionBodyHeightMin: 0.4
-  m_CollisionBodyHeightMax: 0.8
 --- !u!114 &950343831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,6 +1657,9 @@ MonoBehaviour:
     m_LocalVariables: []
   m_PostProcessSettingsUI: {fileID: 9197481963319205126, guid: 2009ae8e302c542d19cd7bbe977a975a,
     type: 3}
+  m_CoincidenceBiasSettingsUI: {fileID: 9197481963319205126, guid: eab604bb767e7486793accde76dc503f,
+    type: 3}
+  m_CoincidenceBias: 0.0003
   m_SavePanelTemplate: {fileID: 9197481963319205126, guid: 362dfd91687a04bff84fe7d48dbb8a2c,
     type: 3}
   m_AssetLoadFailureToast:
@@ -2696,7 +2700,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   streamingToolAssets:
   - {fileID: 11400000, guid: a05213e80388ae24781b53e4726ed3cf, type: 2}
-  - {fileID: 11400000, guid: d36f2ff40952b0c49acdf8a1773669ad, type: 2}
   - {fileID: 11400000, guid: f0b84633b35794cafa8d8c7dbfccfe0b, type: 2}
   - {fileID: 11400000, guid: 36f07f3bfc2a14fb585fbb34c2e762a5, type: 2}
 --- !u!4 &1515832041
@@ -3274,6 +3277,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigationCamera: {fileID: 0}
   navigationOptionUIComponent: {fileID: 2109197590}
+  m_CurrentNavigationMode: 1
+  m_CollisionRaysHorizontal: 1
+  m_CollisionRaysVertical: 1
+  m_CollisionBodyWidth: 0.4
+  m_CollisionBodyHeightMin: 0.4
+  m_CollisionBodyHeightMax: 0.8
   m_Settings: {fileID: 11400000, guid: 66ffcc0064c34a499f0094bbab3b3131, type: 2}
   m_LeftHandJoystickInputReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
@@ -3345,12 +3354,6 @@ MonoBehaviour:
   m_TeleportDirectionInputReference: {fileID: -440298646266941818, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   m_TeleportMoveDelay: 0.375
-  m_CurrentNavigationMode: 1
-  m_CollisionRaysHorizontal: 1
-  m_CollisionRaysVertical: 1
-  m_CollisionBodyWidth: 0.4
-  m_CollisionBodyHeightMin: 0.4
-  m_CollisionBodyHeightMax: 0.8
 --- !u!114 &2109197590
 MonoBehaviour:
   m_ObjectHideFlags: 0
