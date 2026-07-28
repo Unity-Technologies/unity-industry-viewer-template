@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using RuntimeGizmos;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -40,6 +43,12 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
         private const string k_TransformInspectorName = "TransformInspectorElement";
         private const string k_StreamingPanelName = "StreamingContainer";
         private const string k_ResetAllVisibilityButtonName = "ResetAllVisibilityButton";
+        private const string k_HierarchyTabsName = "HierarchyTabs";
+        private const string k_HierarchyTabContainerName = "HierarchyTab";
+        private const string k_MetadataTabContainerName = "MetadataTab";
+        private const string k_MetadataScrollViewName = "MetadataScrollView";
+        private const string k_SearchFieldName = "SearchField";
+        private const string k_SelectedClass = "Selected";
 
         private TreeView m_HierarchyTreeView;
 
@@ -68,6 +77,12 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
         private IconButton m_PositionModeButton;
         private IconButton m_RotationModeButton;
         private ActionButton m_ResetAllVisibilityButton;
+        private Tabs m_HierarchyTabs;
+        private VisualElement m_HierarchyTabContainer;
+        private VisualElement m_MetadataTabContainer;
+        private ScrollView m_MetadataScrollView;
+        private Unity.AppUI.UI.TextField m_SearchField;
+        private List<MetadataInstance> m_MetadataInstancesFound;
 
         private float m_LastTapTime = 0f;
         private const float k_DoubleTapThreshold = 0.5f; // 300 ms
@@ -114,6 +129,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             }
             HierarchyToolController.TreeViewItemsUpdated -= OnTreeViewItemsUpdated;
             HierarchyToolController.InstanceSelectedOnModel -= OnInstanceSelectedOnModel;
+            HierarchyToolController.MetadataForSelection -= OnMetadataForSelection;
 
 #if ENABLE_MULTIPLAY
             UnlockModel();
@@ -278,6 +294,21 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
 
             m_ResetAllVisibilityButton = parent.Q<ActionButton>(k_ResetAllVisibilityButtonName);
             m_ResetAllVisibilityButton.clicked += OnResetAllVisibilityButtonClicked;
+
+            m_HierarchyTabs = parent.Q<Tabs>(k_HierarchyTabsName);
+            m_HierarchyTabContainer = parent.Q<VisualElement>(k_HierarchyTabContainerName);
+            m_MetadataTabContainer = parent.Q<VisualElement>(k_MetadataTabContainerName);
+            m_MetadataScrollView = parent.Q<ScrollView>(k_MetadataScrollViewName);
+            m_SearchField = parent.Q<Unity.AppUI.UI.TextField>(k_SearchFieldName);
+            m_HierarchyTabs?.RegisterValueChangedCallback(OnTabChanged);
+            if (m_SearchField != null)
+            {
+                m_SearchField.SetEnabled(false);
+                m_SearchField.RegisterValueChangedCallback(OnSearchFieldChanged);
+                m_SearchField.RegisterValueChangingCallback(OnSearchFieldChanging);
+            }
+            HierarchyToolController.MetadataForSelection += OnMetadataForSelection;
+            ShowTab(0);
 
             StartCoroutine(WaitForGridViewManager());
             return;
@@ -760,20 +791,64 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
                 isDoubleTap = true;
             }
 
-            if (isDoubleTap)
+            if (!isDoubleTap) return;
+
+            var clickedElement = evt.target as VisualElement;
+            var dataElement = ReturnDataVisualElement(clickedElement);
+            if (dataElement?.userData is not InstanceData instanceData || instanceData.Instance == null)
             {
-                var clickedElement = evt.target as VisualElement;
-                var dataElement = ReturnDataVisualElement(clickedElement);
-                if (dataElement?.userData is InstanceData instanceData)
-                {
-                    if (instanceData.Instance != null && instanceData.Instance.Geometry.HasValue && instanceData.Instance.Geometry.Value.BoundingBox.HasValue)
-                    {
-                        double3 boundCenter = instanceData.Instance.Geometry.Value.BoundingBox.Value.Center;
-                        double3 modelPosition = new double3(instanceData.StreamingModel.transform.position.x, instanceData.StreamingModel.transform.position.y, instanceData.StreamingModel.transform.position.z);
-                        var newBounds = new DoubleBounds(modelPosition + boundCenter, instanceData.Instance.Geometry.Value.BoundingBox.Value.Size);
-                        NavigationController.FocusToPoint?.Invoke(newBounds);
-                    }
-                }
+                return;
+            }
+
+            // Fast path: geometry already present on the item.
+            if (TryFocusToInstance(instanceData.Instance, instanceData.StreamingModel))
+            {
+                return;
+            }
+
+            // Hierarchy items are queried without geometry (Geometry is an opt-in OptionalData
+            // field), so fetch just this instance's bounding box on demand, then focus.
+            _ = FocusToInstanceAsync(instanceData);
+        }
+
+        // Focuses the camera on the instance if it carries a bounding box; returns false if it has none.
+        private bool TryFocusToInstance(MetadataInstance instance, StreamingModel streamingModel)
+        {
+            if (instance == null || streamingModel == null) return false;
+            if (!instance.Geometry.HasValue || !instance.Geometry.Value.BoundingBox.HasValue)
+            {
+                return false;
+            }
+
+            var boundingBox = instance.Geometry.Value.BoundingBox.Value;
+            double3 modelPosition = new double3(streamingModel.transform.position.x, streamingModel.transform.position.y, streamingModel.transform.position.z);
+            var newBounds = new DoubleBounds(modelPosition + boundingBox.Center, boundingBox.Size);
+            NavigationController.FocusToPoint?.Invoke(newBounds);
+            return true;
+        }
+
+        // Queries only the clicked instance's geometry (bounding box) and focuses on it.
+        private async Task FocusToInstanceAsync(InstanceData instanceData)
+        {
+            if (instanceData?.Instance == null || instanceData.Repository == null) return;
+
+            try
+            {
+                var withGeometry = await instanceData.Repository
+                    .Query()
+                    .Select(MetadataPathCollection.None, new OptionalData(OptionalData.Fields.Geometry))
+                    .WhereInstanceEquals(instanceData.Instance.Id)
+                    .GetFirstOrDefaultAsync(CancellationToken.None);
+
+                TryFocusToInstance(withGeometry, instanceData.StreamingModel);
+            }
+            catch (OperationCanceledException)
+            {
+                // Query canceled - ignore.
+            }
+            catch (Exception ex)
+            {
+                Debug.LogException(ex);
             }
         }
 
@@ -930,7 +1005,104 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
 
         private void OnToolOpened()
         {
-            
+
+        }
+
+        private void OnTabChanged(ChangeEvent<int> evt)
+        {
+            ShowTab(evt.newValue);
+        }
+
+        private void ShowTab(int tabIndex)
+        {
+            if (m_HierarchyTabContainer != null)
+            {
+                m_HierarchyTabContainer.style.display = tabIndex == 0 ? DisplayStyle.Flex : DisplayStyle.None;
+            }
+            if (m_MetadataTabContainer != null)
+            {
+                m_MetadataTabContainer.style.display = tabIndex == 1 ? DisplayStyle.Flex : DisplayStyle.None;
+            }
+        }
+
+        // Renders the metadata for the currently-selected instance into the Metadata tab.
+        // Ported from MetadataToolUIController so the tab works while the Hierarchy tool is open.
+        private void OnMetadataForSelection(List<MetadataInstance> found)
+        {
+            if (m_MetadataScrollView == null) return;
+
+            m_MetadataScrollView.Clear();
+
+            if (found == null || found.Count == 0)
+            {
+                m_MetadataInstancesFound?.Clear();
+                m_SearchField?.SetValueWithoutNotify(string.Empty);
+                m_SearchField?.SetEnabled(false);
+                return;
+            }
+
+            m_MetadataInstancesFound ??= new List<MetadataInstance>();
+            m_MetadataInstancesFound.Clear();
+            m_MetadataInstancesFound.AddRange(found);
+
+            RenderMetadata(string.Empty);
+            m_SearchField?.SetEnabled(m_MetadataScrollView.childCount != 0);
+        }
+
+        private void OnSearchFieldChanging(ChangingEvent<string> evt)
+        {
+            if (m_MetadataInstancesFound == null || m_MetadataInstancesFound.Count == 0) return;
+            RenderMetadata(evt.newValue);
+        }
+
+        private void OnSearchFieldChanged(ChangeEvent<string> evt)
+        {
+            if (m_MetadataInstancesFound == null || m_MetadataInstancesFound.Count == 0) return;
+            RenderMetadata(evt.newValue);
+        }
+
+        private void RenderMetadata(string searchValue)
+        {
+            m_MetadataScrollView.Clear();
+            foreach (var instance in m_MetadataInstancesFound)
+            {
+                AddMetadataRows(instance.Properties, searchValue);
+            }
+        }
+
+        private void AddMetadataRows(IReadOnlyDictionary<string, IMetadataValue> metadata, string searchValue)
+        {
+            foreach (var key in metadata.Keys)
+            {
+                if (!string.IsNullOrEmpty(searchValue) &&
+                    key.IndexOf(searchValue, StringComparison.OrdinalIgnoreCase) < 0 &&
+                    metadata[key].ToString().IndexOf(searchValue, StringComparison.OrdinalIgnoreCase) < 0)
+                {
+                    continue;
+                }
+
+                var entry = new VisualElement();
+                entry.AddToClassList("MetadataEntry");
+                entry.RegisterCallback<ClickEvent>(OnMetadataEntryClicked);
+
+                var keyText = new Text($"{key}");
+                keyText.AddToClassList("MetadataKey");
+                var valueText = new Text(metadata[key].ToString());
+                valueText.AddToClassList("MetadataValue");
+                entry.Add(keyText);
+                entry.Add(valueText);
+                m_MetadataScrollView.Add(entry);
+            }
+        }
+
+        private void OnMetadataEntryClicked(ClickEvent evt)
+        {
+            foreach (var selected in m_MetadataScrollView.Query(className: k_SelectedClass).ToList())
+            {
+                selected.RemoveFromClassList(k_SelectedClass);
+            }
+            if (evt.currentTarget is not VisualElement target) return;
+            target.ToggleInClassList(k_SelectedClass);
         }
 
         public override void UninitializeUI()
@@ -940,7 +1112,15 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
                 m_HierarchyTreeView.selectedIndicesChanged -= OnSelectedIndicesChanged;
                 m_HierarchyTreeView.itemExpandedChanged -= HierarchyItemExpanded;
             }
-            
+
+            m_HierarchyTabs?.UnregisterValueChangedCallback(OnTabChanged);
+            if (m_SearchField != null)
+            {
+                m_SearchField.UnregisterValueChangedCallback(OnSearchFieldChanged);
+                m_SearchField.UnregisterValueChangingCallback(OnSearchFieldChanging);
+            }
+            m_MetadataScrollView?.Clear();
+
             EnableTransformInspector(false, null);
             
             m_PositionField?.UnregisterValueChangedCallback(OnPositionFieldValueChanged);

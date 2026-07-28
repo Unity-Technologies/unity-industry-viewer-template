@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Items:
     - rid: 7555826617756942442
   m_TableData:
+  - m_Id: 124621959373774849
+    m_Localized: Z-파이팅 감소
+    m_Metadata:
+      m_Items: []
   - m_Id: 2543798181888
     m_Localized: "\uB85C\uCEEC \uB4DC\uB77C\uC774\uBE0C\uC5D0\uC11C \uC790\uC0B0
       \uC81C\uAC70"

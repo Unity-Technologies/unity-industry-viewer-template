@@ -1,7 +1,9 @@
 using Unity.Cloud.Collaboration;
+using Unity.Industry.Viewer.Collaboration;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using System.Linq;
 #if VR_MODE
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
@@ -80,6 +82,7 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
             Hover(false);
             Select(true);
             m_CollaborationUIHelper.OpenRootThread(_annotation);
+            AnnotationCameraFocus.FocusToAnnotationCamera(_annotation);
         }
         
         private void AddRemoveClass(string className, bool add)
@@ -114,9 +117,16 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
             AddRemoveClass(k_Selected, value);
         }
 
+        // Exposes the spatial attachment so the tool can re-anchor this marker to its model if that
+        // model streams in / syncs after the marker was created (load-order safety in layouts/multiplayer).
+        public ISpatial3DAttachment Attachment => _attachment;
+
         public void UpdateAnnotation(IAnnotation annotation)
         {
             _annotation = annotation;
+            // Keep the cached attachment in sync so re-anchoring uses the current ParentId/Position.
+            var updatedAttachment = annotation?.Attachments?.OfType<ISpatial3DAttachment>().FirstOrDefault();
+            if (updatedAttachment != null) _attachment = updatedAttachment;
         }
     }
 }

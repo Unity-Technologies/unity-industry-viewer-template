@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Items:
     - rid: 1545659760810917931
   m_TableData:
+  - m_Id: 124621959373774849
+    m_Localized: Vähennä Z-fightingiä
+    m_Metadata:
+      m_Items: []
   - m_Id: 2543798181888
     m_Localized: Poista omaisuus paikalliselta asemalta
     m_Metadata:

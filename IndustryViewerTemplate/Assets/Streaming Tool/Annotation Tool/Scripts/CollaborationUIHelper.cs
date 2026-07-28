@@ -149,6 +149,10 @@ namespace Unity.Industry.Viewer.Streaming.Annotation
 
         private void CheckAndCreateSpatialMarkup(IAnnotation annotation, GameObject currentSceneMarkupInstance)
         {
+            // System messages (e.g. the Resolve entry a resolved thread carries in its
+            // replies) have a null Attachments list; dereferencing it faulted the
+            // fire-and-forget Populate task and silently truncated the whole thread view.
+            if (annotation.Attachments == null) return;
             if (annotation.Attachments.Any(x => x is ISpatial3DAttachment))
             {
                 var spatialAttachment = (ISpatial3DAttachment)annotation.Attachments.First(x => x is ISpatial3DAttachment);

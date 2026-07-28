@@ -60,7 +60,12 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
         
         public Dictionary<ModelStreamId, InstanceState> InstanceStates => m_InstanceStates;
         private Dictionary<ModelStreamId, InstanceState> m_InstanceStates = new();
-        
+
+        // Last selected instance, persisted across tool open/close for restore-on-open.
+        // Replaces the former MetadataSceneListener.
+        public ModelStreamId SelectedModelID { get; private set; }
+        public InstanceId SelectedInstanceID { get; private set; } = InstanceId.None;
+
         [SerializeField]
         private Color highlightColor = new Color(0, 200, 255, 127);
         
@@ -77,6 +82,7 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
             TransformController.ModelRemoved += OnModelRemoved;
             HierarchyToolController.InstanceVisibilityChanged += OnInstanceVisibilityChanged;
             HierarchyToolController.VisibilityReset += OnVisibilityReset;
+            HierarchyToolController.InstanceSelected += OnInstanceSelected;
             NetworkDetector.OnNetworkStatusChanged += OnNetworkStatusChanged;
 
             m_StreamingModelController = FindAnyObjectByType<StreamingModelController>(FindObjectsInactive.Include);
@@ -94,12 +100,19 @@ namespace Unity.Industry.Viewer.Streaming.Hierarchy
 #endif
         }
 
+        private void OnInstanceSelected(ModelStreamId modelID, InstanceId instanceID)
+        {
+            SelectedModelID = modelID;
+            SelectedInstanceID = instanceID;
+        }
+
         private void OnDestroy()
         {
             TransformController.ModelAdded -= OnNewModelAdded;
             TransformController.ModelRemoved -= OnModelRemoved;
             HierarchyToolController.InstanceVisibilityChanged -= OnInstanceVisibilityChanged;
             HierarchyToolController.VisibilityReset -= OnVisibilityReset;
+            HierarchyToolController.InstanceSelected -= OnInstanceSelected;
             NetworkDetector.OnNetworkStatusChanged -= OnNetworkStatusChanged;
             
 #if ENABLE_MULTIPLAY

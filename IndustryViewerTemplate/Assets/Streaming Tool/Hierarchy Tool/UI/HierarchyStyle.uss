@@ -48,3 +48,28 @@
 #HierarchyTreeView #unity-tree-view__item-toggle :checked #unity-checkmark {
     rotate: 0deg;
 }
+
+/* Metadata tab — ported from Metadata Tool's Metadata Style.uss */
+.Selected {
+    border-radius: 10px;
+    background-color: var(--appui-alias-actions-accent-background-color-default)
+}
+
+.MetadataEntry {
+    margin-bottom: 10px;
+    padding: 5px;
+    min-height: 60px;
+    justify-content: center;
+}
+
+.MetadataKey {
+    font-size: 20px;
+    color: #D3D3D3;
+    -unity-font-style: Bold;
+    padding-bottom: 5px;
+}
+
+.MetadataValue {
+    font-size: 20px;
+    color: #BCBCBC;
+}

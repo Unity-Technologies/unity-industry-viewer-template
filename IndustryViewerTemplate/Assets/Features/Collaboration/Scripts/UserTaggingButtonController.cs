@@ -14,15 +14,17 @@ namespace Unity.Industry.Viewer.Collaboration
         public UserId UserId => UserInfo.UserId;
         public string Username => UserInfo.Name;
         public string UserEmail => UserInfo.Email;
-        private static TextArea _currentTextArea;
-        private static int anchorIndex;
-        private static Popover _currentPopover;
+        // Per-button targets: the popover can be rebuilt for another composer while a
+        // previous one's dismissal is still animating, so shared/static slots would
+        // route the insert into the wrong composer — or into nothing after a Dispose.
+        private readonly TextArea _textArea;
+        private readonly Popover _popover;
         private readonly NameSuggestionButton _button;
 
         public UserTaggingButtonController(IUserInfo userInfo, NameSuggestionButton button, TextArea currentTextArea, ref Popover currentPopover)
         {
-            _currentTextArea ??= currentTextArea;
-            _currentPopover ??= currentPopover;
+            _textArea = currentTextArea;
+            _popover = currentPopover;
             UserInfo = userInfo;
             _button = button;
             _button.label = UserInfo.Name + "\n<size=90%>" + UserInfo.Email + "</size>";
@@ -37,17 +39,15 @@ namespace Unity.Industry.Viewer.Collaboration
         private void OnButtonClicked(ClickEvent evt)
         {
             if(evt.target != _button) return;
-            if (_currentTextArea == null) return;
+            if (_textArea == null) return;
             Click();
-            _currentTextArea.Focus();
+            _textArea.Focus();
         }
 
         public void Click()
         {
-            // _currentPopover is static and nulled by Dispose() (fired on any button's detach),
-            // so it can be null here when invoked from the keyboard path.
-            _currentPopover?.Dismiss();
-            CollaborationUIUtility.InsertNameTagging(UserInfo, _currentTextArea);
+            _popover?.Dismiss();
+            CollaborationUIUtility.InsertNameTagging(UserInfo, _textArea);
         }
 
         private void OnDetachFromPanel(DetachFromPanelEvent evt)
@@ -57,8 +57,6 @@ namespace Unity.Industry.Viewer.Collaboration
 
         public void Dispose()
         {
-            _currentPopover = null;
-            _currentTextArea = null;
             _button.UnregisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
             _button.UnregisterCallback<ClickEvent>(OnButtonClicked);
         }

@@ -18,7 +18,14 @@ namespace Unity.Industry.Viewer.Streaming.CrossSection
 
         public void Dispose()
         {
-            // TODO release managed resources here
+            // The factory clones a fresh Material per streaming material and the streamer
+            // disposes this wrapper on every tile unload — without destroying the clone here
+            // it leaks (~4 Materials per tile load under churn). Same pattern as the SDK's
+            // own SimpleMaterial.Dispose.
+            if (Application.isPlaying)
+                Object.Destroy(UnityMaterial);
+            else
+                Object.DestroyImmediate(UnityMaterial);
         }
 
         public void SetAlbedoColor(Color color)
